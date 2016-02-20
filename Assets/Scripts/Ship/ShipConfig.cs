@@ -49,14 +49,13 @@ public class ShipConfig : MonoBehaviour
     public float hoverHeight; // Altura a la que la nave flota
     public Vector3 size; // Tamaño de la nave [3.5, 1.7, 9]
 
-    //[Header("EFECTOS")]
-    //public int airbrakeRotationMode;
-    //public GameObject windTrailLeft; // Estela de aire del ala izquierda
-    //public GameObject windTrailRight; // Estela de aire del ala derecha
-    //public GameObject engineTrail;
-    //public GameObject engineLight;
+    [Header("EFECTOS")]
+    public GameObject windTrailLeft; // Estela de aire del ala izquierda
+    public GameObject windTrailRight; // Estela de aire del ala derecha
+    public GameObject engineTrail;
+    public GameObject engineLight;
     //public GameObject engineFlare; // Estela de la combustion del motor
-    //public GameObject boosterLeft;
-    //public GameObjecb boosterRight;
-    //public float boosterExtendLength;
+    public GameObject boosterLeft;
+    public GameObject boosterRight;
+    public float boosterExtendLength;
 }

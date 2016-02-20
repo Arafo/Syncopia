@@ -29,6 +29,9 @@ public class ShipLoad : MonoBehaviour {
 
         // Cargar la configuracion de la nave
         m_Config = ShipObject.GetComponent<ShipConfig>();
+
+        //
+        gameObject.AddComponent<ShipTrailEffects>();
     }
 	
 	// Update is called once per frame
