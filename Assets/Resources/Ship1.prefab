@@ -602,7 +602,7 @@ MonoBehaviour:
   slipMagnitude: 1000
   slipVelocityMult: 1
   hoverHeight: 5
-  size: {x: 50, y: 0, z: 150}
+  size: {x: 50, y: 30, z: 150}
   windTrailLeft: {fileID: 148906}
   windTrailRight: {fileID: 187092}
   engineTrail: {fileID: 141168}
@@ -693,6 +693,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d10e5ba9e124e5b429d6bac790fe1729, type: 2}
+    - target: {fileID: 0}
+      propertyPath: size.y
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 191778}

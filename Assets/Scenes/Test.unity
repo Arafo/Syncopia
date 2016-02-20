@@ -842,9 +842,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1610644410}
-  - 136: {fileID: 1610644420}
-  - 136: {fileID: 1610644418}
-  - 136: {fileID: 1610644417}
   - 65: {fileID: 1610644415}
   - 114: {fileID: 1610644414}
   - 114: {fileID: 1610644412}
@@ -884,7 +881,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Ship: {fileID: 0}
   m_input: {fileID: 0}
-  shipController: {fileID: 1610644419}
+  m_control: {fileID: 0}
+  m_collider: {fileID: 0}
   isGrounded: 0
   wallSurfing: 0
   engineSpeed: 0
@@ -950,38 +948,10 @@ BoxCollider:
   m_GameObject: {fileID: 1610644409}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 50, y: 30, z: 150}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &1610644417
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13610952, guid: 88c2315a538eaea4ea54df3122fad8a2,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1610644409}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 17.71819
-  m_Height: 53.759426
-  m_Direction: 2
-  m_Center: {x: 20, y: 0, z: -50}
---- !u!136 &1610644418
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13662706, guid: 88c2315a538eaea4ea54df3122fad8a2,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1610644409}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 17.71819
-  m_Height: 53.759426
-  m_Direction: 2
-  m_Center: {x: -20, y: 0, z: -50}
 --- !u!114 &1610644419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1000,21 +970,9 @@ MonoBehaviour:
   boostTimer: 0
   powerBoost: 100
   powerBoosting: 0
+  isRespawning: 0
+  respawnPoint: {x: 0, y: 0, z: 0}
   performedBarrelRolls: 0
---- !u!136 &1610644420
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13683890, guid: 88c2315a538eaea4ea54df3122fad8a2,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1610644409}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 18.75124
-  m_Height: 149.81523
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1637426000
 GameObject:
   m_ObjectHideFlags: 0

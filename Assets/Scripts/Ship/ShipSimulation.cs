@@ -7,8 +7,8 @@ public class ShipSimulation : MonoBehaviour
     // CLASES O OBJETOS
     public ShipLoad m_Ship;
     public ShipInput m_input;
-    public ShipController shipController;
-    //public GameObject shipCollider;
+    public ShipController m_control;
+    public GameObject m_collider;
 
     // VARIABLES 
     public bool isGrounded;
@@ -88,6 +88,7 @@ public class ShipSimulation : MonoBehaviour
     {
         m_Ship = GetComponent<ShipLoad>();
         m_input = GetComponent<ShipInput>();
+        m_control = GetComponent<ShipController>();
     }
 
     private void Update()
@@ -96,12 +97,25 @@ public class ShipSimulation : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ShipGravity();
-        ShipDrag();
-        ShipAcceleration();
-        ShipHandling();
-        ShipAnimations();
-        ShipBarrelRolls();
+        if (m_control.isRespawning) {
+            m_collider.SetActive(false);
+            engineThrust = 0f;
+            engineAcceleration = 0f;
+            BRSuccess = false;
+            transform.position = Vector3.Lerp(transform.position, m_control.respawnPoint, Time.deltaTime * 5f);
+            if (Vector3.Distance(transform.position, m_control.respawnPoint) < 10f) {
+                m_control.isRespawning = false;
+            }
+        }
+        else {
+            m_collider.SetActive(true);
+            ShipGravity();
+            ShipDrag();
+            ShipAcceleration();
+            ShipHandling();
+            ShipAnimations();
+            ShipBarrelRolls();
+        }
     }
 
     private void ShipGravity()
@@ -239,7 +253,7 @@ public class ShipSimulation : MonoBehaviour
         float acceleration = m_Ship.m_Config.engineAcceleration;
 
         // Si se esta acelerando se calcula la fuerza del motor, sino se decrementa
-        if (shipController.isThrusting) {
+        if (m_control.isThrusting) {
             engineGain = Mathf.Lerp(engineGain, m_Ship.m_Config.engineGain * 0.1f * Time.deltaTime, Time.deltaTime * 10f);
             engineAcceleration = Mathf.Lerp(engineAcceleration, acceleration, Time.deltaTime * engineGain);
             engineThrust = Mathf.Lerp(engineThrust, amount + enginePitchAmount * 25f, Time.deltaTime * (engineAcceleration * 0.1f));
@@ -491,7 +505,7 @@ public class ShipSimulation : MonoBehaviour
                 if (m_input.m_SteerAxis < 0f && BRLastValue == 1f && BRState == 2f && BRTimer > 0f) {
                     hasBR = true;
                     // Reproducir sonido de giro
-                    shipController.performedBarrelRolls++;
+                    m_control.performedBarrelRolls++;
                 }
 
                 /* 
@@ -517,7 +531,7 @@ public class ShipSimulation : MonoBehaviour
                 if (m_input.m_SteerAxis > 0f && BRLastValue == -1f && BRState == 2f && BRTimer > 0f) {
                     hasBR = true;
                     // Reproducir sonido de giro
-                    shipController.performedBarrelRolls++;
+                    m_control.performedBarrelRolls++;
                 }
             }
             else {
