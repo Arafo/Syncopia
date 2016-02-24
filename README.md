@@ -11,7 +11,7 @@ Juego de carreras de naves en 3D realizado en Unity. Trabajo Fin de Grado en Ing
 | Implementación físicas | - | [X] | - | 6 | - |
 | Modelado 3D naves | - | [X] | - | 3 | - |
 | Modelado 3D circuitos | - | [X] | - | 2 | - |
-| Lógica de las carreras | - | [X] | - | 1 | - |
+| Lógica de las carreras | - | [X] | - | 3 | - |
 | IA | [X] | - | - | 0 | - |
 | Multijugador en red | [X] | - | - | 0 | - |
 | UI y menús | [X] | - | - | 0 | - |

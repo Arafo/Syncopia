@@ -7,6 +7,8 @@ public class ShipController : MonoBehaviour
 
     public ShipInput input;
 
+    public int currentCheckpoint = 0;
+    public int currentLap = 0;
     public bool isAI;
     public bool isThrusting;
     public float boostPower;
@@ -20,6 +22,9 @@ public class ShipController : MonoBehaviour
     private float respawnTimerMax = 2f;
     public int performedBarrelRolls;
 
+    public bool finishedRace = false;
+    public float totalS;
+
     private void Start()
     {
         input = GetComponent<ShipInput>();
@@ -31,6 +36,7 @@ public class ShipController : MonoBehaviour
 
         powerBoosting = false;
         isThrusting = input.m_AccelerationButton;
+        totalS += Time.deltaTime;
 
         //
         if (input.m_CameraButton)
@@ -114,12 +120,5 @@ public class ShipController : MonoBehaviour
                 respawnTimer = 0f;
             }
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        // TODO: PROVISIONAL, CAMBIAR POR LA POSICION DONDE LA NAVE SE HA SALIDO
-        if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
-                respawnPoint = new Vector3(0, 18, 0);
     }
 }

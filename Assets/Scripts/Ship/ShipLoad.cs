@@ -8,7 +8,7 @@ public class ShipLoad : MonoBehaviour {
     public ShipConfig m_Config;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
 
         //
         gameObject.AddComponent<ShipSimulation>();
@@ -38,12 +38,13 @@ public class ShipLoad : MonoBehaviour {
 
         // Añadimos la colision
         GameObject collider = new GameObject("Collider");
+        collider.tag = "Player";
         collider.transform.parent = transform;
         collider.transform.localPosition = Vector3.zero;
         collider.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         collider.AddComponent<BoxCollider>();
         collider.GetComponent<BoxCollider>().size = m_Config.size;
-        collider.GetComponent<BoxCollider>().isTrigger = true;
+        //collider.GetComponent<BoxCollider>().isTrigger = true;
         collider.GetComponent<BoxCollider>().transform.localScale = Vector3.one;
         GetComponent<ShipSimulation>().m_collider = collider;
 
