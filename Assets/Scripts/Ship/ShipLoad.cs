@@ -22,6 +22,7 @@ public class ShipLoad : MonoBehaviour {
         m_body.angularDrag = 35f;
         m_body.constraints = RigidbodyConstraints.FreezeRotationY;
         m_body.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        GetComponent<ShipSimulation>().m_body = m_body;
 
         // Crear el eje de la nave
         m_Axis = new GameObject("Axis");

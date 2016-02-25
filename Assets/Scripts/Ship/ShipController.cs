@@ -24,6 +24,8 @@ public class ShipController : MonoBehaviour
 
     public bool finishedRace = false;
     public float totalS;
+    public float bestLap = float.MaxValue;
+    public List<float> laps = new List<float>();
 
     private void Start()
     {

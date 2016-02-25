@@ -9,6 +9,7 @@ public class ShipSimulation : MonoBehaviour
     public ShipInput m_input;
     public ShipController m_control;
     public GameObject m_collider;
+    public Rigidbody m_body;
 
     // VARIABLES 
     public bool isGrounded;

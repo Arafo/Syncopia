@@ -35,13 +35,25 @@ public class Checkpoint : MonoBehaviour
             // Punto de respawn de la nave
             m_control.respawnPoint = transform.position;
             if (m_control.currentCheckpoint + 1 < m_points.checkPointArray.Length) {
-                if (m_control.currentCheckpoint == 0)
+                if (m_control.currentCheckpoint == 0) {
+                    if (m_control.totalS < m_control.bestLap && m_control.currentLap != 0){
+                        m_control.bestLap = m_control.totalS;
+                    }
+                    if (m_control.laps.Count + 1 == m_control.currentLap)
+                            m_control.laps.Add(m_control.totalS); 
+                    m_control.totalS = 0;
                     m_control.currentLap++;
+                }
                 m_control.currentCheckpoint++;
             }
             else {
                 m_control.currentCheckpoint = 0;
             }
         }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+
     }
 }
