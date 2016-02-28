@@ -50,9 +50,9 @@ public class RaceUI : MonoBehaviour
     {
         uiBestTimeText = uiBestTime.GetComponent<Text>();
         uiCurrentTimeText = uiCurrentTime.GetComponent<Text>();
-        uiTotalTimeText = uiTotalTime.GetComponent<Text>();
+        //uiTotalTimeText = uiTotalTime.GetComponent<Text>();
         uiCurrentLapText = uiCurrentLap.GetComponent<Text>();
-        uiMaxLapText = uiMaxLap.GetComponent<Text>();
+        //uiMaxLapText = uiMaxLap.GetComponent<Text>();
         uiCurrentSpeedText = uiCurrentSpeed.GetComponent<Text>();
 
         m_control = ship.GetComponent<ShipController>();
