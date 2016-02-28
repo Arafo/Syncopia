@@ -22,7 +22,7 @@ Juego de carreras de naves en 3D realizado en Unity. Trabajo Fin de Grado en Ing
 **Nota**: La lista de requisitos es ampliable durante el desarrollo, no es una lista cerrada.
 
 **Sprints planeados**
-* 1º Sprint: 15/02/2015 a 28/02/2015
+* 1º Sprint: 15/02/2015 a 28/02/2015 - [Alpha 983](https://github.com/Arafo/Syncopia/releases/tag/alpha-983)
 * 2º Sprint: 29/02/2015 a 13/03/2015
 * 3º Sprint: 14/03/2015 a 27/03/2015
 * 4º Sprint: 28/03/2015 a 10/04/2015
@@ -33,4 +33,4 @@ Juego de carreras de naves en 3D realizado en Unity. Trabajo Fin de Grado en Ing
 
 ### Versión
 ---
-Sin versión
+Alpha 988
