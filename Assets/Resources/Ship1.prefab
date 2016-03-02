@@ -74,7 +74,7 @@ GameObject:
   - 96: {fileID: 9605212}
   - 108: {fileID: 10866252}
   m_Layer: 0
-  m_Name: TestTrail
+  m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,6 +128,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &183442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 491698}
+  - 123: {fileID: 12319074}
+  m_Layer: 0
+  m_Name: Flare
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &197200
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,11 +167,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: -3.5}
+  m_LocalPosition: {x: 1.4, y: 0, z: -3.15}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 460202}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!4 &403202
 Transform:
   m_ObjectHideFlags: 1
@@ -163,11 +179,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.2, z: -3.5}
+  m_LocalPosition: {x: 0.7, y: -0.2, z: -3.5}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 460202}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!4 &415766
 Transform:
   m_ObjectHideFlags: 1
@@ -187,7 +203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.5}
+  m_LocalPosition: {x: 0, y: 0.4, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 460202}
@@ -218,6 +234,7 @@ Transform:
   - {fileID: 463020}
   - {fileID: 415766}
   - {fileID: 430084}
+  - {fileID: 491698}
   - {fileID: 483228}
   - {fileID: 402412}
   - {fileID: 494784}
@@ -243,8 +260,20 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: -3.5}
+  m_LocalPosition: {x: -1.4, y: 0, z: -3.15}
   m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 460202}
+  m_RootOrder: 5
+--- !u!4 &491698
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183442}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: -4.15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 460202}
   m_RootOrder: 4
@@ -255,11 +284,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.2, z: -3.5}
+  m_LocalPosition: {x: -0.7, y: -0.2, z: -3.5}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 460202}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!23 &2358484
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -304,7 +333,7 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8d70d6c0d25fb76489199694d4aa9fb8, type: 2}
+  - {fileID: 2100000, guid: c36dae44a46732345bf9a21766cf5f0d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -326,7 +355,7 @@ TrailRenderer:
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
-      rgba: 4293952019
+      rgba: 4294967295
     m_Color[1]:
       serializedVersion: 2
       rgba: 4294967295
@@ -335,10 +364,10 @@ TrailRenderer:
       rgba: 4294967295
     m_Color[3]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190080
     m_Color[4]:
       serializedVersion: 2
-      rgba: 16777215
+      rgba: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
 --- !u!96 &9609138
@@ -373,19 +402,19 @@ TrailRenderer:
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4280690214
     m_Color[1]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190080
     m_Color[2]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190080
     m_Color[3]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190080
     m_Color[4]:
       serializedVersion: 2
-      rgba: 16777215
+      rgba: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
 --- !u!96 &9628178
@@ -426,13 +455,13 @@ TrailRenderer:
       rgba: 4294967295
     m_Color[2]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190080
     m_Color[3]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190080
     m_Color[4]:
       serializedVersion: 2
-      rgba: 16777215
+      rgba: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
 --- !u!96 &9642122
@@ -467,19 +496,19 @@ TrailRenderer:
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4280690214
     m_Color[1]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190080
     m_Color[2]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190080
     m_Color[3]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190080
     m_Color[4]:
       serializedVersion: 2
-      rgba: 16777215
+      rgba: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
 --- !u!96 &9643640
@@ -520,13 +549,13 @@ TrailRenderer:
       rgba: 4294967295
     m_Color[2]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190080
     m_Color[3]:
       serializedVersion: 2
-      rgba: 4294967295
+      rgba: 4278190080
     m_Color[4]:
       serializedVersion: 2
-      rgba: 16777215
+      rgba: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
 --- !u!108 &10866252
@@ -610,6 +639,21 @@ MonoBehaviour:
   boosterLeft: {fileID: 117626}
   boosterRight: {fileID: 197200}
   boosterExtendLength: 0
+--- !u!123 &12319074
+LensFlare:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183442}
+  m_Enabled: 1
+  m_Flare: {fileID: 12100000, guid: 8d60be6417559604ca2f977512e3aac2, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Brightness: 1
+  m_FadeSpeed: 3
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 6
+  m_Directional: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -731,15 +775,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: engineTrail
@@ -767,11 +811,11 @@ Prefab:
       objectReference: {fileID: 197200}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Time
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_StartWidth
@@ -807,7 +851,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Colors.m_Color[0].rgba
-      value: 4294967295
+      value: 4278190335
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive
@@ -816,6 +860,39 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Autodestruct
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Colors.m_Color[4].rgba
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Colors.m_Color[3].rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Flare
+      value: 
+      objectReference: {fileID: 12100000, guid: 8d60be6417559604ca2f977512e3aac2,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: -3.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Colors.m_Color[2].rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Colors.m_Color[1].rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
