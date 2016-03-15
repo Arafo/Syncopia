@@ -6,13 +6,13 @@ Juego de carreras de naves en 3D realizado en Unity. Trabajo Fin de Grado en Ing
 ---
 | Requisito | Por hacer | En progreso | En pruebas | Horas | Hecho |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| Análisis (Global) | - | [X] | - | 3 | - |
+| Análisis (Global) | - | [X] | - | 6 | - |
 | Diseño (Global) | - | [X] | - | 4 | - |
 | Implementación físicas | - | [X] | - | 6 | - |
 | Modelado 3D naves | - | [X] | - | 4 | - |
 | Modelado 3D circuitos | - | [X] | - | 5 | - |
-| Lógica de las carreras | - | [X] | - | 5 | - |
-| IA | [X] | - | - | 0 | - |
+| Lógica de las carreras | - | [X] | - | 10 | - |
+| IA | - | [X] | - | 7 | - |
 | Multijugador en red | [X] | - | - | 0 | - |
 | UI y menús | - | [X] | - | 2 | - |
 | Antialiasing | [X] | - | - | 0 | - |
@@ -23,7 +23,7 @@ Juego de carreras de naves en 3D realizado en Unity. Trabajo Fin de Grado en Ing
 
 **Sprints planeados**
 * 1º Sprint: 15/02/2015 a 28/02/2015 - [Alpha 983](https://github.com/Arafo/Syncopia/releases/tag/alpha-983)
-* 2º Sprint: 29/02/2015 a 13/03/2015
+* 2º Sprint: 29/02/2015 a 13/03/2015 - SIN RELEASE
 * 3º Sprint: 14/03/2015 a 27/03/2015
 * 4º Sprint: 28/03/2015 a 10/04/2015
 * 5º Sprint: 11/04/2015 a 24/04/2015

@@ -602,8 +602,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 514f09a38a5075d439ae57271ff2b7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraClosePos: {x: 100, y: 40, z: -120}
-  cameraFarPos: {x: 10, y: 40, z: 0}
+  cameraClosePos: {x: 12, y: 4, z: -12}
+  cameraFarPos: {x: 10, y: 4, z: 0}
   cameraSpeed: 0
   cameraFoV: 60
   cameraTurnSensitivity: 0
@@ -631,7 +631,7 @@ MonoBehaviour:
   slipMagnitude: 1000
   slipVelocityMult: 1
   hoverHeight: 5
-  size: {x: 50, y: 30, z: 150}
+  size: {x: 5, y: 3, z: 15}
   windTrailLeft: {fileID: 135194}
   windTrailRight: {fileID: 109058}
   engineTrail: {fileID: 145460}
@@ -663,15 +663,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: cameraClosePos.x
-      value: 100
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cameraClosePos.y
-      value: 40
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cameraClosePos.z
-      value: -120
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cameraFarPos.x
@@ -679,7 +679,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cameraFarPos.y
-      value: 40
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cameraFoV
@@ -767,11 +767,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: size.x
-      value: 50
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: size.z
-      value: 150
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
@@ -827,7 +827,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: size.y
-      value: 30
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
@@ -893,6 +893,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cameraSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cameraTurnSensitivity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
