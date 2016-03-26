@@ -159,8 +159,32 @@ public class GenerateTrackData {
 
     private void createRacingLine() {
         // PROVISIONAL
-        for (int i = 0; i < sections.Count; i++)  {
-            racingLine.Add(new Vector3(sections[i].position.x + 1, sections[i].position.y, sections[i].position.z));
+        for (int i = 0; i < sections.Count - 1; i++)  {
+
+            Vector3 k0 = SectionGetRotation(sections[i]) * Vector3.forward;
+            Vector3 k1 = SectionGetRotation(sections[i + 1]) * Vector3.forward;
+            //Vector3 k2 = SectionGetRotation(sections[i + 2]) * Vector3.forward;
+            float a = k0.x > 0 ? -k0.x : k0.x;
+            float b = (k0.x + k1.x + k0.z + k1.z) / 4;
+            float c = k0.z < 0 ? -k0.z : k0.z;
+
+            racingLine.Add(new Vector3(sections[i].position.x + a*40, sections[i].position.y, sections[i].position.z));
+
+
+            Debug.Log(a);
         }
+    }
+
+    private Quaternion SectionGetRotation(TrackSegment section)
+    {
+        // Obtener las posiciones de la seccion y su siguiente
+        Vector3 sectionPosition = section.position;
+        Vector3 nextPosition = section.next.position;
+
+        // Calcular la distacia entre la posiciones y la normal
+        Vector3 forward = (nextPosition - sectionPosition);
+        Vector3 normal = section.normal;
+        // Devolver la rotacion
+        return Quaternion.LookRotation(forward.normalized, normal.normalized);
     }
 }

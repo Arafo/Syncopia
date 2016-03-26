@@ -66,7 +66,7 @@ public class TrackData : MonoBehaviour {
             Gizmos.DrawLine(position1, position2);
 
             // Racing line
-            Gizmos.color = Color.blue;
+            Gizmos.color = Color.green;
             position1 = trackData.racingLine[i];
             if (i < trackData.racingLine.Count - 1) {
                 position2 = trackData.racingLine[i + 1];
