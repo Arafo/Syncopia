@@ -11,4 +11,16 @@ public static class Utils {
     public static float RandomClamped() {
         return RandomFloat() - RandomFloat();
     }
+
+    public static float Clamp(float val, float min, float max) {
+        if (val < min) {
+            return min;
+        }
+
+        if (val > max) {
+            return max;
+        }
+
+        return val;
+    }
 }

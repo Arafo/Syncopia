@@ -14,4 +14,9 @@ public class Neuron {
 
         weights[weights.Length - 1] = Utils.RandomClamped(); // bias
     }
+
+    public Neuron(float[] weights, int num) {
+        inputs = num;
+        this.weights = weights;
+    }
 }

@@ -21,6 +21,7 @@ public class ShipController : MonoBehaviour
     private float respawnTimer;
     private float respawnTimerMax = 2f;
     public int performedBarrelRolls;
+    public bool isGA;
 
     public bool finishedRace = false;
     public float totalS;
@@ -90,7 +91,8 @@ public class ShipController : MonoBehaviour
     private void FixedUpdate()
     {
         Boost();
-        CheckRespawn();
+        //if (!isGA)
+           // CheckRespawn();
     }
 
     private void Boost()

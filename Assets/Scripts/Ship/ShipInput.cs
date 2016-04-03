@@ -30,7 +30,7 @@ public class ShipInput : MonoBehaviour {
         m_SteerAxis = Input.GetAxis("Steer");
         m_PitchAxis = Input.GetAxis("Pitch");
         m_LeftAirBrakeAxis = Input.GetAxis("Left brake");
-        m_RightAirBrakeAixs = Input.GetAxis("Right brake");
+        m_RightAirBrakeAixs = Input.GetAxis("Right brake"); 
         m_BoostButton = Input.GetButton("Boost");
         m_CameraButton = Input.GetButtonDown("Camera");
     }

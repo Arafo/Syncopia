@@ -45,7 +45,7 @@ public class ShipLoad : MonoBehaviour {
         collider.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         collider.AddComponent<BoxCollider>();
         collider.GetComponent<BoxCollider>().size = m_Config.size;
-        //collider.GetComponent<BoxCollider>().isTrigger = true;
+        collider.GetComponent<BoxCollider>().isTrigger = true; // CUIDADO CON ESTO
         collider.GetComponent<BoxCollider>().transform.localScale = Vector3.one;
         GetComponent<ShipSimulation>().m_collider = collider;
 

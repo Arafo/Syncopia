@@ -85,6 +85,87 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &12174959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 12174961}
+  - 114: {fileID: 12174960}
+  - 114: {fileID: 12174962}
+  - 114: {fileID: 12174963}
+  m_Layer: 0
+  m_Name: Net
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &12174960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 12174959}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ff540443d4f0c479399ccd5efcef77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasFailed: 0
+  Rotation: 0
+  Speed: 0
+  leftForce: 0
+  rightForce: 0
+  leftTheta: 0
+  rightTheta: 0
+  dist: 0
+--- !u!4 &12174961
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 12174959}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.49, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+--- !u!114 &12174962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 12174959}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb3f39431140884791f70c6881da612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpoints: 0
+  Passed: {fileID: 0}
+  init_pos: {x: 0, y: 0, z: 0}
+  init_rotation: {x: 0, y: 0, z: 0, w: 0}
+  crash: 0
+--- !u!114 &12174963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 12174959}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6816bfffe2eaa2469e28e03ff321f63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentFitness: 0
+  bestFitness: 0
+  checkpointsNum: 0
+  checkpoints: []
+  normal: {fileID: 0}
 --- !u!1 &37996578
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +428,7 @@ GameObject:
   - 114: {fileID: 139687831}
   m_Layer: 0
   m_Name: cp1 (3)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -370,11 +451,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 139687826}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -420,10 +501,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &144178412
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +774,7 @@ GameObject:
   - 114: {fileID: 241210894}
   m_Layer: 0
   m_Name: cp1 (8)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -715,11 +797,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 241210889}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -765,10 +847,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &247451722
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +866,7 @@ GameObject:
   - 114: {fileID: 247451727}
   m_Layer: 0
   m_Name: cp1 (13)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -806,11 +889,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 247451722}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -856,10 +939,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &276392117
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +1019,36 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 276392117}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &361526214 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 185380, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+  m_PrefabInternal: {fileID: 1629382806}
+--- !u!114 &361526220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 361526214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f9526929d449347a2ac50646a3bc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 885187208}
+--- !u!114 &361526221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 361526214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb0249e68952594793e80d649c2683a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_body: {fileID: 0}
+  m_Axis: {fileID: 0}
+  m_Config: {fileID: 0}
 --- !u!1 &433625306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,7 +1157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ca5ff8080b0ac4f83381f32e9b3ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   m_control: {fileID: 0}
   m_sim: {fileID: 0}
   uiRoot: {fileID: 433625306}
@@ -1108,7 +1222,7 @@ GameObject:
   - 114: {fileID: 480102597}
   m_Layer: 0
   m_Name: cp1 (6)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1131,11 +1245,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 480102592}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1181,10 +1295,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &552068596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,7 +1314,7 @@ GameObject:
   - 114: {fileID: 552068601}
   m_Layer: 0
   m_Name: cp1
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1222,11 +1337,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 552068596}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1272,10 +1387,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &709826737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,7 +1406,7 @@ GameObject:
   - 114: {fileID: 709826742}
   m_Layer: 0
   m_Name: cp1 (14)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1313,11 +1429,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 709826737}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1363,10 +1479,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &723334811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,44 +1616,44 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 460202, guid: 2635c5f58920245448112038f6a13d59, type: 2}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 460202, guid: 2635c5f58920245448112038f6a13d59, type: 2}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 460202, guid: 2635c5f58920245448112038f6a13d59, type: 2}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 460202, guid: 2635c5f58920245448112038f6a13d59, type: 2}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 460202, guid: 2635c5f58920245448112038f6a13d59, type: 2}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 460202, guid: 2635c5f58920245448112038f6a13d59, type: 2}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 460202, guid: 2635c5f58920245448112038f6a13d59, type: 2}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 460202, guid: 2635c5f58920245448112038f6a13d59, type: 2}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 164094, guid: 2635c5f58920245448112038f6a13d59, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 185380, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_Name
+      value: Ship1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 2635c5f58920245448112038f6a13d59, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &876500585
 GameObject:
@@ -1716,7 +1833,7 @@ GameObject:
   - 114: {fileID: 887869427}
   m_Layer: 0
   m_Name: cp1 (10)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1739,11 +1856,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 887869422}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1789,10 +1906,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &905020146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,7 +2000,7 @@ GameObject:
   - 114: {fileID: 968779335}
   m_Layer: 0
   m_Name: cp1 (12)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1905,11 +2023,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 968779330}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1955,10 +2073,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &1143370937
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,7 +2092,7 @@ GameObject:
   - 114: {fileID: 1143370942}
   m_Layer: 0
   m_Name: cp1 (9)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1996,11 +2115,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1143370937}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2046,10 +2165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &1198888691
 GameObject:
   m_ObjectHideFlags: 0
@@ -2139,7 +2259,7 @@ GameObject:
   - 114: {fileID: 1224923675}
   m_Layer: 0
   m_Name: cp1 (15)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2163,11 +2283,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1224923670}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2213,10 +2333,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &1290710949
 GameObject:
   m_ObjectHideFlags: 0
@@ -2543,7 +2664,7 @@ GameObject:
   - 114: {fileID: 1578497490}
   m_Layer: 0
   m_Name: cp1 (1)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2566,11 +2687,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1578497485}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2616,10 +2737,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &1610644409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2637,7 +2759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1610644410
 Transform:
   m_ObjectHideFlags: 0
@@ -2688,6 +2810,89 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 30, z: 150}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1629382806
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 185380, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11468814, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: _SPEED
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11468814, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: MAX_ROTATION
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437670, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: Passed
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d70d6c0d25fb76489199694d4aa9fb8, type: 2}
+    - target: {fileID: 11492274, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: normal
+      value: 
+      objectReference: {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
+    - target: {fileID: 11468814, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: Rotation
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11468814, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+      propertyPath: Speed
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11476868, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1630791676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,7 +2907,7 @@ GameObject:
   - 114: {fileID: 1630791681}
   m_Layer: 0
   m_Name: cp1 (4)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2725,11 +2930,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1630791676}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2775,10 +2980,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &1637426000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,7 +3141,7 @@ GameObject:
   - 114: {fileID: 1714673934}
   m_Layer: 0
   m_Name: cp1 (11)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2958,11 +3164,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1714673929}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3008,10 +3214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &1766021982
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,7 +3314,7 @@ GameObject:
   - 114: {fileID: 1810490459}
   m_Layer: 0
   m_Name: cp1 (5)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3130,11 +3337,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1810490454}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3180,10 +3387,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &1986264413
 GameObject:
   m_ObjectHideFlags: 0
@@ -3198,7 +3406,7 @@ GameObject:
   - 114: {fileID: 1986264418}
   m_Layer: 0
   m_Name: cp1 (7)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3221,11 +3429,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1986264413}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3271,10 +3479,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &2034224949
 GameObject:
   m_ObjectHideFlags: 0
@@ -3364,7 +3573,7 @@ GameObject:
   - 114: {fileID: 2063234453}
   m_Layer: 0
   m_Name: cp1 (2)
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3387,11 +3596,11 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2063234448}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -3437,10 +3646,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
+  passed: 0
 --- !u!1 &2069108724
 GameObject:
   m_ObjectHideFlags: 0
