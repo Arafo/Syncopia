@@ -92,7 +92,7 @@ public class ShipController : MonoBehaviour
     {
         Boost();
         //if (!isGA)
-           // CheckRespawn();
+        //CheckRespawn();
     }
 
     private void Boost()

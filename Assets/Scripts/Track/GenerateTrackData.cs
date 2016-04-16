@@ -6,6 +6,7 @@ public class GenerateTrackData {
     public List<TrackTile> tiles = new List<TrackTile>();
     public List<TrackTile> tilesMapped = new List<TrackTile>();
     public List<TrackSegment> sections = new List<TrackSegment>();
+    public List<GameObject> checkpoints = new List<GameObject>();
     public List<Vector3> racingLine = new List<Vector3>();
 
     public int editorSectionHover;
@@ -32,6 +33,7 @@ public class GenerateTrackData {
         gen.createTiles(tris, verts, mappedFloor, floorT, gen);
         gen.createSections(normals, verts, tiles, floorT, gen);
         gen.createRacingLine();
+        gen.createCheckpoints();
 
         //
         for (int i = 0; i < mappedFloor.Length; i++)
@@ -171,8 +173,21 @@ public class GenerateTrackData {
             racingLine.Add(new Vector3(sections[i].position.x + a*40, sections[i].position.y, sections[i].position.z));
 
 
-            Debug.Log(a);
+            //Debug.Log(a);
         }
+    }
+
+    private void createCheckpoints() {
+        if (checkpoints.Count <= 0)
+            checkpoints.Clear();
+
+        //for (int i = 0; i < sections.Count - 1; i++) {
+            //GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            //cube.transform.localScale = new Vector3(120, 80, 1);
+            //cube.transform.rotation = sections[i].rotation;
+            //cube.transform.position = new Vector3(sections[i].position.x, sections[i].position.y + 80/2, sections[i].position.z);
+            //checkpoints.Add(cube);
+        //}
     }
 
     private Quaternion SectionGetRotation(TrackSegment section)
