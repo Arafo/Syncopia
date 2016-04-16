@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GeneticAlgorithm {
 
@@ -8,7 +9,7 @@ public class GeneticAlgorithm {
 
     public int generation;
     public int currentGenome;
-    public Genome[] population;
+    public List<Genome> population = new List<Genome>();
     public int totalPopulation;
     public int id;
 
@@ -26,10 +27,10 @@ public class GeneticAlgorithm {
         Genome genome = new Genome();
         genome.SetId(id);
         genome.SetFitness(0.0f);
-        float[] genes = new float[totalWeights];
+        List<float> genes = new List<float>();
 
         for (int i = 0; i < totalWeights; i++) {
-            genes[i] = RandomClamped();
+            genes.Add(RandomClamped());
         }
         genome.SetGenes(genes);
         id++;
@@ -39,7 +40,7 @@ public class GeneticAlgorithm {
 
     public Genome GetNextGenome() {
         currentGenome++;
-        if (currentGenome > population.Length)
+        if (currentGenome > population.Count)
             return null;
         return population[currentGenome];
     }
@@ -47,7 +48,7 @@ public class GeneticAlgorithm {
     public Genome GetBestGenome() {
         int bestGenome = -1;
         float fitness = 0;
-        for (int i = 0; i < population.Length; i++) {
+        for (int i = 0; i < population.Count; i++) {
             if (population[i].GetFitness() > fitness) {
                 fitness = population[i].GetFitness();
                 bestGenome = i;
@@ -96,7 +97,7 @@ public class GeneticAlgorithm {
     public Genome GetWorstGenome() {
         int worstGenome = -1;
         float fitness = int.MaxValue;
-        for (int i = 0; i < population.Length; i++) {
+        for (int i = 0; i < population.Count; i++) {
             if (population[i].GetFitness() < fitness) {
                 fitness = population[i].GetFitness();
                 worstGenome = i;
@@ -125,44 +126,48 @@ public class GeneticAlgorithm {
 
     public void Breed() {
         Genome[] bestGenomes = GetBestCases(4);
-        Genome[] children = new Genome[totalPopulation];
+        List<Genome> children = new List<Genome>();
+
         Genome best = new Genome();
         best.SetFitness(0.0f);
         best.SetId(bestGenomes[0].GetId());
         best.SetGenes(bestGenomes[0].GetGenes());
         //Mutate(best);
-        children[0] = best;
+        children.Add(best);
 
-        Genome [] babies = CrossOver(bestGenomes[0], bestGenomes[1]);
+        Genome[] babies = CrossOver(bestGenomes[0], bestGenomes[1]);
         Mutate(babies[0]);
         Mutate(babies[1]);
-        children[1] = babies[0];
-        children[2] = babies[1];
+        children.Add(babies[0]);
+        children.Add(babies[1]);
+
         babies = CrossOver(bestGenomes[0], bestGenomes[2]);
         Mutate(babies[0]);
         Mutate(babies[1]);
-        children[3] = babies[0];
-        children[4] = babies[1];
+        children.Add(babies[0]);
+        children.Add(babies[1]);
+
         babies = CrossOver(bestGenomes[0], bestGenomes[3]);
         Mutate(babies[0]);
         Mutate(babies[1]);
-        children[5] = babies[0];
-        children[6] = babies[1];
+        children.Add(babies[0]);
+        children.Add(babies[1]);
 
         babies = CrossOver(bestGenomes[1], bestGenomes[2]);
         Mutate(babies[0]);
         Mutate(babies[1]);
-        children[7] = babies[0];
-        children[8] = babies[1];
+        children.Add(babies[0]);
+        children.Add(babies[1]);
+
         babies = CrossOver(bestGenomes[1], bestGenomes[3]);
         Mutate(babies[0]);
         Mutate(babies[1]);
-        children[9] = babies[0];
-        children[10] = babies[1];
+        children.Add(babies[0]);
+        children.Add(babies[1]);
 
-        int remainingChildren = (totalPopulation - 11);
-        for (int i = 11; i < 11 + remainingChildren; i++) {
-            children[i] = CreateNewGenome(bestGenomes[0].GetGenes().Length);
+        int remainingChildren = (totalPopulation - children.Count);
+        for (int i = 0; i < remainingChildren; i++) {
+            children.Add(this.CreateNewGenome(bestGenomes[0].GetGenes().Count));
         }
 
         ClearPopulation();
@@ -175,15 +180,15 @@ public class GeneticAlgorithm {
 
     public Genome[] CrossOver(Genome g1, Genome g2) {
         Genome[] babies = new Genome[2];
-        int totalWeights = g1.GetGenes().Length;
+        int totalWeights = g1.GetGenes().Count;
         int crossover = (int)Random.Range(0, totalWeights - 1);
 
         //
         babies[0] = new Genome();
         babies[0].SetId(id);
-        float[] genes = new float[totalWeights];
+        List<float> genes = new List<float>();
         for (int i = 0; i < totalWeights; i++) {
-            genes[i] = 0.0f;
+            genes.Add(0.0f);
         }
         babies[0].SetGenes(genes);
         id++;
@@ -213,7 +218,7 @@ public class GeneticAlgorithm {
     }
 
     public void Mutate(Genome genome) {
-        for (int i = 0; i < genome.GetGenes().Length; i++) {
+        for (int i = 0; i < genome.GetGenes().Count; i++) {
             if (RandomClamped() < MUTATION_RATE) {
                 genome.SetGen(i, genome.GetGen(i) + (RandomClamped() * MAX_PERBETUATION));
             }
@@ -227,29 +232,21 @@ public class GeneticAlgorithm {
         this.totalPopulation = totalPopulation;
 
         //resize
-        if (population == null || population.Length < totalPopulation) {
-            Genome[] auxGenome = new Genome[totalPopulation];
-            int i = 0;
-            if (population != null)
-                for (i = 0; i < population.Length; i++)
-                    auxGenome[i] = population[i];
-            if (population != null)
-                i = population.Length;
-            for (; i < totalPopulation; i++)
-                auxGenome[i] = new Genome();
-            population = auxGenome;
+        if (population.Count < totalPopulation) {
+            for (int i = population.Count; i < totalPopulation; i++) {
+                population.Add(new Genome());
+            }
         }
 
-        for (int i = 0; i < population.Length; i++) {
+        for (int i = 0; i < population.Count; i++) {
             Genome genome = new Genome();
             genome.SetId(id);
             genome.SetFitness(0.0f);
-            float[] genes = new float[totalWeights];
+            genome.SetGenes(new List<float>());
             //resize
             for (int k = 0; k < totalWeights; k++) {
-                genes[k] = RandomClamped();
+                genome.GetGenes().Add(RandomClamped());
             }
-            genome.SetGenes(genes);
 
             id++;
             population[i] = genome;
@@ -258,7 +255,7 @@ public class GeneticAlgorithm {
 
     public void ClearPopulation() {
         if (population != null)
-            for (int i = 0; i < population.Length; i++) {
+            for (int i = 0; i < population.Count; i++) {
                 if (population[i] != null) {
                     population[i] = null;
                 }
@@ -266,7 +263,7 @@ public class GeneticAlgorithm {
     }
 
     public void SetGenomeFitness(float fitness, int index) {
-        if (index >= population.Length)
+        if (index >= population.Count)
             return;
         else
             population[index].SetFitness(fitness);

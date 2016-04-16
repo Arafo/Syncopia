@@ -1,44 +1,78 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NeuralNetwork {
 
     private int inputAmount;
     private int outputAmount;
 
-    float[] inputs;
-    float[] outputs;
+    List<float> inputs = new List<float>();
+    List<float> outputs = new List<float>();
 
     NeuralLayer inputLayer;
     NeuralLayer outputLayer;
-    NeuralLayer[] hiddenLayers;
+    List<NeuralLayer> hiddenLayers = new List<NeuralLayer>();
 
-    public NeuralNetwork(int inputs, int outputs, int hidden, int hiddenNeurons) {
+    public NeuralNetwork(int inputs, int outputs, int hiddenLayers, int hiddenNeurons) {
         inputAmount = inputs;
         outputAmount = outputs;
-        hiddenLayers = new NeuralLayer[hidden];
-        this.outputs = new float[outputs];
+        outputLayer = new NeuralLayer(outputs, hiddenNeurons);
 
-        for (int i = 0; i < hidden; i++) {
+        for (int i = 0; i < hiddenLayers; i++) {
             NeuralLayer layer = new NeuralLayer(hiddenNeurons, inputs);
-            hiddenLayers[i] = layer;
+            this.hiddenLayers.Add(layer);
         }
         outputLayer = new NeuralLayer(outputs, hiddenNeurons);
     }
 
-    public Genome ToGenome() {
-        Genome genome = new Genome(hiddenLayers.Length);
+    public void Update() {
+        outputs.Clear();
 
-        for (int i = 0; i < hiddenLayers.Length; i++) {
-            float[] weights = hiddenLayers[i].GetWeights();
-            for (int j = 0; j < weights.Length; j++) {
-                genome.SetGen(j, weights[j]);
+        for (int i = 0; i < hiddenLayers.Count; i++) {
+            if (i > 0) {
+                inputs = outputs;
+            }
+            if (hiddenLayers[i] != null)
+                outputs = hiddenLayers[i].Evaluate(inputs);
+        }
+        inputs = outputs;
+        if (outputLayer == null)
+            outputs = outputLayer.Evaluate(inputs);
+        //outputs = outputLayer.Evaluate(inputs);
+
+    }
+
+    public void Release() {
+        if (inputLayer != null) {
+            inputLayer = new NeuralLayer();
+        }
+
+        if (outputLayer != null) {
+            outputLayer = new NeuralLayer();
+        }
+
+        for (int i = 0; i < hiddenLayers.Count; i++) {
+            if (hiddenLayers[i] != null) {
+                hiddenLayers[i] = null;
+            }
+        }
+        hiddenLayers.Clear();
+    }
+
+    public Genome ToGenome() {
+        Genome genome = new Genome();
+
+        for (int i = 0; i < hiddenLayers.Count; i++) {
+            List<float> weights = hiddenLayers[i].GetWeights();
+            for (int j = 0; j < weights.Count; j++) {
+                genome.GetGenes().Add(weights[j]);
             }
         }
 
-        float[] outweights = outputLayer.GetWeights();
-        for (int i = 0; i < outweights.Length; i++) {
-            genome.SetGen(i, outweights[i]);
+        List<float> outweights = outputLayer.GetWeights();
+        for (int i = 0; i < outweights.Count; i++) {
+            genome.GetGenes().Add(outweights[i]);
         }
 
         return genome;
@@ -49,72 +83,43 @@ public class NeuralNetwork {
         outputAmount = outputs;
         inputAmount = inputs;
         //int weightsForHidden = inputs * hiddenNeurons;
-        Neuron[] neurons = new Neuron[hiddenNeurons];
+        List<Neuron> neurons = new List<Neuron>();
 
         for (int i = 0; i < hiddenNeurons; i++) {
-            float[] weights = new float[inputs + 1];
+            List<float> weights = new List<float>();
             for (int j = 0; j < inputs + 1; j++) {
+                weights.Add(0.0f);
                 weights[j] = genome.GetGen(i * hiddenNeurons + j);
             }
-            neurons[i] = new Neuron(weights, inputs);
+            neurons.Add(new Neuron(weights, inputs));
         }
 
         NeuralLayer hidden = new NeuralLayer(neurons);
-        Debug.Log ("fromgenome, hiddenlayer neruons#: " + neurons.Length);
-        Debug.Log ("fromgenome, hiddenlayer numInput: " + neurons[0].inputs);
-        this.hiddenLayers[0] = hidden;
+        //Debug.Log ("fromgenome, hiddenlayer neruons#: " + neurons.Count);
+        //Debug.Log ("fromgenome, hiddenlayer numInput: " + neurons[0].inputs);
+        this.hiddenLayers.Add(hidden);
+
         //int weightsForOutput = hiddenNeurons * outputs;
-        Neuron[] outneurons = new Neuron[outputs];
+        List<Neuron> outneurons = new List<Neuron>();
 
         for (int i = 0; i < outputs; i++) {
-            float[] weights = new float[hiddenNeurons + 1];
+            List<float> weights = new List<float>();
             for (int j = 0; j < hiddenNeurons + 1; j++) {
+                weights.Add(0.0f);
                 weights[j] = genome.GetGen(i * hiddenNeurons + j);
             }
-            outneurons[i] = new Neuron(weights, hiddenNeurons);
+            outneurons.Add(new Neuron(weights, hiddenNeurons));
         }
         this.outputLayer = new NeuralLayer(outneurons);
-        Debug.Log ("fromgenome, outputlayer neruons#: " + outneurons.Length);
-        Debug.Log ("fromgenome, outputlayer numInput: " + outneurons[0].inputs);
+        //Debug.Log ("fromgenome, outputlayer neruons#: " + outneurons.Count);
+        //Debug.Log ("fromgenome, outputlayer numInput: " + outneurons[0].inputs);
     }
 
-    public void Update() {
-
-        for (int i = 0; i < hiddenLayers.Length; i++) {
-            if (i > 0) {
-                inputs = outputs;
-            }
-            if (hiddenLayers[i] != null)
-                outputs = hiddenLayers[i].Evaluate(inputs);
-        }
-        inputs = outputs;
-        if (outputLayer == null)
-            outputs = outputLayer.Evaluate(inputs);
-        outputs = outputLayer.Evaluate(inputs);
-
-    }
-
-    public void Release() {
-        if (inputLayer != null) {
-            inputLayer = null;
-        }
-
-        if (outputLayer != null) {
-            outputLayer = null;
-        }
-
-        for (int i = 0; i < hiddenLayers.Length; i++) {
-            if (hiddenLayers[i] != null) {
-                hiddenLayers[i] = null;
-            }
-        }
-    }
-
-    public void SetInput(float[] input) {
+    public void SetInput(List<float> input) {
         inputs = input;
     }
 
-    public float[] GetInput() {
+    public List<float> GetInput() {
         return inputs;
     }
 
@@ -133,6 +138,6 @@ public class NeuralNetwork {
     }
 
     public int GetTotalHiddenLayers() {
-        return hiddenLayers.Length;
+        return hiddenLayers.Count;
     }
 }

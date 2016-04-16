@@ -25,7 +25,7 @@ public class CheckpointHit : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
-        Debug.Log(other.gameObject.tag);
+        //Debug.Log(other.gameObject.tag);
         if (other.gameObject.tag == "Checkpoint") {
             Renderer tmp = other.gameObject.GetComponent<Renderer>();
             Checkpoint t = other.gameObject.GetComponent<Checkpoint>();

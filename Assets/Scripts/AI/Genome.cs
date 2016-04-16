@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Genome {
 
     public int id;
-    private float[] genes;
+    private List<float> genes;
     private float fitness;
 
 
@@ -13,8 +14,8 @@ public class Genome {
     }
 
     public Genome(int numGenes) {
-        genes = new float[numGenes];
-        for (int i = 0; i < genes.Length; i++)
+        genes = new List<float>();
+        for (int i = 0; i < genes.Count; i++)
             genes[i] = 0.0f;
         fitness = 0;
     }
@@ -27,11 +28,11 @@ public class Genome {
         this.id = id;
     }
 
-    public float[] GetGenes() {
+    public List<float> GetGenes() {
         return genes;
     }
 
-    public void SetGenes(float[] genes) {
+    public void SetGenes(List<float> genes) {
         this.genes = genes;
     }
 

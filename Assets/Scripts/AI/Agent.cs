@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Agent : MonoBehaviour {
 
@@ -7,7 +8,7 @@ public class Agent : MonoBehaviour {
     public bool hasFailed;
     public NeuralNetwork net;
 
-    private int collidedCorner;
+    //private int collidedCorner;
     private float headingAngle; // Grados
     private float heading;
 
@@ -16,7 +17,7 @@ public class Agent : MonoBehaviour {
     private RaycastHit hit_l, hit_fl, hit_f, hit_fr, hit_r;
     private Vector3 origin, left, frontleft, front, frontright, right;
 
-    public float Rotation; //max rotate speed
+    public float Rotation;
     public float Speed;
 
     public float leftForce;
@@ -32,17 +33,17 @@ public class Agent : MonoBehaviour {
         hasFailed = false;
         net = new NeuralNetwork(1, 5, 8, 2);
 
-        RayCast_Length = 10.0f;
+        RayCast_Length = 80.0f;
 
         origin = transform.position + Vector3.up * 0.2f;
         heading = transform.rotation.eulerAngles.y;
         float angle = heading / 180 * Mathf.PI;
 
-        left = new Vector3(origin.x - RayCast_Length * Mathf.Cos(angle), origin.y, origin.z + RayCast_Length * Mathf.Sin(angle));
-        frontleft = new Vector3(origin.x - RayCast_Length * Mathf.Sin(angle - Mathf.PI / 4), origin.y, origin.z - RayCast_Length * Mathf.Cos(angle - Mathf.PI / 4));
-        front = new Vector3(origin.x - RayCast_Length * Mathf.Sin(angle), origin.y, origin.z - RayCast_Length * Mathf.Cos(angle));
-        frontright = new Vector3(origin.x - RayCast_Length * Mathf.Sin(angle + Mathf.PI / 4), origin.y, origin.z - RayCast_Length * Mathf.Cos(angle + Mathf.PI / 4));
-        right = origin + origin - left;
+        left = new Vector3(origin.x - RayCast_Length * Mathf.Cos(angle), origin.y, origin.z - RayCast_Length * Mathf.Sin(angle));
+        frontleft = new Vector3(origin.x - RayCast_Length * Mathf.Sin(angle - Mathf.PI / 4), origin.y, origin.z + RayCast_Length * Mathf.Cos(angle - Mathf.PI / 4));
+        front = new Vector3(origin.x - RayCast_Length * Mathf.Sin(angle), origin.y, origin.z + RayCast_Length * Mathf.Cos(angle));
+        frontright = new Vector3(origin.x - RayCast_Length * Mathf.Sin(angle + Mathf.PI / 4), origin.y, origin.z + RayCast_Length * Mathf.Cos(angle + Mathf.PI / 4));
+        right = new Vector3(origin.x - RayCast_Length * Mathf.Cos(angle), origin.y, origin.z + RayCast_Length * Mathf.Sin(angle));
 
         hit = gameObject.GetComponent<CheckpointHit>();
     }
@@ -57,12 +58,12 @@ public class Agent : MonoBehaviour {
 
             RayCasting();
 
-            float[] inputs = new float[5];
-            inputs[0] = Normalise(hit_l.distance);
-            inputs[1] = Normalise(hit_fl.distance);
-            inputs[2] = Normalise(hit_f.distance);
-            inputs[3] = Normalise(hit_fr.distance);
-            inputs[4] = Normalise(hit_r.distance);
+            List<float> inputs = new List<float>();
+            inputs.Add(Normalise(hit_l.distance));
+            inputs.Add(Normalise(hit_fl.distance));
+            inputs.Add(Normalise(hit_f.distance));
+            inputs.Add(Normalise(hit_fr.distance));
+            inputs.Add(Normalise(hit_r.distance));
 
             net.SetInput(inputs);
             net.Update();
@@ -88,30 +89,31 @@ public class Agent : MonoBehaviour {
     private void RayCasting() {
         origin = transform.position + Vector3.up * 0.2f;
 
-        heading = transform.rotation.eulerAngles.y;
+        heading = -transform.rotation.eulerAngles.y;
         float angle = heading / 180 * Mathf.PI;
 
         left = new Vector3(origin.x - RayCast_Length * Mathf.Cos(angle), origin.y, origin.z - RayCast_Length * Mathf.Sin(angle));
         frontleft = new Vector3(origin.x - RayCast_Length * Mathf.Sin(angle - Mathf.PI / 4), origin.y, origin.z + RayCast_Length * Mathf.Cos(angle - Mathf.PI / 4));
         front = new Vector3(origin.x - RayCast_Length * Mathf.Sin(angle), origin.y, origin.z + RayCast_Length * Mathf.Cos(angle));
         frontright = new Vector3(origin.x - RayCast_Length * Mathf.Sin(angle + Mathf.PI / 4), origin.y, origin.z + RayCast_Length * Mathf.Cos(angle + Mathf.PI / 4));
+        //right = new Vector3(origin.x - RayCast_Length * Mathf.Cos(angle), origin.y, -origin.z + RayCast_Length * Mathf.Sin(angle));
         right = origin + origin - left;
 
         // Izquierda
         Physics.Linecast(origin, left, out hit_l);
-        Debug.DrawLine(origin, left, Color.yellow);
+        Debug.DrawLine(origin, hit_l.point, Color.yellow);
         // Izquierda - Frente
         Physics.Linecast(origin, frontleft, out hit_fl);
-        Debug.DrawLine(origin, frontleft, Color.red);
+        Debug.DrawLine(origin, hit_fl.point, Color.red);
         // Frente
         Physics.Linecast(origin, front, out hit_f);
-        Debug.DrawLine(origin, front, Color.white);
+        Debug.DrawLine(origin, hit_f.point, Color.white);
         // Derecha - Frente
         Physics.Linecast(origin, frontright, out hit_fr);
-        Debug.DrawLine(origin, frontright, Color.green);
+        Debug.DrawLine(origin, hit_fr.point, Color.green);
         // Derecha
         Physics.Linecast(origin, right, out hit_r);
-        Debug.DrawLine(origin, right, Color.blue);
+        Debug.DrawLine(origin, hit_r.point, Color.blue);
     }
 
     public void ClearFailure() {
@@ -119,7 +121,7 @@ public class Agent : MonoBehaviour {
         hit.crash = false;
         hit.checkpoints = 0;
         dist = 0.0f;
-        collidedCorner = -1;
+        //collidedCorner = -1;
     }
 
     public void Attach(NeuralNetwork net) {

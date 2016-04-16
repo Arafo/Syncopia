@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Neuron {
 
     public int inputs;
-    public float[] weights;
+    public List<float> weights = new List<float>();
 
     public Neuron(int inputs) {
         this.inputs = inputs;
-        weights = new float[inputs + 1];
         for (int i = 0; i < inputs; i++)
-            weights[i] = Utils.RandomClamped();
+            weights.Add(Utils.RandomClamped());
 
-        weights[weights.Length - 1] = Utils.RandomClamped(); // bias
+        weights.Add(Utils.RandomClamped()); // bias
     }
 
-    public Neuron(float[] weights, int num) {
+    public Neuron(List<float> weights, int num) {
         inputs = num;
         this.weights = weights;
     }

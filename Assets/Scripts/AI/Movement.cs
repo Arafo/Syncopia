@@ -4,6 +4,7 @@ using System.Collections;
 public class Movement : MonoBehaviour {
 
     Agent agent;
+    ShipInput input;
     public float leftsteer, rightsteer, lefttheta, righttheta;
     public float rotate, speed;
 
@@ -12,6 +13,8 @@ public class Movement : MonoBehaviour {
     // Use this for initialization
     void Start() {
         agent = gameObject.GetComponent<Agent>();
+        input = gameObject.GetComponent<ShipInput>();
+
         rotate = agent.Rotation;
         speed = agent.Speed;
 
@@ -41,8 +44,14 @@ public class Movement : MonoBehaviour {
         float nz = speed * Mathf.Sin(dir);
 
         Vector3 newsp = new Vector3(nx, 0, nz);
+        //Vector3 newsp = new Vector3(0, 0, nz);
 
         Vector3 newpos = transform.position + newsp;
         transform.position = newpos;
+
+        //input.m_AccelerationButton = true;
+        //input.m_SteerAxis = Mathf.Clamp(angle, -1.0f, 1.0f);
+        //Debug.Log(nz);
+
     }
 }

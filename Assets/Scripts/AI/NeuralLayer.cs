@@ -1,45 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NeuralLayer {
 
     public int totalNeurons;
-    private int currentNeurons = 0;
     public int totalInputs;
-    public Neuron[] neurons;
+    public List<Neuron> neurons = new List<Neuron>();
 
     public NeuralLayer(int neurons, int inputs) {
         totalInputs = inputs;
         totalNeurons = neurons;
-        this.neurons = new Neuron[neurons];
 
-        if (currentNeurons < neurons) {
+        if (this.neurons.Count < neurons) {
             for (int i = 0; i < neurons; i++) {
-                this.neurons[i] = new Neuron(inputs);
-                currentNeurons++;
+                this.neurons.Add(new Neuron(inputs));
             }
         }
     }
 
-    public NeuralLayer(Neuron[] input) {
+    public NeuralLayer(List<Neuron> input) {
         neurons = input;
-        totalNeurons = input.Length;
+        totalNeurons = input.Count;
+    }
+
+    public NeuralLayer() {
     }
 
     public void Populate(int neurons, int inputs) {
         totalInputs = inputs;
         totalNeurons = neurons;
 
-        if (this.neurons.Length < neurons) {
+        if (this.neurons.Count < neurons) {
             for (int i = 0; i < neurons; i++) {
-                this.neurons[i] = new Neuron(inputs);
+                this.neurons.Add(new Neuron(inputs));
             }
         }
     }
 
-    public float[] Evaluate(float[] input) {
+    public List<float> Evaluate(List<float> input) {
         int inputIndex = 0;
-        float[] output = new float[totalNeurons];
+        List<float> output = new List<float>();
 
         for (int i = 0; i < totalNeurons; i++) {
             float activation = 0.0f;
@@ -50,8 +51,7 @@ public class NeuralLayer {
 
             // bias
             activation += neurons[i].weights[neurons[i].inputs] * (-1.0f);//BIAS == -1.0f
-
-            output[i] = Sigmoid(activation, 1.0f);
+            output.Add(Sigmoid(activation, 1.0f));
             inputIndex = 0;
         }
         return output;
@@ -67,31 +67,31 @@ public class NeuralLayer {
         //totalNeurons = input.Length;
     //}
 
-    public void SetNeurons(Neuron[] neurons, int numNeurons, int numInputs) {
+    public void SetNeurons(List<Neuron> neurons, int numNeurons, int numInputs) {
         totalInputs = numInputs;
         totalNeurons = numNeurons;
         this.neurons = neurons;
     }
 
-    public Neuron[] GetNeurons() {
+    public List<Neuron> GetNeurons() {
         return neurons;
     }
 
-    public void SetWeights(float[] weights, int numNeurons, int numInputs) {
+    public void SetWeights(List<float> weights, int numNeurons, int numInputs) {
         int index = 0;
         totalInputs = numInputs;
         totalNeurons = numNeurons;
 
-        if (neurons.Length < numNeurons) {
-            for (int i = 0; i < numNeurons - neurons.Length; i++) {
-                neurons[i] = new Neuron(numInputs);
+        if (neurons.Count < numNeurons) {
+            for (int i = 0; i < numNeurons - neurons.Count; i++) {
+                neurons.Add(new Neuron(numInputs));
             }
         }
 
         for (int i = 0; i < numNeurons; i++) {
-            if (neurons[i].weights.Length < numInputs) {
-                for (int k = 0; k < numInputs - neurons[i].weights.Length; k++) {
-                    neurons[i].weights[k] = 0.0f;
+            if (neurons[i].weights.Count < numInputs) {
+                for (int k = 0; k < numInputs - neurons[i].weights.Count; k++) {
+                    neurons[i].weights.Add(0.0f);
                 }
             }
             for (int j = 0; j < numInputs; j++) {
@@ -101,11 +101,11 @@ public class NeuralLayer {
         }
     }
 
-    public float[] GetWeights() {
-        float[] weights = new float[totalNeurons]; // TODO CORREGIR
+    public List<float> GetWeights() {
+        List<float> weights = new List<float>();
 
         for (int i = 0; i < totalNeurons; i++) {
-            for (int j = 0; j < neurons[i].weights.Length; j++) {
+            for (int j = 0; j < neurons[i].weights.Count; j++) {
                 weights[totalNeurons * i + j] = neurons[i].weights[j];
             }
         }
