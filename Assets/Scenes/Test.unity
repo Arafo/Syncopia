@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -287,7 +287,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: b69f6719c9e3a6c429cd699634e8cb5a, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: b69f6719c9e3a6c429cd699634e8cb5a, type: 3}
       propertyPath: m_LocalScale.x
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -950,7 +950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -1042,7 +1042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -1137,6 +1137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a65b0e542c837e44b1cd7f3211bf15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lap: 0
+  bestLap: 0
 --- !u!114 &361526220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1148,7 +1150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f9526929d449347a2ac50646a3bc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 885187208}
+  ship: {fileID: 0}
+  Camera: {fileID: 0}
 --- !u!114 &361526221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,116 +1163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb0249e68952594793e80d649c2683a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_body: {fileID: 0}
-  m_Axis: {fileID: 0}
-  m_Config: {fileID: 0}
---- !u!1001 &379563117
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 3.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 185380, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11468814, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: _SPEED
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11468814, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: MAX_ROTATION
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11437670, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: Passed
-      value: 
-      objectReference: {fileID: 2100000, guid: 8d70d6c0d25fb76489199694d4aa9fb8, type: 2}
-    - target: {fileID: 11492274, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: normal
-      value: 
-      objectReference: {fileID: 2100000, guid: 486a6ca2db3524449a35245d1a641315, type: 2}
-    - target: {fileID: 11468814, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: Rotation
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 11468814, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: Speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11461522, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11492274, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11437670, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11468814, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 185380, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-      propertyPath: m_Name
-      value: GAShip (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11476868, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-    - {fileID: 11468814, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-    - {fileID: 11437670, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-    - {fileID: 11492274, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-    - {fileID: 11461522, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &433625306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,6 +1234,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1378,9 +1272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ca5ff8080b0ac4f83381f32e9b3ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
-  m_control: {fileID: 0}
-  m_sim: {fileID: 0}
+  ship: {fileID: 0}
   uiRoot: {fileID: 433625306}
   uiBestTime: {fileID: 2034224949}
   uiCurrentTime: {fileID: 180820728}
@@ -1516,7 +1408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -1608,7 +1500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -1700,7 +1592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -1730,7 +1622,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 721603332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.58, y: 0.00001, z: 0.0057}
+  m_LocalPosition: {x: -0.58, y: 0.0001, z: 0.0057}
   m_LocalScale: {x: 0.0001, y: 0.01, z: 0.005}
   m_Children: []
   m_Father: {fileID: 1876453391}
@@ -1745,7 +1637,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8598d7001d5ce0c45936ae5918a97664, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1897,7 +1789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -1989,7 +1881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -2131,7 +2023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -2218,7 +2110,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 496014, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 185380, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
       propertyPath: m_Name
@@ -2478,7 +2370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -2525,7 +2417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -2737,7 +2629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -2784,7 +2676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -2876,7 +2768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -2968,7 +2860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -3105,7 +2997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -3273,7 +3165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -3320,7 +3212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -3525,7 +3417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -3942,7 +3834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -4034,7 +3926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -4175,7 +4067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -4221,9 +4113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb0249e68952594793e80d649c2683a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_body: {fileID: 0}
-  m_Axis: {fileID: 0}
-  m_Config: {fileID: 0}
 --- !u!114 &1610644413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4235,7 +4124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f9526929d449347a2ac50646a3bc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 885187208}
+  ship: {fileID: 0}
+  Camera: {fileID: 0}
 --- !u!65 &1610644415
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4301,7 +4191,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 185380, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11468814, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
       propertyPath: _SPEED
@@ -4434,7 +4324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -4509,7 +4399,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1637426000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5780611, y: -3.6, z: 36.39}
+  m_LocalPosition: {x: 0.5780611, y: 0.05, z: 36.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4668,7 +4558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -4715,7 +4605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -4807,7 +4697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -4857,91 +4747,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1726677320}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1747011490 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 185380, guid: b23a08aa29f8c8e429279918cca745e3, type: 2}
-  m_PrefabInternal: {fileID: 379563117}
---- !u!114 &1747011491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1747011490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef1cd18cde51b48439d1b0f89c9889ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1747011492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1747011490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ef630997ad4bce429cff564000e70aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1747011493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1747011490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f41bbb5315f5bfe42bcbc9e3b103ea25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1747011494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1747011490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 487f7bb5d907b9741a26569d83063631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1747011495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1747011490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b53d2b90ff2001b49956f4d22bf7e235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1747011496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1747011490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbb0249e68952594793e80d649c2683a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_body: {fileID: 0}
-  m_Axis: {fileID: 0}
-  m_Config: {fileID: 0}
---- !u!114 &1747011497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1747011490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87f9526929d449347a2ac50646a3bc92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Camera: {fileID: 885187208}
 --- !u!1 &1766021982
 GameObject:
   m_ObjectHideFlags: 0
@@ -5110,7 +4915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -5231,7 +5036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1610644409}
+  ship: {fileID: 361526214}
   track: {fileID: 1876453390}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -5368,7 +5173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}
@@ -5535,7 +5340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f191f89d079b46b653a7067fd9988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 1747011490}
+  ship: {fileID: 0}
   track: {fileID: 1421635934}
   m_control: {fileID: 0}
   m_points: {fileID: 0}

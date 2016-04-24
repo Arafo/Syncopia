@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipController : MonoBehaviour
-{
-
-    public ShipInput input;
+public class ShipController : ShipCore {
 
     public int currentCheckpoint = 0;
     public int currentLap = 0;
@@ -21,40 +18,33 @@ public class ShipController : MonoBehaviour
     private float respawnTimer;
     private float respawnTimerMax = 2f;
     public int performedBarrelRolls;
-    public bool isGA;
 
     public bool finishedRace = false;
     public float totalS;
     public float bestLap = float.MaxValue;
     public List<float> laps = new List<float>();
 
-    private void Start()
-    {
-        input = GetComponent<ShipInput>();
-        respawnPoint = transform.position;
+    public override void OnStart() {
+        respawnPoint = new Vector3(transform.position.x, 10, transform.position.z);
     }
 
-    private void Update()
-    {
+    public override void OnUpdate() {
 
         powerBoosting = false;
-        isThrusting = input.m_AccelerationButton;
+        isThrusting = ship.input.m_AccelerationButton;
         totalS += Time.deltaTime;
 
         //
-        if (input.m_CameraButton)
-        {
+        if (ship.input.m_CameraButton) {
             GetComponent<ShipCamera>().UpdateCameraMode();
         }
 
         //
-        if (input.m_BoostButton && powerBoost > 0f)
-        {
+        if (ship.input.m_BoostButton && powerBoost > 0f) {
             powerBoosting = true;
             powerBoost -= Time.deltaTime * 65f;
             //
-            if (powerBoost < 0f)
-            {
+            if (powerBoost < 0f) {
                 powerBoost = 0f;
             }
             GetComponent<ShipSimulation>().boostingOverride = true;
@@ -63,51 +53,42 @@ public class ShipController : MonoBehaviour
         }
 
         //
-        if (isRespawning)
-        {
+        if (isRespawning) {
 
         }
 
         //
-        if (!isAI)
-        {
+        if (!isAI) {
             //
-            if (input.m_AccelerationButton && !startBoost)
-            {
+            if (ship.input.m_AccelerationButton && !startBoost) {
                 boostTimer = 0.8f;
                 boostPower = 1000f;
                 startBoost = true;
             }
 
             //
-            if (GetComponent<ShipSimulation>().BRBoostTimer > 0f)
-            {
+            if (GetComponent<ShipSimulation>().BRBoostTimer > 0f) {
                 boostTimer = 0.2f;
                 boostPower = 650f;
             }
         }
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         Boost();
-        //if (!isGA)
-        //CheckRespawn();
+        CheckRespawn();
     }
 
-    private void Boost()
-    {
+    private void Boost() {
         //
-        if (boostTimer > 0f)
-        {
+        if (boostTimer > 0f) {
             boostTimer -= Time.deltaTime;
             GetComponent<ShipSimulation>().boostingOverride = true;
             GetComponent<Rigidbody>().AddForce(transform.forward * boostPower);
         }
     }
 
-    private void CheckRespawn()
-    {
+    private void CheckRespawn() {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -transform.up, out hit)) {
             if (hit.collider.gameObject.tag == "Track") {

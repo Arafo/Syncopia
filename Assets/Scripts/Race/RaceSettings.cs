@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class RaceSettings {
 
-    // race references
+    // Referencias
     public static TrackData trackData;
     public static Camera currentCamera;
-    //public static List<Ship> ships = new List<Ship>();
+    public static List<ShipReferer> ships = new List<ShipReferer>();
+    public static RaceManager raceManager;
 
-    // race settings
+    // Opciones
     public static int racers = 1;
     public static int laps = 1;
-    public static bool checkpointsEnabled = false;
+    public static string trackToLoad;
+
 }

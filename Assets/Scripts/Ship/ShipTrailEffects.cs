@@ -1,12 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShipTrailEffects : MonoBehaviour {
-
-    public ShipLoad m_ship;
-    public ShipController m_control;
-    private ShipSimulation m_sim;
-    private Rigidbody m_body;
+public class ShipTrailEffects : ShipCore {
 
     private bool isColliding;
 
@@ -35,39 +30,34 @@ public class ShipTrailEffects : MonoBehaviour {
     private TrailRenderer windRight;
 
     // Use this for initialization
-    void Start () {
-        m_ship = GetComponent<ShipLoad>();
-        m_sim = GetComponent<ShipSimulation>();
-        m_body = GetComponent<Rigidbody>();
-        m_control = GetComponent<ShipController>();
-
+    public override void OnStart () {
         // Cargamos todos los efectos
-        lightObject = m_ship.m_Config.engineLight.GetComponent<Light>();
-        trailObject = m_ship.m_Config.engineTrail.GetComponent<TrailRenderer>();
-        boosterColor = m_ship.m_Config.boosterLeft.GetComponent<Renderer>().material.GetColor("_TintColor");
-        boosterLeft = m_ship.m_Config.boosterLeft.GetComponent<Renderer>();
-        boosterRight = m_ship.m_Config.boosterRight.GetComponent<Renderer>();
-        windLeft = m_ship.m_Config.windTrailLeft.GetComponent<TrailRenderer>();
-        windRight = m_ship.m_Config.windTrailRight.GetComponent<TrailRenderer>();
+        lightObject = ship.config.engineLight.GetComponent<Light>();
+        trailObject = ship.config.engineTrail.GetComponent<TrailRenderer>();
+        boosterColor = ship.config.boosterLeft.GetComponent<Renderer>().material.GetColor("_TintColor");
+        boosterLeft = ship.config.boosterLeft.GetComponent<Renderer>();
+        boosterRight = ship.config.boosterRight.GetComponent<Renderer>();
+        windLeft = ship.config.windTrailLeft.GetComponent<TrailRenderer>();
+        windRight = ship.config.windTrailRight.GetComponent<TrailRenderer>();
 
     }
 	
 	// Update is called once per frame
-	void Update () {
+	public override void OnUpdate () {
         UpdateTrailEffects();
     }
 
     private void UpdateTrailEffects() {
 
         // Calibrar la longitud, opacidad e intensidad de la luz de la cola
-        if (m_control.isThrusting) {
+        if (ship.control.isThrusting) {
             idleLightFlickerTimer = 0f;
             visualLightItensity = Mathf.Lerp(visualLightItensity, 3f, Time.deltaTime);
             if (visualLightItensity < 1.5f) {
                 visualLightItensity = 1.5f;
             }
 
-            if (transform.InverseTransformDirection(m_body.velocity).z > 50f) {
+            if (transform.InverseTransformDirection(ship.body.velocity).z > 50f) {
                 trailStartSize = Mathf.Lerp(trailStartSize, 0.5f, Time.deltaTime * 6f);
                 trailEndSize = Mathf.Lerp(trailEndSize, 5f, Time.deltaTime * 6f);
                 trailOpacity = Mathf.Lerp(trailOpacity, 0.5f, Time.deltaTime * 5f);
@@ -100,17 +90,17 @@ public class ShipTrailEffects : MonoBehaviour {
         trailObject.material.SetTextureOffset("_MainTex", textureOffset);
 
         // Si la bave esta en booster
-        if (m_sim.isBoosting) {
+        if (ship.sim.isBoosting) {
             boosterRemainTimer = 0.1f;
             boosterFalloff = 0f;
-            boosterLength = Mathf.Lerp(boosterLength, m_ship.m_Config.boosterExtendLength, Time.deltaTime * 40f);
+            boosterLength = Mathf.Lerp(boosterLength, ship.config.boosterExtendLength, Time.deltaTime * 40f);
             boosterOpacity = Mathf.Lerp(boosterOpacity, 1f, Time.deltaTime * 4f);
             windOpacity = Mathf.Lerp(windOpacity, 1f, Time.deltaTime * 10f);
         }
         else {
             if (boosterRemainTimer > 0f) {
                 boosterRemainTimer -= Time.deltaTime;
-                boosterLength = Mathf.Lerp(boosterLength, m_ship.m_Config.boosterExtendLength, Time.deltaTime * 40f);
+                boosterLength = Mathf.Lerp(boosterLength, ship.config.boosterExtendLength, Time.deltaTime * 40f);
                 boosterOpacity = Mathf.Lerp(boosterOpacity, 1f, Time.deltaTime * 4f);
             }
             else {
@@ -122,13 +112,13 @@ public class ShipTrailEffects : MonoBehaviour {
         }
 
         // Estela de viento izquierda al estar en modo booster
-        Vector3 localScale = m_ship.m_Config.boosterLeft.transform.localScale;
-        m_ship.m_Config.boosterLeft.transform.localScale = new Vector3(localScale.x, localScale.y, boosterLength);
+        Vector3 localScale = ship.config.boosterLeft.transform.localScale;
+        ship.config.boosterLeft.transform.localScale = new Vector3(localScale.x, localScale.y, boosterLength);
         boosterLeft.material.SetColor("_TintColor", new Color(boosterColor.r, boosterColor.g, boosterColor.b, boosterOpacity));
 
         // Estela de viento derecha al estar en modo booster
-        Vector3 localScale2 = m_ship.m_Config.boosterRight.transform.localScale;
-        m_ship.m_Config.boosterRight.transform.localScale = new Vector3(localScale2.x, localScale2.y, boosterLength);
+        Vector3 localScale2 = ship.config.boosterRight.transform.localScale;
+        ship.config.boosterRight.transform.localScale = new Vector3(localScale2.x, localScale2.y, boosterLength);
         boosterRight.material.SetColor("_TintColor", new Color(boosterColor.r, boosterColor.g, boosterColor.b, boosterOpacity));
 
         // Estela de viento del ala izquierda

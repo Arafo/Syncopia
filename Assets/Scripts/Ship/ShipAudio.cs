@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShipAudio : MonoBehaviour {
+public class ShipAudio : ShipCore {
 
 	// Use this for initialization
-	void Start () {
+	public override void OnStart () {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public override void OnUpdate () {
 	
 	}
 }

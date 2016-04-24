@@ -2,11 +2,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RaceUI : MonoBehaviour
+public class RaceUI : ShipCore
 {
-    public GameObject ship;
-    public ShipController m_control;
-    public ShipSimulation m_sim;
+    //public GameObject ship;
+    //public ShipController ship.control;
+    //public ShipSimulation ship.sim;
 
     // Raiz
     public GameObject uiRoot;
@@ -55,15 +55,15 @@ public class RaceUI : MonoBehaviour
         //uiMaxLapText = uiMaxLap.GetComponent<Text>();
         uiCurrentSpeedText = uiCurrentSpeed.GetComponent<Text>();
 
-        m_control = ship.GetComponent<ShipController>();
-        m_sim = ship.GetComponent<ShipSimulation>();
+        //ship.control = ship.GetComponent<ShipController>();
+        //ship.sim = ship.GetComponent<ShipSimulation>();
     }
 
     void Update()
     {
         // TODO: Iniciar en Start, no ejecutar esto cada frame
-        m_control = ship.GetComponent<ShipController>();
-        m_sim = ship.GetComponent<ShipSimulation>();
+        //ship.control = ship.GetComponent<ShipController>();
+        //ship.sim = ship.GetComponent<ShipSimulation>();
         uiCurrentSpeedText= uiCurrentSpeed.GetComponent<Text>();
         uiCurrentLapText = uiCurrentLap.GetComponent<Text>();
         uiSpeedMeterRect = uiSpeedMeter.GetComponent<RectTransform>();
@@ -72,8 +72,8 @@ public class RaceUI : MonoBehaviour
         uiLapsText = uiLaps.GetComponent<Text>();
 
 
-        if (!m_control.finishedRace)  {
-            if (m_sim.isBoosting) {
+        if (!ship.control.finishedRace)  {
+            if (ship.sim.isBoosting) {
                 uiSize = Mathf.Lerp(uiSize, 1.17f, Time.deltaTime * 7f);
                 uiOpacity = Mathf.Lerp(uiOpacity, 0.3f, Time.deltaTime * 10f);
             }
@@ -84,19 +84,19 @@ public class RaceUI : MonoBehaviour
 
             uiRoot.transform.localScale = new Vector3(uiSize, uiSize, 1f);
 
-            float x2 = m_sim.gameObject.transform.InverseTransformDirection(m_sim.m_body.velocity).z * 0.8f;
+            float x2 = ship.sim.gameObject.transform.InverseTransformDirection(ship.body.velocity).z * 0.8f;
             Vector2 rectSize = new Vector2(x2, uiSpeedMeterRect.sizeDelta.y);
             uiSpeedMeterRect.sizeDelta = rectSize;
 
-            //uiCurrentTimeText.text = m_control.totalS.ToString();
-            int speed = Mathf.RoundToInt(m_control.gameObject.GetComponent<ShipSimulation>().engineSpeed * 2f);
+            //uiCurrentTimeText.text = ship.control.totalS.ToString();
+            int speed = Mathf.RoundToInt(ship.control.gameObject.GetComponent<ShipSimulation>().engineSpeed * 2f);
             uiCurrentSpeedText.text = speed.ToString() + " km/h";
 
 
-            uiCurrentLapText.text = "Lap: " + m_control.currentLap.ToString();
+            uiCurrentLapText.text = "Lap: " + ship.control.currentLap.ToString();
 
 
-            float timer = m_control.totalS;
+            float timer = ship.control.totalS;
             string minutes = Mathf.Floor(timer / 60).ToString("00");
             string seconds = Mathf.RoundToInt(timer % 60).ToString("00");
             string miliseconds = ((timer * 1000) % 1000).ToString("000");
@@ -104,7 +104,7 @@ public class RaceUI : MonoBehaviour
             string total = string.Concat(new string[] { minutes, ":", seconds, ":", miliseconds });
             uiCurrentTimeText.text = "Current Lap\n" + total;
 
-            timer = m_control.bestLap;
+            timer = ship.control.bestLap;
             if (timer != float.MaxValue) {
                 minutes = Mathf.Floor(timer / 60).ToString("00");
                 seconds = Mathf.RoundToInt(timer % 60).ToString("00");
@@ -124,13 +124,13 @@ public class RaceUI : MonoBehaviour
             int max = 5;
             String laps = "";
             for (int i = min; i <= max; i++) {
-                if (m_control.laps.Count >= max) {
+                if (ship.control.laps.Count >= max) {
                     laps = "";
                     min += 1;
                     max += 1;
                 }
-                if (m_control.laps.Count >= i)
-                    laps += "Lap " + i + ": " + m_control.laps[i - 1].ToString() + "\n";
+                if (ship.control.laps.Count >= i)
+                    laps += "Lap " + i + ": " + ship.control.laps[i - 1].ToString() + "\n";
             }
             uiLapsText.text = laps;
 

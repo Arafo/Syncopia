@@ -1,0 +1,1230 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<PointCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Points>
+    <Point index="0">
+      <point>
+        <x>-6.3738327</x>
+        <y>3.94606423</y>
+        <z>36.19973</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-8.405919</x>
+        <y>3.94605446</y>
+        <z>85.62397</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-4.4983077</x>
+        <y>3.946044</y>
+        <z>134.947357</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>2.98812079</x>
+        <y>3.94604826</y>
+        <z>183.874725</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>11.3052578</x>
+        <y>3.94606185</y>
+        <z>238.238708</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>15.2124329</x>
+        <y>3.94606686</y>
+        <z>276.535431</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>15.9446592</x>
+        <y>3.94606662</y>
+        <z>287.510956</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>17.1665325</x>
+        <y>3.94606376</y>
+        <z>320.486</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>17.3114147</x>
+        <y>3.94606233</y>
+        <z>336.9852</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>16.6978035</x>
+        <y>3.94605947</y>
+        <z>386.48053</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>15.3988295</x>
+        <y>3.94606352</y>
+        <z>435.9598</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>12.0653868</x>
+        <y>3.946069</y>
+        <z>485.342072</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>9.353846</x>
+        <y>3.94607353</y>
+        <z>534.717163</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>14.1863537</x>
+        <y>3.94607</y>
+        <z>583.9451</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>24.5440369</x>
+        <y>3.94607663</y>
+        <z>637.9562</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>33.409214</x>
+        <y>3.94608116</y>
+        <z>686.6496</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>34.9269753</x>
+        <y>3.94608164</y>
+        <z>697.54425</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>38.4961357</x>
+        <y>3.94607973</y>
+        <z>735.870239</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>39.22955</x>
+        <y>3.94607735</y>
+        <z>790.8511</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>38.94249</x>
+        <y>3.946075</y>
+        <z>801.8473</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>37.52303</x>
+        <y>3.946069</y>
+        <z>840.3209</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>36.2369843</x>
+        <y>3.94606566</y>
+        <z>884.3014</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>34.3393822</x>
+        <y>3.94607425</y>
+        <z>928.2602</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>31.0711269</x>
+        <y>3.946076</y>
+        <z>972.133057</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>32.36482</x>
+        <y>3.94608045</y>
+        <z>1010.57715</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>39.6758728</x>
+        <y>3.94608974</y>
+        <z>1053.94263</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>48.4314041</x>
+        <y>3.94608974</y>
+        <z>1091.43323</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>55.0907974</x>
+        <y>3.94608784</y>
+        <z>1123.74963</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>56.8018875</x>
+        <y>3.94608617</y>
+        <z>1134.61536</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>60.26693</x>
+        <y>3.9460845</y>
+        <z>1183.95117</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>57.3176231</x>
+        <y>3.9461</y>
+        <z>1233.34009</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>53.26722</x>
+        <y>3.94610667</y>
+        <z>1260.5321</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>48.81525</x>
+        <y>3.94610715</y>
+        <z>1282.07581</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>35.7947426</x>
+        <y>3.94609714</y>
+        <z>1329.822</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>25.1753387</x>
+        <y>3.946094</y>
+        <z>1378.15967</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>15.1073465</x>
+        <y>3.946099</y>
+        <z>1420.95764</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>13.2313795</x>
+        <y>3.94610071</y>
+        <z>1426.12781</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-5.544483</x>
+        <y>3.946102</y>
+        <z>1459.58545</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-47.2976646</x>
+        <y>3.94607544</y>
+        <z>1494.81567</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-93.03204</x>
+        <y>3.94608188</y>
+        <z>1513.52258</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-114.2607</x>
+        <y>3.946095</y>
+        <z>1519.284</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-146.2665</x>
+        <y>3.94610763</y>
+        <z>1527.31531</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-198.400177</x>
+        <y>3.9460988</y>
+        <z>1544.74438</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-243.35878</x>
+        <y>3.94608283</y>
+        <z>1565.41333</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-286.783661</x>
+        <y>3.946078</y>
+        <z>1589.16553</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-330.0747</x>
+        <y>3.9460783</y>
+        <z>1613.16418</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-354.6649</x>
+        <y>3.94608474</y>
+        <z>1625.471</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-379.8527</x>
+        <y>3.94609356</y>
+        <z>1636.499</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-426.758453</x>
+        <y>3.94609046</y>
+        <z>1652.21118</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-475.590637</x>
+        <y>3.946083</y>
+        <z>1660.02783</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-508.498535</x>
+        <y>3.94608045</y>
+        <z>1662.45544</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-524.982056</x>
+        <y>3.946077</y>
+        <z>1663.1875</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-574.4732</x>
+        <y>3.94607234</y>
+        <z>1663.406</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-579.97</x>
+        <y>3.946072</y>
+        <z>1663.21777</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-618.365</x>
+        <y>3.94607</y>
+        <z>1660.47522</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-667.236633</x>
+        <y>3.94607615</y>
+        <z>1652.747</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-720.2859</x>
+        <y>3.94607115</y>
+        <z>1638.33594</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-766.5461</x>
+        <y>3.94606</y>
+        <z>1620.76147</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-806.4836</x>
+        <y>3.946052</y>
+        <z>1602.30969</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-811.399231</x>
+        <y>3.94605112</y>
+        <z>1599.84265</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-840.522156</x>
+        <y>3.94605041</y>
+        <z>1584.32788</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-850.0764</x>
+        <y>3.9460516</y>
+        <z>1578.87683</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-854.8208</x>
+        <y>3.946053</y>
+        <z>1576.0946</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-891.910156</x>
+        <y>3.94606829</y>
+        <z>1552.43787</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-930.889</x>
+        <y>3.94606614</y>
+        <z>1522.00134</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-934.9253</x>
+        <y>3.94606328</y>
+        <z>1518.26526</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-969.1746</x>
+        <y>3.94602633</y>
+        <z>1482.55957</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1003.17792</x>
+        <y>3.94602036</y>
+        <z>1446.60339</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1040.043</x>
+        <y>3.94606042</y>
+        <z>1413.59058</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1079.03259</x>
+        <y>3.946073</y>
+        <z>1383.101</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1118.53491</x>
+        <y>3.94604015</y>
+        <z>1353.27209</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1156.81213</x>
+        <y>3.946018</y>
+        <z>1321.89844</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1196.49243</x>
+        <y>3.94603586</y>
+        <z>1283.83862</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1229.51184</x>
+        <y>3.94604659</y>
+        <z>1246.97107</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1260.84827</x>
+        <y>3.946031</y>
+        <z>1208.655</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1291.68811</x>
+        <y>3.94601631</y>
+        <z>1169.93628</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1322.86719</x>
+        <y>3.946015</y>
+        <z>1131.4906</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1352.88135</x>
+        <y>3.94601941</y>
+        <z>1092.14075</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1380.729</x>
+        <y>3.94601965</y>
+        <z>1051.22217</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1409.63049</x>
+        <y>3.946012</y>
+        <z>1011.03973</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1439.06226</x>
+        <y>3.94599915</y>
+        <z>971.2408</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1460.70667</x>
+        <y>3.94599485</y>
+        <z>939.4073</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1466.50562</x>
+        <y>3.94599438</y>
+        <z>930.0602</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1489.81531</x>
+        <y>3.94599676</y>
+        <z>886.4196</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1508.36035</x>
+        <y>3.94599581</y>
+        <z>840.545837</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1521.67493</x>
+        <y>3.94600034</y>
+        <z>798.6144</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1524.70349</x>
+        <y>3.94600177</y>
+        <z>788.039551</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1537.70911</x>
+        <y>3.94601321</y>
+        <z>740.279053</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1550.3385</x>
+        <y>3.946007</y>
+        <z>692.4201</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1560.555</x>
+        <y>3.94598866</y>
+        <z>643.99054</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1569.4823</x>
+        <y>3.945987</y>
+        <z>595.3106</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1581.60254</x>
+        <y>3.94599819</y>
+        <z>547.3231</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1594.73132</x>
+        <y>3.94599748</y>
+        <z>499.596344</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1606.04358</x>
+        <y>3.945987</y>
+        <z>451.414032</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1614.01062</x>
+        <y>3.94598031</y>
+        <z>402.57</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1618.01624</x>
+        <y>3.94598079</y>
+        <z>364.2817</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1618.89893</x>
+        <y>3.945981</y>
+        <z>353.3172</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1622.06543</x>
+        <y>3.94598341</y>
+        <z>303.9193</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1624.957</x>
+        <y>3.94598675</y>
+        <z>254.503967</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1628.88123</x>
+        <y>3.94598174</y>
+        <z>199.644836</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1633.14929</x>
+        <y>3.945968</y>
+        <z>150.329422</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1637.70764</x>
+        <y>3.94596934</y>
+        <z>101.039764</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1642.2251</x>
+        <y>3.94599414</y>
+        <z>51.74635</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1646.68811</x>
+        <y>3.94599533</y>
+        <z>2.44796562</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1651.10339</x>
+        <y>3.94597244</y>
+        <z>-46.8547058</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1652.7262</x>
+        <y>3.945951</y>
+        <z>-96.31574</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1651.19055</x>
+        <y>3.945962</y>
+        <z>-145.788666</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1650.815</x>
+        <y>3.945979</y>
+        <z>-195.285461</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1650.87085</x>
+        <y>3.945968</y>
+        <z>-244.785065</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1649.398</x>
+        <y>3.94595265</y>
+        <z>-294.2586</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1646.273</x>
+        <y>3.94594669</y>
+        <z>-332.627319</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1644.20593</x>
+        <y>3.94594646</y>
+        <z>-348.9959</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1638.734</x>
+        <y>3.94595051</y>
+        <z>-375.9377</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1632.98352</x>
+        <y>3.945952</y>
+        <z>-397.170868</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1617.13525</x>
+        <y>3.94595814</y>
+        <z>-444.05777</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1601.09521</x>
+        <y>3.94595528</y>
+        <z>-485.023438</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1598.88879</x>
+        <y>3.94595456</y>
+        <z>-490.061462</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1578.74146</x>
+        <y>3.94595623</y>
+        <z>-529.1464</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1549.65076</x>
+        <y>3.945958</y>
+        <z>-569.116638</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1513.05627</x>
+        <y>3.94595814</y>
+        <z>-602.2763</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1476.09448</x>
+        <y>3.945956</y>
+        <z>-626.1177</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1466.64441</x>
+        <y>3.94595861</y>
+        <z>-631.7476</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1424.33459</x>
+        <y>3.9459703</y>
+        <z>-657.438049</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1382.96814</x>
+        <y>3.94597268</y>
+        <z>-684.6185</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1342.21155</x>
+        <y>3.94596338</y>
+        <z>-712.710449</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1300.58215</x>
+        <y>3.94596076</y>
+        <z>-739.4758</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1295.833</x>
+        <y>3.94596243</y>
+        <z>-742.25</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1256.73682</x>
+        <y>3.94597721</y>
+        <z>-762.39856</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1210.606</x>
+        <y>3.94597435</y>
+        <z>-780.282349</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1162.80029</x>
+        <y>3.94595122</y>
+        <z>-792.9729</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1157.39685</x>
+        <y>3.94595027</y>
+        <z>-793.9987</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1108.4071</x>
+        <y>3.94596386</y>
+        <z>-800.958</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1059.71838</x>
+        <y>3.945994</y>
+        <z>-809.657837</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1012.49963</x>
+        <y>3.94599223</y>
+        <z>-824.4384</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-966.2472</x>
+        <y>3.94596982</y>
+        <z>-842.070435</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-929.9423</x>
+        <y>3.94595432</y>
+        <z>-854.870056</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-919.422058</x>
+        <y>3.94595456</y>
+        <z>-858.082458</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-871.2155</x>
+        <y>3.945973</y>
+        <z>-869.198059</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-822.060242</x>
+        <y>3.94599</y>
+        <z>-874.8589</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-783.604858</x>
+        <y>3.94598985</y>
+        <z>-876.663635</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-767.111267</x>
+        <y>3.94598675</y>
+        <z>-877.121765</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-717.619446</x>
+        <y>3.94597936</y>
+        <z>-877.339966</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-668.1851</x>
+        <y>3.94598866</y>
+        <z>-874.976257</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-618.725769</x>
+        <y>3.945997</y>
+        <z>-875.6784</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-569.580933</x>
+        <y>3.946</y>
+        <z>-881.5158</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-520.517639</x>
+        <y>3.94600224</y>
+        <z>-888.04895</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-504.08255</x>
+        <y>3.94600034</y>
+        <z>-889.50415</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-471.108551</x>
+        <y>3.94599414</y>
+        <z>-890.5767</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-416.301453</x>
+        <y>3.94599557</y>
+        <z>-886.4542</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-367.690125</x>
+        <y>3.94600224</y>
+        <z>-877.2574</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-362.375275</x>
+        <y>3.94600224</y>
+        <z>-875.842346</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-320.4143</x>
+        <y>3.946012</y>
+        <z>-862.6352</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-273.794067</x>
+        <y>3.946017</y>
+        <z>-846.003052</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-227.083038</x>
+        <y>3.94601154</y>
+        <z>-829.629944</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-211.775146</x>
+        <y>3.946011</y>
+        <z>-823.474731</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-187.003738</x>
+        <y>3.946013</y>
+        <z>-811.5546</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-146.341248</x>
+        <y>3.9460187</y>
+        <z>-783.496338</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-109.333992</x>
+        <y>3.9460268</y>
+        <z>-742.9675</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-83.27602</x>
+        <y>3.94603014</y>
+        <z>-700.928833</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-62.6364</x>
+        <y>3.94602966</y>
+        <z>-655.9787</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-46.2571754</x>
+        <y>3.946033</y>
+        <z>-609.2713</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-32.4273338</x>
+        <y>3.946036</y>
+        <z>-567.5014</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-19.9138947</x>
+        <y>3.94603014</y>
+        <z>-525.32605</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-18.583828</x>
+        <y>3.94602966</y>
+        <z>-519.9893</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-9.721815</x>
+        <y>3.94602847</y>
+        <z>-465.7662</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-9.253946</x>
+        <y>3.94603658</y>
+        <z>-416.3057</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-13.8818665</x>
+        <y>3.94604182</y>
+        <z>-367.0312</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-14.5265</x>
+        <y>3.94604158</y>
+        <z>-361.5691</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-19.5406818</x>
+        <y>3.94604135</y>
+        <z>-312.328552</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-20.7361813</x>
+        <y>3.94604254</y>
+        <z>-262.8624</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-17.2912884</x>
+        <y>3.94604468</y>
+        <z>-213.496567</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-10.9882832</x>
+        <y>3.946053</y>
+        <z>-164.401474</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-4.681014</x>
+        <y>3.9460535</y>
+        <z>-115.30661</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-0.5888125</x>
+        <y>3.94605613</y>
+        <z>-65.98273</z>
+      </point>
+    </Point>
+    <Point index="0">
+      <point>
+        <x>-1.29806542</x>
+        <y>3.946065</y>
+        <z>-16.5210247</z>
+      </point>
+    </Point>
+  </Points>
+</PointCollection>
