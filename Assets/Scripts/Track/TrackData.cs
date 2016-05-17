@@ -5,13 +5,14 @@ using System.Collections.Generic;
 public class TrackData : MonoBehaviour {
 
     [Header("[ MESHES ]")]
-    public GenerateTrackData trackData;
+    public Data trackData;
     public MeshFilter trackFloor;
     public MeshFilter trackWall;
 
     [Header("[ OPCIONES ]")]
     public bool generated;
     public bool drawTrackData;
+    public int[] drawTileOrder = new int[4] { 0, 1, 2, 3 };
     public float maxWallWidth = 10.0f;
     public float maxWallHeight = 1.5f;
 
@@ -66,12 +67,12 @@ public class TrackData : MonoBehaviour {
             Gizmos.DrawLine(position1, position2);
 
             // Racing line
-            Gizmos.color = Color.green;
-            position1 = trackData.racingLine[i];
-            if (i < trackData.racingLine.Count - 1) {
-                position2 = trackData.racingLine[i + 1];
-                Gizmos.DrawLine(position1, position2);
-            }
+            //Gizmos.color = Color.green;
+            //position1 = trackData.racingLine[i];
+            //if (i < trackData.racingLine.Count - 1) {
+                //position2 = trackData.racingLine[i + 1];
+                //Gizmos.DrawLine(position1, position2);
+            //}
         }
     }
 
@@ -97,14 +98,13 @@ public class TrackData : MonoBehaviour {
         for (int i = 0; i < trackData.tiles.Count; i++) {
             if (trackData.tiles[i].type == E_TILETYPE.SPAWN) {
                 Vector3 spawnPos = trackData.tiles[i].position;
-                spawnPos.y += 0.5f;
-
+                spawnPos.y += 3.5f;
                 spawnPositions.Add(spawnPos);
                 spawnRotations.Add(SectionGetRotation(trackData.tiles[i].section));
 
-                Vector3 cameraPos = trackData.tiles[i].section.position;
-                cameraPos.y += 0.5f;
-                spawnCameraLocations.Add(cameraPos);
+                //Vector3 cameraPos = trackData.tiles[i].section.position;
+                //cameraPos.y += 0.5f;
+                //spawnCameraLocations.Add(cameraPos);
             }
         }
     }
@@ -158,7 +158,7 @@ public class TrackData : MonoBehaviour {
         trackData.sections = sections;
     }
 
-    private Quaternion SectionGetRotation(TrackSegment section)  {
+    private Quaternion SectionGetRotation(TrackSegment section) {
         // Obtener las posiciones de la seccion y su siguiente
         Vector3 sectionPosition = section.position;
         Vector3 nextPosition = section.next.position;

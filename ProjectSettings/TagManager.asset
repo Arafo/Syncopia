@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Track
   - Checkpoint
+  - Checkpoint1
+  - Checkpoint2
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Track
   - Wall
   - Booster
-  - 
+  - Ship
   - 
   - 
   - 

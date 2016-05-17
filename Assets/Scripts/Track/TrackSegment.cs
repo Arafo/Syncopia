@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class TrackSegment {
+public class TrackSegment : MonoBehaviour {
 
     // El indice de esta seccion
     public int index;

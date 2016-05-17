@@ -15,6 +15,7 @@ public class ShipController : ShipCore {
     public bool powerBoosting;
     public bool isRespawning;
     public Vector3 respawnPoint;
+    public Quaternion respawnRotation;
     private float respawnTimer;
     private float respawnTimerMax = 2f;
     public int performedBarrelRolls;
@@ -26,6 +27,7 @@ public class ShipController : ShipCore {
 
     public override void OnStart() {
         respawnPoint = new Vector3(transform.position.x, 10, transform.position.z);
+        respawnRotation = transform.rotation;
     }
 
     public override void OnUpdate() {

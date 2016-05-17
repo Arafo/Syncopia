@@ -72,7 +72,7 @@ public class RaceUI : ShipCore
         uiLapsText = uiLaps.GetComponent<Text>();
 
 
-        if (!ship.control.finishedRace)  {
+        if (!ship.finished)  {
             if (ship.sim.isBoosting) {
                 uiSize = Mathf.Lerp(uiSize, 1.17f, Time.deltaTime * 7f);
                 uiOpacity = Mathf.Lerp(uiOpacity, 0.3f, Time.deltaTime * 10f);
@@ -88,15 +88,16 @@ public class RaceUI : ShipCore
             Vector2 rectSize = new Vector2(x2, uiSpeedMeterRect.sizeDelta.y);
             uiSpeedMeterRect.sizeDelta = rectSize;
 
+            // Velocidad
             //uiCurrentTimeText.text = ship.control.totalS.ToString();
             int speed = Mathf.RoundToInt(ship.control.gameObject.GetComponent<ShipSimulation>().engineSpeed * 2f);
             uiCurrentSpeedText.text = speed.ToString() + " km/h";
 
+            // Numero de vueltas
+            uiCurrentLapText.text = "Lap: " + ship.currentLap.ToString() + "/" + RaceSettings.laps;
 
-            uiCurrentLapText.text = "Lap: " + ship.control.currentLap.ToString();
-
-
-            float timer = ship.control.totalS;
+            // Tiempo total de la vuelta
+            float timer = ship.currentTime;
             string minutes = Mathf.Floor(timer / 60).ToString("00");
             string seconds = Mathf.RoundToInt(timer % 60).ToString("00");
             string miliseconds = ((timer * 1000) % 1000).ToString("000");
@@ -104,7 +105,8 @@ public class RaceUI : ShipCore
             string total = string.Concat(new string[] { minutes, ":", seconds, ":", miliseconds });
             uiCurrentTimeText.text = "Current Lap\n" + total;
 
-            timer = ship.control.bestLap;
+            // Mejor tiempo de vuelta
+            timer = ship.bestLap;
             if (timer != float.MaxValue) {
                 minutes = Mathf.Floor(timer / 60).ToString("00");
                 seconds = Mathf.RoundToInt(timer % 60).ToString("00");
@@ -119,18 +121,18 @@ public class RaceUI : ShipCore
             uiBestTimeText.text = "Best Lap\n" + total;
 
 
-
+            // Tiempos de las ultimas 5 vueltas
             int min = 1;
             int max = 5;
             String laps = "";
             for (int i = min; i <= max; i++) {
-                if (ship.control.laps.Count >= max) {
+                if (ship.laps.Length >= max) {
                     laps = "";
                     min += 1;
                     max += 1;
                 }
-                if (ship.control.laps.Count >= i)
-                    laps += "Lap " + i + ": " + ship.control.laps[i - 1].ToString() + "\n";
+                if (ship.laps.Length >= i)
+                    laps += "Lap " + i + ": " + ship.laps[i - 1].ToString() + "\n";
             }
             uiLapsText.text = laps;
 

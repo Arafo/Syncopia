@@ -10,8 +10,11 @@ public class RaceSettings {
     public static RaceManager raceManager;
 
     // Opciones
-    public static int racers = 1;
+    public static int racers = 5;
     public static int laps = 1;
     public static string trackToLoad;
+
+    public static bool countdownReady;
+    public static bool countdownFinished = true;
 
 }

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public class TrackTile {
+
+public class TrackTile : MonoBehaviour {
 
     // El indice de esta tile
     public int index;
@@ -21,7 +21,7 @@ public class TrackTile {
 }
 
 public enum E_TILETYPE {
-    FLOOR = 0,
+    NORMAL = 0,
     WALL = 1,
     BOOST = 2,
     SPAWN = 3

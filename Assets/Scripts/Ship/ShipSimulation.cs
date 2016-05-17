@@ -88,6 +88,7 @@ public class ShipSimulation : ShipCore {
             engineAcceleration = 0f;
             BRSuccess = false;
             transform.position = Vector3.Lerp(transform.position, ship.control.respawnPoint, Time.deltaTime * 5f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, ship.control.respawnRotation, Time.deltaTime * 5f);
             if (Vector3.Distance(transform.position, ship.control.respawnPoint) < 10f) {
                 ship.control.isRespawning = false;
             }

@@ -35,7 +35,7 @@ public class RacingLine : MonoBehaviour {
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit, 100.0f, 1 << LayerMask.NameToLayer("Track"))) {
-            TrackTile newTile = TileFromTriangleIndex(hit.triangleIndex, RaceSettings.trackData.trackData.tilesMapped);
+            TrackTile newTile = TileFromTriangleIndex(hit.triangleIndex, RaceSettings.trackData.trackData.tiles);
 
             if (newTile != currentTile) {
                 TrackTile start = new TrackTile();

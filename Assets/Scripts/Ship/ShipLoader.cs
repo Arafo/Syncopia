@@ -15,6 +15,7 @@ public class ShipLoader : MonoBehaviour {
         referer.sim = gameObject.AddComponent<ShipSimulation>();
         referer.control = gameObject.AddComponent<ShipController>();
         referer.input = gameObject.AddComponent<ShipInput>();
+        referer.position = gameObject.AddComponent<ShipPosition>();
         referer.ai = gameObject.AddComponent<ShipAI>();
         referer.effects = gameObject.AddComponent<ShipTrailEffects>();
 
@@ -22,6 +23,7 @@ public class ShipLoader : MonoBehaviour {
         referer.effects.ship = referer;
         referer.input.ship = referer;
         referer.sim.ship = referer;
+        referer.position.ship = referer;
         referer.ai.ship = referer;
         referer.control.ship = referer;
 
@@ -53,6 +55,7 @@ public class ShipLoader : MonoBehaviour {
 
         GameObject collider = new GameObject("Collider");
         collider.tag = "Player";
+        collider.layer = LayerMask.NameToLayer("Ship");
         collider.transform.parent = transform;
         collider.transform.localPosition = Vector3.zero;
         collider.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
@@ -65,7 +68,7 @@ public class ShipLoader : MonoBehaviour {
         referer.mesh = collider;
         referer.axis = axis;
         referer.isAI = AI;
-        referer.cam = SetCamera(referer, false);
+        referer.cam = SetCamera(referer, AI);
 
         // Destruimos la instancia
         RaceSettings.ships.Add(referer);
@@ -75,8 +78,8 @@ public class ShipLoader : MonoBehaviour {
     private Camera SetCamera(ShipReferer referer, bool isAi) {
         GameObject newCamera = new GameObject("Ship Camera");
         newCamera.transform.parent = transform;
-        newCamera.transform.localPosition = new Vector3(0, 4, -15);
-        newCamera.transform.rotation = new Quaternion(0.1f, 0, 0, 1);
+        //newCamera.transform.localPosition = new Vector3(0, 4, 15);
+        newCamera.transform.rotation = Quaternion.Euler(10, 180, 0);
 
 
         // Añadir todos los componentes de una camara
@@ -87,7 +90,7 @@ public class ShipLoader : MonoBehaviour {
         newCamera.AddComponent<AudioListener>();
 
         camera.nearClipPlane = 0.05f;
-        camera.farClipPlane = 1500.0f;
+        camera.farClipPlane = 2000.0f;
 
         if (isAi) {
             newCamera.SetActive(false);
