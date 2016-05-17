@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Kvant;
 
 public class ShipTrailEffects : ShipCore {
 
@@ -29,6 +30,9 @@ public class ShipTrailEffects : ShipCore {
     private TrailRenderer windLeft;
     private TrailRenderer windRight;
 
+    private float sprayThrottle;
+    private Spray spray;
+
     // Use this for initialization
     public override void OnStart () {
         // Cargamos todos los efectos
@@ -39,7 +43,7 @@ public class ShipTrailEffects : ShipCore {
         boosterRight = ship.config.boosterRight.GetComponent<Renderer>();
         windLeft = ship.config.windTrailLeft.GetComponent<TrailRenderer>();
         windRight = ship.config.windTrailRight.GetComponent<TrailRenderer>();
-
+        spray = ship.config.engineSpray.GetComponent<Spray>();
     }
 	
 	// Update is called once per frame
@@ -61,11 +65,13 @@ public class ShipTrailEffects : ShipCore {
                 trailStartSize = Mathf.Lerp(trailStartSize, 0.5f, Time.deltaTime * 6f);
                 trailEndSize = Mathf.Lerp(trailEndSize, 5f, Time.deltaTime * 6f);
                 trailOpacity = Mathf.Lerp(trailOpacity, 0.5f, Time.deltaTime * 5f);
+                sprayThrottle = Mathf.Lerp(trailOpacity, 1f, Time.deltaTime * 5f);
             }
             else {
                 trailStartSize = Mathf.Lerp(trailStartSize, 0f, Time.deltaTime * 6f);
                 trailEndSize = Mathf.Lerp(trailEndSize, 0f, Time.deltaTime * 6f);
                 trailOpacity = Mathf.Lerp(trailOpacity, 0f, Time.deltaTime * 2f);
+                sprayThrottle = Mathf.Lerp(trailEndSize, 0f, Time.deltaTime * 3f);
             }
         }
         else  {
@@ -88,6 +94,9 @@ public class ShipTrailEffects : ShipCore {
         Vector2 textureOffset = trailObject.material.GetTextureOffset("_MainTex");
         textureOffset.x += Time.deltaTime * 10f;
         trailObject.material.SetTextureOffset("_MainTex", textureOffset);
+
+        // Spray
+        spray.throttle = sprayThrottle;
 
         // Si la bave esta en booster
         if (ship.sim.isBoosting) {
