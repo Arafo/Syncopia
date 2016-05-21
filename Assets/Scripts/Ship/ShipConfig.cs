@@ -58,4 +58,5 @@ public class ShipConfig : MonoBehaviour
     public GameObject boosterLeft;
     public GameObject boosterRight;
     public float boosterExtendLength;
+    public GameObject engineSpray;
 }

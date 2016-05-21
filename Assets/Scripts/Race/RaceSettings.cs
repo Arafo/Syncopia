@@ -17,4 +17,6 @@ public class RaceSettings {
     public static bool countdownReady;
     public static bool countdownFinished = true;
 
+    public static bool shipsRestrained;
+
 }

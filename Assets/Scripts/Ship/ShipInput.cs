@@ -31,16 +31,25 @@ public class ShipInput : ShipCore {
             m_PitchAxis = 0.0f;
             m_LeftAirBrakeAxis = 0.0f;
             m_RightAirBrakeAixs = 0.0f;
-            ship.ai.OnUpdate();
+            //ship.ai.OnUpdate();
         }
         else {
-            m_AccelerationButton = Input.GetButton("Acceleration");
-            m_SteerAxis = Input.GetAxis("Steer");
-            m_PitchAxis = Input.GetAxis("Pitch");
-            m_LeftAirBrakeAxis = Input.GetAxis("Left brake");
-            m_RightAirBrakeAixs = Input.GetAxis("Right brake");
-            m_BoostButton = Input.GetButton("Boost");
-            m_CameraButton = Input.GetButtonDown("Camera");
+            if (!RaceSettings.shipsRestrained) {
+                m_AccelerationButton = Input.GetButton("Acceleration");
+                m_SteerAxis = Input.GetAxis("Steer");
+                m_PitchAxis = Input.GetAxis("Pitch");
+                m_LeftAirBrakeAxis = Input.GetAxis("Left brake");
+                m_RightAirBrakeAixs = Input.GetAxis("Right brake");
+                m_BoostButton = Input.GetButton("Boost");
+                m_CameraButton = Input.GetButtonDown("Camera");
+            }
+            else {
+                m_AccelerationButton = false;
+                m_SteerAxis = 0.0f;
+                m_PitchAxis = 0.0f;
+                m_LeftAirBrakeAxis = 0.0f;
+                m_RightAirBrakeAixs = 0.0f;
+            } 
         }
     }
 }

@@ -27,13 +27,13 @@ public class RaceUI : ShipCore
     public GameObject uiCurrentLap;
     private Text uiCurrentLapText;
 
-    // Maximo de vueltas
-    public GameObject uiMaxLap;
-    private Text uiMaxLapText;
-
     // Velocidad actual
     public GameObject uiCurrentSpeed;
     private Text uiCurrentSpeedText;
+
+    // Posicion actual
+    public GameObject uiCurrentPosition;
+    private Text uiCurrentPositionText;
 
     //
     public GameObject uiSpeedMeter;
@@ -43,33 +43,33 @@ public class RaceUI : ShipCore
     public GameObject uiLaps;
     private Text uiLapsText;
 
+    // Cuenta atras
+    public GameObject uiCountDown;
+    public Text uiCountDownText;
+
     private float uiSize = 1f;
     private float uiOpacity = 1f;
 
-    void Start()
-    {
+    void Start() {
         uiBestTimeText = uiBestTime.GetComponent<Text>();
         uiCurrentTimeText = uiCurrentTime.GetComponent<Text>();
         //uiTotalTimeText = uiTotalTime.GetComponent<Text>();
         uiCurrentLapText = uiCurrentLap.GetComponent<Text>();
-        //uiMaxLapText = uiMaxLap.GetComponent<Text>();
         uiCurrentSpeedText = uiCurrentSpeed.GetComponent<Text>();
-
-        //ship.control = ship.GetComponent<ShipController>();
-        //ship.sim = ship.GetComponent<ShipSimulation>();
+        uiCurrentPositionText = uiCurrentPosition.GetComponent<Text>();
+        uiSpeedMeterRect = uiSpeedMeter.GetComponent<RectTransform>();
+        uiCurrentSpeedText = uiCurrentSpeed.GetComponent<Text>();
     }
 
-    void Update()
-    {
+    void Update() {
         // TODO: Iniciar en Start, no ejecutar esto cada frame
-        //ship.control = ship.GetComponent<ShipController>();
-        //ship.sim = ship.GetComponent<ShipSimulation>();
         uiCurrentSpeedText= uiCurrentSpeed.GetComponent<Text>();
         uiCurrentLapText = uiCurrentLap.GetComponent<Text>();
         uiSpeedMeterRect = uiSpeedMeter.GetComponent<RectTransform>();
         uiBestTimeText = uiBestTime.GetComponent<Text>();
         uiCurrentTimeText = uiCurrentTime.GetComponent<Text>();
         uiLapsText = uiLaps.GetComponent<Text>();
+        uiCountDownText = uiCountDown.GetComponent<Text>();
 
 
         if (!ship.finished)  {
@@ -89,7 +89,6 @@ public class RaceUI : ShipCore
             uiSpeedMeterRect.sizeDelta = rectSize;
 
             // Velocidad
-            //uiCurrentTimeText.text = ship.control.totalS.ToString();
             int speed = Mathf.RoundToInt(ship.control.gameObject.GetComponent<ShipSimulation>().engineSpeed * 2f);
             uiCurrentSpeedText.text = speed.ToString() + " km/h";
 
@@ -120,6 +119,7 @@ public class RaceUI : ShipCore
             total = string.Concat(new string[] { minutes, ":", seconds, ":", miliseconds });
             uiBestTimeText.text = "Best Lap\n" + total;
 
+            uiCurrentPositionText.text = ship.currentPosition + " / " + RaceSettings.ships.Count;
 
             // Tiempos de las ultimas 5 vueltas
             int min = 1;
