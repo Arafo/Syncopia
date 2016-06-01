@@ -336,7 +336,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 140, y: -120}
+  m_AnchoredPosition: {x: -140, y: 0}
   m_SizeDelta: {x: 1047.5404, y: 458.2162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &81804904
@@ -1564,12 +1564,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1724141910}
+        m_MethodName: SetMount
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 616938055}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2953,9 +2953,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29cfb89969d804cadbeec71cd66d93f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _columns: 100
-  _rows: 20
-  _extent: {x: 500, y: 100}
+  _columns: 90
+  _rows: 40
+  _extent: {x: 450, y: 200}
   _offset: {x: 0, y: 0}
   _positionNoiseMode: 2
   _positionNoiseAmplitude: 1
@@ -2972,9 +2972,9 @@ MonoBehaviour:
   _shapes: []
   _baseScale: {x: 5, y: 5, z: 5}
   _scaleRandomness: 0.5
-  _material: {fileID: 2100000, guid: 67e6414f70660594387fcc0daefcfd51, type: 2}
-  _castShadows: 0
-  _receiveShadows: 0
+  _material: {fileID: 2100000, guid: dddcdd0c49f184396b3fe5d5ba46b9ce, type: 2}
+  _castShadows: 1
+  _receiveShadows: 1
   _debug: 0
   _defaultShape: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   _defaultMaterial: {fileID: 2100000, guid: dddcdd0c49f184396b3fe5d5ba46b9ce, type: 2}
@@ -5239,7 +5239,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Main Menu
+  m_Text: Options
 --- !u!222 &731495935
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6787,7 +6787,7 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 140, y: 60}
   m_SizeDelta: {x: 1047.5404, y: 458.2162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &958909675
@@ -9598,7 +9598,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 140, y: -60}
+  m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 1047.5404, y: 458.2162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1429427636
@@ -10498,7 +10498,7 @@ MonoBehaviour:
         m_MethodName: SetMount
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 624149401}
+          m_ObjectArgument: {fileID: 197978104}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -10877,7 +10877,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 140, y: -180}
+  m_AnchoredPosition: {x: 0, y: 60}
   m_SizeDelta: {x: 1047.5404, y: 458.2162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1565473775
@@ -12253,12 +12253,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1724141910}
+        m_MethodName: SetMount
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 1879971606}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12869,7 +12869,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0.019607844}
+  m_BackGroundColor: {r: 0, g: 0.7931032, b: 1, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -12906,7 +12906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iterations: 10
-  blurSpread: 1
+  blurSpread: 0.56
   blurShader: {fileID: 4800000, guid: 57e6deea7c2924e22a5138e2b70bb4dc, type: 3}
 --- !u!1 &1845303974
 GameObject:
@@ -13516,7 +13516,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 4
-  m_BackGroundColor: {r: 0.53676474, g: 0.39862674, b: 0.39862674, a: 0.019607844}
+  m_BackGroundColor: {r: 0.102292374, g: 0.41301754, b: 0.63235295, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
