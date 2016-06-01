@@ -1,0 +1,195 @@
+fileFormatVersion: 2
+guid: 9ba8480782343144a9d67326ca35ec82
+timeCreated: 1464360806
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Tower019
+    100002: tower1
+    100004: tower10
+    100006: tower11
+    100008: tower12
+    100010: tower13
+    100012: tower14
+    100014: Tower15
+    100016: tower16
+    100018: tower17
+    100020: Tower18
+    100022: tower2
+    100024: Tower3
+    100026: Tower4
+    100028: tower5
+    100030: Tower6
+    100032: tower7
+    100034: tower8
+    100036: tower9
+    100038: tower_brid
+    100040: //RootNode
+    400000: Tower019
+    400002: tower1
+    400004: tower10
+    400006: tower11
+    400008: tower12
+    400010: tower13
+    400012: tower14
+    400014: Tower15
+    400016: tower16
+    400018: tower17
+    400020: Tower18
+    400022: tower2
+    400024: Tower3
+    400026: Tower4
+    400028: tower5
+    400030: Tower6
+    400032: tower7
+    400034: tower8
+    400036: tower9
+    400038: tower_brid
+    400040: //RootNode
+    2300000: Tower019
+    2300002: tower1
+    2300004: tower10
+    2300006: tower11
+    2300008: tower12
+    2300010: tower13
+    2300012: tower14
+    2300014: Tower15
+    2300016: tower16
+    2300018: tower17
+    2300020: Tower18
+    2300022: tower2
+    2300024: Tower3
+    2300026: Tower4
+    2300028: tower5
+    2300030: Tower6
+    2300032: tower7
+    2300034: tower8
+    2300036: tower9
+    2300038: tower_brid
+    3300000: Tower019
+    3300002: tower1
+    3300004: tower10
+    3300006: tower11
+    3300008: tower12
+    3300010: tower13
+    3300012: tower14
+    3300014: Tower15
+    3300016: tower16
+    3300018: tower17
+    3300020: Tower18
+    3300022: tower2
+    3300024: Tower3
+    3300026: Tower4
+    3300028: tower5
+    3300030: Tower6
+    3300032: tower7
+    3300034: tower8
+    3300036: tower9
+    3300038: tower_brid
+    4300000: tower_brid
+    4300002: Tower019
+    4300004: Tower18
+    4300006: tower13
+    4300008: tower1
+    4300010: tower17
+    4300012: tower2
+    4300014: Tower3
+    4300016: Tower4
+    4300018: tower5
+    4300020: tower16
+    4300022: Tower15
+    4300024: tower14
+    4300026: Tower6
+    4300028: tower7
+    4300030: tower8
+    4300032: tower9
+    4300034: tower10
+    4300036: tower11
+    4300038: tower12
+    6400000: Tower019
+    6400002: tower1
+    6400004: tower10
+    6400006: tower11
+    6400008: tower12
+    6400010: tower13
+    6400012: tower14
+    6400014: Tower15
+    6400016: tower16
+    6400018: tower17
+    6400020: Tower18
+    6400022: tower2
+    6400024: Tower3
+    6400026: Tower4
+    6400028: tower5
+    6400030: Tower6
+    6400032: tower7
+    6400034: tower8
+    6400036: tower9
+    6400038: tower_brid
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
