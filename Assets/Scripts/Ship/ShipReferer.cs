@@ -13,6 +13,7 @@ public class ShipReferer : MonoBehaviour {
     public ShipTrailEffects effects;
     public ShipInput input;
     public ShipSimulation sim;
+    public ShipPosition position;
     public ShipAI ai;
 
     // Componentes de una nave
@@ -27,6 +28,13 @@ public class ShipReferer : MonoBehaviour {
     public int boostState;
     public float boostAccel;
     public float boostTimer;
+
+    public TrackSegment currentSection;
+    public TrackSegment midSection;
+
+
+    public int currentPosition;
+    public int finalPosition;
 
     // Tiempos
     public int place;
@@ -51,8 +59,12 @@ public class ShipReferer : MonoBehaviour {
 
         input.OnStart();
         effects.OnStart();
+        position.OnStart();
         ai.OnStart();
         control.OnStart();
+
+        secondSector = true;
+        midSection = RaceSettings.raceManager.trackData.trackData.sections[RaceSettings.raceManager.trackData.trackData.sections.Count / 2];
     }
 
     void Update() {
@@ -60,6 +72,12 @@ public class ShipReferer : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+
+        position.OnUpdate();
+
+        if (isAI || autopilot)
+            ai.OnUpdate();
+
         control.OnUpdate();
         sim.OnUpdate();
         effects.OnUpdate();
@@ -105,6 +123,7 @@ public class ShipReferer : MonoBehaviour {
 
         if (other.tag == "Checkpoint2") {
             secondSector = true;
+            midSection = currentSection;
         }
     }
 
@@ -128,8 +147,17 @@ public class ShipReferer : MonoBehaviour {
         if (currentLap >= RaceSettings.laps) {
             if (!finished) {
                 finished = true;
+                finalPosition = currentPosition;
                 if (!isAI) {
-                    // Carrera acabada
+                    autopilot = true;
+                    // Carrera acabada 
+
+                    // Habilitar los resultados
+                    RaceSettings.raceManager.results.gameObject.SetActive(true);
+                    RaceSettings.raceManager.results.Results();
+
+                    // Desactivar HUD
+                    RaceSettings.raceManager.ui.gameObject.SetActive(false);
                 }
             }
         }

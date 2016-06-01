@@ -38,7 +38,7 @@ public class ShipController : ShipCore {
 
         //
         if (ship.input.m_CameraButton) {
-            GetComponent<ShipCamera>().UpdateCameraMode();
+            //GetComponent<ShipCamera>().UpdateCameraMode();
         }
 
         //

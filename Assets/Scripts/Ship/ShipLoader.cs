@@ -79,7 +79,7 @@ public class ShipLoader : MonoBehaviour {
         GameObject newCamera = new GameObject("Ship Camera");
         newCamera.transform.parent = transform;
         //newCamera.transform.localPosition = new Vector3(0, 4, 15);
-        newCamera.transform.rotation = Quaternion.Euler(10, 180, 0);
+        newCamera.transform.rotation = Quaternion.Euler(10, referer.body.rotation.eulerAngles.y, 0);
 
 
         // Añadir todos los componentes de una camara

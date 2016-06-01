@@ -54,7 +54,7 @@ public class ShipSimulation : ShipCore {
     private float bankGain;
     private float bankFalloff;
     private float bankAirbrake;
-    private float bankVelocity;
+    public float bankVelocity;
 
     // HOVER
     private float hoverAnimTimer;
@@ -87,9 +87,9 @@ public class ShipSimulation : ShipCore {
             engineThrust = 0f;
             engineAcceleration = 0f;
             BRSuccess = false;
-            transform.position = Vector3.Lerp(transform.position, ship.control.respawnPoint, Time.deltaTime * 5f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, ship.control.respawnRotation, Time.deltaTime * 5f);
-            if (Vector3.Distance(transform.position, ship.control.respawnPoint) < 10f) {
+            transform.position = Vector3.Lerp(transform.position, ship.position.respawnPosition, Time.deltaTime * 5f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, ship.position.respawnRotation, Time.deltaTime * 5f);
+            if (Vector3.Distance(transform.position, ship.position.respawnPosition) < 10f) {
                 ship.control.isRespawning = false;
             }
         }
@@ -362,7 +362,7 @@ public class ShipSimulation : ShipCore {
             turnAmount = Mathf.Lerp(turnAmount, ship.input.m_SteerAxis * turn, Time.deltaTime * turnGain);
             turnFalloff = 0f;
             bankGain = Mathf.Lerp(bankGain, 8f, Time.deltaTime * 1.5f);
-            bankVelocity = Mathf.Lerp(bankVelocity, ship.input.m_SteerAxis * 45f, Time.deltaTime * bankGain);
+            bankVelocity = Mathf.Lerp(bankVelocity, ship.input.m_SteerAxis * -45.0f, Time.deltaTime * bankGain);
             bankFalloff = 0f;
         }
         else {
@@ -370,7 +370,7 @@ public class ShipSimulation : ShipCore {
             turnAmount = Mathf.Lerp(turnAmount, 0f, Time.deltaTime * turnFalloff);
             turnGain = 0f;
             bankFalloff = Mathf.Lerp(bankFalloff, 10f, Time.deltaTime * 1.4f);
-            bankVelocity = Mathf.Lerp(bankVelocity, 0f, Time.deltaTime * bankFalloff);
+            bankVelocity = Mathf.Lerp(bankVelocity, ship.input.m_SteerAxis * -45.0f, Time.deltaTime * bankFalloff);
             bankGain = 0f;
         }
 
@@ -395,7 +395,7 @@ public class ShipSimulation : ShipCore {
         // Rotacion de la nave
         transform.Rotate(Vector3.up * (turnAmount + airbrakeAmount));
         // Alabeo de la nave al rotar
-        ship.axis.transform.localRotation = Quaternion.Euler(0f, 0f, -bankAmount + bankAirbrake + BRActual);
+        ship.axis.transform.localRotation = Quaternion.Euler(0f, 0f, bankAmount + bankAirbrake + BRActual);
     }
 
     private void ShipAnimations() {
@@ -563,6 +563,60 @@ public class ShipSimulation : ShipCore {
             if ((Mathf.Abs(vector.x) >= 65f && collision > 0f) || (Mathf.Abs(vector.x) >= 65f)) {
                 // Reproducir sonido de golpe con la pared
             }
+
+            // Obtener el valor del impacto
+            float impact = Vector3.Dot(other.contacts[0].normal, other.relativeVelocity);
+            float hitDot = Vector3.Dot(other.contacts[0].normal, transform.forward);
+            Vector3 impactDir = transform.InverseTransformPoint(other.contacts[0].point);
+
+            float impactAllowance = (hitDot < -0.1f) ? 1.5f : 4.0f;
+            if (Mathf.Abs(impact) > impactAllowance || hitDot < -0.2f) {
+                isColliding = true;
+
+                Vector3 lv = transform.InverseTransformDirection(ship.body.velocity);
+                lv.x *= -0.1f;
+                lv.y = 0.0f;
+                lv.z *= 0.05f;
+                Vector3 wv = transform.TransformDirection(lv);
+                ship.body.velocity = wv;
+
+                // Reducir la potencia y aceleracion del motor
+                engineAcceleration *= 0.9f;
+                engineThrust *= 0.3f;
+
+                // Alejar la nave de la pared
+                Vector3 dir = other.contacts[0].normal;
+                dir.y = 0;
+
+                Vector3 pushForce = dir * 4;
+                pushForce = Vector3.ClampMagnitude(pushForce, 3.0f);
+                ship.body.AddForce(pushForce, ForceMode.Impulse);
+
+                float collisionBounce = Mathf.Abs(impact * 0.2f);
+                collisionBounce = Mathf.Clamp(collisionBounce, 0.0f, 1.2f);
+
+                ship.perfectLap = false;
+
+            }
+        }
+
+        if (other.gameObject.tag == "Ship") {
+
+            Vector3 lv = transform.InverseTransformDirection(ship.body.velocity);
+            lv.y = 0;
+            Vector3 wv = transform.TransformDirection(lv);
+            if (!isGrounded)
+                ship.body.velocity = wv;
+
+            // Alejar de la otra nave
+            Vector3 dir = other.contacts[0].normal;
+            dir.y = 0;
+            ship.body.AddForce(dir * 4.5f, ForceMode.Impulse);
+
+            Vector3 pushDir = other.relativeVelocity;
+            pushDir.x = 0.0f;
+            pushDir.z = 0.0f;
+            ship.body.AddForce(pushDir, ForceMode.Impulse);
         }
     }
 
