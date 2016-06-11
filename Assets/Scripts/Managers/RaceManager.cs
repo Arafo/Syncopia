@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityStandardAssets.CinematicEffects;
+using System.Collections.Generic;
 
 public class RaceManager : MonoBehaviour {
 
@@ -31,6 +32,12 @@ public class RaceManager : MonoBehaviour {
     public AudioClip clipOne;
     public AudioClip clipGo;
 
+    // Efectos
+    private List<Kino.Bloom> ppBlooms = new List<Kino.Bloom>();
+    private List<AntiAliasing> ppAA = new List<AntiAliasing>();
+    private List<AmbientOcclusion> ppAO = new List<AmbientOcclusion>();
+    private List<TonemappingColorGrading> ppTonemapping = new List<TonemappingColorGrading>();
+
     // Use this for initialization
     void Start () {
         GameOptions.LoadGameSettings();
@@ -59,6 +66,7 @@ public class RaceManager : MonoBehaviour {
         ResultsUI.SetActive(false);
 
         SetManagers();
+        AddImageEffects();
     }
 
     // Update is called once per frame
@@ -70,6 +78,7 @@ public class RaceManager : MonoBehaviour {
                 Pause();
             }
         }
+        UpdateImageEffects();
         CalculatePosition();
     }
 
@@ -120,6 +129,21 @@ public class RaceManager : MonoBehaviour {
         }
     }
 
+    private void UpdateImageEffects() {
+        int i = 0;
+        for (i = 0; i < ppBlooms.Count; ++i)
+            ppBlooms[i].enabled = GameSettings.GS_BLOOM;
+        for (i = 0; i < ppAA.Count; ++i)
+            ppAA[i].enabled = GameSettings.GS_FXAA;
+        for (i = 0; i < ppAO.Count; ++i)
+            ppAO[i].enabled = GameSettings.GS_AO;
+        for (i = 0; i < ppTonemapping.Count; ++i)
+            ppTonemapping[i].enabled = GameSettings.GS_TONEMAPPING;
+
+        for (i = 0; i < RaceSettings.ships.Count; ++i)
+            RaceSettings.ships[i].cam.hdr = GameSettings.GS_TONEMAPPING;
+    }
+
     private void SetRaceSettings() {
         RaceSettings.raceManager = this;
 
@@ -133,22 +157,10 @@ public class RaceManager : MonoBehaviour {
     }
 
     private void SetRaceShips() {
-        //GameObject newShip = new GameObject("PLAYER SHIP");
-        //newShip.transform.position = new Vector3(0, 4, 0);
-        //newShip.transform.rotation =;
-        //ShipLoader loader = newShip.AddComponent<ShipLoader>();
-
-        //float rot = newShip.transform.eulerAngles.y;
-        //newShip.transform.rotation = Quaternion.Euler(0.0f, rot, 0.0f);
-
-        //loader.SpawnShip("Ship1", false);
-
         for (int i = 0; i < RaceSettings.racers; i++) {
             bool isAI = (i != 0);
 
             GameObject newShip = new GameObject("PLAYER SHIP");
-            //newShip.transform.position = new Vector3(0, 4, 0);
-            //newShip.transform.rotation =;
             ShipLoader loader = newShip.AddComponent<ShipLoader>();
 
             float rot = newShip.transform.eulerAngles.y;
@@ -167,6 +179,8 @@ public class RaceManager : MonoBehaviour {
         ui.gameObject.SetActive(!GameSettings.isPaused);
 
         pause.gameObject.SetActive(GameSettings.isPaused);
+        if (GameSettings.isPaused)
+            pause.InitParcialResults();
 
         Cursor.visible = GameSettings.isPaused;
     }
@@ -203,6 +217,43 @@ public class RaceManager : MonoBehaviour {
             GameObject newObj = new GameObject("MANAGER_MUSIC");
             musicManager = newObj.AddComponent<MusicManager>();
             musicManager.ship = RaceSettings.ships[0];
+        }
+    }
+
+    private void AddImageEffects() {
+        for (int i = 0; i < RaceSettings.ships.Count; ++i) {
+            if (RaceSettings.ships[i].cam != null) {
+
+                // bloom
+                Kino.Bloom bloom = RaceSettings.ships[i].cam.gameObject.AddComponent<Kino.Bloom>();
+                bloom.radius = 1.0f;
+                ppBlooms.Add(bloom);
+
+
+                // fxaa
+                AntiAliasing aa = RaceSettings.ships[i].cam.gameObject.AddComponent<AntiAliasing>();
+                ppAA.Add(aa);
+
+                // ao
+                AmbientOcclusion ao = RaceSettings.ships[i].cam.gameObject.AddComponent<AmbientOcclusion>();
+                ao.settings.intensity = 1f;
+                ao.settings.radius = 0.3f;
+                ppAO.Add(ao);
+
+                // tonemapping
+                TonemappingColorGrading tm = RaceSettings.ships[i].cam.gameObject.AddComponent<TonemappingColorGrading>();
+                TonemappingColorGrading.ColorGradingSettings settings = new TonemappingColorGrading.ColorGradingSettings();
+                settings.basics.temperatureShift = 0.3f;
+                settings.basics.saturation = 1f;
+                settings.basics.value = 1f;
+                settings.basics.gain = 1.5f;
+
+                tm.colorGrading = settings;
+
+                //tm.tonemapper = Shader.Find("Hidden/Tonemapper");
+                //tm.type = Tonemapping.TonemapperType.AdaptiveReinhardAutoWhite;
+                ppTonemapping.Add(tm);
+            }
         }
     }
 

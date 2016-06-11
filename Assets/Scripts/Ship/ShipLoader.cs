@@ -88,8 +88,8 @@ public class ShipLoader : MonoBehaviour {
         newCamera.AddComponent<GUILayer>();
         newCamera.AddComponent<FlareLayer>();
         newCamera.AddComponent<AudioListener>();
-        Kino.Bloom bloom = newCamera.AddComponent<Kino.Bloom>();
-        bloom.radius = 1.0f;
+        //Kino.Bloom bloom = newCamera.AddComponent<Kino.Bloom>();
+        //bloom.radius = 1.0f;
         //Kino.Vignette vignette = newCamera.AddComponent<Kino.Vignette>();
         //vignette.intensity = 0.2f;
 
