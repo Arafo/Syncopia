@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TeamUtility.IO;
 
 public class ShipInput : ShipCore {
 
@@ -35,13 +36,13 @@ public class ShipInput : ShipCore {
         }
         else {
             if (!RaceSettings.shipsRestrained) {
-                m_AccelerationButton = Input.GetButton("Acceleration");
-                m_SteerAxis = Input.GetAxis("Steer");
-                m_PitchAxis = Input.GetAxis("Pitch");
-                m_LeftAirBrakeAxis = Input.GetAxis("Left brake");
-                m_RightAirBrakeAixs = Input.GetAxis("Right brake");
-                m_BoostButton = Input.GetButton("Boost");
-                m_CameraButton = Input.GetButtonDown("Camera");
+                m_AccelerationButton = InputManager.GetButton("Acceleration");
+                m_SteerAxis = InputManager.GetAxis("Steer");
+                m_PitchAxis = InputManager.GetAxis("Pitch");
+                m_LeftAirBrakeAxis = InputManager.GetAxis("Left brake");
+                m_RightAirBrakeAixs = InputManager.GetAxis("Right brake");
+                m_BoostButton = InputManager.GetButton("Boost");
+                m_CameraButton = InputManager.GetButtonDown("Camera");
             }
             else {
                 m_AccelerationButton = false;
