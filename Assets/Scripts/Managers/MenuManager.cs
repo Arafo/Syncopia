@@ -22,4 +22,18 @@ public class MenuManager : MonoBehaviour {
     public void Quit() {
         Application.Quit();
     }
+
+    public float sec = 0.1f;
+    public void WaitForActivate(GameObject gameObject) {
+        StartCoroutine(LateCall(gameObject));
+    }
+
+    IEnumerator LateCall(GameObject gameObject) {
+
+        yield return new WaitForSeconds(sec);
+        gameObject.SetActive(false);
+    }
+
+
+
 }

@@ -29,4 +29,16 @@ public class ClipManager : MonoBehaviour {
 
         return source;
     }
+
+    public static AudioSource CreateOneShot(AudioClip clip, float volume, float pitch) {
+        AudioSource source = CreateSource();
+        source.clip = clip;
+        source.volume = volume;
+        source.pitch = pitch;
+        source.spatialBlend = 0;
+        source.gameObject.name = clip.name;
+        source.Play();
+
+        return source;
+    }
 }

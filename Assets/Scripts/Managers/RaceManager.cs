@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityStandardAssets.CinematicEffects;
 using System.Collections.Generic;
+using TeamUtility.IO;
 
 public class RaceManager : MonoBehaviour {
 
@@ -72,7 +73,7 @@ public class RaceManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         // Pausa
-        if (Input.GetButtonDown("Pause") || Input.GetKey(KeyCode.Escape) || (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.Tab)) ||
+        if (InputManager.GetButtonDown("Pause") || Input.GetKey(KeyCode.Escape) || (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.Tab)) ||
                 (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab))) {
             if (!RaceSettings.ships[0].finished) {
                 Pause();

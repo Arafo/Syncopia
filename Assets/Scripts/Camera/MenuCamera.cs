@@ -13,8 +13,8 @@ public class MenuCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = Vector3.Lerp(transform.position, currentMount.position, speedFactor);
-        transform.rotation = Quaternion.Slerp(transform.rotation, currentMount.rotation, speedFactor);
+        //transform.position = Vector3.Lerp(transform.position, currentMount.position, speedFactor);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, currentMount.rotation, speedFactor);
 	}
 
     public void SetMount(Transform newMount) {
