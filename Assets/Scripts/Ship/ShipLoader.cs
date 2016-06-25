@@ -4,8 +4,8 @@ using System.Collections;
 public class ShipLoader : MonoBehaviour {
 
 
-    public void SpawnShip(string Ship, bool AI) {
-        GameObject ShipObject = Instantiate(Resources.Load(Ship) as GameObject) as GameObject;
+    public void SpawnShip(Enumerations.E_SHIPS Ship, bool AI) {
+        GameObject ShipObject = Instantiate(Resources.Load(Ship.ToString()) as GameObject) as GameObject;
 
         // Cargar la configuracion de la nave
         ShipConfig config = ShipObject.GetComponent<ShipConfig>();

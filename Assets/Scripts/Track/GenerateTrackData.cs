@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class GenerateTrackData {
 
-    public List<TrackTile> tiles = new List<TrackTile>();
-    public List<TrackTile> tilesMapped = new List<TrackTile>();
-    public List<TrackSegment> sections = new List<TrackSegment>();
+    //public List<TrackTile> tiles = new List<TrackTile>();
+    //public List<TrackTile> tilesMapped = new List<TrackTile>();
+    //public List<TrackSegment> sections = new List<TrackSegment>();
     public List<GameObject> checkpoints = new List<GameObject>();
     public List<Vector3> racingLine = new List<Vector3>();
 
@@ -13,14 +13,29 @@ public class GenerateTrackData {
     public int editorSectionCurrent;
     public int editorSectionNext;
 
-    public static GenerateTrackData GenerateTrack(Mesh trackFloor, Mesh trackWall, Transform floorT) {
+    public static Data GenerateTrack(Mesh trackFloor, Mesh trackWall, Transform floorT) {
         if (trackFloor == null || trackWall == null) {
             return null;
         }
 
+        GameObject genData = new GameObject("DATA");
+        Data data = genData.AddComponent<Data>();
+        genData.SetActive(false);
+
+        data.dataParent = genData;
+
+        data.sectionsObject = new GameObject("Sections");
+        data.sectionsObject.transform.parent = data.dataParent.transform;
+
+        data.tilesObject = new GameObject("Tiles");
+        data.tilesObject.transform.parent = data.dataParent.transform;
+
+        data.wallTilesObject = new GameObject("Wall Tiles");
+        data.wallTilesObject.transform.parent = data.dataParent.transform;
+
         GenerateTrackData gen = new GenerateTrackData();
         gen.rebuildMesh(trackFloor);
-        gen.rebuildMesh(trackWall);
+        //gen.rebuildMesh(trackWall);
 
         // 
         Vector3[] verts = trackFloor.vertices;
@@ -30,16 +45,33 @@ public class GenerateTrackData {
         Vector3[] normals = trackFloor.normals;
 
 
-        gen.createTiles(tris, verts, mappedFloor, floorT, gen);
-        gen.createSections(normals, verts, tiles, floorT, gen);
+        gen.createTiles(tris, verts, mappedFloor, floorT, data);
+        gen.createSections(normals, verts, tiles, floorT, data);
         gen.createRacingLine();
         gen.createCheckpoints();
 
-        //
-        for (int i = 0; i < mappedFloor.Length; i++)
-            gen.tilesMapped.Add(mappedFloor[i]);
 
-        return gen;
+        int sectionCount = data.sections.Count;
+        for (int i = 0; i < sectionCount; ++i) {
+            if (i == sectionCount - 1)
+                data.sections[i].next = data.sections[0];
+            else
+                data.sections[i].next = data.sections[i + 1];
+        }
+
+        //
+        //for (int i = 0; i < mappedFloor.Length; i++)
+        //gen.tilesMapped.Add(mappedFloor[i]);
+
+        // add mapped tiles to gendata
+        data.mappedTiles = mappedFloor;
+
+        // update data objects to reflect amount of data they hold
+        data.tilesObject.name = string.Format("Tiles ({0})", data.tiles.Count);
+        data.wallTilesObject.name = string.Format("Wall Tiles ({0})", data.tiles.Count);
+        data.sectionsObject.name = string.Format("Sections ({0})", data.sections.Count);
+
+        return data;
     }
 
     private void rebuildMesh(Mesh oldMesh) {
@@ -54,7 +86,7 @@ public class GenerateTrackData {
         int[] oldTriangles = oldMesh.triangles;
         for (int i = 0; i < triLength; i++) {
             newVertices[i] = oldVerts[oldTriangles[i]];
-            newUV[i] = oldUV[oldTriangles[i]];
+            //newUV[i] = oldUV[oldTriangles[i]];
             newNormals[i] = oldNormals[oldTriangles[i]];
             newTriangles[i] = i;
         }
@@ -65,13 +97,13 @@ public class GenerateTrackData {
         oldMesh.triangles = newTriangles;
     }
 
-    private void createTiles(int[] tris, Vector3[] verts, TrackTile[] mappedFloor, Transform floorT, GenerateTrackData gen) {
+    private void createTiles(int[] tris, Vector3[] verts, TrackTile[] mappedFloor, Transform floorT, Data gen) {
         // Crear tiles
         TrackTile newTile;
         int index = 0;
         for (int i = 0; i < tris.Length - 3; i += 6) {
             // Crear tile y añadirla a lista de tiles
-            newTile = createTile(tris, verts, floorT, i, index);
+            newTile = createTile(tris, verts, floorT, i, index, gen);
             gen.tiles.Add(newTile);
 
             mappedFloor[i + 0] = newTile;
@@ -83,9 +115,11 @@ public class GenerateTrackData {
         }
     }
 
-    private TrackTile createTile(int[] tris, Vector3[] verts, Transform floorT, int i, int index) {
+    private TrackTile createTile(int[] tris, Vector3[] verts, Transform floorT, int i, int index, Data data) {
         // Crear una tile
         TrackTile newTile = new TrackTile();
+        newTile = data.sectionsObject.AddComponent<TrackTile>();
+        newTile.hideFlags = HideFlags.HideInInspector;
 
         // Añadir los indices de la tile
         newTile.indices = new int[4];
@@ -94,7 +128,7 @@ public class GenerateTrackData {
         newTile.indices[2] = tris[i + 2];
         newTile.indices[3] = tris[i + 5];
 
-        newTile.type = E_TILETYPE.FLOOR;
+        newTile.type = E_TILETYPE.NORMAL;
         newTile.index = index;
 
         // Posicion media de los vertices
@@ -106,7 +140,7 @@ public class GenerateTrackData {
         return newTile;
     }
 
-    private void createSections(Vector3[] normals, Vector3[] verts, TrackTile[] tiles, Transform floorT, GenerateTrackData gen) {
+    private void createSections(Vector3[] normals, Vector3[] verts, TrackTile[] tiles, Transform floorT, Data gen) {
 
         // Crear las secciones del circuito
         TrackSegment newSection;
@@ -116,11 +150,14 @@ public class GenerateTrackData {
             tiles[1] = gen.tiles[i + 1];
 
             // Crear la seccion y añadirla a lista de secciones
-            newSection = gen.createSection(normals, verts, tiles, floorT, gen, i, index);
+            newSection = createSection(normals, verts, tiles, floorT, gen, i, index);
             gen.sections.Add(newSection);
 
             tiles[0].section = newSection;
             tiles[1].section = newSection;
+
+            gen.tiles[i].section = newSection;
+            gen.tiles[i + 1].section = newSection;
 
             index++;
         }
@@ -134,8 +171,10 @@ public class GenerateTrackData {
         }
     }
 
-    private TrackSegment createSection(Vector3[] normals, Vector3[] verts, TrackTile[] tiles, Transform floorT, GenerateTrackData gen, int i, int index) {
+    private TrackSegment createSection(Vector3[] normals, Vector3[] verts, TrackTile[] tiles, Transform floorT, Data gen, int i, int index) {
         TrackSegment newSection = new TrackSegment();
+        newSection = gen.sectionsObject.AddComponent<TrackSegment>();
+        newSection.hideFlags = HideFlags.HideInInspector;
 
         tiles[0] = gen.tiles[i];
         tiles[1] = gen.tiles[i + 1];
@@ -160,21 +199,21 @@ public class GenerateTrackData {
     }
 
     private void createRacingLine() {
-        // PROVISIONAL
-        for (int i = 0; i < sections.Count - 1; i++)  {
+        //// PROVISIONAL
+        //for (int i = 0; i < sections.Count - 1; i++) {
 
-            Vector3 k0 = SectionGetRotation(sections[i]) * Vector3.forward;
-            Vector3 k1 = SectionGetRotation(sections[i + 1]) * Vector3.forward;
-            //Vector3 k2 = SectionGetRotation(sections[i + 2]) * Vector3.forward;
-            float a = k0.x > 0 ? -k0.x : k0.x;
-            float b = (k0.x + k1.x + k0.z + k1.z) / 4;
-            float c = k0.z < 0 ? -k0.z : k0.z;
+        //    Vector3 k0 = SectionGetRotation(sections[i]) * Vector3.forward;
+        //    Vector3 k1 = SectionGetRotation(sections[i + 1]) * Vector3.forward;
+        //    //Vector3 k2 = SectionGetRotation(sections[i + 2]) * Vector3.forward;
+        //    float a = k0.x > 0 ? -k0.x : k0.x;
+        //    float b = (k0.x + k1.x + k0.z + k1.z) / 4;
+        //    float c = k0.z < 0 ? -k0.z : k0.z;
 
-            racingLine.Add(new Vector3(sections[i].position.x + a*40, sections[i].position.y, sections[i].position.z));
+        //    racingLine.Add(new Vector3(sections[i].position.x + a * 40, sections[i].position.y, sections[i].position.z));
 
 
-            //Debug.Log(a);
-        }
+        //    //Debug.Log(a);
+        //}
     }
 
     private void createCheckpoints() {
@@ -182,16 +221,15 @@ public class GenerateTrackData {
             checkpoints.Clear();
 
         //for (int i = 0; i < sections.Count - 1; i++) {
-            //GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            //cube.transform.localScale = new Vector3(120, 80, 1);
-            //cube.transform.rotation = sections[i].rotation;
-            //cube.transform.position = new Vector3(sections[i].position.x, sections[i].position.y + 80/2, sections[i].position.z);
-            //checkpoints.Add(cube);
+        //GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //cube.transform.localScale = new Vector3(120, 80, 1);
+        //cube.transform.rotation = sections[i].rotation;
+        //cube.transform.position = new Vector3(sections[i].position.x, sections[i].position.y + 80/2, sections[i].position.z);
+        //checkpoints.Add(cube);
         //}
     }
 
-    private Quaternion SectionGetRotation(TrackSegment section)
-    {
+    private Quaternion SectionGetRotation(TrackSegment section) {
         // Obtener las posiciones de la seccion y su siguiente
         Vector3 sectionPosition = section.position;
         Vector3 nextPosition = section.next.position;

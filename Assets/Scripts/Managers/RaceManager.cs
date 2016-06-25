@@ -159,6 +159,7 @@ public class RaceManager : MonoBehaviour {
 
     private void SetRaceShips() {
         for (int i = 0; i < RaceSettings.racers; i++) {
+            Enumerations.E_SHIPS ship = RaceSettings.playerShip;
             bool isAI = (i != 0);
 
             GameObject newShip = new GameObject("PLAYER SHIP");
@@ -170,7 +171,13 @@ public class RaceManager : MonoBehaviour {
             newShip.transform.position = RaceSettings.trackData.spawnPositions[i];
             newShip.transform.rotation = RaceSettings.trackData.spawnRotations[i];
 
-            loader.SpawnShip("Flyer", isAI);
+            if (isAI) {
+                int shipCount = System.Enum.GetNames(typeof(Enumerations.E_SHIPS)).Length;
+                int rand = Random.Range(0, shipCount);
+                ship = (Enumerations.E_SHIPS)rand;
+            }
+
+            loader.SpawnShip(ship, isAI);
         }
 
     }
