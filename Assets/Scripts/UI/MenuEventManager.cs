@@ -37,11 +37,36 @@ public class MenuEventManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Establce la dificultad de la carrera
+    /// Establece la dificultad de la carrera
     /// </summary>
     /// <param name="difficulty"></param>
     public void SetDifficulty(int difficulty) {
     }
+
+    /// <summary>
+    /// Establece la dificultad de la carrera
+    /// </summary>
+    /// <param name="difficulty"></param>
+    public void SetLaps(int laps) {
+        RaceSettings.laps = laps;
+    }
+
+    /// <summary>
+    /// Establece la dificultad de la carrera
+    /// </summary>
+    /// <param name="difficulty"></param>
+    public void SetPlayers(int players) {
+        RaceSettings.racers = players;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="state"></param>
+    public void SetOverrideRaceSettings(bool state) {
+        RaceSettings.overrideRaceSettings = state;
+    }
+
 
     /// <summary>
     /// Establece la nave a cargar

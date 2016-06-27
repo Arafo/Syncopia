@@ -12,6 +12,7 @@ public class RaceSettings {
     // Opciones
     public static int racers = 5;
     public static int laps = 1;
+    public static bool overrideRaceSettings = false;
     public static Enumerations.E_SHIPS playerShip = Enumerations.E_SHIPS.TESTSHIP;
     public static string trackToLoad;
 

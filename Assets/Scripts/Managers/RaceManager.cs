@@ -153,8 +153,12 @@ public class RaceManager : MonoBehaviour {
         RaceSettings.countdownReady = true;
 
         RaceSettings.ships.Clear();
-        RaceSettings.racers = racerCount;
-        RaceSettings.laps = lapCount;
+
+
+        if (!RaceSettings.overrideRaceSettings) {
+            RaceSettings.racers = racerCount;
+            RaceSettings.laps = lapCount;
+        }
     }
 
     private void SetRaceShips() {
