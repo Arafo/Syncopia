@@ -8,6 +8,7 @@ TagManager:
   - Checkpoint
   - Checkpoint1
   - Checkpoint2
+  - Ship
   layers:
   - Default
   - TransparentFX

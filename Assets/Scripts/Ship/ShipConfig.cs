@@ -37,6 +37,10 @@ public class ShipConfig : MonoBehaviour
     public float grip_Low; // Resistencia a deslizarse
     public float grip_High; // Resistencia a deslizarse
     public float grip;
+    public float slideAmount;
+    public float slideGain;
+    public float slideFalloff;
+
 
     [Header("DESLIZAMIENTO")]
     public float slipAmount; // Cantidad de deslizamiento por el uso de los frenos
@@ -59,4 +63,5 @@ public class ShipConfig : MonoBehaviour
     public GameObject boosterRight;
     public float boosterExtendLength;
     public GameObject engineSpray;
+
 }

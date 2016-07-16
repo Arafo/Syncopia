@@ -21,7 +21,7 @@ public class ShipAI : ShipCore {
     // Configuracion de los adelantamientos
     private ShipReferer overtakeTarget;
     private Vector3 overTakeOffset;
-    private float overTakeTimer;
+    public float overTakeTimer;
     private float overtakeSide;
 
     private bool closeToShip;
@@ -80,8 +80,113 @@ public class ShipAI : ShipCore {
                 //ship.sim.enginePower = 0.85f;
             }
             else if (ship.isAI) {
-
-            }
+                switch (ship.place) {
+                    case 1:
+                        switch (RaceSettings.difficulty) {
+                            case Enumerations.E_DIFFICULTY.EASY:
+                                ship.sim.engineSpeed *= 0.75f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.MEDIUM:
+                                ship.sim.engineSpeed *= 0.75f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.HARD:
+                                ship.sim.engineSpeed *= 0.85f;
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch (RaceSettings.difficulty) {
+                            case Enumerations.E_DIFFICULTY.EASY:
+                                ship.sim.engineSpeed *= 0.75f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.MEDIUM:
+                                ship.sim.engineSpeed *= 0.75f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.HARD:
+                                ship.sim.engineSpeed *= 0.85f;
+                                break;
+                        }
+                        break;
+                    case 3:
+                        switch (RaceSettings.difficulty) {
+                            case Enumerations.E_DIFFICULTY.EASY:
+                                ship.sim.engineSpeed *= 0.85f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.MEDIUM:
+                                ship.sim.engineSpeed *= 0.9f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.HARD:
+                                ship.sim.engineSpeed *= 0.95f;
+                                break;
+                        }
+                        break;
+                    case 4:
+                        switch (RaceSettings.difficulty) {
+                            case Enumerations.E_DIFFICULTY.EASY:
+                                ship.sim.engineSpeed *= 0.85f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.MEDIUM:
+                                ship.sim.engineSpeed *= 0.9f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.HARD:
+                                ship.sim.engineSpeed *= 0.95f;
+                                break;
+                        }
+                        break;
+                    case 5:
+                        switch (RaceSettings.difficulty) {
+                            case Enumerations.E_DIFFICULTY.EASY:
+                                ship.sim.engineSpeed *= 0.85f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.MEDIUM:
+                                ship.sim.engineSpeed *= 0.9f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.HARD:
+                                ship.sim.engineSpeed *= 0.95f;
+                                break;
+                        }
+                        break;
+                    case 6:
+                        switch (RaceSettings.difficulty) {
+                            case Enumerations.E_DIFFICULTY.EASY:
+                                ship.sim.engineSpeed *= 0.85f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.MEDIUM:
+                                ship.sim.engineSpeed *= 0.9f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.HARD:
+                                ship.sim.engineSpeed *= 0.95f;
+                                break;
+                        }
+                        break;
+                    case 7:
+                        switch (RaceSettings.difficulty) {
+                            case Enumerations.E_DIFFICULTY.EASY:
+                                ship.sim.engineSpeed *= 0.9f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.MEDIUM:
+                                ship.sim.engineSpeed *= 1.0f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.HARD:
+                                ship.sim.engineSpeed *= 1.1f;
+                                break;
+                        }
+                        break;
+                    case 8:
+                        switch (RaceSettings.difficulty) {
+                            case Enumerations.E_DIFFICULTY.EASY:
+                                ship.sim.engineSpeed *= 0.9f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.MEDIUM:
+                                ship.sim.engineSpeed *= 1.0f;
+                                break;
+                            case Enumerations.E_DIFFICULTY.HARD:
+                                ship.sim.engineSpeed *= 1.1f;
+                                break;
+                        }
+                        break;
+                }
+            } 
 
             if (overTakeTimer > 0) {
                 ship.sim.engineSpeed = overtakeTarget.sim.engineSpeed * 1.3f;
@@ -98,7 +203,7 @@ public class ShipAI : ShipCore {
 
             // Frenar si se esta detras de otra nave
             if (closeToShip)
-                ship.sim.engineSpeed *= 0.8f;
+                ship.sim.engineSpeed *= 1.5f;
 
             // Empujar al centro del circuito
             if (Mathf.Abs(offset.x) > ship.currentSection.width * 0.1f && RaceSettings.countdownFinished) {
@@ -114,13 +219,15 @@ public class ShipAI : ShipCore {
 
             closeToShip = false;
             if (Physics.Raycast(transform.position, transform.forward, out hit, 5, 1 << LayerMask.NameToLayer("Ship"))) {
+                Debug.Log("Ship " + ship.place + " overtake 2");
                 if (hit.distance < 0.5f)
                     closeToShip = true;
             }
 
             // Comprobacion de adelantamiento
             RaycastHit outSphere;
-            if (Physics.Raycast(transform.position, transform.forward, out outSphere, 2.0f, 1 << LayerMask.NameToLayer("Ship"))) {
+            if (Physics.Raycast(transform.position, transform.forward, out outSphere, 5.0f, 1 << LayerMask.NameToLayer("Ship"))) {
+                Debug.Log("Ship " + ship.place + " overtake 2");
                 if (overTakeTimer < 0) {
                     overtakeTarget = outSphere.transform.gameObject.GetComponent<ShipReferer>();
 
@@ -136,7 +243,8 @@ public class ShipAI : ShipCore {
             }
 
             // Adelantar
-            if (overTakeTimer > 0) {
+            if (closeToShip || overTakeTimer > 0) {
+                Debug.Log("Ship " + ship.place + " overtake 2");
                 ship.body.AddForce(overtakeTarget.transform.right * (overtakeSide * Mathf.Abs(overtakeTarget.transform.InverseTransformPoint(transform.position).x)));
             }
 

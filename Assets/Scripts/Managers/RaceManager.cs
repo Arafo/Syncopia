@@ -45,6 +45,7 @@ public class RaceManager : MonoBehaviour {
         GameSettings.CapFPS(GameSettings.GS_FRAMECAP);
 
         RaceSettings.trackData = trackData;
+
         trackData.FindSpawnTiles();
 
         SetRaceSettings();
@@ -52,17 +53,17 @@ public class RaceManager : MonoBehaviour {
         SetRaceShips();
 
         // HUD
-        GameObject hudUI = Instantiate(Resources.Load("HUD") as GameObject) as GameObject;
+        GameObject hudUI = Instantiate(Resources.Load("UI/HUD") as GameObject) as GameObject;
         ui = hudUI.GetComponent<RaceUI>();
         ui.ship = RaceSettings.ships[0];
 
         // Menu de pausa
-        GameObject pauseUI = Instantiate(Resources.Load("Pause") as GameObject) as GameObject;
+        GameObject pauseUI = Instantiate(Resources.Load("UI/Pause") as GameObject) as GameObject;
         pause = pauseUI.GetComponent<PauseManager>();
         pauseUI.SetActive(false);
 
         // Resultados
-        GameObject ResultsUI = Instantiate(Resources.Load("Results") as GameObject) as GameObject;
+        GameObject ResultsUI = Instantiate(Resources.Load("UI/Results") as GameObject) as GameObject;
         results = ResultsUI.GetComponent<PauseManager>();
         ResultsUI.SetActive(false);
 

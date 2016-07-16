@@ -5,7 +5,7 @@ public class ShipLoader : MonoBehaviour {
 
 
     public void SpawnShip(Enumerations.E_SHIPS Ship, bool AI) {
-        GameObject ShipObject = Instantiate(Resources.Load(Ship.ToString()) as GameObject) as GameObject;
+        GameObject ShipObject = Instantiate(Resources.Load("Ships/" + Ship.ToString()) as GameObject) as GameObject;
 
         // Cargar la configuracion de la nave
         ShipConfig config = ShipObject.GetComponent<ShipConfig>();
@@ -54,7 +54,7 @@ public class ShipLoader : MonoBehaviour {
         //mc.gameObject.layer = LayerMask.NameToLayer("Ship");
 
         GameObject collider = new GameObject("Collider");
-        collider.tag = "Player";
+        collider.tag = "Ship";
         collider.layer = LayerMask.NameToLayer("Ship");
         collider.transform.parent = transform;
         collider.transform.localPosition = Vector3.zero;

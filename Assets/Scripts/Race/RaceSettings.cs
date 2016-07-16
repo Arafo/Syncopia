@@ -12,8 +12,9 @@ public class RaceSettings {
     // Opciones
     public static int racers = 5;
     public static int laps = 1;
+    public static Enumerations.E_DIFFICULTY difficulty = Enumerations.E_DIFFICULTY.MEDIUM;
     public static bool overrideRaceSettings = false;
-    public static Enumerations.E_SHIPS playerShip = Enumerations.E_SHIPS.TESTSHIP;
+    public static Enumerations.E_SHIPS playerShip = Enumerations.E_SHIPS.FLYER;
     public static string trackToLoad;
 
     public static bool countdownReady;

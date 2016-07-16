@@ -23353,8 +23353,8 @@ MonoBehaviour:
       joystick: 0
     - name: Steer
       description: 
-      positive: 0
-      negative: 100
+      positive: 275
+      negative: 276
       altPositive: 0
       altNegative: 0
       deadZone: 0.001
@@ -23367,8 +23367,8 @@ MonoBehaviour:
       joystick: 0
     - name: Pitch
       description: 
-      positive: 0
-      negative: 0
+      positive: 273
+      negative: 274
       altPositive: 0
       altNegative: 0
       deadZone: 0
@@ -23382,7 +23382,7 @@ MonoBehaviour:
     - name: Left brake
       description: 
       positive: 0
-      negative: 0
+      negative: 97
       altPositive: 0
       altNegative: 0
       deadZone: 0
@@ -23390,12 +23390,12 @@ MonoBehaviour:
       sensitivity: 1
       snap: 0
       invert: 0
-      type: 0
+      type: 2
       axis: 0
       joystick: 0
     - name: Right brake
       description: 
-      positive: 0
+      positive: 100
       negative: 0
       altPositive: 0
       altNegative: 0
@@ -23404,12 +23404,12 @@ MonoBehaviour:
       sensitivity: 1
       snap: 0
       invert: 0
-      type: 0
+      type: 2
       axis: 0
       joystick: 0
     - name: Boost
       description: 
-      positive: 0
+      positive: 304
       negative: 0
       altPositive: 0
       altNegative: 0
@@ -23423,7 +23423,7 @@ MonoBehaviour:
       joystick: 0
     - name: Camera
       description: 
-      positive: 0
+      positive: 99
       negative: 0
       altPositive: 0
       altNegative: 0
@@ -23437,14 +23437,14 @@ MonoBehaviour:
       joystick: 0
     - name: Pause
       description: 
-      positive: 0
+      positive: 27
       negative: 0
       altPositive: 0
       altNegative: 0
       deadZone: 0
       gravity: 1
       sensitivity: 1
-      snap: 0
+      snap: 1
       invert: 0
       type: 0
       axis: 0
@@ -23788,7 +23788,7 @@ MonoBehaviour:
       type: 0
       axis: 0
       joystick: 0
-    isExpanded: 1
+    isExpanded: 0
   playerOneDefault: KeyboardAndMouse
   playerTwoDefault: 
   playerThreeDefault: 

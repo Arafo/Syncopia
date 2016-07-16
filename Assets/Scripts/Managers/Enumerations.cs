@@ -8,5 +8,12 @@ public class Enumerations {
         TESTSHIP,
         FLYER
     }
+
+    public enum E_DIFFICULTY {
+        EASY,
+        MEDIUM,
+        HARD
+    }
+
     #endregion
 }

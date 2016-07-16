@@ -671,9 +671,9 @@ MonoBehaviour:
   cameraTurnSensitivity: 0
   cameraTurnDamp: 5
   engineAmount: 1250
-  engineAcceleration: 105
+  engineAcceleration: 100
   engineGain: 1000
-  engineFalloff: 600
+  engineFalloff: 700
   turnAmount: 1.2
   turnGain: 400
   turnFalloff: 800
@@ -683,17 +683,20 @@ MonoBehaviour:
   airbrakeTurnMultiplier: 9
   gravity_Low: 0
   gravity_High: 0
-  gravity: 80
+  gravity: 18
   grip_Low: 0
   grip_High: 0
   grip: 3
+  slideAmount: 0
+  slideGain: 0
+  slideFalloff: 0
   slipAmount: 1
   slipGain: 2
   slipFalloff: 500
   slipMagnitude: 1000
   slipVelocityMult: 1
-  hoverHeight: 5
-  size: {x: 5, y: 3, z: 15}
+  hoverHeight: 4
+  size: {x: 5, y: 1.5, z: 7.5}
   windTrailLeft: {fileID: 104914}
   windTrailRight: {fileID: 180310}
   engineTrail: {fileID: 118270}

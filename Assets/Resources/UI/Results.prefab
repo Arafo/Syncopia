@@ -1593,6 +1593,40 @@ MonoBehaviour:
   ships: {fileID: 11403028}
   bestTimes: {fileID: 11485976}
   totalTimes: {fileID: 11483962}
+  dropResolution: {fileID: 0}
+  sliderDrawDistance: {fileID: 0}
+  txtDrawDistance: {fileID: 0}
+  sliderFramerate: {fileID: 0}
+  txtFramerate: {fileID: 0}
+  tglBloom: {fileID: 0}
+  tglFXAA: {fileID: 0}
+  sliderMasterVolume: {fileID: 0}
+  txtMasterVolume: {fileID: 0}
+  sliderSFXVolume: {fileID: 0}
+  txtSFXVolume: {fileID: 0}
+  sliderMusicVolume: {fileID: 0}
+  txtMusicVolume: {fileID: 0}
+  sliderVoiceVolume: {fileID: 0}
+  txtVoiceVolume: {fileID: 0}
+  tglCustomMusic: {fileID: 0}
+  gameplayWindow: {fileID: 0}
+  gameplayHUDColor: {fileID: 0}
+  dropHudType: {fileID: 0}
+  dropDefaultCamera: {fileID: 0}
+  dropCountdownType: {fileID: 0}
+  dropWeaponAnnouncement: {fileID: 0}
+  tglIntroVoices: {fileID: 0}
+  tglMirror: {fileID: 0}
+  HUDColorWindow: {fileID: 0}
+  HUDColorVisual: {fileID: 0}
+  sliderHUDR: {fileID: 0}
+  sliderHUDG: {fileID: 0}
+  sliderHUDB: {fileID: 0}
+  sliderHUDA: {fileID: 0}
+  txtHUDR: {fileID: 0}
+  txtHUDG: {fileID: 0}
+  txtHUDB: {fileID: 0}
+  txtHUDA: {fileID: 0}
 --- !u!114 &11458148
 MonoBehaviour:
   m_ObjectHideFlags: 1

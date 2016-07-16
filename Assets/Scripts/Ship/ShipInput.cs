@@ -18,6 +18,7 @@ public class ShipInput : ShipCore {
     public bool m_CameraButton;
     public float m_LeftAirBrakeAxis;
     public float m_RightAirBrakeAixs;
+    public float m_AirBrakesAxis;
 
     // Use this for initialization
     public override void OnStart () {
@@ -43,6 +44,7 @@ public class ShipInput : ShipCore {
                 m_RightAirBrakeAixs = InputManager.GetAxis("Right brake");
                 m_BoostButton = InputManager.GetButton("Boost");
                 m_CameraButton = InputManager.GetButtonDown("Camera");
+                m_AirBrakesAxis = m_LeftAirBrakeAxis + m_RightAirBrakeAixs;
             }
             else {
                 m_AccelerationButton = false;
