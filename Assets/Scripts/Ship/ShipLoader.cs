@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 public class ShipLoader : MonoBehaviour {
 
 
-    public void SpawnShip(Enumerations.E_SHIPS Ship, bool AI) {
-        GameObject ShipObject = Instantiate(Resources.Load("Ships/" + Ship.ToString()) as GameObject) as GameObject;
+    public void SpawnShip(Enumerations.E_SHIPS Ship, int  type, GameObject player = null) {
+        GameObject ShipObject = null;
+        if (type != 2)
+            ShipObject = Instantiate(Resources.Load("Ships/" + Ship.ToString()) as GameObject) as GameObject;
+        else
+            ShipObject = player;
 
         // Cargar la configuracion de la nave
         ShipConfig config = ShipObject.GetComponent<ShipConfig>();
@@ -32,6 +37,7 @@ public class ShipLoader : MonoBehaviour {
         axis.transform.localPosition = Vector3.zero;
         axis.transform.localRotation = Quaternion.identity;
         axis.transform.parent = transform;
+
 
         // 
         ShipObject.transform.parent = axis.transform;
@@ -67,8 +73,11 @@ public class ShipLoader : MonoBehaviour {
         referer.body = body;
         referer.mesh = collider;
         referer.axis = axis;
-        referer.isAI = AI;
-        referer.cam = SetCamera(referer, AI);
+        referer.isAI = (type == 1);
+        referer.cam = SetCamera(referer, (type == 1 /*|| type == 2*/));
+
+        //referer.isAI = (type == 1);
+        //referer.isNetworked = (type == 2);
 
         // Destruimos la instancia
         RaceSettings.ships.Add(referer);

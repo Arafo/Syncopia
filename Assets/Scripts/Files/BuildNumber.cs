@@ -16,13 +16,15 @@ public class BuildNumber : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        string path = "E:/Rafa/Mis documentos/Unity/ProjectSyncopia";
-        string file = "build.xml";
+        if (Application.isEditor) {
+            string path = "E:/Rafa/Mis documentos/Unity/ProjectSyncopia";
+            string file = "build.xml";
 
-        Build build = Load(Path.Combine(path, file));
-        build.Number = build.Number + 1;
-        Save(Path.Combine(path, file), build);
-        //Debug.Log(build.Number);
+            Build build = Load(Path.Combine(path, file));
+            build.Number = build.Number + 1;
+            Save(Path.Combine(path, file), build);
+            //Debug.Log(build.Number);
+        }
     }
 
     public void Save(string path, Build build)

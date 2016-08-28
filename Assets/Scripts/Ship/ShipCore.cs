@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class ShipCore : MonoBehaviour {
+public class ShipCore : NetworkBehaviour {
 
     public ShipReferer ship;
 

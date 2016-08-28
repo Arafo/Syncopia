@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class ShipReferer : MonoBehaviour {
+public class ShipReferer : NetworkBehaviour {
 
     // IA
     public bool isAI;

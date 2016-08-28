@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class MenuEventManager : MonoBehaviour {
 
+    public MenuAnimationManager menuAnimation;
+
     // Use this for initialization
     void Start() {
         GameOptions.LoadGameSettings();
@@ -12,6 +14,15 @@ public class MenuEventManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+    }
+
+    public void StartRace() {
+        ServerSettings.isNetworked = false;
+        menuAnimation.SetLeaveScene("LoadingScreen");
+    }
+
+    public void StartRaceMP() {
+        ServerSettings.isNetworked = true;
     }
 
     /// <summary>

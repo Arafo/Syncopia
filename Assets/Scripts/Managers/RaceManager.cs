@@ -2,6 +2,7 @@
 using UnityStandardAssets.CinematicEffects;
 using System.Collections.Generic;
 using TeamUtility.IO;
+using UnityEngine.Networking;
 
 public class RaceManager : MonoBehaviour {
 
@@ -23,6 +24,9 @@ public class RaceManager : MonoBehaviour {
     public RaceUI ui;
     public PauseManager pause;
     public PauseManager results;
+
+    public NetworkGameManager mpmanager;
+
 
     public TrackSegment endSection;
 
@@ -55,7 +59,7 @@ public class RaceManager : MonoBehaviour {
         // HUD
         GameObject hudUI = Instantiate(Resources.Load("UI/HUD") as GameObject) as GameObject;
         ui = hudUI.GetComponent<RaceUI>();
-        ui.ship = RaceSettings.ships[0];
+        //ui.ship = RaceSettings.ships[0];
 
         // Menu de pausa
         GameObject pauseUI = Instantiate(Resources.Load("UI/Pause") as GameObject) as GameObject;
@@ -69,6 +73,15 @@ public class RaceManager : MonoBehaviour {
 
         SetManagers();
         AddImageEffects();
+
+        /*if (ServerSettings.isNetworked) {
+            mpmanager.gameObject.SetActive(true);
+            //GameObject mmGO = new GameObject("MANAGER_MULTIPLAYER");
+            //mpmanager = mmGO.AddComponent<NetworkGameManager>();
+            //mpmanager.manager = this;
+
+            //NetworkServer.Spawn(mmGO);
+        }*/
     }
 
     // Update is called once per frame
@@ -87,13 +100,25 @@ public class RaceManager : MonoBehaviour {
     void FixedUpdate() {
         if (!RaceSettings.countdownFinished) {
             if (RaceSettings.countdownReady) {
+
+                // No se hace nada si es una partida en red y algún jugador no esta listo
+                if (ServerSettings.isNetworked && !mpmanager.allPlayersSpawned) 
+                    return;
+                
+                // No se hace nada si es una partida es red y no es el servidor
+                if (ServerSettings.isNetworked && !NetworkServer.active) 
+                    return;
+
                 if (countDownStage == 0) {
                     countdownTimer += Time.deltaTime;
                     if (countdownTimer > countdownStartDelay) {
-                        ui.uiCountDownText.text = "3";
+                        UpdateCounter("3");
                         ClipManager.CreateOneShot(clipThree, AudioSettings.VOLUME_VOICES);
                         countdownTimer = 0.0f;
                         countDownStage++;
+
+                        if (NetworkServer.active)
+                            mpmanager.RpcSetCountdown("3");
                     }
                 }
                 else if (countDownStage < 4) {
@@ -103,20 +128,30 @@ public class RaceManager : MonoBehaviour {
                         countDownStage++;
 
                         if (countDownStage == 2) {
-                            ui.uiCountDownText.text = "2";
+                            UpdateCounter("2");
                             ClipManager.CreateOneShot(clipTwo, AudioSettings.VOLUME_VOICES);
+
+                            if (NetworkServer.active)
+                                mpmanager.RpcSetCountdown("2");
                         }
 
                         if (countDownStage == 3) {
-                            ui.uiCountDownText.text = "1";
+                            UpdateCounter("1");
                             ClipManager.CreateOneShot(clipOne, AudioSettings.VOLUME_VOICES);
+
+                            if (NetworkServer.active)
+                                mpmanager.RpcSetCountdown("1");
                         }
 
                     }
                 }
                 if (countDownStage == 4) {
-                    ui.uiCountDownText.text = "GO!";
+                    UpdateCounter("GO!");
                     ClipManager.CreateOneShot(clipGo, AudioSettings.VOLUME_VOICES);
+
+                    if (NetworkServer.active)
+                        mpmanager.RpcSetCountdown("GO!");
+
                     countdownTimer = 0.0f;
                     RaceSettings.countdownFinished = true;
                     RaceSettings.shipsRestrained = false;
@@ -126,9 +161,16 @@ public class RaceManager : MonoBehaviour {
         else {
             countdownTimer += Time.deltaTime;
             if (countdownTimer > countdownStageDelay) {
-                ui.uiCountDownText.text = "";
-            }
+                UpdateCounter("");
+
+                if (NetworkServer.active)
+                    mpmanager.RpcSetCountdown("");
+            }      
         }
+    }
+
+    public void UpdateCounter(string text) {
+        ui.uiCountDownText.text = text;
     }
 
     private void UpdateImageEffects() {
@@ -163,6 +205,10 @@ public class RaceManager : MonoBehaviour {
     }
 
     private void SetRaceShips() {
+
+        if (ServerSettings.isNetworked)
+            return;
+
         for (int i = 0; i < RaceSettings.racers; i++) {
             Enumerations.E_SHIPS ship = RaceSettings.playerShip;
             bool isAI = (i != 0);
@@ -182,7 +228,8 @@ public class RaceManager : MonoBehaviour {
                 ship = (Enumerations.E_SHIPS)rand;
             }
 
-            loader.SpawnShip(ship, isAI);
+            int type = (isAI) ? 1 : 0;
+            loader.SpawnShip(ship, type);
         }
 
     }
@@ -229,7 +276,7 @@ public class RaceManager : MonoBehaviour {
         if (musicManagerEnabled) {
             GameObject newObj = new GameObject("MANAGER_MUSIC");
             musicManager = newObj.AddComponent<MusicManager>();
-            musicManager.ship = RaceSettings.ships[0];
+            //musicManager.ship = RaceSettings.ships[0];
         }
     }
 
