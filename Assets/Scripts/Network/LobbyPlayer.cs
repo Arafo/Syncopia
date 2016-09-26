@@ -15,6 +15,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
     static List<int> _colorInUse = new List<int>();
 
     public Button colorButton;
+    public Button shipButton;
     public InputField nameInput;
     public Button readyButton;
     public Button waitingPlayerButton;
@@ -28,6 +29,9 @@ public class LobbyPlayer : NetworkLobbyPlayer {
     public string playerName = "";
     [SyncVar(hook = "OnMyColor")]
     public Color playerColor = Color.white;
+    [SyncVar(hook = "OnMyShip")]
+    public Enumerations.E_SHIPS playerShip = Enumerations.E_SHIPS.FLYER;
+
 
     public Color OddRowColor = new Color(250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f);
     public Color EvenRowColor = new Color(180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f);
@@ -63,6 +67,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         //will be created with the right value currently on server
         OnMyName(playerName);
         OnMyColor(playerColor);
+        OnMyShip(playerShip);
     }
 
     public override void OnStartAuthority() {
@@ -117,12 +122,16 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         //we switch from simple name display to name input
         colorButton.interactable = true;
         nameInput.interactable = true;
+        shipButton.interactable = true;
 
         nameInput.onEndEdit.RemoveAllListeners();
         nameInput.onEndEdit.AddListener(OnNameChanged);
 
         colorButton.onClick.RemoveAllListeners();
         colorButton.onClick.AddListener(OnColorClicked);
+
+        shipButton.onClick.RemoveAllListeners();
+        shipButton.onClick.AddListener(OnShipClicked);
 
         readyButton.onClick.RemoveAllListeners();
         readyButton.onClick.AddListener(OnReadyClicked);
@@ -153,6 +162,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
             textComponent.color = ReadyColor;
             readyButton.interactable = false;
             colorButton.interactable = false;
+            shipButton.interactable = false;
             nameInput.interactable = false;
         }
         else {
@@ -163,6 +173,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
             textComponent.color = Color.white;
             readyButton.interactable = isLocalPlayer;
             colorButton.interactable = isLocalPlayer;
+            shipButton.interactable = isLocalPlayer;
             nameInput.interactable = isLocalPlayer;
         }
     }
@@ -183,12 +194,21 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         colorButton.GetComponent<Image>().color = newColor;
     }
 
+    public void OnMyShip(Enumerations.E_SHIPS newShip) {
+        playerShip = newShip;
+        shipButton.transform.GetChild(0).GetComponent<Text>().text = newShip.ToString(); ;
+    }
+
     //===== UI Handler
 
     //Note that those handler use Command function, as we need to change the value on the server not locally
     //so that all client get the new value throught syncvar
     public void OnColorClicked() {
         CmdColorChange();
+    }
+
+    public void OnShipClicked() {
+        CmdShìpChange();
     }
 
     public void OnReadyClicked() {
@@ -257,6 +277,17 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         }
 
         playerColor = Colors[idx];
+    }
+
+    [Command]
+    public void CmdShìpChange() {
+        int shipCount = System.Enum.GetNames(typeof(Enumerations.E_SHIPS)).Length;
+        if ((int)playerShip + 1 >= shipCount) {
+            playerShip = 0;
+        }
+        else {
+            playerShip += 1;
+        }
     }
 
     [Command]

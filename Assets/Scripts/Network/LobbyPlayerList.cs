@@ -24,12 +24,12 @@ public class LobbyPlayerList : MonoBehaviour {
     }
 
     public void OnEnable() {
-        _instance = this;
-        _layout = playerListContentTransform.GetComponent<VerticalLayoutGroup>();
+        //_instance = this;
+        //_layout = playerListContentTransform.GetComponent<VerticalLayoutGroup>();
 
         // Evita que se destruya el objeto del menu que contiene la lista de jugadores 
         // derivados de la clase NetworkLobbyPlayer
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void DisplayDirectServerWarning(bool enabled) {
