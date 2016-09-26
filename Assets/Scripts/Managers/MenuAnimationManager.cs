@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Linq;
 
 public class MenuAnimationManager : MonoBehaviour {
 
@@ -81,9 +82,11 @@ public class MenuAnimationManager : MonoBehaviour {
             // Asinar el color de los textos
             int i;
             for (i = 0; i < fromTexts.Count; ++i)
-                fromTexts[i].color = new Color(fromTexts[i].color.r, fromTexts[i].color.g, fromTexts[i].color.b, 1.0f - animationPart1);
+                if (fromTexts[i] != null)
+                    fromTexts[i].color = new Color(fromTexts[i].color.r, fromTexts[i].color.g, fromTexts[i].color.b, 1.0f - animationPart1);
             for (i = 0; i < toTexts.Count; ++i)
-                toTexts[i].color = new Color(toTexts[i].color.r, toTexts[i].color.g, toTexts[i].color.b, animationPart2_Text); ;
+                if (toTexts[i] != null)
+                    toTexts[i].color = new Color(toTexts[i].color.r, toTexts[i].color.g, toTexts[i].color.b, animationPart2_Text); ;
 
             // Asignar los estados a los paneles
             fromPanel.SetActive(interpolatedAnimationTime < 1);
@@ -111,7 +114,9 @@ public class MenuAnimationManager : MonoBehaviour {
 
                 // Seleccionar el ultimo boton seleccionado
                 // TODO: Revisar, en algunos paneles no hace falta guardar la ultima posicion
-                toPanel.GetComponent<BackListener>().lastSelected.Select();
+                if (toPanel.GetComponent<BackListener>().lastSelected != null)
+                    toPanel.GetComponent<BackListener>().lastSelected.Select();
+
                 if (!backPedal)
                     toPanel.GetComponent<BackListener>().fromPanel = fromPanel;
 
@@ -162,7 +167,6 @@ public class MenuAnimationManager : MonoBehaviour {
 
         loadingAnimation = false;
         backPedal = false;
-
     }
 
     /// <summary>
