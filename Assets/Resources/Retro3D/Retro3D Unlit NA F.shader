@@ -1,4 +1,6 @@
-﻿Shader "Retro3D/No Affine Transparent Fade"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Retro3D/No Affine Transparent Fade"
 {
     Properties
     {
@@ -52,7 +54,7 @@
 						fixed4 newC = v.color;
 						o.color = newC * _Color;
 						o.distance = wp.xy;
-						o.distance.x = distance(floor(_WorldSpaceCameraPos * 0.3) / 0.3, mul(_Object2World, v.vertex));
+						o.distance.x = distance(floor(_WorldSpaceCameraPos * 0.3) / 0.3, mul(unity_ObjectToWorld, v.vertex));
 						return o;
 					}
 

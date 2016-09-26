@@ -1,4 +1,6 @@
-﻿Shader "Retro3D/No Affine"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Retro3D/No Affine"
 {
     Properties
     {
@@ -41,8 +43,8 @@
 						v2f o;
 
 						pos = _WorldSpaceCameraPos;
-						pos.y = mul(_Object2World, v.vertex).y;
-						float dist = distance(floor(pos * 0.3) / 0.3, mul(_Object2World, v.vertex));
+						pos.y = mul(unity_ObjectToWorld, v.vertex).y;
+						float dist = distance(floor(pos * 0.3) / 0.3, mul(unity_ObjectToWorld, v.vertex));
 						float res = _GeoRes - (clamp(dist, 0, _GeoRes * 0.6));
 						float4 wp = mul(UNITY_MATRIX_MV, v.vertex);
 						wp.xyz = floor(wp.xyz * res) / res;

@@ -91,6 +91,8 @@ GameObject:
   - 114: {fileID: 11482972}
   - 114: {fileID: 114000012209951318}
   - 114: {fileID: 11488424}
+  - 114: {fileID: 114000011465712266}
+  - 114: {fileID: 114000012238644826}
   m_Layer: 0
   m_Name: TESTSHIP
   m_TagString: Player
@@ -871,13 +873,30 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 168898}
   m_IsPrefabParent: 1
---- !u!114 &114000012209951318
+--- !u!114 &114000011465712266
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168898}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28723fa63f40be43b414be54799c62a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NameText: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_PlayerName: 
+  m_PlayerNumber: 0
+  m_LocalID: 0
+  m_IsReady: 0
+--- !u!114 &114000012209951318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168898}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
@@ -891,3 +910,14 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114000012238644826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168898}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fbb6731be0ecdc4fa0d6d6d100d728d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

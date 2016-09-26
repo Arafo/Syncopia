@@ -1,4 +1,6 @@
-﻿Shader "BallisticNG/SkyCar"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "BallisticNG/SkyCar"
 {
     Properties
     {
@@ -46,7 +48,7 @@
 						o.position = sp;
 						o.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
 						o.distance = wp.xy;
-						o.distance.x = distance(floor(_WorldSpaceCameraPos * 0.3) / 0.3, mul(_Object2World, v.vertex));
+						o.distance.x = distance(floor(_WorldSpaceCameraPos * 0.3) / 0.3, mul(unity_ObjectToWorld, v.vertex));
 						return o;
 					}
 
