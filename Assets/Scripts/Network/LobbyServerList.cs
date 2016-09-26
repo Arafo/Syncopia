@@ -14,8 +14,8 @@ public class LobbyServerList : MonoBehaviour {
     protected int currentPage = 0;
     protected int previousPage = 0;
 
-    static Color OddServerColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-    static Color EvenServerColor = new Color(.94f, .94f, .94f, 1.0f);
+    static Color OddServerColor = new Color(1.0f, 1.0f, 1.0f, .5f);
+    static Color EvenServerColor = new Color(.94f, .94f, .94f, .5f);
 
     void OnEnable() {
         currentPage = 0;

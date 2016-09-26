@@ -14,7 +14,7 @@ public class LobbyMenu : MonoBehaviour {
     private int i = 0;
 
     public void OnEnable() {
-        lobbyManager.topPanel.ToggleVisibility(true);
+        //lobbyManager.topPanel.ToggleVisibility(true);
     }
 
     /// <summary>
@@ -96,6 +96,7 @@ public class LobbyMenu : MonoBehaviour {
     public void OnClickOpenServerList() {
         lobbyManager.StartMatchMaker();
         lobbyManager.backDelegate = lobbyManager.SimpleBackClbk;
+        lobbyManager.serverListPanel.gameObject.SetActive(true);
         lobbyManager.ChangeTo(lobbyServerList);
     }
 }

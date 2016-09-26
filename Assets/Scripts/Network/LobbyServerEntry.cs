@@ -28,5 +28,6 @@ public class LobbyServerEntry : MonoBehaviour {
         lobbyManager.backDelegate = lobbyManager.StopClientClbk;
         lobbyManager._isMatchmaking = true;
         lobbyManager.DisplayIsConnecting();
+        lobbyManager.serverListPanel.gameObject.SetActive(false);
     }
 }
