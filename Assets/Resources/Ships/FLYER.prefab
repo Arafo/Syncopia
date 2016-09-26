@@ -169,10 +169,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012444285012}
   - 114: {fileID: 114000011268511776}
-  - 114: {fileID: 114000012286642640}
   - 114: {fileID: 114000014186946038}
   - 114: {fileID: 114000010946127780}
-  - 114: {fileID: 114000013468964536}
+  - 114: {fileID: 114000010028708918}
   m_Layer: 0
   m_Name: FLYER
   m_TagString: Player
@@ -699,6 +698,17 @@ Light:
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114000010028708918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013323658358}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fbb6731be0ecdc4fa0d6d6d100d728d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000010781276080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -788,37 +798,6 @@ MonoBehaviour:
     i15: 251
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &114000012286642640
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013323658358}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 30
-  m_InterpolateRotation: 0.01
-  m_InterpolateMovement: 0.01
---- !u!114 &114000013468964536
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013323658358}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fbb6731be0ecdc4fa0d6d6d100d728d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000014186946038
 MonoBehaviour:
   m_ObjectHideFlags: 1

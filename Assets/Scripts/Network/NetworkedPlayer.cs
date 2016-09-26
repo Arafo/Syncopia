@@ -138,7 +138,7 @@ public class NetworkedPlayer {
     public void Test() {
         Debug.Log(m_Instance.ToString());
 
-        if (RaceSettings.ships[0].finished && !ServerSettings.playerFinished || ServerSettings.raceCountdown < 0 && !ServerSettings.playerFinished) {
+        if (RaceSettings.ships[0].finished /*&& !ServerSettings.playerFinished*/ || ServerSettings.raceCountdown < 0 /*&& !ServerSettings.playerFinished*/) {
             ServerSettings.playerFinished = true;
 
             // Habilitar los resultados

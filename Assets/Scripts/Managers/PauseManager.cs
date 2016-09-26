@@ -81,6 +81,8 @@ public class PauseManager : MonoBehaviour {
         
         int position = 1;
 
+        ResetResults();
+
         for (int i = 0; i < RaceSettings.ships.Count; i++) {
             ShipReferer ship = RaceSettings.ships[i];
             if (ship.finalPosition == position) {
@@ -148,6 +150,14 @@ public class PauseManager : MonoBehaviour {
                 totalTimes.text += "\n" + ToTime(ship.totalTime);
             }         
         }
+    }
+
+    public void ResetResults() {
+        positions.text = "POS.";
+        ships.text = "DRIVER";
+        drivers.text = "SHIP";
+        bestTimes.text = "BEST";
+        totalTimes.text = "TOTAL";
     }
 
     public void InitGraphicsMenu() {

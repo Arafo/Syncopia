@@ -332,6 +332,9 @@ public class RaceManager : MonoBehaviour {
                         position += 1;
                     }
                     else {
+                        if (ship1.currentSection == null || ship2.currentSection == null)
+                            return;
+
                         int currentSection1 = ship1.currentSection.index;
                         int currentSection2 = ship2.currentSection.index;
 

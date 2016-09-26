@@ -20,7 +20,12 @@ public class ShipLoader : MonoBehaviour {
         referer.sim = gameObject.AddComponent<ShipSimulation>();
         referer.control = gameObject.AddComponent<ShipController>();
         referer.input = gameObject.AddComponent<ShipInput>();
-        referer.position = gameObject.AddComponent<ShipPosition>();
+
+        if (type != 2)
+            referer.position = gameObject.AddComponent<ShipPosition>();
+        else
+            referer.position = ShipObject.AddComponent<ShipPosition>();
+
         referer.ai = gameObject.AddComponent<ShipAI>();
         referer.effects = gameObject.AddComponent<ShipTrailEffects>();
 
@@ -37,7 +42,6 @@ public class ShipLoader : MonoBehaviour {
         axis.transform.localPosition = Vector3.zero;
         axis.transform.localRotation = Quaternion.identity;
         axis.transform.parent = transform;
-
 
         // 
         ShipObject.transform.parent = axis.transform;
@@ -98,7 +102,10 @@ public class ShipLoader : MonoBehaviour {
         referer.sim = gameObject.AddComponent<ShipSimulation>();
         //referer.control = gameObject.AddComponent<ShipController>();
         //referer.input = gameObject.AddComponent<ShipInput>();
-        referer.position = gameObject.AddComponent<ShipPosition>();
+        if (type != 2)
+            referer.position = gameObject.AddComponent<ShipPosition>();
+        else
+            referer.position = ShipObject.AddComponent<ShipPosition>();
         //referer.ai = gameObject.AddComponent<ShipAI>();
         //referer.effects = gameObject.AddComponent<ShipTrailEffects>();
 
