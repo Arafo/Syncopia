@@ -6,6 +6,7 @@ public class ShipReferer : NetworkBehaviour {
 
     // IA
     public bool isAI;
+    public bool isNetworked;
     public bool autopilot;
 
     // Clases de una nave
@@ -53,23 +54,27 @@ public class ShipReferer : NetworkBehaviour {
     public bool hasBestTime;
     public bool loadedBestTime;
     public bool finished;
-   
+
     void Start() {
         laps = new float[RaceSettings.laps];
         perfects = new bool[RaceSettings.laps];
 
-        input.OnStart();
-        effects.OnStart();
+        if (!isNetworked) {
+            input.OnStart();
+            effects.OnStart();
+            ai.OnStart();
+            control.OnStart();
+        }
         position.OnStart();
-        ai.OnStart();
-        control.OnStart();
+
 
         secondSector = true;
         midSection = RaceSettings.raceManager.trackData.trackData.sections[RaceSettings.raceManager.trackData.trackData.sections.Count / 2];
     }
 
     void Update() {
-        input.OnUpdate();
+        if (!isNetworked)
+            input.OnUpdate();
     }
 
     private void FixedUpdate() {
@@ -79,9 +84,11 @@ public class ShipReferer : NetworkBehaviour {
         if (isAI || autopilot)
             ai.OnUpdate();
 
-        control.OnUpdate();
-        sim.OnUpdate();
-        effects.OnUpdate();
+        if (!isNetworked) {
+            control.OnUpdate();
+            sim.OnUpdate();
+            effects.OnUpdate();
+        }
 
         if (currentLap > 0)
             RaceTimers();
@@ -114,7 +121,9 @@ public class ShipReferer : NetworkBehaviour {
         }
     }
 
+
     void OnTriggerEnter(Collider other) {
+        Debug.Log(other.tag);
         if (other.tag == "Checkpoint1") {
             if (secondSector || currentLap == 0) {
                 UpdateLap();
@@ -149,7 +158,7 @@ public class ShipReferer : NetworkBehaviour {
             if (!finished) {
                 finished = true;
                 finalPosition = currentPosition;
-                if (!isAI) {
+                if (!isAI && !ServerSettings.isNetworked) {
                     autopilot = true;
                     // Carrera acabada 
 
@@ -161,6 +170,10 @@ public class ShipReferer : NetworkBehaviour {
                     RaceSettings.raceManager.ui.gameObject.SetActive(false);
                 }
             }
+
+            // send finish to clients on network
+            //if (ServerSettings.isNetworked)
+                //RaceSettings.raceManager.mpmanager.RpcRaceEnding();
         }
 
         currentTime = 0;

@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using UnityEngine.Networking.Types;
 using UnityEngine.Networking.Match;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LobbyManager : NetworkLobbyManager {
 
@@ -26,10 +27,11 @@ public class LobbyManager : NetworkLobbyManager {
 
     public RectTransform mainMenuPanel;
     public RectTransform lobbyPanel;
+    public RectTransform serverListPanel;
 
     public GameObject lobbyPanel1;
 
-    //public LobbyInfoPanel infoPanel;
+    public LobbyInfoPanel infoPanel;
     public LobbyCountdownPanel countdownPanel;
     //public GameObject addPlayerButton;
 
@@ -54,6 +56,8 @@ public class LobbyManager : NetworkLobbyManager {
     protected ulong _currentMatchID;
 
     protected LobbyHook _lobbyHooks;
+
+    protected Dictionary<int, int> currentPlayers;
 
     void Start() {
         s_Singleton = this;
@@ -133,7 +137,7 @@ public class LobbyManager : NetworkLobbyManager {
 
     public void DisplayIsConnecting() {
         var _this = this;
-        //infoPanel.Display("Connecting...", "Cancel", () => { _this.backDelegate(); });
+        infoPanel.Display("CONNECTING...", "Cancel", () => { _this.backDelegate(); });
     }
 
     public void SetServerInfo(string status, string host) {
@@ -200,7 +204,7 @@ public class LobbyManager : NetworkLobbyManager {
 
 
     public void KickedMessageHandler(NetworkMessage netMsg) {
-        //infoPanel.Display("Kicked by Server", "Close", null);
+        infoPanel.Display("Kicked by Server", "Close", null);
         netMsg.conn.Disconnect();
     }
 
@@ -223,9 +227,10 @@ public class LobbyManager : NetworkLobbyManager {
         base.OnDestroyMatch(success, extendedInfo);
         if (_disconnectServer) {
             StopMatchMaker();
-            //StopHost();
+            StopHost();
         }
     }
+
 
     //allow to handle the (+) button to add/remove player
     public void OnPlayersNumberModified(int count) {
@@ -257,6 +262,13 @@ public class LobbyManager : NetworkLobbyManager {
             }
         }
 
+        return obj;
+    }
+
+    public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId) {
+        LobbyPlayer p = lobbySlots[conn.connectionId] as LobbyPlayer;
+        GameObject obj = Instantiate(Resources.Load("Ships/" + p.playerShip.ToString()) as GameObject) as GameObject;
+        //return base.OnLobbyServerCreateGamePlayer(conn, playerControllerId);
         return obj;
     }
 
@@ -342,7 +354,7 @@ public class LobbyManager : NetworkLobbyManager {
     public override void OnClientConnect(NetworkConnection conn) {
         base.OnClientConnect(conn);
 
-        //infoPanel.gameObject.SetActive(false);
+        infoPanel.gameObject.SetActive(false);
 
         conn.RegisterHandler(MsgKicked, KickedMessageHandler);
 
@@ -364,6 +376,6 @@ public class LobbyManager : NetworkLobbyManager {
 
     public override void OnClientError(NetworkConnection conn, int errorCode) {
         ChangeTo(mainMenuPanel);
-        //infoPanel.Display("Cient error : " + (errorCode == 6 ? "timeout" : errorCode.ToString()), "Close", null);
+        infoPanel.Display("Cient error : " + (errorCode == 6 ? "timeout" : errorCode.ToString()), "Close", null);
     }
 }

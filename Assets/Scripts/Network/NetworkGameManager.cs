@@ -60,7 +60,7 @@ public class NetworkGameManager : NetworkBehaviour {
             yield return null;
 
         //wait to be sure that all are ready to start
-        //yield return new WaitForSeconds(2.0f);        
+        yield return new WaitForSeconds(2.0f);
 
         yield return StartCoroutine(Setup());
 
@@ -68,10 +68,10 @@ public class NetworkGameManager : NetworkBehaviour {
         //yield return StartCoroutine(RoundStarting());
 
         // Once the 'RoundStarting' coroutine is finished, run the 'RoundPlaying' coroutine but don't return until it's finished.
-        //yield return StartCoroutine(RoundPlaying());
+        yield return StartCoroutine(RoundPlaying());
 
         // Once execution has returned here, run the 'RoundEnding' coroutine.
-        //yield return StartCoroutine(RoundEnding());
+        yield return StartCoroutine(RoundEnding());
 
         // This code is not run until 'RoundEnding' has finished.  At which point, check if there is a winner of the game.
         /*if (m_GameWinner != null) {// If there is a game winner, wait for certain amount or all player confirmed to start a game again
@@ -106,6 +106,12 @@ public class NetworkGameManager : NetworkBehaviour {
             // Note that this coroutine doesn't yield.  This means that the current version of the GameLoop will end.
             StartCoroutine(GameLoop());
         }*/
+
+        // countdown if server
+        //if (ServerSettings.playerFinished) {
+            //ServerSettings.raceCountdown -= Time.deltaTime;
+            //RpcFinishCountdown(ServerSettings.raceCountdown);
+        //}
     }
 
     private IEnumerator Setup() {
@@ -118,10 +124,78 @@ public class NetworkGameManager : NetworkBehaviour {
 
     [ClientRpc]
     void RpcSetup() {
+        // Se configura el jugador local
         for (int i = 0; i < ServerSettings.players.Count; ++i) {
             ServerSettings.players[i].Config(i);
         }
+
+        // Se configuran los jugadores remotos
+        for (int i = 0; i < ServerSettings.players.Count; ++i) {
+            ServerSettings.players[i].ConfigRemote(i);
+        }
         allPlayersSpawned = true;
+    }
+
+    private IEnumerator RoundPlaying() {
+        // Se notifica a los cliente que la carrera ha empezado, ya se pueden mover
+        RpcRoundPlaying();
+
+        // Mientras no haya un ganador...
+        while (!OneShipFinished()) {
+            yield return null;
+        }
+    }
+
+    /// <summary>
+    /// Devuelve true si hay una o más naves que hayan finalizado, false en 
+    /// caso contrario.
+    /// </summary>
+    /// <returns></returns>
+    private bool OneShipFinished() {
+        int numShipsFinished = 0;
+
+        for (int i = 0; i < RaceSettings.ships.Count; i++) {
+            if (RaceSettings.ships[i].finished)
+                numShipsFinished++;
+        }
+
+        return numShipsFinished > 0;
+    }
+
+    private IEnumerator RoundEnding() {
+        //notify client they should disable tank control
+        ServerSettings.raceCountdown = 30;
+
+        while (ServerSettings.raceCountdown > 0) {
+            yield return new WaitForSeconds(1f);
+            ServerSettings.raceCountdown -= 1f;
+            RpcFinishCountdown(ServerSettings.raceCountdown);
+            RpcRoundEnding();
+        }
+
+        RpcFinishCountdown(-1f);
+        RpcRoundEnding();
+
+        // Wait for the specified length of time until yielding control back to the game loop.
+        yield return new WaitForSeconds(3f);
+    }
+
+    [ClientRpc]
+    private void RpcRoundEnding() {
+        for (int i = 0; i < ServerSettings.players.Count; i++) {
+            ServerSettings.players[i].Test();
+        }
+    }
+
+    [ClientRpc]
+    void RpcRoundPlaying() {
+
+    }
+
+    [ClientRpc]
+    public void RpcFinishCountdown(float value) {
+        ServerSettings.raceCountdown = value;
+        RaceSettings.raceManager.UpdateCounter(value.ToString());
     }
 
     [ClientRpc]

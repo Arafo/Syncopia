@@ -71,26 +71,35 @@ public class RaceUI : ShipCore
         uiLapsText = uiLaps.GetComponent<Text>();
         uiCountDownText = uiCountDown.GetComponent<Text>();
 
+        if (ship == null)
+            return;
 
         if (!ship.finished)  {
-            if (ship.sim.isBoosting) {
-                uiSize = Mathf.Lerp(uiSize, 1.17f, Time.deltaTime * 7f);
-                uiOpacity = Mathf.Lerp(uiOpacity, 0.3f, Time.deltaTime * 10f);
-            }
-            else {
-                uiSize = Mathf.Lerp(uiSize, 1f, Time.deltaTime * 2f);
-                uiOpacity = Mathf.Lerp(uiOpacity, 1f, Time.deltaTime * 10f);
+            if (!ship.isNetworked) {
+                if (ship.sim.isBoosting) {
+                    uiSize = Mathf.Lerp(uiSize, 1.17f, Time.deltaTime * 7f);
+                    uiOpacity = Mathf.Lerp(uiOpacity, 0.3f, Time.deltaTime * 10f);
+                }
+                else {
+                    uiSize = Mathf.Lerp(uiSize, 1f, Time.deltaTime * 2f);
+                    uiOpacity = Mathf.Lerp(uiOpacity, 1f, Time.deltaTime * 10f);
+                }
             }
 
             uiRoot.transform.localScale = new Vector3(uiSize, uiSize, 1f);
 
-            float x2 = ship.sim.gameObject.transform.InverseTransformDirection(ship.body.velocity).z * 0.8f;
-            Vector2 rectSize = new Vector2(x2, uiSpeedMeterRect.sizeDelta.y);
-            uiSpeedMeterRect.sizeDelta = rectSize;
+            if (!ship.isNetworked) {
+                float x2 = ship.sim.gameObject.transform.InverseTransformDirection(ship.body.velocity).z * 0.8f;
+                Vector2 rectSize = new Vector2(x2, uiSpeedMeterRect.sizeDelta.y);
+                uiSpeedMeterRect.sizeDelta = rectSize;
+            }
+
 
             // Velocidad
-            int speed = Mathf.RoundToInt(ship.control.gameObject.GetComponent<ShipSimulation>().engineSpeed * 2f);
-            uiCurrentSpeedText.text = speed.ToString() + " km/h";
+            if (!ship.isNetworked) {
+                int speed = Mathf.RoundToInt(ship.control.gameObject.GetComponent<ShipSimulation>().engineSpeed * 2f);
+                uiCurrentSpeedText.text = speed.ToString() + " km/h";
+            }
 
             // Numero de vueltas
             uiCurrentLapText.text = "Lap: " + ship.currentLap.ToString() + "/" + RaceSettings.laps;

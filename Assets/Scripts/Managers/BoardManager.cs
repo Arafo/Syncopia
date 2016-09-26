@@ -25,6 +25,9 @@ public class BoardManager : MonoBehaviour {
         // Actualizar la informacion
         txtInformation.text = gameMode;
 
+        if (RaceSettings.ships.Count <= 0)
+            return;
+
         if (RaceSettings.ships[0].currentLap > 0 && RaceSettings.ships[0].currentLap < RaceSettings.laps - 1)
             txtCountDown.text = "LAP " + (RaceSettings.ships[0].currentLap + 1);
 

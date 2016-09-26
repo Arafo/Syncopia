@@ -46,12 +46,11 @@ public class NetworkedPlayer {
 
 
     public void Config(int i) {
-
         if (ServerSettings.players[i].m_Instance.GetComponent<NetworkIdentity>().isLocalPlayer) {
 
             Enumerations.E_SHIPS team = Enumerations.E_SHIPS.FLYER;
 
-            GameObject newShip = new GameObject("PLAYER SHIP");
+            GameObject newShip = new GameObject("PLAYER SHIP" + i);
             ShipLoader loader = newShip.AddComponent<ShipLoader>();
 
             float rot = newShip.transform.eulerAngles.y;
@@ -64,20 +63,65 @@ public class NetworkedPlayer {
             //NetworkTransform nt = newShip.AddComponent<NetworkTransform>();
 
             Renderer rend = ServerSettings.players[i].m_Instance.transform.GetChild(0).GetComponent<Renderer>();
-            var texture = new Texture2D(2, 2, TextureFormat.ARGB32, false);
-            texture.SetPixel(0, 0, Color.grey);
-            texture.SetPixel(1, 0, Color.white);
-            texture.SetPixel(0, 1, Color.black);
-            texture.SetPixel(1, 1, m_PlayerColor);
-            texture.Apply();
+            if (rend != null) {
+                var texture = new Texture2D(2, 2, TextureFormat.ARGB32, false);
+                texture.SetPixel(0, 0, Color.grey);
+                texture.SetPixel(1, 0, Color.white);
+                texture.SetPixel(0, 1, Color.black);
+                texture.SetPixel(1, 1, m_PlayerColor);
+                texture.Apply();
 
-            // connect texture to material of GameObject this script is attached to
-            rend.material.SetTexture("_DetailAlbedoMap", texture);
+                // connect texture to material of GameObject this script is attached to
+                rend.material.SetTexture("_DetailAlbedoMap", texture);
+            }
 
             // spawn
             loader.SpawnShip(team, 2, ServerSettings.players[i].m_Instance);
         }
+        /*else {
+            loader.SpawnClientShip(team, 3, ServerSettings.players[i].m_Instance);
+        }*/
     }
+
+
+    public void ConfigRemote(int i) {
+        if (!ServerSettings.players[i].m_Instance.GetComponent<NetworkIdentity>().isLocalPlayer) {
+
+            Enumerations.E_SHIPS team = Enumerations.E_SHIPS.FLYER;
+
+            GameObject newShip = new GameObject("PLAYER SHIP" + i);
+            ShipLoader loader = newShip.AddComponent<ShipLoader>();
+
+            float rot = newShip.transform.eulerAngles.y;
+            newShip.transform.rotation = Quaternion.Euler(0.0f, rot, 0.0f);
+
+            // position ship at spawn
+            newShip.transform.position = RaceSettings.trackData.spawnPositions[i];
+            newShip.transform.rotation = RaceSettings.trackData.spawnRotations[i];
+
+            //NetworkTransform nt = newShip.AddComponent<NetworkTransform>();
+
+            Renderer rend = ServerSettings.players[i].m_Instance.transform.GetChild(0).GetComponent<Renderer>();
+            if (rend != null) {
+                var texture = new Texture2D(2, 2, TextureFormat.ARGB32, false);
+                texture.SetPixel(0, 0, Color.grey);
+                texture.SetPixel(1, 0, Color.white);
+                texture.SetPixel(0, 1, Color.black);
+                texture.SetPixel(1, 1, m_PlayerColor);
+                texture.Apply();
+
+                // connect texture to material of GameObject this script is attached to
+                rend.material.SetTexture("_DetailAlbedoMap", texture);
+            }
+
+            // spawn
+            loader.SpawnClientShip(team, 2, ServerSettings.players[i].m_Instance);
+        }
+        /*else {
+            loader.SpawnClientShip(team, 3, ServerSettings.players[i].m_Instance);
+        }*/
+    }
+
 
     public void Setup() {
 
@@ -89,5 +133,23 @@ public class NetworkedPlayer {
         m_Setup.m_PlayerNumber = m_PlayerNumber;
         m_Setup.m_LocalID = m_LocalPlayerID;
 
+    }
+
+    public void Test() {
+        Debug.Log(m_Instance.ToString());
+
+        if (RaceSettings.ships[0].finished && !ServerSettings.playerFinished || ServerSettings.raceCountdown < 0 && !ServerSettings.playerFinished) {
+            ServerSettings.playerFinished = true;
+
+            // Habilitar los resultados
+            RaceSettings.raceManager.results.gameObject.SetActive(true);
+            RaceSettings.raceManager.results.Results();
+
+            // Desactivar HUD
+            RaceSettings.raceManager.ui.gameObject.SetActive(false);
+
+            RaceSettings.ships[0].finished = true;
+            RaceSettings.ships[0].isAI = true;
+        }
     }
 }

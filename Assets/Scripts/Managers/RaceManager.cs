@@ -3,6 +3,7 @@ using UnityStandardAssets.CinematicEffects;
 using System.Collections.Generic;
 using TeamUtility.IO;
 using UnityEngine.Networking;
+using UnityStandardAssets.ImageEffects;
 
 public class RaceManager : MonoBehaviour {
 
@@ -73,19 +74,14 @@ public class RaceManager : MonoBehaviour {
 
         SetManagers();
         AddImageEffects();
-
-        /*if (ServerSettings.isNetworked) {
-            mpmanager.gameObject.SetActive(true);
-            //GameObject mmGO = new GameObject("MANAGER_MULTIPLAYER");
-            //mpmanager = mmGO.AddComponent<NetworkGameManager>();
-            //mpmanager.manager = this;
-
-            //NetworkServer.Spawn(mmGO);
-        }*/
     }
 
     // Update is called once per frame
     void Update() {
+
+        if (ui.ship == null && RaceSettings.ships.Count > 0)
+            ui.ship = RaceSettings.ships[0];
+
         // Pausa
         if (InputManager.GetButtonDown("Pause") || Input.GetKey(KeyCode.Escape) || (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.Tab)) ||
                 (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab))) {
@@ -160,7 +156,7 @@ public class RaceManager : MonoBehaviour {
         }
         else {
             countdownTimer += Time.deltaTime;
-            if (countdownTimer > countdownStageDelay) {
+            if (countdownTimer > countdownStageDelay && ServerSettings.raceCountdown <= 0) {
                 UpdateCounter("");
 
                 if (NetworkServer.active)
@@ -185,7 +181,8 @@ public class RaceManager : MonoBehaviour {
             ppTonemapping[i].enabled = GameSettings.GS_TONEMAPPING;
 
         for (i = 0; i < RaceSettings.ships.Count; ++i)
-            RaceSettings.ships[i].cam.hdr = GameSettings.GS_TONEMAPPING;
+            if (RaceSettings.ships[i].cam != null)
+                RaceSettings.ships[i].cam.hdr = GameSettings.GS_TONEMAPPING;
     }
 
     private void SetRaceSettings() {
@@ -313,6 +310,9 @@ public class RaceManager : MonoBehaviour {
                 //tm.tonemapper = Shader.Find("Hidden/Tonemapper");
                 //tm.type = Tonemapping.TonemapperType.AdaptiveReinhardAutoWhite;
                 ppTonemapping.Add(tm);
+
+                //CameraMotionBlur cmb = RaceSettings.ships[i].cam.gameObject.AddComponent<CameraMotionBlur>();
+                //cmb.
             }
         }
     }
