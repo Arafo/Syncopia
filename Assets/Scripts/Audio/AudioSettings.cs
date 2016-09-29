@@ -11,6 +11,7 @@ public class AudioSettings {
     public static string[] musicLocations;
 
     public static bool customMusicEnabled = false;
+    public static AudioManager manager;
 
     public static void LoadMusic() {
         TextAsset musicList = Resources.Load("music") as TextAsset;
@@ -25,5 +26,12 @@ public class AudioSettings {
         }
 
         musicLocations = musicLocs.ToArray();
+    }
+
+    public static void RegisterClip(AudioSource source) {
+        if (manager == null) {
+        }
+
+        manager.RegisterClip(source);
     }
 }

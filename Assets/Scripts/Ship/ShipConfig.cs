@@ -64,4 +64,7 @@ public class ShipConfig : MonoBehaviour
     public float boosterExtendLength;
     public GameObject engineSpray;
 
+    [Header("[ SFX ]")]
+    public AudioClip SFX_ENGINE;
+    public AudioClip SFX_BOOST;
 }

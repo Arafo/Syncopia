@@ -109,7 +109,7 @@ public class RaceManager : MonoBehaviour {
                     countdownTimer += Time.deltaTime;
                     if (countdownTimer > countdownStartDelay) {
                         UpdateCounter("3");
-                        ClipManager.CreateOneShot(clipThree, AudioSettings.VOLUME_VOICES);
+                        ClipManager.CreateClip(clipThree, AudioSettings.VOLUME_VOICES);
                         countdownTimer = 0.0f;
                         countDownStage++;
 
@@ -125,7 +125,7 @@ public class RaceManager : MonoBehaviour {
 
                         if (countDownStage == 2) {
                             UpdateCounter("2");
-                            ClipManager.CreateOneShot(clipTwo, AudioSettings.VOLUME_VOICES);
+                            ClipManager.CreateClip(clipTwo, AudioSettings.VOLUME_VOICES);
 
                             if (NetworkServer.active)
                                 mpmanager.RpcSetCountdown("2");
@@ -133,7 +133,7 @@ public class RaceManager : MonoBehaviour {
 
                         if (countDownStage == 3) {
                             UpdateCounter("1");
-                            ClipManager.CreateOneShot(clipOne, AudioSettings.VOLUME_VOICES);
+                            ClipManager.CreateClip(clipOne, AudioSettings.VOLUME_VOICES);
 
                             if (NetworkServer.active)
                                 mpmanager.RpcSetCountdown("1");
@@ -143,7 +143,7 @@ public class RaceManager : MonoBehaviour {
                 }
                 if (countDownStage == 4) {
                     UpdateCounter("GO!");
-                    ClipManager.CreateOneShot(clipGo, AudioSettings.VOLUME_VOICES);
+                    ClipManager.CreateClip(clipGo, AudioSettings.VOLUME_VOICES);
 
                     if (NetworkServer.active)
                         mpmanager.RpcSetCountdown("GO!");

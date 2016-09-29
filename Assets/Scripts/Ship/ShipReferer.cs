@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using System;
 
 public class ShipReferer : NetworkBehaviour {
 
@@ -8,6 +9,8 @@ public class ShipReferer : NetworkBehaviour {
     public bool isAI;
     public bool isNetworked;
     public bool autopilot;
+    private float aiSoundMinDistance = 0.1f;
+    private float aiSoundMaxDistance = 1.0f;
 
     // Clases de una nave
     public ShipConfig config;
@@ -17,6 +20,7 @@ public class ShipReferer : NetworkBehaviour {
     public ShipSimulation sim;
     public ShipPosition position;
     public ShipAI ai;
+    public ShipAudio music;
 
     // Componentes de una nave
     public GameObject axis;
@@ -62,6 +66,7 @@ public class ShipReferer : NetworkBehaviour {
         if (!isNetworked) {
             input.OnStart();
             effects.OnStart();
+            music.OnStart();
             ai.OnStart();
             control.OnStart();
         }
@@ -88,6 +93,7 @@ public class ShipReferer : NetworkBehaviour {
             control.OnUpdate();
             sim.OnUpdate();
             effects.OnUpdate();
+            music.OnUpdate();
         }
 
         if (currentLap > 0)
@@ -108,7 +114,7 @@ public class ShipReferer : NetworkBehaviour {
             totalTime += Time.deltaTime;
             currentTime += Time.deltaTime;
         }
-    }
+    }  
 
     public void HitSpeedPad() {
         if (boostState < 3) {
@@ -179,5 +185,23 @@ public class ShipReferer : NetworkBehaviour {
         currentTime = 0;
         perfectLap = true;
         currentLap++;
+    }
+
+    public void PlayClip(AudioClip clip) {
+        if (isAI || isNetworked) {
+            ClipManager.CreateClip(clip, transform, AudioSettings.VOLUME_MAIN, 1.0f, aiSoundMinDistance, aiSoundMaxDistance);
+        }
+        else {
+            ClipManager.CreateClip(clip, AudioSettings.VOLUME_MAIN, 1.0f);
+        }
+    }
+
+    public void PlayClip(AudioClip clip, float volume, float pitch) {
+        if (isAI || isNetworked) {
+            ClipManager.CreateClip(clip, transform, volume * AudioSettings.VOLUME_MAIN, pitch, aiSoundMinDistance, aiSoundMaxDistance);
+        }
+        else {
+            ClipManager.CreateClip(clip, volume * AudioSettings.VOLUME_MAIN, pitch);
+        }
     }
 }

@@ -28,6 +28,7 @@ public class ShipLoader : MonoBehaviour {
 
         referer.ai = gameObject.AddComponent<ShipAI>();
         referer.effects = gameObject.AddComponent<ShipTrailEffects>();
+        referer.music = gameObject.AddComponent<ShipAudio>();
 
         referer.config = config;
         referer.effects.ship = referer;
@@ -36,6 +37,7 @@ public class ShipLoader : MonoBehaviour {
         referer.position.ship = referer;
         referer.ai.ship = referer;
         referer.control.ship = referer;
+        referer.music.ship = referer;
 
         // Crear el eje de la nave
         GameObject axis = new GameObject("Axis");

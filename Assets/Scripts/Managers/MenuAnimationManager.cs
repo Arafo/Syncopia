@@ -160,7 +160,7 @@ public class MenuAnimationManager : MonoBehaviour {
         toButtons = new List<Button>(allButtons);
 
         // Sonido de cambio de panel
-        ClipManager.CreateOneShot(Resources.Load("Audio/SFX/Select") as AudioClip, 1.0f, 1.0f);
+        ClipManager.CreateClip(Resources.Load("Audio/SFX/Select") as AudioClip, 1.0f, 1.0f);
 
         // Seleccionar el boton seleccionado en el panel anterior
         fromPanel.GetComponent<BackListener>().lastSelected = eventSystem.currentSelectedGameObject.GetComponent<Button>();
@@ -201,7 +201,7 @@ public class MenuAnimationManager : MonoBehaviour {
         toButtons = new List<Button>(allButtons);
 
         // Sonido de cambio de panel
-        ClipManager.CreateOneShot(Resources.Load("Audio/SFX/Select") as AudioClip, 1.0f, 1.0f);
+        ClipManager.CreateClip(Resources.Load("Audio/SFX/Select") as AudioClip, 1.0f, 1.0f);
 
         // Seleccionar el boton seleccionado en el panel anterior
         fromPanel.GetComponent<BackListener>().lastSelected = eventSystem.currentSelectedGameObject.GetComponent<Button>();
@@ -243,7 +243,7 @@ public class MenuAnimationManager : MonoBehaviour {
         toButtons = new List<Button>(allButtons);
 
         // Sonido de cambio de panel
-        ClipManager.CreateOneShot(Resources.Load("Audio/SFX/Select") as AudioClip, 1.0f, 1.0f);
+        ClipManager.CreateClip(Resources.Load("Audio/SFX/Select") as AudioClip, 1.0f, 1.0f);
 
         // Seleccionar el boton seleccionado en el panel anterior
         fromPanel.GetComponent<BackListener>().lastSelected = eventSystem.currentSelectedGameObject.GetComponent<Button>();
@@ -284,7 +284,7 @@ public class MenuAnimationManager : MonoBehaviour {
         toButtons = new List<Button>(allButtons);
 
         // Sonido de cambio de panel
-        ClipManager.CreateOneShot(Resources.Load("Audio/SFX/Select") as AudioClip, 1.0f, 1.0f);
+        ClipManager.CreateClip(Resources.Load("Audio/SFX/Select") as AudioClip, 1.0f, 1.0f);
 
         // Seleccionar el boton seleccionado en el panel anterior
         fromPanel.GetComponent<BackListener>().lastSelected = eventSystem.currentSelectedGameObject.GetComponent<Button>();

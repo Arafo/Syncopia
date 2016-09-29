@@ -206,16 +206,16 @@ public class NetworkGameManager : NetworkBehaviour {
         manager.UpdateCounter(value);
         switch (value) {
             case "3":
-                ClipManager.CreateOneShot(manager.clipThree, AudioSettings.VOLUME_VOICES, 1.0f);
+                ClipManager.CreateClip(manager.clipThree, AudioSettings.VOLUME_VOICES, 1.0f);
                 break;
             case "2":
-                ClipManager.CreateOneShot(manager.clipTwo, AudioSettings.VOLUME_VOICES, 1.0f);
+                ClipManager.CreateClip(manager.clipTwo, AudioSettings.VOLUME_VOICES, 1.0f);
                 break;
             case "1":
-                ClipManager.CreateOneShot(manager.clipOne, AudioSettings.VOLUME_VOICES, 1.0f);
+                ClipManager.CreateClip(manager.clipOne, AudioSettings.VOLUME_VOICES, 1.0f);
                 break;
             case "GO!":
-                ClipManager.CreateOneShot(manager.clipGo, AudioSettings.VOLUME_VOICES, 1.0f);
+                ClipManager.CreateClip(manager.clipGo, AudioSettings.VOLUME_VOICES, 1.0f);
                 RaceSettings.countdownFinished = true;
                 RaceSettings.shipsRestrained = false;
                 break;

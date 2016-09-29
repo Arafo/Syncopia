@@ -847,6 +847,8 @@ MonoBehaviour:
   boosterRight: {fileID: 145526}
   boosterExtendLength: 0
   engineSpray: {fileID: 130002}
+  SFX_ENGINE: {fileID: 8300000, guid: 397e939cdaabcbf4193139475399508b, type: 3}
+  SFX_BOOST: {fileID: 8300000, guid: 1d271eda18edb1e4d9f87d5f000cc0af, type: 3}
 --- !u!123 &12326862
 LensFlare:
   m_ObjectHideFlags: 1
