@@ -30,6 +30,9 @@ public class AudioSettings {
 
     public static void RegisterClip(AudioSource source) {
         if (manager == null) {
+            // Crea el manager del sonido si no existe
+            GameObject audioManager = new GameObject("MANAGER_AUDIO");
+            manager = audioManager.AddComponent<AudioManager>();
         }
 
         manager.RegisterClip(source);
