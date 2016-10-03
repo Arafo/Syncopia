@@ -17,12 +17,12 @@ public class TrackTile : MonoBehaviour {
     public int[] indices;
 
     // La seccion a la que pertenece esta tile
-    public TrackSegment section;
+    public TrackSegment segment;
 }
 
 public enum E_TILETYPE {
-    NORMAL = 0,
-    WALL = 1,
-    BOOST = 2,
-    SPAWN = 3
+    NORMAL,
+    WALL,
+    BOOST,
+    SPAWN
 }

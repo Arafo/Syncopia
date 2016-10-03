@@ -47,14 +47,14 @@ public class GenerateTrackData {
 
         gen.createTiles(tris, verts, mappedFloor, floorT, data);
         gen.createSections(normals, verts, tiles, floorT, data);
-        gen.createRacingLine();
+        //gen.createRacingLine();
         gen.createCheckpoints();
 
 
         int sectionCount = data.sections.Count;
         for (int i = 0; i < sectionCount; ++i) {
             if (i == sectionCount - 1)
-                data.sections[i].next = data.sections[0];
+                data.sections[i].next = data.sections[0]; 
             else
                 data.sections[i].next = data.sections[i + 1];
         }
@@ -153,11 +153,11 @@ public class GenerateTrackData {
             newSection = createSection(normals, verts, tiles, floorT, gen, i, index);
             gen.sections.Add(newSection);
 
-            tiles[0].section = newSection;
-            tiles[1].section = newSection;
+            tiles[0].segment = newSection;
+            tiles[1].segment = newSection;
 
-            gen.tiles[i].section = newSection;
-            gen.tiles[i + 1].section = newSection;
+            gen.tiles[i].segment = newSection;
+            gen.tiles[i + 1].segment = newSection;
 
             index++;
         }
@@ -179,7 +179,7 @@ public class GenerateTrackData {
         tiles[0] = gen.tiles[i];
         tiles[1] = gen.tiles[i + 1];
 
-        newSection.type = E_SECTIONTYPE.NORMAL;
+        newSection.type = E_SEGMENTTYPE.NORMAL;
         newSection.tiles = tiles;
         newSection.index = index;
 

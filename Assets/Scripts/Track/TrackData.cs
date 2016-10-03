@@ -16,7 +16,6 @@ public class TrackData : MonoBehaviour {
     public float maxWallWidth = 10.0f;
     public float maxWallHeight = 1.5f;
 
-    [HideInInspector]
     public List<Vector3> spawnPositions = new List<Vector3>();
     [HideInInspector]
     public List<Vector3> spawnCameraLocations = new List<Vector3>();
@@ -40,6 +39,9 @@ public class TrackData : MonoBehaviour {
 
             if (trackData.sections[i].index == trackData.editorSectionNext)
                 Gizmos.color = Color.green;
+
+            if (i == trackData.sectionStart)
+                Gizmos.color = Color.blue;
 
             position1 = trackData.sections[i].position;
             position2 = position1 + trackData.sections[i].normal * trackData.sections[i].height;
@@ -100,7 +102,7 @@ public class TrackData : MonoBehaviour {
                 Vector3 spawnPos = trackData.tiles[i].position;
                 spawnPos.y += 3.5f;
                 spawnPositions.Add(spawnPos);
-                spawnRotations.Add(SectionGetRotation(trackData.tiles[i].section));
+                spawnRotations.Add(SectionGetRotation(trackData.tiles[i].segment));
 
                 //Vector3 cameraPos = trackData.tiles[i].section.position;
                 //cameraPos.y += 0.5f;

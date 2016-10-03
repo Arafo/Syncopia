@@ -12,12 +12,23 @@ public class TrackDataEditor : Editor {
     private static TrackData managerData;
     private static bool isActive = false;
 
+    private static int toolsMenu;
     private static int tilePaintType;
+    private static int segmentEditMode;
+
+    // Variables de las tiles
     private static string[] tileInfo = new string[5];
     public static bool tileDrawTransparent = true;
     public static float tileFillTransparency = 0.2f;
     public static float tileStrokeTransparency = 0.3f;
     public static bool tileDrawColors = true;
+
+    // Variables de los segmentos
+    private static string[] segmentInfo = new string[7];
+    public static int customIndex;
+    private static string customIndexString = "";
+    private static bool updatedSelected;
+    private static TrackSegment selectedSegment;
 
     /// <summary>
     /// 
@@ -57,8 +68,14 @@ public class TrackDataEditor : Editor {
 
         // Actualizar toda la interfaz
         GUIUpdate();
-        DrawTiles();
-        TilePainter(); 
+
+        if (toolsMenu == 0) {
+            DrawTiles();
+            TilePainter();
+        }
+        else if (toolsMenu == 1) {
+            SegmentEditor();
+        }
     }
 
     /// <summary>
@@ -145,9 +162,10 @@ public class TrackDataEditor : Editor {
         int tri;
         int triIndex;
         int triLength = m.triangles.Length;
+        Debug.Log(1 << LayerMask.NameToLayer("Track"));
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Track"))) {
             tri = hit.triangleIndex;
-            TrackTile tile = TileFromTriangleIndex(tri, managerData.trackData.mappedTiles);
+            TrackTile tile = Helpers.TileFromTriangleIndex(tri, managerData.trackData.mappedTiles);
 
             if (hit.collider.GetComponent<MeshCollider>().sharedMesh == m) {
                 // Actualizar la informacion de la tile apuntada
@@ -210,6 +228,66 @@ public class TrackDataEditor : Editor {
                 }
             }
         }
+        Debug.Log(hit.collider);
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void SegmentEditor() {
+        if (segmentEditMode == 0) {
+            if (selectedSegment != null) {
+                selectedSegment.position = Handles.PositionHandle(selectedSegment.position, Helpers.SectionGetRotation(selectedSegment));
+            }
+        }
+
+        RaycastHit hit;
+        Vector3[] verts = new Vector3[4];
+        Ray ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
+
+        // reset hover selection
+        managerData.trackData.editorSectionHover = -1;
+
+        // Borrar la info del segmento
+        for (int i = 0; i < segmentInfo.Length; ++i)
+            segmentInfo[i] = "";
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Track"))) {
+            HandleUtility.Repaint();
+
+            // Obtener tile de la mesh
+            Mesh m = hit.transform.GetComponent<MeshFilter>().sharedMesh;
+            TrackTile tile = Helpers.TileFromTriangleIndex(hit.triangleIndex, managerData.trackData.mappedTiles);
+
+            // Seleccionar segmento (Left Ctrl)
+            if ((Event.current.type == EventType.keyDown && Event.current.keyCode == KeyCode.LeftControl) || updatedSelected) {
+                updatedSelected = false;
+                selectedSegment = tile.segment;
+                customIndex = tile.segment.index;
+                managerData.trackData.editorSectionCurrent = selectedSegment.index;
+                managerData.trackData.editorSectionNext = selectedSegment.next.index;
+            }
+
+            // Asignar siguiente segmento
+            if (segmentEditMode == 1) {
+                if (Event.current.type == EventType.keyDown && Event.current.keyCode == KeyCode.Space) {
+                    selectedSegment.next = tile.segment;
+                    managerData.trackData.editorSectionNext = tile.segment.index;
+                }
+            }
+            managerData.trackData.editorSectionHover = tile.segment.index;
+        }
+
+        // Actualizar la información del segmento
+        if (selectedSegment != null) {
+            segmentInfo[0] = "Segment Index: " + selectedSegment.index;
+            segmentInfo[1] = "Segment Type: " + selectedSegment.type;
+            segmentInfo[2] = "Segment Tiles: " + selectedSegment.tiles[0].index + " & " + selectedSegment.tiles[1].index;
+            segmentInfo[3] = "Segment Width: " + selectedSegment.width;
+            segmentInfo[4] = "Segment Height: " + selectedSegment.height;
+            segmentInfo[5] = "Segment Next: " + selectedSegment.next.index;
+        }
     }
 
     /// <summary>
@@ -217,7 +295,11 @@ public class TrackDataEditor : Editor {
     /// </summary>
     /// <param name="windowID"></param>
     private static void EditorWindow(int windowID) {
-        TilesPaint();
+        toolsMenu = GUILayout.Toolbar(toolsMenu, new string[2] { "Tiles Mode", "Segment Mode" });
+        if (toolsMenu == 0)
+            TilesPaint();
+        else if (toolsMenu == 1)
+            SegmentEdit();
     }
 
     /// <summary>
@@ -247,17 +329,42 @@ public class TrackDataEditor : Editor {
             GUILayout.Label(tileInfo[i]);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="index"></param>
-    /// <param name="mappedTiles"></param>
-    /// <returns></returns>
-    public TrackTile TileFromTriangleIndex(int index, TrackTile[] mappedTiles) {
-        if (mappedTiles[index * 3] != null)
-            return mappedTiles[index * 3];
-        else
-            return null;
+    private static void SegmentEdit() {
+        segmentEditMode = GUILayout.Toolbar(segmentEditMode, new string[2] { "Set Position", "Set Next" });
+
+        if (selectedSegment != null) {
+            if (GUILayout.Button("Selext Next Segment")) {
+                HandleUtility.Repaint();
+
+                // Asignar el segmento siguiente al seleccionado
+                updatedSelected = true;
+                selectedSegment = selectedSegment.next;
+                customIndex = selectedSegment.index;
+            }
+        }
+
+        if (GUILayout.Button("Set Selected To Start")) {
+            int i;
+            for (i = 0; i < managerData.trackData.sections.Count; ++i) {
+                if (managerData.trackData.sections[i] == selectedSegment)
+                    managerData.trackData.sectionStart = i;
+            }
+        }
+
+        if (GUILayout.Button("Reverse Track")) {
+            int i;
+            for (i = 0; i < managerData.trackData.sections.Count; ++i) {
+                if (i > 0)
+                    managerData.trackData.sections[i].next = managerData.trackData.sections[i - 1];
+                else
+                    managerData.trackData.sections[i].next = managerData.trackData.sections[managerData.trackData.sections.Count - 1];
+            }
+        }
+
+        // info
+        GUILayout.Space(10);
+        for (int i = 0; i < segmentInfo.Length; ++i)
+            GUILayout.Label(segmentInfo[i]);
     }
 }
 

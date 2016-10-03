@@ -11,7 +11,7 @@ public class TrackSegment : MonoBehaviour {
     public Vector3 position;
 
     // El tipo de esta seccion
-    public E_SECTIONTYPE type;
+    public E_SEGMENTTYPE type;
 
     // La anchura de esta seccion
     public float width;
@@ -25,13 +25,18 @@ public class TrackSegment : MonoBehaviour {
     // La siguiente seccion
     public TrackSegment next;
 
+    // El siguiente cruce
+    public TrackSegment junction;
+
     // Las tiles en esta seccion
     public TrackTile[] tiles;
 }
 
-public enum E_SECTIONTYPE
+public enum E_SEGMENTTYPE
 {
-    NORMAL = 0,
-    JUMP = 1,
-    STARTLINE = 2
+    NORMAL,
+    JUMP,
+    STARTLINE,
+    JUNCTION_START,
+    JUNCTION_END
 }

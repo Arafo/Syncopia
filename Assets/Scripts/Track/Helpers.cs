@@ -34,6 +34,6 @@ public class Helpers : MonoBehaviour {
     }
 
     public static TrackSegment TileGetSection(TrackTile tile) {
-        return tile.section;
+        return tile.segment;
     }
 }
