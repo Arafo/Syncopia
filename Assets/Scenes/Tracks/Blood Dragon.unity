@@ -487,7 +487,7 @@ MonoBehaviour:
       type: 0
       axis: 1
       joystick: 0
-    isExpanded: 1
+    isExpanded: 0
   - name: Windows_Gamepad
     axes:
     - name: Acceleration
@@ -511,8 +511,8 @@ MonoBehaviour:
       altPositive: 0
       altNegative: 0
       deadZone: 0
-      gravity: 1
-      sensitivity: 1
+      gravity: 8
+      sensitivity: 2
       snap: 0
       invert: 0
       type: 3
@@ -20356,7 +20356,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359035859}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 34cf68a07c97a224cb6745144cf4028a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -21095,6 +21095,7 @@ GameObject:
   - 114: {fileID: 885187216}
   - 114: {fileID: 885187215}
   - 114: {fileID: 885187218}
+  - 114: {fileID: 885187219}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -21373,7 +21374,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 885187208}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97e9b95cf609d96409b6c40519432957, type: 3}
   m_Name: 
@@ -21399,6 +21400,44 @@ MonoBehaviour:
   jitter: 0.05
   showVelocity: 0
   showVelocityScale: 1
+--- !u!114 &885187219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 885187208}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweakMode: 1
+  screenBlendMode: 1
+  hdr: 0
+  sepBlurSpread: 4.09
+  quality: 1
+  bloomIntensity: 0.1
+  bloomThreshold: 4
+  bloomThresholdColor: {r: 0, g: 1, b: 0.7921569, a: 1}
+  bloomBlurIterations: 1
+  hollywoodFlareBlurIterations: 2
+  flareRotation: 0
+  lensflareMode: 1
+  hollyStretchWidth: 2.5
+  lensflareIntensity: 0
+  lensflareThreshold: 0.3
+  lensFlareSaturation: 0.75
+  flareColorA: {r: 0.4, g: 0.4, b: 0.8, a: 0.75}
+  flareColorB: {r: 0.4, g: 0.8, b: 0.8, a: 0.75}
+  flareColorC: {r: 0.8, g: 0.4, b: 0.8, a: 0.75}
+  flareColorD: {r: 0.8, g: 0.4, b: 0, a: 0.75}
+  lensFlareVignetteMask: {fileID: 2800000, guid: 95ef4804fe0be4c999ddaa383536cde8,
+    type: 3}
+  lensFlareShader: {fileID: 4800000, guid: 459fe69d2f6d74ddb92f04dbf45a866b, type: 3}
+  screenBlendShader: {fileID: 4800000, guid: 7856cbff0a0ca45c787d5431eb805bb0, type: 3}
+  blurAndFlaresShader: {fileID: 4800000, guid: be6e39cf196f146d5be72fbefb18ed75, type: 3}
+  brightPassFilterShader: {fileID: 4800000, guid: 0aeaa4cb29f5d4e9c8455f04c8575c8c,
+    type: 3}
 --- !u!1 &948557287
 GameObject:
   m_ObjectHideFlags: 0
@@ -27665,7 +27704,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1615335069}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 34cf68a07c97a224cb6745144cf4028a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -27760,7 +27799,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1790239509}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 34cf68a07c97a224cb6745144cf4028a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

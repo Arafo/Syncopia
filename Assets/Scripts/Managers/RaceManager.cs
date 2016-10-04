@@ -39,7 +39,7 @@ public class RaceManager : MonoBehaviour {
     public AudioClip clipGo;
 
     // Efectos
-    private List<Kino.Bloom> ppBlooms = new List<Kino.Bloom>();
+    private List<UnityStandardAssets.ImageEffects.Bloom> ppBlooms = new List<UnityStandardAssets.ImageEffects.Bloom>();
     private List<AntiAliasing> ppAA = new List<AntiAliasing>();
     private List<AmbientOcclusion> ppAO = new List<AmbientOcclusion>();
     private List<TonemappingColorGrading> ppTonemapping = new List<TonemappingColorGrading>();
@@ -282,10 +282,22 @@ public class RaceManager : MonoBehaviour {
             if (RaceSettings.ships[i].cam != null) {
 
                 // bloom
-                Kino.Bloom bloom = RaceSettings.ships[i].cam.gameObject.AddComponent<Kino.Bloom>();
-                bloom.radius = 1.0f;
-                ppBlooms.Add(bloom);
+                //Kino.Bloom bloom = RaceSettings.ships[i].cam.gameObject.AddComponent<Kino.Bloom>();
+                //bloom.radius = 1.0f;
 
+                UnityStandardAssets.ImageEffects.Bloom bloom = RaceSettings.ships[i].cam.gameObject.AddComponent<UnityStandardAssets.ImageEffects.Bloom>();
+                bloom.tweakMode = UnityStandardAssets.ImageEffects.Bloom.TweakMode.Complex;
+                bloom.bloomIntensity = 0.1f;
+                bloom.bloomThreshold = 4;
+                bloom.bloomThresholdColor = new Color(0, 255, 202, 255);
+                bloom.bloomBlurIterations = 1;
+                bloom.sepBlurSpread = 4.09f;
+                bloom.lensFlareShader = Shader.Find("Hidden/LensFlareCreate");
+                bloom.screenBlendShader = Shader.Find("Hidden/BlendForBloom");
+                bloom.blurAndFlaresShader = Shader.Find("Hidden/BlurAndFlares");
+                bloom.brightPassFilterShader = Shader.Find("Hidden/BrightPassFilter2");
+                //bloom.blurAndFlaresShader
+                ppBlooms.Add(bloom);
 
                 // fxaa
                 AntiAliasing aa = RaceSettings.ships[i].cam.gameObject.AddComponent<AntiAliasing>();

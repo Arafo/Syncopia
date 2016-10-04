@@ -54,9 +54,9 @@ public class ShipLoader : MonoBehaviour {
         // Crear rigidbody
         Rigidbody body = gameObject.AddComponent<Rigidbody>();
         body.useGravity = false;
-        body.constraints = RigidbodyConstraints.FreezeRotation;
-        body.drag = 1.0f;
-        body.angularDrag = 35f;
+        body.constraints = RigidbodyConstraints.FreezeRotationY;
+        body.drag = 0f;
+        body.angularDrag = 20f;
         body.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
         // Interpolación del movimiento solo en el multiplayer

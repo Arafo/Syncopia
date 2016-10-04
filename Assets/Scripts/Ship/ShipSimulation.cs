@@ -164,7 +164,7 @@ public class ShipSimulation : ShipCore {
                 groundDistance = hit.distance;
             }
         }
-
+        
         // Compensacion de la rotacion en el centro de masas de la nave
         if (Physics.Raycast(transform.position, -transform.up, out hit, ship.config.hoverHeight, layerMask)) {
             // DEBUG
@@ -208,7 +208,7 @@ public class ShipSimulation : ShipCore {
             isBoosting = true;
         }
         boostingOverride = false;
-
+        
         // Comprobacion del motor de alabeo 
         if (ship.input.m_PitchAxis != 0f) {
             enginePitchAmount = Mathf.Lerp(enginePitchAmount, ship.input.m_PitchAxis * 5f, Time.deltaTime * 4f);
@@ -216,7 +216,7 @@ public class ShipSimulation : ShipCore {
         else {
             enginePitchAmount = Mathf.Lerp(enginePitchAmount, 0f, Time.deltaTime * 4f);
         }
-
+        /*
         // Comprobacion de cuanto torque hay que añadir
         if (isGrounded) {
             if (enginePitchAmount >= 0f) {
@@ -229,7 +229,7 @@ public class ShipSimulation : ShipCore {
         else if (enginePitchAmount >= 0f) {
             ship.body.AddTorque(transform.right * (enginePitchAmount * 45f));
             transform.Rotate(Vector3.right * 0.03f);
-        }
+        }*/
     }
 
     private void ShipAcceleration() {
@@ -260,11 +260,11 @@ public class ShipSimulation : ShipCore {
         if (ship.input.m_LeftAirBrakeAxis != 0f || ship.input.m_RightAirBrakeAixs != 0f) {
             float resistanceAmount = Mathf.Clamp(Mathf.Abs(ship.input.m_LeftAirBrakeAxis + ship.input.m_RightAirBrakeAixs), 0f, 1f);
             airbrakeResistance = Mathf.Lerp(airbrakeResistance, Mathf.Abs(airbrakeAmount) * resistanceAmount, Time.deltaTime * (Mathf.Abs(transform.InverseTransformDirection(ship.body.velocity).x) * Time.deltaTime) * 0.15f);
-            airbrakeSlip = Mathf.Lerp(airbrakeSlip, Mathf.Abs(airbrakeAmount * ship.config.slipAmount), Time.deltaTime * ship.config.slipGain);
+            //airbrakeSlip = Mathf.Lerp(airbrakeSlip, Mathf.Abs(airbrakeAmount * ship.config.slipAmount), Time.deltaTime * ship.config.slipGain);
         }
         else {
             airbrakeResistance = Mathf.Lerp(airbrakeResistance, 0f, Time.deltaTime * 4.5f);
-            airbrakeSlip = Mathf.Lerp(airbrakeSlip, 0f, Time.deltaTime * ship.config.slipFalloff);
+            //airbrakeSlip = Mathf.Lerp(airbrakeSlip, 0f, Time.deltaTime * ship.config.slipFalloff);
         }
 
         if (isGrounded) {
@@ -309,6 +309,11 @@ public class ShipSimulation : ShipCore {
             grip = ship.config.grip * 0.8f;
         }
 
+        if (ship.input.m_LeftAirBrakeAxis != 0f || ship.input.m_RightAirBrakeAixs != 0f)
+            airbrakeSlip = Mathf.Lerp(airbrakeSlip, Mathf.Abs(airbrakeAmount * ship.config.slipAmount), Time.deltaTime * ship.config.slideGain);
+        else 
+            airbrakeSlip = Mathf.Lerp(airbrakeSlip, 0f, Time.deltaTime * ship.config.slipFalloff);
+
         // Si el agarre es mayor que cero se compensa con los frenos, sino es 0
         grip = grip >= 0 ? grip - Mathf.Abs(airbrakeAmount * airbrakeSlip) : 0f;
 
@@ -317,14 +322,15 @@ public class ShipSimulation : ShipCore {
         ship.body.AddForce(transform.right * brakeForce);
 
         // Fuerza de la nave
-        velocity = ship.body.velocity;
-        velocity.y = 0f;
-        Vector3 force = transform.right * (-Vector3.Dot(transform.right, velocity) * grip);
+        Vector3 velocity2 = ship.body.velocity;
+        velocity2.y = 0f;
+        float v = Vector3.Dot(transform.right, velocity2);
+        Vector3 force = transform.right * (-v * grip);
         ship.body.AddForce(force, ForceMode.Acceleration);
     }
 
     private void ShipHandling() {
-
+        float brakeAmount = ship.input.m_LeftAirBrakeAxis + ship.input.m_RightAirBrakeAixs;
         // Si esta girando hacia una lado y la entrada es hacia el otro, se activa o desactiva el antibanding
         if ((ship.input.m_SteerAxis > 0f && turnAmount < 0f) || (ship.input.m_SteerAxis < 0f && turnAmount > 0f)) {
             if (!turnAntiBand) {
@@ -338,7 +344,6 @@ public class ShipSimulation : ShipCore {
         }
 
         // Misma comprobacion que antes pero con los frenos
-        float brakeAmount = ship.input.m_LeftAirBrakeAxis + ship.input.m_RightAirBrakeAixs;
         if ((brakeAmount > 0f && airbrakeAmount < 0f) || (brakeAmount < 0f && airbrakeAmount > 0f)) {
             if (!airbrakeAntiBand) {
                 airbrakeGain = 0f;
@@ -362,7 +367,7 @@ public class ShipSimulation : ShipCore {
             turnAmount = Mathf.Lerp(turnAmount, ship.input.m_SteerAxis * turn, Time.deltaTime * turnGain);
             turnFalloff = 0f;
             bankGain = Mathf.Lerp(bankGain, 8f, Time.deltaTime * 1.5f);
-            bankVelocity = Mathf.Lerp(bankVelocity, ship.input.m_SteerAxis * -45.0f, Time.deltaTime * bankGain);
+            bankVelocity = Mathf.Lerp(bankVelocity, ship.input.m_SteerAxis * -45f, Time.deltaTime * bankGain);
             bankFalloff = 0f;
         }
         else {
@@ -370,7 +375,7 @@ public class ShipSimulation : ShipCore {
             turnAmount = Mathf.Lerp(turnAmount, 0f, Time.deltaTime * turnFalloff);
             turnGain = 0f;
             bankFalloff = Mathf.Lerp(bankFalloff, 10f, Time.deltaTime * 1.4f);
-            bankVelocity = Mathf.Lerp(bankVelocity, ship.input.m_SteerAxis * -45.0f, Time.deltaTime * bankFalloff);
+            bankVelocity = Mathf.Lerp(bankVelocity, 0f, Time.deltaTime * bankFalloff);
             bankGain = 0f;
         }
 

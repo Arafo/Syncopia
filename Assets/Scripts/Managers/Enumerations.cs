@@ -6,7 +6,8 @@ public class Enumerations {
     #region Enumerators
     public enum E_SHIPS {
         TESTSHIP,
-        FLYER
+        FLYER,
+        HYPER
     }
 
     public enum E_DIFFICULTY {
