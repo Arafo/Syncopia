@@ -568,8 +568,12 @@ public class ShipSimulation : ShipCore {
             if ((Mathf.Abs(vector.x) >= 65f && collision > 0f) || (Mathf.Abs(vector.x) >= 65f)) {
                 // Reproducir sonido de golpe con la pared
             }
+            else if (Mathf.Abs(vector.x) >= 65f) {
+
+            }
 
             // Obtener el valor del impacto
+                      
             float impact = Vector3.Dot(other.contacts[0].normal, other.relativeVelocity);
             float hitDot = Vector3.Dot(other.contacts[0].normal, transform.forward);
             Vector3 impactDir = transform.InverseTransformPoint(other.contacts[0].point);
@@ -578,6 +582,7 @@ public class ShipSimulation : ShipCore {
             if (Mathf.Abs(impact) > impactAllowance || hitDot < -0.2f) {
                 isColliding = true;
 
+                /*
                 Vector3 lv = transform.InverseTransformDirection(ship.body.velocity);
                 lv.x *= -0.1f;
                 lv.y = 0.0f;
@@ -599,9 +604,9 @@ public class ShipSimulation : ShipCore {
 
                 float collisionBounce = Mathf.Abs(impact * 0.2f);
                 collisionBounce = Mathf.Clamp(collisionBounce, 0.0f, 1.2f);
+                */
 
                 ship.perfectLap = false;
-
             }
         }
 

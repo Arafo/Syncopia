@@ -842,6 +842,7 @@ MonoBehaviour:
   slipVelocityMult: 1
   hoverHeight: 4
   size: {x: 5, y: 1.5, z: 7.5}
+  mesh: {fileID: 1000012396072658}
   windTrailLeft: {fileID: 1000012876769038}
   windTrailRight: {fileID: 1000011918305050}
   engineTrail: {fileID: 1000013080747836}

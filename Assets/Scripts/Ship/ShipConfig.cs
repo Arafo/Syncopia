@@ -54,6 +54,7 @@ public class ShipConfig : MonoBehaviour
     public Vector3 size; // Tamaño de la nave [3.5, 1.7, 9]
 
     [Header("EFECTOS")]
+    public GameObject mesh;
     public GameObject windTrailLeft; // Estela de aire del ala izquierda
     public GameObject windTrailRight; // Estela de aire del ala derecha
     public GameObject engineTrail;

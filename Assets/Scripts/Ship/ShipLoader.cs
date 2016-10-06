@@ -29,6 +29,7 @@ public class ShipLoader : MonoBehaviour {
         referer.ai = gameObject.AddComponent<ShipAI>();
         referer.effects = gameObject.AddComponent<ShipTrailEffects>();
         referer.music = gameObject.AddComponent<ShipAudio>();
+        referer.mesh = config.mesh;
 
         referer.config = config;
         referer.effects.ship = referer;
@@ -63,21 +64,32 @@ public class ShipLoader : MonoBehaviour {
         ShipObject.GetComponent<NetworkPlayerController>().enabled = type == 2;
 
         // Añadimos la colision
-        //MeshCollider mc = referer.mesh.AddComponent<MeshCollider>();
-        //mc.convex = true;
-        //gameObject.tag = "Ship";
-        //mc.gameObject.layer = LayerMask.NameToLayer("Ship");
+        MeshCollider mc = referer.mesh.AddComponent<MeshCollider>();
+        mc.convex = true;
+        gameObject.tag = "Ship";
+        mc.gameObject.layer = LayerMask.NameToLayer("Ship");
+
+        PhysicMaterial physicMaterial = new PhysicMaterial();
+        physicMaterial.bounciness = 0f;
+        physicMaterial.dynamicFriction = 0f;
+        physicMaterial.staticFriction = 0f;
+        physicMaterial.frictionCombine = PhysicMaterialCombine.Minimum;
+        physicMaterial.bounceCombine = PhysicMaterialCombine.Minimum;
 
         GameObject collider = new GameObject("Collider");
         collider.tag = "Ship";
         collider.layer = LayerMask.NameToLayer("Ship");
         collider.transform.parent = transform;
-        collider.transform.localPosition = Vector3.zero;
+        collider.transform.localPosition = new Vector3(0, config.size.y, 0); //Vector3.zero;
         collider.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         collider.AddComponent<BoxCollider>();
         collider.GetComponent<BoxCollider>().size = config.size;
         //collider.GetComponent<BoxCollider>().isTrigger = true; // CUIDADO CON ESTO
+        collider.GetComponent<BoxCollider>().material = physicMaterial;
         collider.GetComponent<BoxCollider>().transform.localScale = Vector3.one;
+        mc.material = physicMaterial;
+
+
 
         referer.body = body;
         referer.mesh = collider;
