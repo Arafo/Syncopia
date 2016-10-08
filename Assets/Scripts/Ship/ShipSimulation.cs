@@ -186,6 +186,7 @@ public class ShipSimulation : ShipCore {
                 isBoosting = true;
                 if (!hitBooster) {
                     hitBooster = true;
+                    ship.PlayClip(ship.config.SFX_BOOST, AudioSettings.VOLUME_MAIN * .5f, 1.0f);
                 }
             }
         }
@@ -229,12 +230,27 @@ public class ShipSimulation : ShipCore {
         else if (enginePitchAmount >= 0f) {
             ship.body.AddTorque(transform.right * (enginePitchAmount * 45f));
             transform.Rotate(Vector3.right * 0.03f);
-        }*/
+        }*/     
     }
 
     private void ShipAcceleration() {
         float amount = ship.config.engineAmount;
         float acceleration = ship.config.engineAcceleration;
+
+        switch (RaceSettings.difficulty) {
+            case Enumerations.E_DIFFICULTY.EASY :
+                amount *= 0.5f;
+                acceleration *= 0.5f;
+                break;
+            case Enumerations.E_DIFFICULTY.MEDIUM :
+                amount *= 0.5f;
+                acceleration *= 0.5f;
+                break;
+            case Enumerations.E_DIFFICULTY.HARD :
+                amount *= 1f;
+                acceleration *= 1f;
+                break;
+        };
 
         // Si se esta acelerando se calcula la fuerza del motor, sino se decrementa
         if (ship.control.isThrusting) {
@@ -581,8 +597,7 @@ public class ShipSimulation : ShipCore {
             float impactAllowance = (hitDot < -0.1f) ? 1.5f : 4.0f;
             if (Mathf.Abs(impact) > impactAllowance || hitDot < -0.2f) {
                 isColliding = true;
-
-                /*
+                
                 Vector3 lv = transform.InverseTransformDirection(ship.body.velocity);
                 lv.x *= -0.1f;
                 lv.y = 0.0f;
@@ -604,19 +619,21 @@ public class ShipSimulation : ShipCore {
 
                 float collisionBounce = Mathf.Abs(impact * 0.2f);
                 collisionBounce = Mathf.Clamp(collisionBounce, 0.0f, 1.2f);
-                */
+                
 
                 ship.perfectLap = false;
             }
         }
 
         if (other.gameObject.tag == "Ship") {
+            Debug.Log(ship.name + " colisiona " + other.gameObject.name);
 
             Vector3 lv = transform.InverseTransformDirection(ship.body.velocity);
             lv.y = 0;
             Vector3 wv = transform.TransformDirection(lv);
             if (!isGrounded)
                 ship.body.velocity = wv;
+            engineThrust *= 0.8f;
 
             // Alejar de la otra nave
             Vector3 dir = other.contacts[0].normal;

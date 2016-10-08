@@ -210,8 +210,9 @@ public class RaceManager : MonoBehaviour {
             Enumerations.E_SHIPS ship = RaceSettings.playerShip;
             bool isAI = (i != 0);
 
-            GameObject newShip = new GameObject("PLAYER SHIP");
+            GameObject newShip = new GameObject("PLAYER SHIP" + i);
             ShipLoader loader = newShip.AddComponent<ShipLoader>();
+            //ShipLoaderTest loader = newShip.AddComponent<ShipLoaderTest>();
 
             float rot = newShip.transform.eulerAngles.y;
             newShip.transform.rotation = Quaternion.Euler(0.0f, rot, 0.0f);
@@ -287,7 +288,7 @@ public class RaceManager : MonoBehaviour {
 
                 UnityStandardAssets.ImageEffects.Bloom bloom = RaceSettings.ships[i].cam.gameObject.AddComponent<UnityStandardAssets.ImageEffects.Bloom>();
                 bloom.tweakMode = UnityStandardAssets.ImageEffects.Bloom.TweakMode.Complex;
-                bloom.bloomIntensity = 0.1f;
+                bloom.bloomIntensity = 1f;// 0.1f;
                 bloom.bloomThreshold = 4;
                 bloom.bloomThresholdColor = new Color(0, 255, 202, 255);
                 bloom.bloomBlurIterations = 1;

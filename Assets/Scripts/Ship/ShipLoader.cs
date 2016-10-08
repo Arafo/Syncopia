@@ -55,7 +55,7 @@ public class ShipLoader : MonoBehaviour {
         // Crear rigidbody
         Rigidbody body = gameObject.AddComponent<Rigidbody>();
         body.useGravity = false;
-        body.constraints = RigidbodyConstraints.FreezeRotationY;
+        body.constraints = RigidbodyConstraints.FreezeRotation;
         body.drag = 0f;
         body.angularDrag = 20f;
         body.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
@@ -67,6 +67,7 @@ public class ShipLoader : MonoBehaviour {
         MeshCollider mc = referer.mesh.AddComponent<MeshCollider>();
         mc.convex = true;
         gameObject.tag = "Ship";
+        mc.gameObject.tag = "Ship";
         mc.gameObject.layer = LayerMask.NameToLayer("Ship");
 
         PhysicMaterial physicMaterial = new PhysicMaterial();
@@ -82,11 +83,12 @@ public class ShipLoader : MonoBehaviour {
         collider.transform.parent = transform;
         collider.transform.localPosition = new Vector3(0, config.size.y, 0); //Vector3.zero;
         collider.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-        collider.AddComponent<BoxCollider>();
+        /*collider.AddComponent<BoxCollider>();
         collider.GetComponent<BoxCollider>().size = config.size;
         //collider.GetComponent<BoxCollider>().isTrigger = true; // CUIDADO CON ESTO
         collider.GetComponent<BoxCollider>().material = physicMaterial;
         collider.GetComponent<BoxCollider>().transform.localScale = Vector3.one;
+        collider.GetComponent<BoxCollider>().gameObject.SetActive(false);*/
         mc.material = physicMaterial;
 
 
