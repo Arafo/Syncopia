@@ -87,8 +87,6 @@ public class ShipController : ShipCore {
             boostTimer -= Time.deltaTime;
             GetComponent<ShipSimulation>().boostingOverride = true;
             GetComponent<Rigidbody>().AddForce(transform.forward * boostPower);
-            ship.PlayClip(ship.config.SFX_BOOST, AudioSettings.VOLUME_MAIN * .5f, 1.0f);
-
         }
     }
 

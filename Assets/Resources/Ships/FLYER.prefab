@@ -815,7 +815,7 @@ MonoBehaviour:
   cameraFoV: 10
   cameraTurnSensitivity: 3
   cameraTurnDamp: 3
-  engineAmount: 1250
+  engineAmount: 1100
   engineAcceleration: 100
   engineGain: 1000
   engineFalloff: 700
@@ -828,7 +828,7 @@ MonoBehaviour:
   airbrakeTurnMultiplier: 9
   gravity_Low: 0
   gravity_High: 0
-  gravity: 18
+  gravity: 120
   grip_Low: 0
   grip_High: 0
   grip: 3
@@ -853,6 +853,8 @@ MonoBehaviour:
   engineSpray: {fileID: 1000013655830682}
   SFX_ENGINE: {fileID: 8300000, guid: 397e939cdaabcbf4193139475399508b, type: 3}
   SFX_BOOST: {fileID: 8300000, guid: 1d271eda18edb1e4d9f87d5f000cc0af, type: 3}
+  SFX_IGNITION: {fileID: 8300000, guid: a8d801b135eac7442a203a44e002e8eb, type: 3}
+  SFX_ENGINE_RELEASE: {fileID: 8300000, guid: 6c300a73d00205b4099691da57d7a608, type: 3}
 --- !u!123 &123000011614283228
 LensFlare:
   m_ObjectHideFlags: 1

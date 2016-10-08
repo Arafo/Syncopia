@@ -35,12 +35,17 @@ public class ClipManager : MonoBehaviour {
     }
 
     public static AudioSource CreateClip(AudioClip clip, float volume, float pitch) {
+        if (GameObject.Find(clip.name) != null)
+            return null;
+
         AudioSource source = CreateSource();
         source.clip = clip;
         source.volume = volume;
         source.pitch = pitch;
         source.spatialBlend = 0;
         source.gameObject.name = clip.name;
+
+        Debug.Log((GameObject.Find(clip.ToString()) == null) + " " + clip.ToString() );
         source.Play();
 
         // Registrar la fuente de sonido

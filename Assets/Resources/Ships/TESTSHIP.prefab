@@ -812,10 +812,10 @@ MonoBehaviour:
   cameraFoV: 60
   cameraTurnSensitivity: 0
   cameraTurnDamp: 5
-  engineAmount: 1200
-  engineAcceleration: 100
-  engineGain: 1000
-  engineFalloff: 700
+  engineAmount: 1050
+  engineAcceleration: 90
+  engineGain: 750
+  engineFalloff: 800
   turnAmount: 1.55
   turnGain: 500
   turnFalloff: 750
@@ -825,7 +825,7 @@ MonoBehaviour:
   airbrakeTurnMultiplier: 9
   gravity_Low: 0
   gravity_High: 0
-  gravity: 80
+  gravity: 120
   grip_Low: 0
   grip_High: 0
   grip: 4
@@ -837,7 +837,7 @@ MonoBehaviour:
   slipFalloff: 500
   slipMagnitude: 1000
   slipVelocityMult: 1
-  hoverHeight: 5
+  hoverHeight: 4
   size: {x: 2.5, y: 1.5, z: 7.5}
   mesh: {fileID: 197786}
   windTrailLeft: {fileID: 199338}
@@ -850,6 +850,8 @@ MonoBehaviour:
   engineSpray: {fileID: 130002}
   SFX_ENGINE: {fileID: 8300000, guid: 397e939cdaabcbf4193139475399508b, type: 3}
   SFX_BOOST: {fileID: 8300000, guid: 1d271eda18edb1e4d9f87d5f000cc0af, type: 3}
+  SFX_IGNITION: {fileID: 8300000, guid: a8d801b135eac7442a203a44e002e8eb, type: 3}
+  SFX_ENGINE_RELEASE: {fileID: 8300000, guid: 6c300a73d00205b4099691da57d7a608, type: 3}
 --- !u!123 &12326862
 LensFlare:
   m_ObjectHideFlags: 1
