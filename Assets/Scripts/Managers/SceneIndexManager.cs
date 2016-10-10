@@ -17,6 +17,8 @@ public class SceneIndexManager : MonoBehaviour {
         switch(scene) {
             case "Test" :
                 return 2;
+            case "Blood Dragon" :
+                return 3;
             default :
                 return 0;                    
         }
