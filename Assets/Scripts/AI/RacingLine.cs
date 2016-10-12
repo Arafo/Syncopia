@@ -11,15 +11,15 @@ public class RacingLine : MonoBehaviour {
     public List<Point> bestLine = new List<Point>();
     private TrackTile currentTile;
     private CheckpointHit cpHit;
-    private ShipController control;
+    private ShipReferer ship;
     public int lap;
     public float bestLap;
 
 	// Use this for initialization
 	void Start () {
         cpHit = gameObject.GetComponent<CheckpointHit>();
-        control = gameObject.GetComponent<ShipController>();
-        lap = control.currentLap;
+        ship = gameObject.GetComponent<ShipReferer>();
+        lap = ship.currentLap;
         bestLap = int.MaxValue;
         //racingLine = new List<TrackTile>();
     }
@@ -63,9 +63,9 @@ public class RacingLine : MonoBehaviour {
             }
 
             // Guardar linea de carrera
-            if (control.currentLap != lap) {
+            if (ship.currentLap != lap) {
                 // Si el tiempo de la vuelta actual es el mejor
-                if (control.bestLap < bestLap) {
+                if (ship.bestLap < bestLap) {
                     XmlSerializer serializer = new XmlSerializer(typeof(PointContainer));
                     Debug.Log(Application.dataPath);
                     FileStream stream = new FileStream(Application.dataPath + "/racinline.xml", FileMode.Create);
@@ -75,9 +75,9 @@ public class RacingLine : MonoBehaviour {
                     stream.Close();
                     Debug.Log("FIN!" + racingLine.Count);
                     bestLine = racingLine;
-                    bestLap = control.bestLap;
+                    bestLap = ship.bestLap;
                 }
-                lap = control.currentLap;
+                lap = ship.currentLap;
                 ClearRacingLine();
             }
         }

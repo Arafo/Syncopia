@@ -32,7 +32,7 @@ public class Checkpoint : MonoBehaviour
             return;
         //Debug.Log(other.tag);
         //Debug.Log(transform.position + " - " + m_points.checkPointArray[m_control.currentCheckpoint].transform.position);
-        if (transform == m_points.checkPointArray[m_control.currentCheckpoint].transform) { // m_control null cuando el objeto Ship no esta bien asignado
+        /*if (transform == m_points.checkPointArray[m_control.currentCheckpoint].transform) { // m_control null cuando el objeto Ship no esta bien asignado
             // Punto de respawn de la nave
             m_control.respawnPoint = transform.position;
             if (m_control.currentCheckpoint + 1 < m_points.checkPointArray.Length) {
@@ -50,7 +50,7 @@ public class Checkpoint : MonoBehaviour
             else {
                 m_control.currentCheckpoint = 0;
             }
-        }
+        }*/
     }
 
     void OnTriggerExit(Collider other)

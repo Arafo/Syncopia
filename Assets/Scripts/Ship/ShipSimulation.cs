@@ -18,7 +18,7 @@ public class ShipSimulation : ShipCore {
     private float engineGain;
     private float engineFalloff;
     private float engineAcceleration;
-    private float engineThrust;
+    public float engineThrust;
     public float engineSpeed;
     private float enginePitchAmount;
 
@@ -78,20 +78,22 @@ public class ShipSimulation : ShipCore {
     private bool hasBR;
     private bool canBR;
 
+    private float respawnTimer;
+
+
     public override void OnStart() {
     }
 
     public override void OnUpdate() {
-        if (ship.control.isRespawning) {
+        if (ship.isRespawning) {
             ship.mesh.SetActive(false);
-            engineThrust = 0f;
-            engineAcceleration = 0f;
             BRSuccess = false;
-            transform.position = Vector3.Lerp(transform.position, ship.position.respawnPosition, Time.deltaTime * 5f);
+            ShipRespawn();
+            /*transform.position = Vector3.Lerp(transform.position, ship.position.respawnPosition, Time.deltaTime * 5f);
             transform.rotation = Quaternion.Lerp(transform.rotation, ship.position.respawnRotation, Time.deltaTime * 5f);
             if (Vector3.Distance(transform.position, ship.position.respawnPosition) < 10f) {
-                ship.control.isRespawning = false;
-            }
+                ship.isRespawning = false;
+            }*/
         }
         else {
             ship.mesh.SetActive(true);
@@ -102,6 +104,38 @@ public class ShipSimulation : ShipCore {
             ShipAnimations();
             ShipBarrelRolls();
         }
+    }
+
+    private void ShipRespawn() {
+        respawnTimer += Time.deltaTime;
+
+        if (respawnTimer > 0.2f) {
+            engineThrust = 0f;
+            engineAcceleration = 0f;
+            engineSpeed = 0f;
+            //enginePower = 0f;
+            turnAmount = 0f;
+            //tiltAmount = 0f;
+            airbrakeAmount = 0f;
+            //turnVelocity = 0f;
+            //tiltVelocity = 0f;
+            //airbrakeVelocity = 0f;
+            ship.body.velocity = Vector3.zero;
+            transform.position = ship.position.respawnPosition;
+            transform.rotation = ship.position.respawnRotation;
+            ship.isRespawning = false;
+            respawnTimer = 0f;
+        }
+        //}
+        /*else {
+            this.r.body.velocity = Vector3.zero;
+            base.transform.position = Vector3.MoveTowards(base.transform.position, this.r.position.respawnPosition, Time.deltaTime * 10f);
+            base.transform.rotation = Quaternion.Lerp(base.transform.rotation, this.r.position.respawnRotation, Time.deltaTime * 3f);
+            if (Vector3.Distance(base.transform.position, this.r.position.respawnPosition) < 0.3f) {
+                this.r.isRespawning = false;
+            }
+            this.engineThrust = 0f;
+        }*/
     }
 
     private void ShipGravity() {
@@ -176,6 +210,14 @@ public class ShipSimulation : ShipCore {
             transform.Rotate(Vector3.up * (rotation * Time.deltaTime) * offset);
             ship.body.AddForce(new Vector3(hit.normal.x, 0f, hit.normal.z) * Mathf.Abs(vector.x) * 22f);
         }
+
+        // Respawn si la nave esta debajo del circuito
+        if (transform.position.y < ship.currentSection.position.y - ship.config.hoverHeight * 10)
+            ship.isRespawning = true;
+
+        // Respawn si la nave esta muy por encima del circuito
+        if (transform.position.y > ship.currentSection.position.y + ship.config.hoverHeight * 10)
+            ship.isRespawning = true;
 
         // Comprobacion de que se pasa por encima de un booster
         layerMask = 1 << LayerMask.NameToLayer("Booster");
@@ -253,7 +295,7 @@ public class ShipSimulation : ShipCore {
         };
 
         // Si se esta acelerando se calcula la fuerza del motor, sino se decrementa
-        if (ship.control.isThrusting) {
+        if (ship.input.m_AccelerationButton) {
             engineGain = Mathf.Lerp(engineGain, ship.config.engineGain * 0.1f * Time.deltaTime, Time.deltaTime * 10f);
             engineAcceleration = Mathf.Lerp(engineAcceleration, acceleration, Time.deltaTime * engineGain);
             engineThrust = Mathf.Lerp(engineThrust, amount + enginePitchAmount * 25f, Time.deltaTime * (engineAcceleration * 0.1f));

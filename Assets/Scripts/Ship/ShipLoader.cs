@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class ShipLoader : MonoBehaviour {
 
@@ -30,6 +31,12 @@ public class ShipLoader : MonoBehaviour {
         referer.effects = gameObject.AddComponent<ShipTrailEffects>();
         referer.music = gameObject.AddComponent<ShipAudio>();
         referer.mesh = config.mesh;
+
+        // Icono Minimap
+        //MiniMapObject mmo = gameObject.AddComponent<MiniMapObject>();
+        //Image icon = (Instantiate(Resources.Load("UI/AIMinimapIcon") as GameObject) as GameObject).GetComponent<Image>();
+        //mmo.image = icon;
+        //Destroy(icon);
 
         referer.config = config;
         referer.effects.ship = referer;
@@ -91,7 +98,18 @@ public class ShipLoader : MonoBehaviour {
         collider.GetComponent<BoxCollider>().gameObject.SetActive(false);*/
         mc.material = physicMaterial;
 
-
+        // Esfera para representar la nave en el minimap
+        GameObject minimap = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        minimap.name = "Minimap Sphere";
+        minimap.layer = LayerMask.NameToLayer("Minimap");
+        minimap.transform.parent = transform;
+        minimap.transform.localPosition = new Vector3(0, 20, 0);
+        minimap.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        minimap.transform.localScale = new Vector3(100, 100, 100);
+        minimap.GetComponent<SphereCollider>().enabled = false;
+        Renderer rend = minimap.GetComponent<Renderer>();
+        rend.material.color = type != 1 && type != 2 ? Color.yellow : Color.grey;
+        rend.material.SetColor("_EmissionColor", type != 1 && type != 2 ? Color.yellow : Color.grey);
 
         referer.body = body;
         referer.mesh = collider;
@@ -211,6 +229,7 @@ public class ShipLoader : MonoBehaviour {
 
         camera.nearClipPlane = 0.05f;
         camera.farClipPlane = 2000.0f;
+        camera.cullingMask &= ~(1 << LayerMask.NameToLayer("Minimap"));
 
         if (isAi) {
             newCamera.SetActive(false);

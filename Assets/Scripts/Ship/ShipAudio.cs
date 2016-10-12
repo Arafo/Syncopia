@@ -36,16 +36,16 @@ public class ShipAudio : ShipCore {
         }
 
         //
-        if (ship.control.isThrusting)
+        if (ship.input.m_AccelerationButton)
             engineVolume = Mathf.Lerp(engineVolume, 1f, Time.deltaTime * 1f);
         else
             engineVolume = Mathf.Lerp(this.engineVolume, 0f, Time.deltaTime);
 
         if (!ship.isAI) {
-            if (ship.control.isThrusting && engineVolume < 0.6f)
+            if (ship.input.m_AccelerationButton && engineVolume < 0.6f)
                 ship.PlayClip(ship.config.SFX_IGNITION);
 
-            if (ship.control.isThrusting && this.engineVolume > 0.5f)
+            if (ship.input.m_AccelerationButton && this.engineVolume > 0.5f)
                 ship.PlayClip(ship.config.SFX_ENGINE_RELEASE);
         }
 

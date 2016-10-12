@@ -31,13 +31,16 @@ public class ShipReferer : NetworkBehaviour {
     public bool isRespawning;
     public bool facingFoward;
 
+    // Boost
     public int boostState;
     public float boostAccel;
     public float boostTimer;
+    public float powerBoost = 100f;
+    public bool powerBoosting;
+    private bool startBoost;
 
     public TrackSegment currentSection;
     public TrackSegment midSection;
-
 
     public int currentPosition;
     public int finalPosition;
@@ -78,6 +81,8 @@ public class ShipReferer : NetworkBehaviour {
     }
 
     void Update() {
+        powerBoosting = false;
+
         if (!isNetworked)
             input.OnUpdate();
     }
@@ -99,14 +104,42 @@ public class ShipReferer : NetworkBehaviour {
         if (currentLap > 0)
             RaceTimers();
 
-
         if (boostTimer > 0) {
             boostTimer -= Time.deltaTime;
         }
         else {
             boostState = 0;
-            boostAccel = 0;
+            boostAccel = 0f;
         }
+
+        // Boost de inicio
+        if (input.m_AccelerationButton && !startBoost) {
+            boostTimer = 0.8f;
+            boostAccel = 1000f;
+            startBoost = true;
+        }
+
+        // Boost con el boton
+        if (input.m_BoostButton && powerBoost > 0f) {
+            powerBoosting = true;
+            powerBoost -= Time.deltaTime * 65f;
+            //
+            if (powerBoost < 0f) {
+                powerBoost = 0f;
+            }
+            sim.boostingOverride = true;
+            boostTimer = 0.2f;
+            boostAccel = 800f;        
+        }
+        
+        // Boost de barrel roll
+        if (sim.BRBoostTimer > 0f) {
+            boostTimer = 0.2f;
+            boostAccel = 650f;
+        }
+
+        if (!autopilot)
+            Boost();
     }
 
     private void RaceTimers() {
@@ -119,11 +152,21 @@ public class ShipReferer : NetworkBehaviour {
     public void HitSpeedPad() {
         if (boostState < 3) {
             boostTimer += 1.5f;
-            //boostAccel += sim.m_engineThrust * 0.1f;
+            boostAccel += 4f;
             boostState++;
         }
         else {
             boostTimer += 0.5f;
+        }
+    }
+
+    private void Boost() {
+        //
+        if (boostTimer > 0f) {
+            boostTimer -= Time.deltaTime;
+            sim.boostingOverride = true;
+            body.AddForce(transform.forward * boostAccel);
+            PlayClip(config.SFX_BOOST);
         }
     }
 
@@ -170,16 +213,17 @@ public class ShipReferer : NetworkBehaviour {
 
                     // Habilitar los resultados
                     RaceSettings.raceManager.results.gameObject.SetActive(true);
-                    RaceSettings.raceManager.results.Results();
 
                     // Desactivar HUD
                     RaceSettings.raceManager.ui.gameObject.SetActive(false);
                 }
+                RaceSettings.raceManager.results.Results();
+
             }
 
             // send finish to clients on network
             //if (ServerSettings.isNetworked)
-                //RaceSettings.raceManager.mpmanager.RpcRaceEnding();
+            //RaceSettings.raceManager.mpmanager.RpcRaceEnding();
         }
 
         currentTime = 0;
