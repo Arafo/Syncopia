@@ -39,6 +39,11 @@ public class RaceUI : ShipCore
     public GameObject uiSpeedMeter;
     private RectTransform uiSpeedMeterRect;
 
+    // PowerBoost
+    public GameObject uiPowerBoost;
+    private RectTransform uiPowerBoostRect;
+    private float powerBoostRectMax;
+
     //
     public GameObject uiLaps;
     private Text uiLapsText;
@@ -58,6 +63,8 @@ public class RaceUI : ShipCore
         uiCurrentSpeedText = uiCurrentSpeed.GetComponent<Text>();
         uiCurrentPositionText = uiCurrentPosition.GetComponent<Text>();
         uiSpeedMeterRect = uiSpeedMeter.GetComponent<RectTransform>();
+        uiPowerBoostRect = uiPowerBoost.GetComponent<RectTransform>();
+        powerBoostRectMax = uiPowerBoostRect.sizeDelta.x;
         uiCurrentSpeedText = uiCurrentSpeed.GetComponent<Text>();
     }
 
@@ -94,6 +101,11 @@ public class RaceUI : ShipCore
                 uiSpeedMeterRect.sizeDelta = rectSize;
             }
 
+            // PowerBoost
+            float powerBoostX = ship.powerBoost * powerBoostRectMax / 100f;
+            Debug.Log(powerBoostX);
+            Vector2 powerBoostSize = new Vector2(powerBoostX, uiPowerBoostRect.sizeDelta.y);
+            uiPowerBoostRect.sizeDelta = powerBoostSize;
 
             // Velocidad
             if (!ship.isNetworked) {
@@ -102,7 +114,7 @@ public class RaceUI : ShipCore
             }
 
             // Numero de vueltas
-            uiCurrentLapText.text = "Lap: " + ship.currentLap.ToString() + "/" + RaceSettings.laps;
+            uiCurrentLapText.text = ship.currentLap.ToString() + "/" + RaceSettings.laps;
 
             // Tiempo total de la vuelta
             float timer = ship.currentTime;
@@ -111,7 +123,7 @@ public class RaceUI : ShipCore
             string miliseconds = ((timer * 1000) % 1000).ToString("000");
 
             string total = string.Concat(new string[] { minutes, ":", seconds, ":", miliseconds });
-            uiCurrentTimeText.text = "Current Lap\n" + total;
+            uiCurrentTimeText.text = "Current \t\t" + total;
 
             // Mejor tiempo de vuelta
             timer = ship.bestLap;
@@ -126,15 +138,15 @@ public class RaceUI : ShipCore
                 miliseconds = "000";
             }
             total = string.Concat(new string[] { minutes, ":", seconds, ":", miliseconds });
-            uiBestTimeText.text = "Best Lap\n" + total;
+            uiBestTimeText.text = "Best\t\t\t" + total;
 
-            uiCurrentPositionText.text = ship.currentPosition + " / " + RaceSettings.ships.Count;
+            uiCurrentPositionText.text = ship.currentPosition + "/" + RaceSettings.ships.Count;
 
             // Tiempos de las ultimas 5 vueltas
             int min = 1;
             int max = 5;
             String laps = "";
-            for (int i = min; i <= max; i++) {
+            /*for (int i = min; i <= max; i++) {
                 if (ship.laps.Length >= max) {
                     laps = "";
                     min += 1;
@@ -142,7 +154,7 @@ public class RaceUI : ShipCore
                 }
                 if (ship.laps.Length >= i)
                     laps += "Lap " + i + ": " + ship.laps[i - 1].ToString() + "\n";
-            }
+            }*/
             uiLapsText.text = laps;
 
         }

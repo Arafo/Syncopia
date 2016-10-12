@@ -68,7 +68,7 @@ public class PauseManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (gameplayWindow.activeSelf) {
+        if (gameplayWindow != null && gameplayWindow.activeSelf) {
             txtHUDR.text = Math.Round(sliderHUDR.value, 2).ToString();
             txtHUDG.text = Math.Round(sliderHUDG.value, 2).ToString();
             txtHUDB.text = Math.Round(sliderHUDB.value, 2).ToString();
