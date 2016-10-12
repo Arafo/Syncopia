@@ -76,7 +76,7 @@ public class ShipCamera : ShipCore {
             cameraOffset.z = ship.config.cameraClosePos.z + cameraAccelLag + cameraTurningOffset - cameraBoostLength;
 
             //
-            if (ship.control.isThrusting) {
+            if (ship.input.m_AccelerationButton) {
                 cameraMovementLength = Mathf.Lerp(cameraMovementLength, 6.5f, Time.deltaTime * 3f);
             }
             else if (ship.input.m_LeftAirBrakeAxis != 0f && ship.input.m_RightAirBrakeAixs != 0f && ship.transform.InverseTransformDirection(ship.body.velocity).z > 10f) {

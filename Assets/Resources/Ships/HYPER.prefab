@@ -298,7 +298,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011485638340}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.869, z: -5}
+  m_LocalPosition: {x: -0.183, y: 1.82, z: -4.77}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -875,8 +875,8 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Time: 0.1
-  m_StartWidth: 1
-  m_EndWidth: 1
+  m_StartWidth: 0.4
+  m_EndWidth: 0.1
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
@@ -1025,7 +1025,7 @@ MonoBehaviour:
   REF_ENGINECOL_BRIGHT: {r: 0, g: 0, b: 0, a: 0}
   REF_ENGINECOL: {r: 0, g: 0, b: 0, a: 0}
   REF_HUDCOL: {r: 0, g: 0, b: 0, a: 0}
-  REF_MESH: {fileID: 1000011628557848}
+  REF_MESH: {fileID: 55556256}
   REF_COCKPITMESH: {fileID: 0}
   REF_RECHARGEFX: {fileID: 0}
   REF_SPRAYFX: {fileID: 0}

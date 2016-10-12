@@ -14,6 +14,8 @@ public class ShipTrailEffects : ShipCore {
     private float trailOpacity;
     private float trailStartSize;
     private float trailEndSize;
+    private float trailMaxStartSize;
+    private float trailMaxEndSize;
     private float trailBrightness;
     public Light lightObject;
     public TrailRenderer trailObject;
@@ -44,7 +46,10 @@ public class ShipTrailEffects : ShipCore {
         windLeft = ship.config.windTrailLeft.GetComponent<TrailRenderer>();
         windRight = ship.config.windTrailRight.GetComponent<TrailRenderer>();
         spray = ship.config.engineSpray.GetComponent<Spray>();
-    }
+
+        trailMaxStartSize = trailObject.startWidth;
+        trailMaxEndSize = trailObject.endWidth;
+}
 	
 	// Update is called once per frame
 	public override void OnUpdate () {
@@ -54,7 +59,7 @@ public class ShipTrailEffects : ShipCore {
     private void UpdateTrailEffects() {
 
         // Calibrar la longitud, opacidad e intensidad de la luz de la cola
-        if (ship.control.isThrusting) {
+        if (ship.input.m_AccelerationButton) {
             idleLightFlickerTimer = 0f;
             visualLightItensity = Mathf.Lerp(visualLightItensity, 3f, Time.deltaTime);
             if (visualLightItensity < 1.5f) {
@@ -62,8 +67,8 @@ public class ShipTrailEffects : ShipCore {
             }
 
             if (transform.InverseTransformDirection(ship.body.velocity).z > 50f) {
-                trailStartSize = Mathf.Lerp(trailStartSize, 0.5f, Time.deltaTime * 6f);
-                trailEndSize = Mathf.Lerp(trailEndSize, 5f, Time.deltaTime * 6f);
+                trailStartSize = Mathf.Lerp(trailStartSize, trailMaxStartSize, Time.deltaTime * 6f);
+                trailEndSize = Mathf.Lerp(trailEndSize, trailMaxEndSize, Time.deltaTime * 6f);
                 trailOpacity = Mathf.Lerp(trailOpacity, 0.5f, Time.deltaTime * 5f);
                 sprayThrottle = Mathf.Lerp(trailOpacity, 1f, Time.deltaTime * 5f);
             }
@@ -81,8 +86,8 @@ public class ShipTrailEffects : ShipCore {
                 visualLightItensity = Mathf.Sin(idleLightFlickerTimer) * idleLightFlickerAmount;
             }
 
-            trailStartSize = Mathf.Lerp(trailStartSize, 0.5f, Time.deltaTime * 6f);
-            trailEndSize = Mathf.Lerp(trailEndSize, 0.2f, Time.deltaTime * 6f);
+            trailStartSize = Mathf.Lerp(trailStartSize, trailMaxStartSize, Time.deltaTime * 6f);
+            trailEndSize = Mathf.Lerp(trailEndSize, trailMaxEndSize, Time.deltaTime * 6f);
             trailOpacity = Mathf.Lerp(trailOpacity, 0f, Time.deltaTime * 2f);
         }
         lightObject.intensity = visualLightItensity;

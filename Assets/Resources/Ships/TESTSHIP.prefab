@@ -132,7 +132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &179434
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +668,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.1
   m_StartWidth: 0.49996823
   m_EndWidth: 0.20864928
   m_Colors:
