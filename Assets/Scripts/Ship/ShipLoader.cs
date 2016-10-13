@@ -222,6 +222,7 @@ public class ShipLoader : MonoBehaviour {
         newCamera.AddComponent<GUILayer>();
         newCamera.AddComponent<FlareLayer>();
         newCamera.AddComponent<AudioListener>();
+        //newCamera.AddComponent<DynamicResolution>();
         //Kino.Bloom bloom = newCamera.AddComponent<Kino.Bloom>();
         //bloom.radius = 1.0f;
         //Kino.Vignette vignette = newCamera.AddComponent<Kino.Vignette>();
@@ -229,7 +230,9 @@ public class ShipLoader : MonoBehaviour {
 
         camera.nearClipPlane = 0.05f;
         camera.farClipPlane = 2000.0f;
-        camera.cullingMask &= ~(1 << LayerMask.NameToLayer("Minimap"));
+        camera.cullingMask &= ~(1 << LayerMask.NameToLayer("Minimap")) & ~(1 << LayerMask.NameToLayer("HUD"));
+        //camera.targetTexture = Instantiate(Resources.Load("DynamicResolution") as RenderTexture) as RenderTexture;
+        //GameObject.Find("Canvas/RawImage").GetComponent<RawImage>().texture = camera.targetTexture;
 
         if (isAi) {
             newCamera.SetActive(false);
