@@ -837,7 +837,7 @@ MonoBehaviour:
   slipFalloff: 500
   slipMagnitude: 1000
   slipVelocityMult: 1
-  hoverHeight: 4
+  hoverHeight: 3.5
   size: {x: 2.5, y: 1.5, z: 7.5}
   mesh: {fileID: 197786}
   windTrailLeft: {fileID: 199338}

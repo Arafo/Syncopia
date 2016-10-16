@@ -815,10 +815,10 @@ MonoBehaviour:
   cameraFoV: 10
   cameraTurnSensitivity: 3
   cameraTurnDamp: 3
-  engineAmount: 1100
-  engineAcceleration: 100
-  engineGain: 1000
-  engineFalloff: 700
+  engineAmount: 1075
+  engineAcceleration: 92
+  engineGain: 750
+  engineFalloff: 750
   turnAmount: 1.2
   turnGain: 400
   turnFalloff: 800
