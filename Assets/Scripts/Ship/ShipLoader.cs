@@ -223,10 +223,6 @@ public class ShipLoader : MonoBehaviour {
         newCamera.AddComponent<FlareLayer>();
         newCamera.AddComponent<AudioListener>();
         //newCamera.AddComponent<DynamicResolution>();
-        //Kino.Bloom bloom = newCamera.AddComponent<Kino.Bloom>();
-        //bloom.radius = 1.0f;
-        //Kino.Vignette vignette = newCamera.AddComponent<Kino.Vignette>();
-        //vignette.intensity = 0.2f;
 
         camera.nearClipPlane = 0.05f;
         camera.farClipPlane = 2000.0f;
