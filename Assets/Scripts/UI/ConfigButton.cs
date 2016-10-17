@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using TeamUtility.IO;
+using Rewired;
 using System;
 
 public class ConfigButton : MonoBehaviour {
@@ -24,7 +24,7 @@ public class ConfigButton : MonoBehaviour {
     /// 
     /// </summary>
     void FixedUpdate() {
-        float horizontalInput = InputManager.GetAxis("DPADHorizontal");
+        float horizontalInput = ReInput.players.GetPlayer(0).GetAxis("DPADHorizontal");
         if (currentSelectorSelected!= null && horizontalInput != 0f && currentAnimationTimer <= Time.time) {
             currentAnimationTimer = Time.time + delayAnimationTimer;
             if (horizontalInput > 0) {

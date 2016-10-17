@@ -103,7 +103,6 @@ public class RaceUI : ShipCore
 
             // PowerBoost
             float powerBoostX = ship.powerBoost * powerBoostRectMax / 100f;
-            Debug.Log(powerBoostX);
             Vector2 powerBoostSize = new Vector2(powerBoostX, uiPowerBoostRect.sizeDelta.y);
             uiPowerBoostRect.sizeDelta = powerBoostSize;
 

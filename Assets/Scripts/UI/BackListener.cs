@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using TeamUtility.IO;
+using Rewired;
 
 public class BackListener : MonoBehaviour {
 
@@ -34,7 +34,7 @@ public class BackListener : MonoBehaviour {
     }
 
     void Update() {
-        if (InputManager.GetButtonDown("Pause")) {
+        if (ReInput.players.GetPlayer(0).GetButtonDown("Pause")) {
             if (isRoot)
                 return;
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using TeamUtility.IO;
+using Rewired;
 
 public class ShipInput : ShipCore {
 
@@ -9,6 +9,7 @@ public class ShipInput : ShipCore {
     public const string m_HorizontalAxis = "Horizontal";
     private string m_MovementAxisName;
     private string m_TurnAxisName;
+    private Player player;
 
     // Inputs
     public float m_SteerAxis;
@@ -24,6 +25,7 @@ public class ShipInput : ShipCore {
     public override void OnStart () {
         m_MovementAxisName = m_verticalAxis + m_PlayerNumber;
         m_TurnAxisName = m_HorizontalAxis + m_PlayerNumber;
+        player = ReInput.players.GetPlayer(0);
     }
 
     // Update is called once per frame
@@ -37,13 +39,13 @@ public class ShipInput : ShipCore {
         }
         else {
             if (!RaceSettings.shipsRestrained) {
-                m_AccelerationButton = InputManager.GetButton("Acceleration");
-                m_SteerAxis = InputManager.GetAxis("Steer");
-                m_PitchAxis = InputManager.GetAxis("Pitch");
-                m_LeftAirBrakeAxis = InputManager.GetAxis("Left brake");
-                m_RightAirBrakeAixs = InputManager.GetAxis("Right brake");
-                m_BoostButton = InputManager.GetButton("Boost");
-                m_CameraButton = InputManager.GetButtonDown("Camera");
+                m_AccelerationButton = player.GetButton("Acceleration");
+                m_SteerAxis = player.GetAxis("Steer");
+                m_PitchAxis = player.GetAxis("Pitch");
+                m_LeftAirBrakeAxis = player.GetAxis("Left brake");
+                m_RightAirBrakeAixs = player.GetAxis("Right brake");
+                m_BoostButton = player.GetButton("Boost");
+                m_CameraButton = player.GetButtonDown("Camera");
                 m_AirBrakesAxis = m_LeftAirBrakeAxis + m_RightAirBrakeAixs;
             }
             else {

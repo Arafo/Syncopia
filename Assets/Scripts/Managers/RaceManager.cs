@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityStandardAssets.CinematicEffects;
 using System.Collections.Generic;
-using TeamUtility.IO;
 using UnityEngine.Networking;
+using Rewired;
 using UnityStandardAssets.ImageEffects;
 
 public class RaceManager : MonoBehaviour {
@@ -83,7 +83,7 @@ public class RaceManager : MonoBehaviour {
             ui.ship = RaceSettings.ships[0];
 
         // Pausa
-        if (InputManager.GetButtonDown("Pause") || Input.GetKey(KeyCode.Escape) || (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.Tab)) ||
+        if (ReInput.players.GetPlayer(0).GetButtonDown("Pause") || Input.GetKey(KeyCode.Escape) || (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.Tab)) ||
                 (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab))) {
             if (!RaceSettings.ships[0].finished) {
                 Pause();
@@ -210,6 +210,10 @@ public class RaceManager : MonoBehaviour {
             Enumerations.E_SHIPS ship = RaceSettings.playerShip;
             bool isAI = (i != 0);
 
+            // TEST
+            if (i > 2)
+                return;
+
             GameObject newShip = new GameObject("PLAYER SHIP" + i);
             ShipLoader loader = newShip.AddComponent<ShipLoader>();
             //ShipLoaderTest loader = newShip.AddComponent<ShipLoaderTest>();
@@ -225,6 +229,10 @@ public class RaceManager : MonoBehaviour {
                 int rand = Random.Range(0, shipCount);
                 ship = (Enumerations.E_SHIPS)rand;
             }
+
+            // TEST
+            if (i == 1) ship = Enumerations.E_SHIPS.TESTSHIP;
+            if (i == 2) ship = Enumerations.E_SHIPS.FLYER;
 
             int type = (isAI) ? 1 : 0;
             loader.SpawnShip(ship, type);
@@ -333,49 +341,45 @@ public class RaceManager : MonoBehaviour {
     private void CalculatePosition() {
 
         int position;
-        int mid = RaceSettings.raceManager.trackData.trackData.sections[RaceSettings.raceManager.trackData.trackData.sections.Count / 2].index;
+        //int mid = RaceSettings.raceManager.trackData.trackData.sections[RaceSettings.raceManager.trackData.trackData.sections.Count / 2].index;
 
         for (int i = 0; i < RaceSettings.ships.Count; i++) {
-            position = 1;
+            position = 0;
             ShipReferer ship1 = RaceSettings.ships[i];
             for (int j = 0; j < RaceSettings.ships.Count; j++) {
-                ShipReferer ship2 = RaceSettings.ships[j];
-                if (i != j) {
+                if (!(RaceSettings.ships[j] == ship1)) {
+                    ShipReferer ship2 = RaceSettings.ships[j];
+                    int num2 = ship1.currentSection.index;
+                    int num3 = ship2.currentSection.index;
+
+                    if (ship1.secondSector && ship1.currentSection.index < ship1.midSection.index - 1) {
+                        num2 = endSection.index + ship1.currentSection.index;
+                    }
+                    if (ship2.secondSector && ship2.currentSection.index < ship2.midSection.index - 1) {
+                        num3 = endSection.index + ship2.currentSection.index;
+                    }
                     if (ship1.currentLap < ship2.currentLap) {
-                        position += 1;
+                        position++;
                     }
-                    else {
-                        if (ship1.currentSection == null || ship2.currentSection == null)
-                            return;
-
-                        int currentSection1 = ship1.currentSection.index;
-                        int currentSection2 = ship2.currentSection.index;
-
-                        if (ship1.secondSector)
-                            if (ship1.currentSection.index < mid - 1)
-                                currentSection1 = endSection.index + ship1.currentSection.index;
-
-                        if (ship2.secondSector)
-                            if (ship2.currentSection.index < mid - 1)
-                                currentSection2 = endSection.index + ship2.currentSection.index;
-
-                        if (currentSection1 < currentSection2) {
-                            position += 1;
+                    else if (ship1.currentLap == ship2.currentLap) {
+                        if (num2 < num3) {
+                            position++;
                         }
-                        else if (currentSection1 == currentSection2) {
-                            Vector3 pos1 = ship1.transform.position;
-                            pos1.y = 0.0f;
-                            Vector3 pos2 = ship1.currentSection.position;
-                            pos2.y = 0.0f;
-                            Vector3 pos3 = ship2.transform.position;
-                            pos3.y = 0.0f;
-                            if (Vector3.Distance(pos1, pos2) < Vector3.Distance(pos3, pos2))
-                                position += 1;
+                        else if (num2 == num3) {
+                            Vector3 pos = ship1.transform.position;
+                            pos.y = 0f;
+                            Vector3 position2 = ship1.currentSection.position;
+                            position2.y = 0f;
+                            Vector3 position3 = ship2.transform.position;
+                            position3.y = 0f;
+                            if (Vector3.Distance(pos, position2) < Vector3.Distance(position3, position2)) {
+                                position++;
+                            }
                         }
-                    }
+                    }                   
                 }
             }
-            ship1.currentPosition = position;
+            ship1.currentPosition = position + 1;
         }
     }
 }
