@@ -13,7 +13,7 @@ public class HorizontallScrollSliderButton : Button {
     private float m_HorizontalInput;
     private bool m_Highlighted = false;
     private float m_InputSteep;
-    private float m_MaxInputSteep = 0.5f;
+    private float m_MaxInputSteep = 0.25f;
 
 
     // Update is called once per frame
