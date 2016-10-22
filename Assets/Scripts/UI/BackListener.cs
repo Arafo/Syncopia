@@ -34,7 +34,7 @@ public class BackListener : MonoBehaviour {
     }
 
     void Update() {
-        if (ReInput.players.GetPlayer(0).GetButtonDown("Pause")) {
+        if (ReInput.players.GetPlayer(0).GetButtonDown("Cancel")) {
             if (isRoot)
                 return;
 

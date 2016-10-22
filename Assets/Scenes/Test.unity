@@ -14441,6 +14441,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000011251574008, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010080137352, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012314448382, guid: 8d94abdccedd9cf469ef42959b04b1fe, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -14590,6 +14600,56 @@ Prefab:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 1874351377}
+    - target: {fileID: 114000011251574008, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011251574008, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011251574008, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 952056114}
+    - target: {fileID: 114000011251574008, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateGraphicsSettings
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011251574008, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010080137352, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010080137352, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010080137352, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 952056114}
+    - target: {fileID: 114000010080137352, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateGraphicsSettings
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010080137352, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000011464716306, guid: 8d94abdccedd9cf469ef42959b04b1fe, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8d94abdccedd9cf469ef42959b04b1fe, type: 2}
@@ -22729,7 +22789,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400020, guid: 9ba8480782343144a9d67326ca35ec82, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 546792312}
-  m_LocalRotation: {x: -0.6436303, y: -0.292814, z: -0.29281422, w: 0.64363015}
+  m_LocalRotation: {x: -0.6436304, y: -0.29281402, z: -0.29281425, w: 0.6436302}
   m_LocalPosition: {x: -1044.7, y: 4, z: 1938.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26184,6 +26244,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010321501072, guid: 805f37c7b4fde044584b505b95574250, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -26215,6 +26280,71 @@ Prefab:
     - target: {fileID: 4000010321501072, guid: 805f37c7b4fde044584b505b95574250, type: 2}
       propertyPath: m_RootOrder
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.data[1]._id
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.data[1]._name
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.data[1]._joystickAxisSensitivity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.data[1]._digitalAxisSnap
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.data[1]._digitalAxisGravity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.data[1]._digitalAxisSensitivity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.data[1]._mouseXYAxisSensitivity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.data[1]._mouseOtherAxisSensitivity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.data[1]._customControllerAxisSensitivity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.data[1]._buttonDoublePressSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.data[1]._buttonDeadZone
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviorIdCounter
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+        type: 2}
+      propertyPath: _userData.inputBehaviors.Array.data[1]._buttonDownBuffer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 805f37c7b4fde044584b505b95574250, type: 2}
@@ -57359,7 +57489,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400032, guid: 9ba8480782343144a9d67326ca35ec82, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1744241902}
-  m_LocalRotation: {x: 0.15675895, y: -0.68951195, z: -0.6895119, w: -0.15675902}
+  m_LocalRotation: {x: 0.15675893, y: -0.6895119, z: -0.68951184, w: -0.15675901}
   m_LocalPosition: {x: -726.1, y: 0, z: 1405.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
