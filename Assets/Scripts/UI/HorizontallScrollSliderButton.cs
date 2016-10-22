@@ -20,7 +20,7 @@ public class HorizontallScrollSliderButton : Button {
     void Update () {
         m_HorizontalInput = ReInput.players.GetPlayer(0).GetAxis("MenuHorizontal");
         if (m_Highlighted) {
-            m_InputSteep += Time.deltaTime;
+            m_InputSteep += (Time.timeScale != 0 ? Time.deltaTime : Time.unscaledDeltaTime);
             if (m_HorizontalInput > 0 && m_InputSteep > m_MaxInputSteep) {
                 button.setNextText();
                 m_InputSteep = 0f;

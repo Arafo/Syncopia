@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour {
     void Update() {
         if (clips.Count > 0) {
             for (int i = 0; i < clips.Count; i++) {
-                clipsTimers[i] += Time.deltaTime;
+                clipsTimers[i] += (!GameSettings.isPaused ? Time.deltaTime : Time.unscaledDeltaTime);
                 if (clipsTimers[i] > clipsDuration[i]) {
                     // Borrar clip de audio
                     Destroy(clips[i].gameObject);

@@ -53,9 +53,9 @@ public class MenuAnimationManager : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-    void FixedUpdate() {
+    void Update() {
         if (isRevealing) {
-            coverRevealTimer += Time.deltaTime * 2;
+            coverRevealTimer += (!GameSettings.isPaused ? Time.deltaTime : Time.unscaledDeltaTime) * 2;
 
             startPanelCover.color = new Color(startPanelCover.color.r, startPanelCover.color.g, startPanelCover.color.b, 1.0f - Mathf.Clamp(coverRevealTimer, 0.0f, 1.0f));
 
@@ -65,8 +65,8 @@ public class MenuAnimationManager : MonoBehaviour {
 
         if (isAnimating) {
             // Aumentar el tiempo de la animacion
-            animationTime += Time.deltaTime * 4;
-            interpolatedAnimationTime = Mathf.Lerp(interpolatedAnimationTime, animationTime, Time.deltaTime * 5);
+            animationTime += (!GameSettings.isPaused ? Time.deltaTime : Time.unscaledDeltaTime) * 4;
+            interpolatedAnimationTime = Mathf.Lerp(interpolatedAnimationTime, animationTime, (!GameSettings.isPaused ? Time.deltaTime : Time.unscaledDeltaTime) * 5);
 
             // Obtener los multiplicacion de la animacion
             float animationPart1 = Mathf.Clamp(interpolatedAnimationTime, 0.0f, 1.0f);
@@ -300,9 +300,4 @@ public class MenuAnimationManager : MonoBehaviour {
     public void SetLeaveScene(string name) {
         leaveScene = name;
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

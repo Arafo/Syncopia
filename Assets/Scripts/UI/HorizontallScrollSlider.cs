@@ -18,13 +18,16 @@ public class HorizontallScrollSlider : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        if (isRange) {
-            for (int i = 1; i <= rangeContent; i++) {
-                listContent.Add(i.ToString());
+        if (listContent != null) {
+            if (isRange) {
+                for (int i = 1; i <= rangeContent; i++) {
+                    listContent.Add(i.ToString());
+                }
             }
+            if (firstIndex < listContent.Count)
+                actualText.text = listContent[firstIndex];
+            index = firstIndex;
         }
-        actualText.text = listContent[firstIndex];
-        index = firstIndex;
     }
 
     // Update is called once per frame
