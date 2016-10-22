@@ -63,9 +63,9 @@ public class RaceManager : MonoBehaviour {
         //ui.ship = RaceSettings.ships[0];
 
         // Menu de pausa
-        GameObject pauseUI = Instantiate(Resources.Load("UI/Pause") as GameObject) as GameObject;
-        pause = pauseUI.GetComponent<PauseManager>();
-        pauseUI.SetActive(false);
+        //GameObject pauseUI = Instantiate(Resources.Load("UI/OPTIONS") as GameObject) as GameObject;
+        //pause = pauseUI.GetComponent<PauseManager>();
+        //pauseUI.SetActive(false);
 
         // Resultados
         GameObject ResultsUI = Instantiate(Resources.Load("UI/Results") as GameObject) as GameObject;
@@ -83,9 +83,9 @@ public class RaceManager : MonoBehaviour {
             ui.ship = RaceSettings.ships[0];
 
         // Pausa
-        if (ReInput.players.GetPlayer(0).GetButtonDown("Pause") || Input.GetKey(KeyCode.Escape) || (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.Tab)) ||
+        if (ReInput.players.GetPlayer(0).GetButtonDown("Pause") || (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.Tab)) ||
                 (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab))) {
-            if (!RaceSettings.ships[0].finished) {
+            if (!RaceSettings.ships[0].finished) {               
                 Pause();
             }
         }
@@ -172,9 +172,9 @@ public class RaceManager : MonoBehaviour {
     private void UpdateImageEffects() {
         int i = 0;
         for (i = 0; i < ppBlooms.Count; ++i)
-            ppBlooms[i].enabled = GameSettings.GS_BLOOM;
+            ppBlooms[i].enabled = GameSettings.GS_BLOOM == 1;
         for (i = 0; i < ppAA.Count; ++i)
-            ppAA[i].enabled = GameSettings.GS_FXAA;
+            ppAA[i].enabled = GameSettings.GS_AA == 1;
         for (i = 0; i < ppAO.Count; ++i)
             ppAO[i].enabled = GameSettings.GS_AO;
         for (i = 0; i < ppTonemapping.Count; ++i)
@@ -245,8 +245,9 @@ public class RaceManager : MonoBehaviour {
         ui.gameObject.SetActive(!GameSettings.isPaused);
 
         pause.gameObject.SetActive(GameSettings.isPaused);
-        if (GameSettings.isPaused)
-            pause.InitParcialResults();
+        RaceSettings.ships[0].cam.GetComponent<Blur>().enabled = GameSettings.isPaused;
+        //if (GameSettings.isPaused)
+        //pause.InitParcialResults();
 
         Cursor.visible = GameSettings.isPaused;
     }

@@ -9,8 +9,8 @@ public class GameSettings : MonoBehaviour {
     public static int GS_FRAMECAP = 200;
     public static int GS_DRAWDISTANCE = 60;
     public static bool GS_FULLSCREEN = true;
-    public static bool GS_BLOOM = false;
-    public static bool GS_FXAA = false;
+    public static int GS_BLOOM = 1;
+    public static int GS_AA = 0;
     public static bool GS_AO = false;
     public static bool GS_CAMERADAMAGE = false;
     public static bool GS_TONEMAPPING = false;

@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-
-
+using UnityEditor.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
 
@@ -18,13 +17,14 @@ public class PauseManager : MonoBehaviour {
     public Text totalTimes;
 
     [Header("[ GRAFICOS ]")]
-    public Dropdown dropResolution;
+    //public Dropdown dropResolution;
+    public HorizontallScrollSlider sliderResolution;
     public Slider sliderDrawDistance;
     public Text txtDrawDistance;
-    public Slider sliderFramerate;
-    public Text txtFramerate;
-    public Toggle tglBloom;
-    public Toggle tglFXAA;
+    public HorizontallScrollSlider sliderFramerate;
+    //public Text txtFramerate;
+    public HorizontallScrollSlider sliderBloom;
+    public HorizontallScrollSlider sliderAA;
 
     [Header("[ AUDIO ]")]
     public Slider sliderMasterVolume;
@@ -114,7 +114,7 @@ public class PauseManager : MonoBehaviour {
 
     public void Restart() {
         GameSettings.PauseToggle(false);
-        SceneManager.LoadScene("Test");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Quit() {
@@ -166,10 +166,21 @@ public class PauseManager : MonoBehaviour {
         GetResolutions();
         SetResolutionDropDown();
 
-        sliderFramerate.value = GameSettings.GS_FRAMECAP;
+        if (GameSettings.GS_FRAMECAP == -1)
+            sliderFramerate.firstIndex = 0;
+        else if (GameSettings.GS_FRAMECAP == 30)
+            sliderFramerate.firstIndex = 1;
+        else if (GameSettings.GS_FRAMECAP == 60)
+            sliderFramerate.firstIndex = 2;
+        else
+            sliderFramerate.firstIndex = 0;
+
+        sliderBloom.firstIndex = GameSettings.GS_BLOOM;
+        sliderAA.firstIndex = GameSettings.GS_AA;
+
+        // Importante que este valor se cambie el ultimo porque luego llama
+        // aL metodo UpdateDrawDistanceValue() que actualiza las opciones
         sliderDrawDistance.value = GameSettings.GS_DRAWDISTANCE;
-        tglBloom.isOn = GameSettings.GS_BLOOM;
-        tglFXAA.isOn = GameSettings.GS_FXAA;
     }
 
     public void InitAudioMenu() {
@@ -179,7 +190,7 @@ public class PauseManager : MonoBehaviour {
         sliderSFXVolume.value = AudioSettings.VOLUME_SFX;
         sliderMusicVolume.value = AudioSettings.VOLUME_MUSIC;
         sliderVoiceVolume.value = AudioSettings.VOLUME_VOICES;
-        tglCustomMusic.isOn = AudioSettings.customMusicEnabled;
+        //tglCustomMusic.isOn = AudioSettings.customMusicEnabled;
     }
 
     public void InitGameplayMenu() {
@@ -201,13 +212,20 @@ public class PauseManager : MonoBehaviour {
         if (resolutions.Length > 0) {
             GameOptions.LoadGameSettings();
 
-            GameSettings.GS_RESOLUTION.x = Mathf.RoundToInt(resolutions[dropResolution.value].width);
-            GameSettings.GS_RESOLUTION.y = Mathf.RoundToInt(resolutions[dropResolution.value].height);
-            GameSettings.GS_FRAMECAP = Mathf.RoundToInt(sliderFramerate.value);
+            GameSettings.GS_RESOLUTION.x = Mathf.RoundToInt(resolutions[sliderResolution.index].width);
+            GameSettings.GS_RESOLUTION.y = Mathf.RoundToInt(resolutions[sliderResolution.index].height);
+
+            if (sliderFramerate.listContent[sliderFramerate.index] == "OFF")
+                GameSettings.GS_FRAMECAP = Mathf.RoundToInt(-1);
+            else if (sliderFramerate.listContent[sliderFramerate.index] == "30")
+                GameSettings.GS_FRAMECAP = Mathf.RoundToInt(30);
+            else if (sliderFramerate.listContent[sliderFramerate.index] == "60")
+                GameSettings.GS_FRAMECAP = Mathf.RoundToInt(60);
             GameSettings.CapFPS(GameSettings.GS_FRAMECAP);
+
             GameSettings.GS_DRAWDISTANCE = Mathf.RoundToInt(sliderDrawDistance.value);
-            GameSettings.GS_BLOOM = tglBloom.isOn;
-            GameSettings.GS_FXAA = tglFXAA.isOn;
+            GameSettings.GS_BLOOM = sliderBloom.index;
+            GameSettings.GS_AA = sliderAA.index;
 
             Screen.SetResolution(Mathf.RoundToInt(GameSettings.GS_RESOLUTION.x), Mathf.RoundToInt(GameSettings.GS_RESOLUTION.y), GameSettings.GS_FULLSCREEN);
 
@@ -222,7 +240,7 @@ public class PauseManager : MonoBehaviour {
         AudioSettings.VOLUME_SFX = sliderSFXVolume.value;
         AudioSettings.VOLUME_MUSIC = sliderMusicVolume.value;
         AudioSettings.VOLUME_VOICES = sliderVoiceVolume.value;
-        AudioSettings.customMusicEnabled = tglCustomMusic.isOn;
+        //AudioSettings.customMusicEnabled = tglCustomMusic.isOn;
 
         GameOptions.SaveGameSettings();
     }
@@ -249,12 +267,13 @@ public class PauseManager : MonoBehaviour {
 
     public void GetResolutions() {
         resolutions = Screen.resolutions;
-        List<Dropdown.OptionData> od = new List<Dropdown.OptionData>();
+        List<string> od = new List<string>();
 
-        for (int i = 0; i < resolutions.Length; ++i)
-            od.Add(new Dropdown.OptionData(string.Format("{0}x{1}", resolutions[i].width, resolutions[i].height)));
+        for (int i = 0; i < resolutions.Length; ++i) {
+            od.Add(string.Format("{0}x{1}", resolutions[i].width, resolutions[i].height));
+        }
 
-        dropResolution.options = od;
+        sliderResolution.listContent = od;
     }
 
     public void SetResolutionDropDown() {
@@ -266,12 +285,19 @@ public class PauseManager : MonoBehaviour {
             if (resolutions[i].width == width && resolutions[i].height == height)
                 val = i;
         }
-        dropResolution.value = val;
+
+        sliderResolution.firstIndex = val;
     }
 
     public void UpdateFramerate() {
-        GameSettings.GS_FRAMECAP = Mathf.RoundToInt(sliderFramerate.value);
-        txtFramerate.text = GameSettings.GS_FRAMECAP.ToString();
+        if (sliderFramerate.listContent[sliderFramerate.index] == "OFF")
+            GameSettings.GS_FRAMECAP = Mathf.RoundToInt(-1);
+        else if (sliderFramerate.listContent[sliderFramerate.index] == "30")
+            GameSettings.GS_FRAMECAP = Mathf.RoundToInt(30);
+        else if (sliderFramerate.listContent[sliderFramerate.index] == "60")
+            GameSettings.GS_FRAMECAP = Mathf.RoundToInt(60);
+        //GameSettings.GS_FRAMECAP = Mathf.RoundToInt(sliderFramerate.value);
+        //txtFramerate.text = GameSettings.GS_FRAMECAP.ToString();
 
         UpdateGraphicsSettings();
     }

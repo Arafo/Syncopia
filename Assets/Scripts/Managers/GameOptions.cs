@@ -14,7 +14,7 @@ public class GameOptions : MonoBehaviour {
 
             ini.WriteValue("Rendering", "Draw Distance", GameSettings.GS_DRAWDISTANCE);
             ini.WriteValue("Rendering", "Bloom", GameSettings.GS_BLOOM);
-            ini.WriteValue("Rendering", "FXAA", GameSettings.GS_FXAA);
+            ini.WriteValue("Rendering", "AA", GameSettings.GS_AA);
             ini.WriteValue("Rendering", "AO", GameSettings.GS_AO);
             ini.WriteValue("Rendering", "CAMDMG", GameSettings.GS_CAMERADAMAGE);
             ini.WriteValue("Rendering", "TONEMAP", GameSettings.GS_TONEMAPPING);
@@ -73,7 +73,7 @@ public class GameOptions : MonoBehaviour {
 
             GameSettings.GS_DRAWDISTANCE = ini.ReadValue("Rendering", "Draw Distance", GameSettings.GS_DRAWDISTANCE);
             GameSettings.GS_BLOOM = ini.ReadValue("Rendering", "Bloom", GameSettings.GS_BLOOM);
-            GameSettings.GS_FXAA = ini.ReadValue("Rendering", "FXAA", GameSettings.GS_FXAA);
+            GameSettings.GS_AA = ini.ReadValue("Rendering", "AA", GameSettings.GS_AA);
             GameSettings.GS_AO = ini.ReadValue("Rendering", "AO", GameSettings.GS_AO);
             GameSettings.GS_CAMERADAMAGE = ini.ReadValue("Rendering", "CAMDMG", GameSettings.GS_CAMERADAMAGE);
             GameSettings.GS_TONEMAPPING = ini.ReadValue("Rendering", "TONEMAP", GameSettings.GS_TONEMAPPING);

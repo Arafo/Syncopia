@@ -8,7 +8,7 @@ public class BackListener : MonoBehaviour {
     public MenuAnimationManager animManager;
     public GameObject toPanel;
     public bool usePrevious;
-    public Button lastSelected;
+    public Selectable lastSelected;
 
     public bool useNext;
     public GameObject nextPanel;
