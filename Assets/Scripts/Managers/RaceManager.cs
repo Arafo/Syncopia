@@ -249,6 +249,10 @@ public class RaceManager : MonoBehaviour {
         //if (GameSettings.isPaused)
         //pause.InitParcialResults();
 
+        // Reiniciar menu al salir de la pausa
+        if (!GameSettings.isPaused)
+            pause.ResetMenu();
+
         Cursor.visible = GameSettings.isPaused;
     }
 

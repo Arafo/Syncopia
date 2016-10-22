@@ -163,11 +163,47 @@ public class MenuAnimationManager : MonoBehaviour {
         ClipManager.CreateClip(Resources.Load("Audio/SFX/Select") as AudioClip, 1.0f, 1.0f);
 
         // Seleccionar el boton seleccionado en el panel anterior
-        fromPanel.GetComponent<BackListener>().lastSelected = eventSystem.currentSelectedGameObject.GetComponent<Button>();
+        //fromPanel.GetComponent<BackListener>().lastSelected = eventSystem.currentSelectedGameObject.GetComponent<Button>();
 
         loadingAnimation = false;
         backPedal = false;
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="panel"></param>
+    public void StartAnimationNoSound(GameObject panel) {
+        // Asignar el siguiente panel
+        toPanel = panel;
+
+        // Asignar las variables de la animacion
+        isAnimating = true;
+        animationTime = 0;
+        interpolatedAnimationTime = 0;
+
+        fromTexts.Clear();
+        toTexts.Clear();
+        fromImages.Clear();
+        toImages.Clear();
+        toButtons.Clear();
+
+        // Obtener todos los componentes
+        Text[] allChildren = fromPanel.GetComponentsInChildren<Text>();
+        fromTexts = new List<Text>(allChildren);
+        allChildren = toPanel.GetComponentsInChildren<Text>();
+        toTexts = new List<Text>(allChildren);
+        Image[] allImages = fromPanel.GetComponentsInChildren<Image>();
+        fromImages = new List<Image>(allImages);
+        allImages = toPanel.GetComponentsInChildren<Image>();
+        toImages = new List<Image>(allImages);
+        Button[] allButtons = toPanel.GetComponentsInChildren<Button>();
+        toButtons = new List<Button>(allButtons);
+
+        loadingAnimation = false;
+        backPedal = false;
+    }
+
 
     /// <summary>
     /// 

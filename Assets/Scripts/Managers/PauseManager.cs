@@ -59,6 +59,8 @@ public class PauseManager : MonoBehaviour {
     public Text txtHUDB;
     public Text txtHUDA;
 
+    public MenuAnimationManager animation;
+
     private Resolution[] resolutions = new Resolution[0];
 
     // Use this for initialization
@@ -115,6 +117,17 @@ public class PauseManager : MonoBehaviour {
     public void Restart() {
         GameSettings.PauseToggle(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    /// <summary>
+    /// Reinicia el menu de pausa poniendo el primer panel en pantalla
+    /// </summary>
+    public void ResetMenu() {       
+        transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(2).gameObject.SetActive(false);
+        transform.GetChild(3).gameObject.SetActive(false);
+        animation.StartAnimationNoSound(transform.GetChild(0).gameObject);
     }
 
     public void Quit() {
