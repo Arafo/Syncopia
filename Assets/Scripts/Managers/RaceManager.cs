@@ -40,7 +40,7 @@ public class RaceManager : MonoBehaviour {
 
     // Efectos
     private List<UnityStandardAssets.ImageEffects.Bloom> ppBlooms = new List<UnityStandardAssets.ImageEffects.Bloom>();
-    private List<AntiAliasing> ppAA = new List<AntiAliasing>();
+    private List<AntiAliasingManager> ppAA = new List<AntiAliasingManager>();
     private List<AmbientOcclusion> ppAO = new List<AmbientOcclusion>();
     private List<TonemappingColorGrading> ppTonemapping = new List<TonemappingColorGrading>();
 
@@ -174,7 +174,7 @@ public class RaceManager : MonoBehaviour {
         for (i = 0; i < ppBlooms.Count; ++i)
             ppBlooms[i].enabled = GameSettings.GS_BLOOM == 1;
         for (i = 0; i < ppAA.Count; ++i)
-            ppAA[i].enabled = GameSettings.GS_AA == 1;
+            ppAA[i].SelectAA(GameSettings.GS_AA, RaceSettings.ships[i].cam);//.enabled = GameSettings.GS_AA == 1;
         for (i = 0; i < ppAO.Count; ++i)
             ppAO[i].enabled = GameSettings.GS_AO;
         for (i = 0; i < ppTonemapping.Count; ++i)
@@ -314,7 +314,7 @@ public class RaceManager : MonoBehaviour {
                 ppBlooms.Add(bloom);
 
                 // fxaa
-                AntiAliasing aa = RaceSettings.ships[i].cam.gameObject.AddComponent<AntiAliasing>();
+                AntiAliasingManager aa = RaceSettings.ships[i].cam.gameObject.AddComponent<AntiAliasingManager>();
                 ppAA.Add(aa);
 
                 // ao

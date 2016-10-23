@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using UnityEditor.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
 
