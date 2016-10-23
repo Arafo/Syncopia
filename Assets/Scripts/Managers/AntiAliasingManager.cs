@@ -32,17 +32,25 @@ public class AntiAliasingManager : MonoBehaviour {
 	
 	}
 
-    private void TurnOffAll() {
+    private bool TurnOffAll() {
         QualitySettings.antiAliasing = 0;
+        if (standardAA == null || cinematicAA == null || temporalAA == null)
+            return false;
+
         standardAA.enabled = false;
         cinematicAA.enabled = false;
         temporalAA.enabled = false;
+        return true;
     }
 
     public void SelectAA(int type, Camera camera) {
         selected = type;
         AA = ((Enumerations.E_AA)type).ToDescription();
-        TurnOffAll();
+
+        // Si no se han podido desactivar los AA, no se hace nada
+        if (!TurnOffAll())
+            return;
+
         switch (type) {
             case 0 :
                 // No hay que hacer nada, ya se ha desactivado el AA
