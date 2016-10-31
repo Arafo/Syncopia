@@ -16,6 +16,14 @@ public class MenuEventManager : MonoBehaviour {
 
     }
 
+    public void LoadMenu() {
+        menuAnimation.SetLeaveScene("Menu");
+    }
+
+    public void LoadOnline() {
+        menuAnimation.SetLeaveScene("Online");
+    }
+
     public void StartRace() {
         ServerSettings.isNetworked = false;
         menuAnimation.SetLeaveScene("LoadingScreen");

@@ -282,507 +282,6 @@ Light:
   m_BounceIntensity: 1.77
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &153945410
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 153945412}
-  - 114: {fileID: 153945411}
-  m_Layer: 0
-  m_Name: InputManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &153945411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 153945410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb91bdba6520fd248bbc41b14d02e9a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputConfigurations:
-  - name: KeyboardAndMouse
-    axes:
-    - name: Acceleration
-      description: 
-      positive: 32
-      negative: 0
-      altPositive: 32
-      altNegative: 0
-      deadZone: 0.001
-      gravity: 1000
-      sensitivity: 1000
-      snap: 1
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: Steer
-      description: 
-      positive: 275
-      negative: 276
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0.001
-      gravity: 1000
-      sensitivity: 1000
-      snap: 1
-      invert: 0
-      type: 2
-      axis: 0
-      joystick: 0
-    - name: Pitch
-      description: 
-      positive: 273
-      negative: 274
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1
-      snap: 0
-      invert: 0
-      type: 2
-      axis: 0
-      joystick: 0
-    - name: Left brake
-      description: 
-      positive: 0
-      negative: 97
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1
-      snap: 0
-      invert: 0
-      type: 2
-      axis: 0
-      joystick: 0
-    - name: Right brake
-      description: 
-      positive: 100
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1
-      snap: 0
-      invert: 0
-      type: 2
-      axis: 0
-      joystick: 0
-    - name: Boost
-      description: 
-      positive: 304
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1
-      snap: 0
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: Camera
-      description: 
-      positive: 99
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1
-      snap: 0
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: Pause
-      description: 
-      positive: 27
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1
-      snap: 1
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: Horizontal
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1
-      snap: 0
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: MenuHorizontal
-      description: 
-      positive: 100
-      negative: 97
-      altPositive: 275
-      altNegative: 276
-      deadZone: 0
-      gravity: 3
-      sensitivity: 3
-      snap: 1
-      invert: 0
-      type: 2
-      axis: 0
-      joystick: 0
-    - name: MenuVertical
-      description: 
-      positive: 119
-      negative: 115
-      altPositive: 273
-      altNegative: 274
-      deadZone: 0
-      gravity: 3
-      sensitivity: 3
-      snap: 1
-      invert: 0
-      type: 2
-      axis: 0
-      joystick: 0
-    - name: Submit
-      description: 
-      positive: 32
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 0
-      snap: 0
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: Cancel
-      description: 
-      positive: 27
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 0
-      snap: 0
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: DPADHorizontal
-      description: 
-      positive: 276
-      negative: 275
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 1000
-      snap: 1
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: DPADVertical
-      description: 
-      positive: 273
-      negative: 274
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 1000
-      snap: 1
-      invert: 0
-      type: 0
-      axis: 1
-      joystick: 0
-    isExpanded: 0
-  - name: Windows_Gamepad
-    axes:
-    - name: Acceleration
-      description: 
-      positive: 330
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0.001
-      gravity: 1000
-      sensitivity: 1000
-      snap: 1
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: Steer
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1
-      snap: 0
-      invert: 0
-      type: 3
-      axis: 0
-      joystick: 0
-    - name: Pitch
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1
-      snap: 0
-      invert: 0
-      type: 3
-      axis: 1
-      joystick: 0
-    - name: Left brake
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1000
-      snap: 1
-      invert: 1
-      type: 3
-      axis: 8
-      joystick: 0
-    - name: Right brake
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1000
-      snap: 1
-      invert: 0
-      type: 3
-      axis: 9
-      joystick: 0
-    - name: Boost
-      description: 
-      positive: 352
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1
-      snap: 0
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: Camera
-      description: 
-      positive: 353
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1
-      snap: 1
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: Pause
-      description: 
-      positive: 357
-      negative: 351
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 0
-      snap: 0
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: DPADHorizontal
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 1000
-      snap: 1
-      invert: 0
-      type: 3
-      axis: 5
-      joystick: 0
-    - name: DPADVertical
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 1000
-      snap: 1
-      invert: 0
-      type: 3
-      axis: 6
-      joystick: 0
-    - name: RightTrigger
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 1000
-      snap: 1
-      invert: 0
-      type: 3
-      axis: 9
-      joystick: 0
-    - name: LeftTrigger
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 1000
-      snap: 1
-      invert: 0
-      type: 3
-      axis: 8
-      joystick: 0
-    - name: Horizontal
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 1
-      sensitivity: 1
-      snap: 0
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: MenuHorizontal
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0.2
-      gravity: 0
-      sensitivity: 1
-      snap: 0
-      invert: 0
-      type: 3
-      axis: 0
-      joystick: 0
-    - name: MenuVertical
-      description: 
-      positive: 0
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 1000
-      snap: 1
-      invert: 1
-      type: 3
-      axis: 1
-      joystick: 0
-    - name: Submit
-      description: 
-      positive: 350
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 0
-      snap: 0
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    - name: Cancel
-      description: 
-      positive: 351
-      negative: 0
-      altPositive: 0
-      altNegative: 0
-      deadZone: 0
-      gravity: 0
-      sensitivity: 0
-      snap: 0
-      invert: 0
-      type: 0
-      axis: 0
-      joystick: 0
-    isExpanded: 1
-  playerOneDefault: KeyboardAndMouse
-  playerTwoDefault: 
-  playerThreeDefault: 
-  playerFourDefault: 
-  dontDestroyOnLoad: 0
-  ignoreTimescale: 0
---- !u!4 &153945412
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 153945410}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
 --- !u!1 &164072597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,7 +1304,7 @@ Transform:
   - {fileID: 1033406149}
   - {fileID: 370168327}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!1 &266074398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2600,59 +2099,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1295283577}
   m_RootOrder: 3
---- !u!1 &755583703
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 755583705}
-  - 114: {fileID: 755583704}
-  m_Layer: 0
-  m_Name: Input Adapter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &755583704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 755583703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e63496cd80558db4aa847b75970a8728, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
-  allowRealtimeInputDeviceSwitch: 1
-  checkInputDeviceEveryFrame: 0
-  inputDeviceChecksPerSecond: 15
-  updateJoystickCountInterval: 1
-  keyboardConfiguration: KeyboardAndMouse
-  windowsJoystickConfiguration: Windows_Gamepad
-  osxJoystickConfiguration: OSX_Gamepad
-  linuxJoystickConfiguration: Linux_Gamepad
-  leftTriggerAxis: LeftTrigger
-  rightTriggerAxis: RightTrigger
-  dpadHorizontalAxis: DPADHorizontal
-  dpadVerticalAxis: DPADVertical
---- !u!4 &755583705
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 755583703}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
 --- !u!1 &822729894
 GameObject:
   m_ObjectHideFlags: 0
@@ -8207,7 +7653,7 @@ Transform:
   - {fileID: 1006595431}
   - {fileID: 1007061247}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 15
 --- !u!1 &948557287
 GameObject:
   m_ObjectHideFlags: 0
@@ -8482,6 +7928,48 @@ RectTransform:
   m_AnchoredPosition: {x: -60.2, y: -4.200001}
   m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1046632409
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000010321501072, guid: 805f37c7b4fde044584b505b95574250, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010321501072, guid: 805f37c7b4fde044584b505b95574250, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010321501072, guid: 805f37c7b4fde044584b505b95574250, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010321501072, guid: 805f37c7b4fde044584b505b95574250, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010321501072, guid: 805f37c7b4fde044584b505b95574250, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010321501072, guid: 805f37c7b4fde044584b505b95574250, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010321501072, guid: 805f37c7b4fde044584b505b95574250, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010321501072, guid: 805f37c7b4fde044584b505b95574250, type: 2}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 805f37c7b4fde044584b505b95574250, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1063001155
 GameObject:
   m_ObjectHideFlags: 0
@@ -8965,7 +8453,7 @@ Transform:
   - {fileID: 628386933}
   - {fileID: 1904234879}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 13
 --- !u!1 &1307313763
 GameObject:
   m_ObjectHideFlags: 0
@@ -9575,7 +9063,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 16
 --- !u!114 &1543971365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9584,18 +9072,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1543971361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb136099cc3379144a392d48c3cce324, type: 3}
+  m_Script: {fileID: 11500000, guid: 10efa70eea88e69459c632aac286892d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useAllRewiredGamePlayers: 0
+  useRewiredSystemPlayer: 0
+  rewiredPlayerIds: 00000000
+  moveOneElementPerAxisPress: 0
   m_HorizontalAxis: MenuHorizontal
   m_VerticalAxis: MenuVertical
-  m_AltHorizontalAxis: DPADHorizontal
-  m_AltVerticalAxis: DPADVertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_RepeatDelay: 0
+  m_AllowActivationOnMobileDevice: 0
+  m_allowMouseInput: 1
+  m_allowMouseInputIfTouchSupported: 0
 --- !u!1 &1604744329
 GameObject:
   m_ObjectHideFlags: 0
@@ -28433,7 +27925,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010723014928, guid: 5fe76f5350f628a468fb4e5820f6154b, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013089244126, guid: 5fe76f5350f628a468fb4e5820f6154b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fe76f5350f628a468fb4e5820f6154b, type: 2}
@@ -28689,7 +28185,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22445006, guid: 12468b92f69ba77459a05903a94fbf45, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 22445006, guid: 12468b92f69ba77459a05903a94fbf45, type: 2}
       propertyPath: m_AnchoredPosition.x
