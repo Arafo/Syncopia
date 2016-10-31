@@ -12,7 +12,7 @@ public class LobbyPlayerList : MonoBehaviour {
     public Transform addButtonRow;
 
     protected VerticalLayoutGroup _layout;
-    protected List<LobbyPlayer> _players = new List<LobbyPlayer>();
+    public List<LobbyPlayer> _players = new List<LobbyPlayer>();
 
     public void Start() {
         _instance = this;

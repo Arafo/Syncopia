@@ -14,6 +14,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
     //used on server to avoid assigning the same color to two player
     static List<int> _colorInUse = new List<int>();
 
+    public Button trackButton;
     public Button colorButton;
     public Button shipButton;
     public InputField nameInput;
@@ -92,10 +93,10 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         nameInput.interactable = false;
         removePlayerButton.interactable = NetworkServer.active;
 
-        ChangeReadyButtonColor(NotReadyColor);
+        //ChangeReadyButtonColor(NotReadyColor);
 
-        readyButton.transform.GetChild(0).GetComponent<Text>().text = "...";
-        readyButton.interactable = false;
+        //readyButton.transform.GetChild(0).GetComponent<Text>().text = "...";
+        //readyButton.interactable = false;
 
         OnClientReady(false);
     }
@@ -105,7 +106,31 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         remoteIcone.gameObject.SetActive(false);
         localIcone.gameObject.SetActive(true);
 
-        CheckRemoveButton();
+        readyButton.gameObject.SetActive(true);
+        shipButton.gameObject.SetActive(true);
+        trackButton.gameObject.SetActive(true);
+        colorButton.gameObject.SetActive(true);
+
+        int index = 0;
+        for (int i = 0; i < LobbyPlayerList._instance._players.Count; i++) {
+            if (LobbyPlayerList._instance._players[i] == this) {
+                break;
+            }
+            index++;
+        }
+
+        readyButton.gameObject.transform.position = new Vector3(readyButton.gameObject.transform.position.x, 
+            readyButton.gameObject.transform.position.y + 30 * index, 
+            readyButton.gameObject.transform.position.z);
+        shipButton.gameObject.transform.position = new Vector3(shipButton.gameObject.transform.position.x,
+            shipButton.gameObject.transform.position.y + 30 * index,
+            shipButton.gameObject.transform.position.z);
+        trackButton.gameObject.transform.position = new Vector3(trackButton.gameObject.transform.position.x,
+            trackButton.gameObject.transform.position.y + 30 * index,
+            trackButton.gameObject.transform.position.z);
+        colorButton.gameObject.transform.position = new Vector3(colorButton.gameObject.transform.position.x,
+            colorButton.gameObject.transform.position.y + 30 * index,
+            colorButton.gameObject.transform.position.z); CheckRemoveButton();
 
         if (playerColor == Color.white)
             CmdColorChange();
