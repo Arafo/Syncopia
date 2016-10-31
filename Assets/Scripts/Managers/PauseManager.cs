@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using UnityStandardAssets.ImageEffects;
 
 public class PauseManager : MonoBehaviour {
+
+    public Text countdown;
 
     [Header("[ RESULTADOS ]")]
     public Text positions;
@@ -84,6 +87,10 @@ public class PauseManager : MonoBehaviour {
 
         ResetResults();
 
+        // Blur de fondo
+        RaceSettings.ships[0].cam.GetComponent<Blur>().enabled = true;
+
+
         for (int i = 0; i < RaceSettings.ships.Count; i++) {
             ShipReferer ship = RaceSettings.ships[i];
             if (ship.finalPosition == position) {
@@ -132,7 +139,18 @@ public class PauseManager : MonoBehaviour {
     public void Quit() {
         Time.timeScale = 1.0f;
         GameSettings.isPaused = false;
-        SceneManager.LoadScene("Menu");
+        if (ServerSettings.isNetworked) {
+            //LobbyManager.s_Singleton.ServerReturnToLobby();
+            LobbyManager.s_Singleton.StopHost();
+            //LobbyManager.s_Singleton.StopClient();
+            ServerSettings.players.Clear();
+            //LobbyManager.s_Singleton.mainMenuPanel.gameObject.SetActive(true);
+            SceneManager.LoadScene("Online");
+            LobbyManager.s_Singleton.menuManager.StartAnimation(LobbyManager.s_Singleton.mainMenuPanel.gameObject);
+        }
+        else
+            SceneManager.LoadScene("Menu");
+
     }
 
     public void InitParcialResults() {
