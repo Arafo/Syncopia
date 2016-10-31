@@ -68,7 +68,7 @@ public class GameSettings : MonoBehaviour {
         }
         else if (!isPaused) {
             isPaused = true;
-            Time.timeScale = 0.0f;
+            Time.timeScale = !ServerSettings.isNetworked ? 0.0f : 1f;
         }
     }
 
