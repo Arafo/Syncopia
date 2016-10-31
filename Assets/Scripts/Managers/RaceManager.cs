@@ -169,6 +169,10 @@ public class RaceManager : MonoBehaviour {
         ui.uiCountDownText.text = text;
     }
 
+    public void UpdateCounterResults(string text) {
+        results.countdown.text = text;
+    }
+
     private void UpdateImageEffects() {
         int i = 0;
         for (i = 0; i < ppBlooms.Count; ++i)
@@ -243,7 +247,6 @@ public class RaceManager : MonoBehaviour {
     public void Pause() {
         GameSettings.PauseToggle();
         ui.gameObject.SetActive(!GameSettings.isPaused);
-
         pause.gameObject.SetActive(GameSettings.isPaused);
         RaceSettings.ships[0].cam.GetComponent<Blur>().enabled = GameSettings.isPaused;
         //if (GameSettings.isPaused)

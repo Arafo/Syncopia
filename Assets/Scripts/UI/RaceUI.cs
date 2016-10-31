@@ -139,7 +139,7 @@ public class RaceUI : ShipCore
             total = string.Concat(new string[] { minutes, ":", seconds, ":", miliseconds });
             uiBestTimeText.text = "Best\t\t\t" + total;
 
-            uiCurrentPositionText.text = ship.currentPosition + "/" + RaceSettings.ships.Count;
+            uiCurrentPositionText.text = ship.currentPosition + "/" + (!ServerSettings.isNetworked ? RaceSettings.ships.Count : ServerSettings.players.Count);
 
             // Tiempos de las ultimas 5 vueltas
             int min = 1;

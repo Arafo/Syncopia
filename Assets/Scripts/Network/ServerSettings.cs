@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ServerSettings {
+public static class ServerSettings {
 
     // server-side
     public static int maxPlayers;

@@ -67,9 +67,20 @@ public class LobbyManager : NetworkLobbyManager {
         backButton.gameObject.SetActive(false);
         //GetComponent<Canvas>().enabled = true;
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         SetServerInfo("Offline", "None");
+    }
+
+    public void Destroy() {
+        StartCoroutine(DestroyCoroutine());
+    }
+
+    public IEnumerator DestroyCoroutine() {
+        // Esperamos medio segundo para destruir asi da tiempo
+        // a acabar la transción entre pantallas
+        yield return new WaitForSeconds(.5f);
+        DestroyObject(gameObject);
     }
 
     public override void OnLobbyClientSceneChanged(NetworkConnection conn) {
@@ -126,7 +137,8 @@ public class LobbyManager : NetworkLobbyManager {
         currentPanel = newPanel;
 
         if (currentPanel != mainMenuPanel) {
-            backButton.gameObject.SetActive(true);
+            if (backButton != null)
+                backButton.gameObject.SetActive(true);
         }
         else {
             //backButton.gameObject.SetActive(false);
@@ -265,7 +277,7 @@ public class LobbyManager : NetworkLobbyManager {
         return obj;
     }
 
-    public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId) {
+    public override GameObject OnLobbyServerCreateGamePlayer(NetworkConnection conn, short playerControllerId) {       
         LobbyPlayer p = lobbySlots[conn.connectionId] as LobbyPlayer;
         GameObject obj = Instantiate(Resources.Load("Ships/" + p.playerShip.ToString()) as GameObject) as GameObject;
         //return base.OnLobbyServerCreateGamePlayer(conn, playerControllerId);
@@ -302,6 +314,10 @@ public class LobbyManager : NetworkLobbyManager {
             _lobbyHooks.OnLobbyServerSceneLoadedForPlayer(this, lobbyPlayer, gamePlayer);
 
         return true;
+    }
+
+    public override void OnServerSceneChanged(string sceneName) {
+        base.OnServerSceneChanged(sceneName);
     }
 
     // --- Countdown management

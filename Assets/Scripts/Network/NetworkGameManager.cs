@@ -50,8 +50,11 @@ public class NetworkGameManager : NetworkBehaviour {
             }
         }
 
-        if (toRemove != null)
+        if (toRemove != null) {
             ServerSettings.players.Remove(toRemove);
+            // Se destruye el onjeto del  jugador si se desconecta
+            Destroy(ship.transform.parent.gameObject.transform.parent.gameObject);
+        }
     }
 
     // This is called from start and will run each phase of the game one after another. ONLY ON SERVER (as Start is only called on server)
@@ -72,6 +75,8 @@ public class NetworkGameManager : NetworkBehaviour {
 
         // Once execution has returned here, run the 'RoundEnding' coroutine.
         yield return StartCoroutine(RoundEnding());
+
+        yield return StartCoroutine(NextRound());
 
         // This code is not run until 'RoundEnding' has finished.  At which point, check if there is a winner of the game.
         /*if (m_GameWinner != null) {// If there is a game winner, wait for certain amount or all player confirmed to start a game again
@@ -109,8 +114,8 @@ public class NetworkGameManager : NetworkBehaviour {
 
         // countdown if server
         //if (ServerSettings.playerFinished) {
-            //ServerSettings.raceCountdown -= Time.deltaTime;
-            //RpcFinishCountdown(ServerSettings.raceCountdown);
+        //ServerSettings.raceCountdown -= Time.deltaTime;
+        //RpcFinishCountdown(ServerSettings.raceCountdown);
         //}
     }
 
@@ -180,6 +185,24 @@ public class NetworkGameManager : NetworkBehaviour {
         yield return new WaitForSeconds(3f);
     }
 
+    private IEnumerator NextRound() {
+        ServerSettings.raceCountdown = 10;
+
+        while (ServerSettings.raceCountdown > 0) {
+            yield return new WaitForSeconds(1f);
+            ServerSettings.raceCountdown -= 1f;
+            RpcFinishCountdown(ServerSettings.raceCountdown);
+        }
+        RpcFinishCountdown(-1f);
+
+        LobbyManager.s_Singleton.ServerReturnToLobby();
+        LobbyManager.s_Singleton.menuManager.StartAnimation(LobbyManager.s_Singleton.lobbyPanel1);
+        //NetworkManager.singleton.ServerChangeScene("Blood Dragon");
+
+        // Wait for the specified length of time until yielding control back to the game loop.
+        yield return new WaitForSeconds(1f);
+    }
+
     [ClientRpc]
     private void RpcRoundEnding() {
         for (int i = 0; i < ServerSettings.players.Count; i++) {
@@ -195,7 +218,12 @@ public class NetworkGameManager : NetworkBehaviour {
     [ClientRpc]
     public void RpcFinishCountdown(float value) {
         ServerSettings.raceCountdown = value;
-        RaceSettings.raceManager.UpdateCounter(value.ToString());
+        if (value < 0) {
+            RaceSettings.raceManager.UpdateCounterResults("");
+        }
+        else {
+            RaceSettings.raceManager.UpdateCounterResults(value.ToString());
+        }
     }
 
     [ClientRpc]
