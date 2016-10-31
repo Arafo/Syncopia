@@ -34,6 +34,10 @@ public class BackListener : MonoBehaviour {
     }
 
     void Update() {
+        /*if (animManager == null) {
+            animManager = GameObject.Find("AnimationManager").GetComponent<MenuAnimationManager>();
+        }*/
+
         if (ReInput.players.GetPlayer(0).GetButtonDown("Cancel")) {
             if (isRoot)
                 return;

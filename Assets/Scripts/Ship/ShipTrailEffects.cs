@@ -53,7 +53,10 @@ public class ShipTrailEffects : ShipCore {
 	
 	// Update is called once per frame
 	public override void OnUpdate () {
-        UpdateTrailEffects();
+        if (lightObject != null && trailObject != null && 
+            boosterLeft != null && boosterRight != null && 
+            windLeft != null && windRight != null)
+            UpdateTrailEffects();
     }
 
     private void UpdateTrailEffects() {

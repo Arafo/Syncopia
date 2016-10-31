@@ -80,7 +80,6 @@ public class ShipSimulation : ShipCore {
 
     private float respawnTimer;
 
-
     public override void OnStart() {
     }
 
@@ -272,7 +271,7 @@ public class ShipSimulation : ShipCore {
         else if (enginePitchAmount >= 0f) {
             ship.body.AddTorque(transform.right * (enginePitchAmount * 45f));
             transform.Rotate(Vector3.right * 0.03f);
-        }*/     
+        }*/
     }
 
     private void ShipAcceleration() {
@@ -285,8 +284,8 @@ public class ShipSimulation : ShipCore {
                 acceleration *= 0.5f;
                 break;
             case Enumerations.E_DIFFICULTY.MEDIUM :
-                amount *= 0.5f;
-                acceleration *= 0.5f;
+                amount *= 0.6f;
+                acceleration *= 0.6f;
                 break;
             case Enumerations.E_DIFFICULTY.HARD :
                 amount *= 1f;
@@ -683,8 +682,8 @@ public class ShipSimulation : ShipCore {
             ship.body.AddForce(dir * 4.5f, ForceMode.Impulse);
 
             Vector3 pushDir = other.relativeVelocity;
-            pushDir.x = 0.0f;
-            pushDir.z = 0.0f;
+            pushDir.x = 0f;
+            pushDir.z = 0f;
             ship.body.AddForce(pushDir, ForceMode.Impulse);
         }
     }

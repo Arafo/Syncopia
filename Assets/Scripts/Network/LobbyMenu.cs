@@ -17,6 +17,11 @@ public class LobbyMenu : MonoBehaviour {
         //lobbyManager.topPanel.ToggleVisibility(true);
     }
 
+    public void CheckUIReferences() {
+        if (lobbyManager == null)
+            lobbyManager = GameObject.Find("LobbyManager").GetComponent<LobbyManager>();
+    }
+
     /// <summary>
     /// Evento del click al pulsar sobre el botón de crear host
     /// </summary>
@@ -42,6 +47,8 @@ public class LobbyMenu : MonoBehaviour {
     /// 
     /// </summary>
     public void OnClickCreateMatchmakingGame() {
+        CheckUIReferences();
+
         lobbyManager.StartMatchMaker();
         lobbyManager.matchMaker.ListMatches(0, int.MaxValue, "", true, 0, 0, OnMatchCount);
 
@@ -94,6 +101,7 @@ public class LobbyMenu : MonoBehaviour {
     /// 
     /// </summary>
     public void OnClickOpenServerList() {
+        CheckUIReferences();
         lobbyManager.StartMatchMaker();
         lobbyManager.backDelegate = lobbyManager.SimpleBackClbk;
         lobbyManager.serverListPanel.gameObject.SetActive(true);

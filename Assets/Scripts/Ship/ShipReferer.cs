@@ -46,9 +46,10 @@ public class ShipReferer : NetworkBehaviour {
     public int finalPosition;
 
     // Tiempos
-    public int place;
+    //public int place;
     public float[] laps;
     public bool[] perfects;
+    [SyncVar]
     public float bestLap;
     public int currentLap;
 
@@ -61,6 +62,8 @@ public class ShipReferer : NetworkBehaviour {
     public bool hasBestTime;
     public bool loadedBestTime;
     public bool finished;
+
+    public GameObject trackTransform;
 
     void Start() {
         laps = new float[RaceSettings.laps];
@@ -75,6 +78,8 @@ public class ShipReferer : NetworkBehaviour {
         }
         position.OnStart();
 
+        trackTransform = new GameObject("TrackTransform");
+        trackTransform.transform.parent = base.transform;
 
         secondSector = true;
         midSection = RaceSettings.raceManager.trackData.trackData.sections[RaceSettings.raceManager.trackData.trackData.sections.Count / 2];
@@ -88,8 +93,8 @@ public class ShipReferer : NetworkBehaviour {
     }
 
     private void FixedUpdate() {
-
-        position.OnUpdate();
+        if (position != null)
+            position.OnUpdate();
 
         if (isAI || autopilot)
             ai.OnUpdate();

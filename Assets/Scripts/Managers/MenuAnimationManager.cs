@@ -7,6 +7,8 @@ using System.Linq;
 
 public class MenuAnimationManager : MonoBehaviour {
 
+    public bool DontDestroy;
+
     // Paneles
     public Image startPanelCover;
     public GameObject startPanel;
@@ -42,6 +44,9 @@ public class MenuAnimationManager : MonoBehaviour {
     /// 
     /// </summary>
     void Start() {
+        if (DontDestroy)
+            DontDestroyOnLoad(this);
+
         fromPanel = startPanel;
 
         if (!ingame) {
@@ -74,7 +79,8 @@ public class MenuAnimationManager : MonoBehaviour {
             float animationPart2_Text = Mathf.Clamp((interpolatedAnimationTime - 1.0f), 0.0f, 1.0f);
 
             // Asignar la posicion del panel de origenset from panel position
-            fromPanel.transform.localPosition = new Vector3(animationPart1, 0.0f, 0.0f);
+            if (fromPanel != null)
+                fromPanel.transform.localPosition = new Vector3(animationPart1, 0.0f, 0.0f);
 
             // Asignar la posicion del panel de destino
             toPanel.transform.localPosition = new Vector3(animationPart2, 0.0f, 0.0f);
@@ -89,7 +95,8 @@ public class MenuAnimationManager : MonoBehaviour {
                     toTexts[i].color = new Color(toTexts[i].color.r, toTexts[i].color.g, toTexts[i].color.b, animationPart2_Text); ;
 
             // Asignar los estados a los paneles
-            fromPanel.SetActive(interpolatedAnimationTime < 1);
+            if (fromPanel != null)
+                fromPanel.SetActive(interpolatedAnimationTime < 1);
             toPanel.SetActive(interpolatedAnimationTime > 1);
 
             if (loadingAnimation) {
