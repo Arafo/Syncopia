@@ -8,7 +8,7 @@ using System.Linq;
 
 //Player entry in the lobby. Handle selecting color/setting name & getting ready for the game
 //Any LobbyHook can then grab it and pass those value to the game player prefab (see the Pong Example in the Samples Scenes)
-public class LobbyPlayer : NetworkLobbyPlayer {
+public class LobbyPlayerTest : NetworkLobbyPlayer {
 
     static Color[] Colors = new Color[] { Color.magenta, Color.red, Color.cyan, Color.blue, Color.green, Color.yellow };
     //used on server to avoid assigning the same color to two player
@@ -22,7 +22,6 @@ public class LobbyPlayer : NetworkLobbyPlayer {
     public Button colorDisplayButton;
     public InputField nameInput;
     public Button readyButton;
-    public Button readyDisplayButton;
     public Button waitingPlayerButton;
     public Button removePlayerButton;
 
@@ -39,7 +38,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
     [SyncVar(hook = "OnTrack")]
     public string track = "Test";
 
-
+    // Color de las filas
     public Color OddRowColor = new Color(250.0f / 255.0f, 250.0f / 255.0f, 250.0f / 255.0f, 1.0f);
     public Color EvenRowColor = new Color(180.0f / 255.0f, 180.0f / 255.0f, 180.0f / 255.0f, 1.0f);
 
@@ -55,16 +54,27 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         //DontDestroyOnLoad(transform.gameObject);
     }
 
+    public void OnEnable() {
+        if (isLocalPlayer) {
+            //if (playerShip != RaceSettings.playerShip) {
+                OnMyShip(RaceSettings.playerShip);
+            //playerShip = RaceSettings.playerShip;
+            if (RaceSettings.trackToLoad == null)
+                OnTrack("Test");
+            else
+                OnTrack(RaceSettings.trackToLoad);
+            //}
+            CmdShìpChange();
+        }
+    }
+
     public override void OnClientEnterLobby() {
         base.OnClientEnterLobby();
 
         if (LobbyManager.s_Singleton != null) LobbyManager.s_Singleton.OnPlayersNumberModified(1);
 
-        LobbyPlayerList._instance.AddPlayer(this);
-        LobbyPlayerList._instance.DisplayDirectServerWarning(isServer && LobbyManager.s_Singleton.matchMaker == null);
-
-        // El circuito solo se muestra en el prefab del servidor
-        trackDisplayButton.gameObject.SetActive(this == LobbyPlayerList._instance._players[0]);
+        LobbyPlayerListTest._instance.AddPlayer(this);
+        LobbyPlayerListTest._instance.DisplayDirectServerWarning(isServer && LobbyManager.s_Singleton.matchMaker == null);
 
         if (isLocalPlayer) {
             SetupLocalPlayer();
@@ -85,29 +95,28 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         base.OnStartAuthority();
 
         //if we return from a game, color of text can still be the one for "Ready"
-        //readyButton.transform.GetChild(0).GetComponent<Text>().color = Color.white;
-        readyDisplayButton.transform.GetChild(0).GetComponent<Text>().color = Color.white;
+        readyButton.transform.GetChild(0).GetComponent<Text>().color = Color.white;
 
         SetupLocalPlayer();
     }
 
     void ChangeReadyButtonColor(Color c) {
-        ColorBlock b = readyDisplayButton.colors;
+        ColorBlock b = readyButton.colors;
         b.normalColor = c;
         b.pressedColor = c;
         b.highlightedColor = c;
         b.disabledColor = c;
-        readyDisplayButton.colors = b;
+        readyButton.colors = b;
     }
 
     void SetupOtherPlayer() {
         nameInput.interactable = false;
         removePlayerButton.interactable = NetworkServer.active;
 
-        ChangeReadyButtonColor(NotReadyColor);
+        //ChangeReadyButtonColor(NotReadyColor);
 
-        readyDisplayButton.transform.GetChild(0).GetComponent<Text>().text = "...";
-        readyDisplayButton.interactable = false;
+        //readyButton.transform.GetChild(0).GetComponent<Text>().text = "...";
+        //readyButton.interactable = false;
 
         OnClientReady(false);
     }
@@ -122,9 +131,6 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         trackButton.gameObject.SetActive(true);
         colorButton.gameObject.SetActive(true);
 
-        // Color de la fola del jugador local
-        GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.7f);
-
         int index = 0;
         for (int i = 0; i < LobbyPlayerList._instance._players.Count; i++) {
             if (LobbyPlayerList._instance._players[i] == this) {
@@ -133,31 +139,25 @@ public class LobbyPlayer : NetworkLobbyPlayer {
             index++;
         }
 
-        float diff = LobbyPlayerList._instance._players[0].gameObject.GetComponent<RectTransform>().anchoredPosition.y - gameObject.GetComponent<RectTransform>().anchoredPosition.y;
-        Debug.Log(LobbyPlayerList._instance._players[0].GetComponent<RectTransform>().localPosition);
-        Debug.Log(GetComponent<RectTransform>().localPosition);
-
-        readyButton.gameObject.transform.position = new Vector3(readyButton.gameObject.transform.position.x,
-            readyButton.gameObject.transform.position.y + 50 * index,
+        readyButton.gameObject.transform.position = new Vector3(readyButton.gameObject.transform.position.x, 
+            readyButton.gameObject.transform.position.y + 30 * index, 
             readyButton.gameObject.transform.position.z);
         shipButton.gameObject.transform.position = new Vector3(shipButton.gameObject.transform.position.x,
-            shipButton.gameObject.transform.position.y + 50 * index,
+            shipButton.gameObject.transform.position.y + 30 * index,
             shipButton.gameObject.transform.position.z);
         trackButton.gameObject.transform.position = new Vector3(trackButton.gameObject.transform.position.x,
-            trackButton.gameObject.transform.position.y + 50 * index,
+            trackButton.gameObject.transform.position.y + 30 * index,
             trackButton.gameObject.transform.position.z);
         colorButton.gameObject.transform.position = new Vector3(colorButton.gameObject.transform.position.x,
-            colorButton.gameObject.transform.position.y + 50 * index,
+            colorButton.gameObject.transform.position.y + 30 * index,
             colorButton.gameObject.transform.position.z); CheckRemoveButton();
-
-        CheckRemoveButton();
 
         if (playerColor == Color.white)
             CmdColorChange();
 
         ChangeReadyButtonColor(JoinColor);
 
-        readyDisplayButton.transform.GetChild(0).GetComponent<Text>().text = "NOT READY";
+        readyButton.transform.GetChild(0).GetComponent<Text>().text = "JOIN";
         readyButton.interactable = true;
 
         //have to use child count of player prefab already setup as "this.slot" is not set yet
@@ -205,30 +205,25 @@ public class LobbyPlayer : NetworkLobbyPlayer {
         if (readyState) {
             ChangeReadyButtonColor(TransparentColor);
 
-            Text textComponent = readyDisplayButton.transform.GetChild(0).GetComponent<Text>();
+            Text textComponent = readyButton.transform.GetChild(0).GetComponent<Text>();
             textComponent.text = "READY";
-            Text textComponent1 = readyButton.transform.GetChild(0).GetComponent<Text>();
-            textComponent1.text = "NOT READY";
             textComponent.color = ReadyColor;
-            //readyButton.interactable = false;
+            readyButton.interactable = false;
             colorButton.interactable = false;
             shipButton.interactable = false;
-            trackButton.interactable = false;
             nameInput.interactable = false;
         }
         else {
             ChangeReadyButtonColor(isLocalPlayer ? JoinColor : NotReadyColor);
 
-            Text textComponent = readyDisplayButton.transform.GetChild(0).GetComponent<Text>();
+            Text textComponent = readyButton.transform.GetChild(0).GetComponent<Text>();
             textComponent.text = isLocalPlayer ? "JOIN" : "...";
-            Text textComponent1 = readyButton.transform.GetChild(0).GetComponent<Text>();
-            textComponent1.text = "READY";
             textComponent.color = Color.white;
             readyButton.interactable = isLocalPlayer;
             colorButton.interactable = isLocalPlayer;
             shipButton.interactable = isLocalPlayer;
-            trackButton.interactable = isServer;
             nameInput.interactable = isLocalPlayer;
+            trackButton.interactable = isServer;
         }
     }
 
@@ -267,20 +262,17 @@ public class LobbyPlayer : NetworkLobbyPlayer {
     }
 
     public void OnShipClicked() {
-        CmdShìpChange();
+        LobbyPlayerList._instance.animManager.StartAnimation(LobbyPlayerList._instance.shipMenu);
+        //CmdShìpChange();
     }
 
     public void OnTrackClicked() {
-        CmdTrackChange();
-        //LobbyPlayerList._instance.animManager.StartAnimation(LobbyPlayerList._instance.trackMenu);
+        LobbyPlayerList._instance.animManager.StartAnimation(LobbyPlayerList._instance.trackMenu);
         //CmdTrackChange();
     }
 
     public void OnReadyClicked() {
-        if (!readyToBegin)
-            SendReadyToBeginMessage();
-        else
-            SendNotReadyToBeginMessage();
+        SendReadyToBeginMessage();
     }
 
     public void OnNameChanged(string str) {
@@ -297,7 +289,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
     }
 
     public void ToggleJoinButton(bool enabled) {
-        //readyButton.gameObject.SetActive(enabled);
+        readyButton.gameObject.SetActive(enabled);
         waitingPlayerButton.gameObject.SetActive(!enabled);
     }
 
@@ -349,25 +341,26 @@ public class LobbyPlayer : NetworkLobbyPlayer {
 
     [Command]
     public void CmdShìpChange() {
-        int shipCount = System.Enum.GetNames(typeof(Enumerations.E_SHIPS)).Length;
+        playerShip = RaceSettings.playerShip;
+        /*int shipCount = System.Enum.GetNames(typeof(Enumerations.E_SHIPS)).Length;
         if ((int)playerShip + 1 >= shipCount) {
             playerShip = 0;
         }
         else {
             playerShip += 1;
-        }
+        }*/
     }
 
     [Command]
     public void CmdTrackChange() {
-        switch(track) {
-            case "Test":
-                track = "Blood Dragon";
-                break;
-            case "Blood Dragon":
-                track = "Test";
-                break;
+        track = RaceSettings.trackToLoad;
+        /*int shipCount = System.Enum.GetNames(typeof(Enumerations.E_SHIPS)).Length;
+        if ((int)playerShip + 1 >= shipCount) {
+            playerShip = 0;
         }
+        else {
+            playerShip += 1;
+        }*/
     }
 
     [Command]
@@ -377,7 +370,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
 
     //Cleanup thing when get destroy (which happen when client kick or disconnect)
     public void OnDestroy() {
-        LobbyPlayerList._instance.RemovePlayer(this);
+        LobbyPlayerListTest._instance.RemovePlayer(this);
         if (LobbyManager.s_Singleton != null) LobbyManager.s_Singleton.OnPlayersNumberModified(-1);
 
         int idx = System.Array.IndexOf(Colors, playerColor);

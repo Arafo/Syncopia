@@ -196,7 +196,7 @@ public class NetworkGameManager : NetworkBehaviour {
         RpcFinishCountdown(-1f);
 
         LobbyManager.s_Singleton.ServerReturnToLobby();
-        LobbyManager.s_Singleton.menuManager.StartAnimation(LobbyManager.s_Singleton.lobbyPanel1);
+        LobbyManager.s_Singleton.menuManager.StartAnimation(LobbyManager.s_Singleton.lobbyPanel.gameObject);
         //NetworkManager.singleton.ServerChangeScene("Blood Dragon");
 
         // Wait for the specified length of time until yielding control back to the game loop.

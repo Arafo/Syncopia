@@ -247,7 +247,8 @@ public class MenuAnimationManager : MonoBehaviour {
         ClipManager.CreateClip(Resources.Load("Audio/SFX/Select") as AudioClip, 1.0f, 1.0f);
 
         // Seleccionar el boton seleccionado en el panel anterior
-        fromPanel.GetComponent<BackListener>().lastSelected = eventSystem.currentSelectedGameObject.GetComponent<Button>();
+        if (eventSystem != null)
+            fromPanel.GetComponent<BackListener>().lastSelected = eventSystem.currentSelectedGameObject.GetComponent<Button>();
 
         loadingAnimation = true;
         backPedal = false;

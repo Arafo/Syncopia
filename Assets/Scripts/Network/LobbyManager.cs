@@ -29,7 +29,7 @@ public class LobbyManager : NetworkLobbyManager {
     public RectTransform lobbyPanel;
     public RectTransform serverListPanel;
 
-    public GameObject lobbyPanel1;
+    //public GameObject lobbyPanel1;
 
     public LobbyInfoPanel infoPanel;
     public LobbyCountdownPanel countdownPanel;
@@ -362,7 +362,10 @@ public class LobbyManager : NetworkLobbyManager {
 
         // Multiplayer
         ServerSettings.isNetworked = true;
-        ServerChangeScene(playScene);
+
+        // Cargamos el circuito que ha elegido el host
+        LobbyPlayer p = lobbySlots[0] as LobbyPlayer;
+        ServerChangeScene(p.track);
     }
 
     // ----------------- Client callbacks ------------------
@@ -376,8 +379,8 @@ public class LobbyManager : NetworkLobbyManager {
 
         if (!NetworkServer.active) {//only to do on pure client (not self hosting client)
             ChangeTo(lobbyPanel);
-            lobbyPanel1.SetActive(true);
-            menuManager.StartAnimation(lobbyPanel1);
+            lobbyPanel.gameObject.SetActive(true);
+            menuManager.StartAnimation(lobbyPanel.gameObject);
             backDelegate = StopClientClbk;
             SetServerInfo("Client", networkAddress);
             ServerSettings.isNetworked = true;
@@ -388,6 +391,7 @@ public class LobbyManager : NetworkLobbyManager {
     public override void OnClientDisconnect(NetworkConnection conn) {
         base.OnClientDisconnect(conn);
         ChangeTo(mainMenuPanel);
+        menuManager.StartAnimation(mainMenuPanel.gameObject);
     }
 
     public override void OnClientError(NetworkConnection conn, int errorCode) {

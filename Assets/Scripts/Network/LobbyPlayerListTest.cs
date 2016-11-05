@@ -3,9 +3,9 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class LobbyPlayerList : MonoBehaviour {
+public class LobbyPlayerListTest : MonoBehaviour {
 
-    public static LobbyPlayerList _instance = null;
+    public static LobbyPlayerListTest _instance = null;
 
     public RectTransform playerListContentTransform;
     public GameObject warningDirectPlayServer;
@@ -17,7 +17,7 @@ public class LobbyPlayerList : MonoBehaviour {
     public GameObject optionsMenu;
 
     protected VerticalLayoutGroup _layout;
-    public List<LobbyPlayer> _players = new List<LobbyPlayer>();
+    public List<LobbyPlayerTest> _players = new List<LobbyPlayerTest>();
 
     public void Start() {
         _instance = this;
@@ -50,7 +50,7 @@ public class LobbyPlayerList : MonoBehaviour {
             _layout.childAlignment = Time.frameCount % 2 == 0 ? TextAnchor.UpperCenter : TextAnchor.UpperLeft;
     }
 
-    public void AddPlayer(LobbyPlayer player) {
+    public void AddPlayer(LobbyPlayerTest player) {
         if (_players.Contains(player))
             return;
 
@@ -62,14 +62,14 @@ public class LobbyPlayerList : MonoBehaviour {
         PlayerListModified();
     }
 
-    public void RemovePlayer(LobbyPlayer player) {
+    public void RemovePlayer(LobbyPlayerTest player) {
         _players.Remove(player);
         PlayerListModified();
     }
 
     public void PlayerListModified() {
         int i = 0;
-        foreach (LobbyPlayer p in _players) {
+        foreach (LobbyPlayerTest p in _players) {
             p.OnPlayerListChanged(i);
             ++i;
         }
