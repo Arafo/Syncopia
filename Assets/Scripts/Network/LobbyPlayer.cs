@@ -215,6 +215,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
             shipButton.interactable = false;
             trackButton.interactable = false;
             nameInput.interactable = false;
+            LobbyPlayerList._instance.addButtonRow.gameObject.GetComponent<Button>().interactable = false;
         }
         else {
             ChangeReadyButtonColor(isLocalPlayer ? JoinColor : NotReadyColor);
@@ -229,6 +230,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
             shipButton.interactable = isLocalPlayer;
             trackButton.interactable = isServer;
             nameInput.interactable = isLocalPlayer;
+            LobbyPlayerList._instance.addButtonRow.gameObject.GetComponent<Button>().interactable = true;
         }
     }
 
