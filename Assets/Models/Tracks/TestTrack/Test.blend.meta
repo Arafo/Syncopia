@@ -45,6 +45,8 @@ ModelImporter:
     100074: Cube_033
     100076: Cube_034
     100078: Plane
+    100080: TRACK_CURVE
+    100082: Tunnel
     400000: CrossProfile
     400002: //RootNode
     400004: TRACK_FLOOR
@@ -85,6 +87,8 @@ ModelImporter:
     400074: Cube_033
     400076: Cube_034
     400078: Plane
+    400080: TRACK_CURVE
+    400082: Tunnel
     2300000: TRACK_FLOOR
     2300002: TRACK_WALL
     2300004: Cube
@@ -123,6 +127,8 @@ ModelImporter:
     2300070: Cube_033
     2300072: Cube_034
     2300074: Plane
+    2300076: TRACK_CURVE
+    2300078: Tunnel
     3300000: TRACK_FLOOR
     3300002: TRACK_WALL
     3300004: Cube
@@ -161,6 +167,8 @@ ModelImporter:
     3300070: Cube_033
     3300072: Cube_034
     3300074: Plane
+    3300076: TRACK_CURVE
+    3300078: Tunnel
     4300000: TRACK_WALL
     4300002: TRACK_FLOOR
     4300004: Cube_027
@@ -199,6 +207,8 @@ ModelImporter:
     4300070: Cube_030
     4300072: Cube_029
     4300074: Cube_028
+    4300076: TRACK_CURVE
+    4300078: Tunnel
     6400000: TRACK_FLOOR
     6400002: TRACK_WALL
     6400004: Cube
@@ -237,6 +247,8 @@ ModelImporter:
     6400070: Cube_033
     6400072: Cube_034
     6400074: Plane
+    6400076: TRACK_CURVE
+    6400078: Tunnel
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -246,7 +258,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleRotations: 1
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 

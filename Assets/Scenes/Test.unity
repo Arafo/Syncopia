@@ -17196,7 +17196,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1578303416}
-  m_RootOrder: 40
+  m_RootOrder: 5
 --- !u!64 &338670851
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25769,7 +25769,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400020, guid: 9ba8480782343144a9d67326ca35ec82, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 546792312}
-  m_LocalRotation: {x: -0.6436303, y: -0.292814, z: -0.29281422, w: 0.64363015}
+  m_LocalRotation: {x: -0.6436304, y: -0.29281402, z: -0.29281425, w: 0.6436302}
   m_LocalPosition: {x: -1044.7, y: 4, z: 1938.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27698,6 +27698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e45247b3d4a344c85b8574868485b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdown: {fileID: 0}
   positions: {fileID: 0}
   drivers: {fileID: 0}
   ships: {fileID: 0}
@@ -36857,6 +36858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e45247b3d4a344c85b8574868485b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdown: {fileID: 0}
   positions: {fileID: 0}
   drivers: {fileID: 0}
   ships: {fileID: 0}
@@ -49680,6 +49682,46 @@ Prefab:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 6b4182c6a139854438eb04e7af1c728e, type: 2}
+    - target: {fileID: 400082, guid: cbdb16d00b4874c409497d105fb58274, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100082, guid: cbdb16d00b4874c409497d105fb58274, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300078, guid: cbdb16d00b4874c409497d105fb58274, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c4e92eb629e18e43a9f8f8f08959aa9, type: 2}
+    - target: {fileID: 400082, guid: cbdb16d00b4874c409497d105fb58274, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400082, guid: cbdb16d00b4874c409497d105fb58274, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400082, guid: cbdb16d00b4874c409497d105fb58274, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400082, guid: cbdb16d00b4874c409497d105fb58274, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400082, guid: cbdb16d00b4874c409497d105fb58274, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 400082, guid: cbdb16d00b4874c409497d105fb58274, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 400082, guid: cbdb16d00b4874c409497d105fb58274, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cbdb16d00b4874c409497d105fb58274, type: 3}
   m_IsPrefabParent: 0
@@ -67844,7 +67886,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400032, guid: 9ba8480782343144a9d67326ca35ec82, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1744241902}
-  m_LocalRotation: {x: 0.15675895, y: -0.68951195, z: -0.6895119, w: -0.15675902}
+  m_LocalRotation: {x: 0.15675893, y: -0.6895119, z: -0.68951184, w: -0.15675901}
   m_LocalPosition: {x: -726.1, y: 0, z: 1405.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -71370,7 +71412,7 @@ Transform:
   - {fileID: 1977524578}
   - {fileID: 721603333}
   m_Father: {fileID: 1578303416}
-  m_RootOrder: 39
+  m_RootOrder: 4
 --- !u!114 &1876453392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72999,6 +73041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7e9c5011ae0594d85260aff8ced044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DontDestroy: 0
   startPanelCover: {fileID: 4349360}
   startPanel: {fileID: 356946356}
   prevPanel: {fileID: 0}
