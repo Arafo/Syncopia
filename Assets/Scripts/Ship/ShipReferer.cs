@@ -222,7 +222,9 @@ public class ShipReferer : NetworkBehaviour {
                     // Desactivar HUD
                     RaceSettings.raceManager.ui.gameObject.SetActive(false);
                 }
-                RaceSettings.raceManager.results.Results();
+
+                if (!isAI)
+                    RaceSettings.raceManager.results.Results();
 
             }
 
