@@ -25769,7 +25769,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400020, guid: 9ba8480782343144a9d67326ca35ec82, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 546792312}
-  m_LocalRotation: {x: -0.6436304, y: -0.29281402, z: -0.29281425, w: 0.6436302}
+  m_LocalRotation: {x: -0.6436303, y: -0.292814, z: -0.29281422, w: 0.64363015}
   m_LocalPosition: {x: -1044.7, y: 4, z: 1938.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32085,6 +32085,9 @@ MonoBehaviour:
   - MSAAx2 + TAA
   - MSAAx4 + TAA
   - MSAAx8 + TAA
+  - SSAAx2
+  - SSAAx4
+  - SSAAx8
   rangeContent: 99
   isRange: 0
   actualText: {fileID: 830906718}
@@ -34321,6 +34324,7 @@ GameObject:
   - 114: {fileID: 885187216}
   - 114: {fileID: 885187215}
   - 114: {fileID: 885187219}
+  - 114: {fileID: 885187218}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -34435,7 +34439,7 @@ MonoBehaviour:
     occlusionSource: 1
     debug: 0
   _aoShader: {fileID: 4800000, guid: 65e203e5acda447acbf9dc1ef78c4a39, type: 3}
-  _quadMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  _quadMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 3}
 --- !u!114 &885187216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34592,6 +34596,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _falloff: 0.2
   _shader: {fileID: 4800000, guid: 89a223cbeee1935419811f8736c0a9b3, type: 3}
+--- !u!114 &885187218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 885187208}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892657ad74c0e0c478abf20a78b2423a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &885187219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67886,7 +67901,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400032, guid: 9ba8480782343144a9d67326ca35ec82, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1744241902}
-  m_LocalRotation: {x: 0.15675893, y: -0.6895119, z: -0.68951184, w: -0.15675901}
+  m_LocalRotation: {x: 0.15675895, y: -0.68951195, z: -0.6895119, w: -0.15675902}
   m_LocalPosition: {x: -726.1, y: 0, z: 1405.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

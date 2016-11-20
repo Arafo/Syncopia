@@ -43,7 +43,13 @@ public class Enumerations {
         [Description("MSAA x4 + TAA")]
         MSAAx4TAA,
         [Description("MSAA x8 + TAA")]
-        MSAAx8TAA
+        MSAAx8TAA,
+        [Description("SSAA x2")]
+        SSAAx2,
+        [Description("SSAA x4")]
+        SSAAx4,
+        [Description("SSAA x8")]
+        SSAAx8
     }
 
     #endregion

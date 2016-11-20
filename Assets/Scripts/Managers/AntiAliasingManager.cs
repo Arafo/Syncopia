@@ -11,6 +11,7 @@ public class AntiAliasingManager : MonoBehaviour {
     private Antialiasing standardAA;
     private AntiAliasing cinematicAA;
     private TemporalAntiAliasing temporalAA;
+    private SuperSampling samplingAA;
 
     // Use this for initialization
     void Start () {
@@ -25,6 +26,7 @@ public class AntiAliasingManager : MonoBehaviour {
 
         cinematicAA = gameObject.AddComponent<AntiAliasing>();
         temporalAA = gameObject.AddComponent<TemporalAntiAliasing>();
+        samplingAA = gameObject.AddComponent<SuperSampling>();
     }
 	
 	// Update is called once per frame
@@ -34,12 +36,13 @@ public class AntiAliasingManager : MonoBehaviour {
 
     private bool TurnOffAll() {
         QualitySettings.antiAliasing = 0;
-        if (standardAA == null || cinematicAA == null || temporalAA == null)
+        if (standardAA == null || cinematicAA == null || temporalAA == null || samplingAA == null)
             return false;
 
         standardAA.enabled = false;
         cinematicAA.enabled = false;
         temporalAA.enabled = false;
+        samplingAA.enabled = false;
         return true;
     }
 
@@ -142,12 +145,28 @@ public class AntiAliasingManager : MonoBehaviour {
                 break;
             case 13:
                 // SSAA x2
+                camera.renderingPath = RenderingPath.UsePlayerSettings;
+                samplingAA.filter = 0;
+                samplingAA.scaleHeight = 2;
+                samplingAA.scaleWidth = 2;
+                samplingAA.enabled = true;
                 break;
             case 14:
                 // SSAA x4
+                camera.renderingPath = RenderingPath.UsePlayerSettings;
+                samplingAA.filter = 1;
+                samplingAA.scaleHeight = 4;
+                samplingAA.scaleWidth = 4;
+                samplingAA.enabled = true;
                 break;
             case 15:
                 // SSAA x8
+                camera.renderingPath = RenderingPath.UsePlayerSettings;
+                samplingAA.filter = 1;
+                samplingAA.scaleHeight = 8;
+                samplingAA.scaleWidth = 8;
+                samplingAA.enabled = true;
+                //samplingAA.restart = true;
                 break;
         }
     }

@@ -222,7 +222,8 @@ public class ShipLoader : MonoBehaviour {
         newCamera.AddComponent<GUILayer>();
         newCamera.AddComponent<FlareLayer>();
         newCamera.AddComponent<AudioListener>();
-        //newCamera.AddComponent<DynamicResolution>();
+        //newCamera.AddComponent<SuperSampling>();
+
         UnityStandardAssets.ImageEffects.Blur pauseBlur = newCamera.AddComponent<UnityStandardAssets.ImageEffects.Blur> ();
         pauseBlur.blurShader = Shader.Find("Hidden/BlurEffectConeTap");
         pauseBlur.enabled = false;
