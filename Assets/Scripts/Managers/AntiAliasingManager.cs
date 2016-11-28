@@ -42,7 +42,8 @@ public class AntiAliasingManager : MonoBehaviour {
         standardAA.enabled = false;
         cinematicAA.enabled = false;
         temporalAA.enabled = false;
-        samplingAA.enabled = false;
+        // TODO: Super Sampling no debe desactivarse cuando la resolucion dinamica esta activa
+        //samplingAA.enabled = false;
         return true;
     }
 
