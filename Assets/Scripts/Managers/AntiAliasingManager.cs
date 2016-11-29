@@ -42,8 +42,9 @@ public class AntiAliasingManager : MonoBehaviour {
         standardAA.enabled = false;
         cinematicAA.enabled = false;
         temporalAA.enabled = false;
-        // TODO: Super Sampling no debe desactivarse cuando la resolucion dinamica esta activa
-        //samplingAA.enabled = false;
+        // Super Sampling no debe desactivarse cuando la resolucion dinamica esta activa
+        if (GameSettings.GS_DYNAMICRESOLUTION == 0)
+            samplingAA.enabled = false;
         return true;
     }
 
@@ -146,6 +147,8 @@ public class AntiAliasingManager : MonoBehaviour {
                 break;
             case 13:
                 // SSAA x2
+                if (GameSettings.GS_DYNAMICRESOLUTION == 1)
+                    return;
                 camera.renderingPath = RenderingPath.UsePlayerSettings;
                 samplingAA.filter = 0;
                 samplingAA.scaleHeight = 2;
@@ -154,6 +157,8 @@ public class AntiAliasingManager : MonoBehaviour {
                 break;
             case 14:
                 // SSAA x4
+                if (GameSettings.GS_DYNAMICRESOLUTION == 1)
+                    return;
                 camera.renderingPath = RenderingPath.UsePlayerSettings;
                 samplingAA.filter = 1;
                 samplingAA.scaleHeight = 4;
@@ -162,6 +167,8 @@ public class AntiAliasingManager : MonoBehaviour {
                 break;
             case 15:
                 // SSAA x8
+                if (GameSettings.GS_DYNAMICRESOLUTION == 1)
+                    return;
                 camera.renderingPath = RenderingPath.UsePlayerSettings;
                 samplingAA.filter = 1;
                 samplingAA.scaleHeight = 8;

@@ -10,6 +10,7 @@ public class GameSettings : MonoBehaviour {
     public static int GS_DRAWDISTANCE = 60;
     public static bool GS_FULLSCREEN = true;
     public static int GS_BLOOM = 1;
+    public static int GS_DYNAMICRESOLUTION = 0;
     public static int GS_AA = 0;
     public static bool GS_AO = false;
     public static bool GS_CAMERADAMAGE = false;

@@ -27,6 +27,7 @@ public class PauseManager : MonoBehaviour {
     //public Text txtFramerate;
     public HorizontallScrollSlider sliderBloom;
     public HorizontallScrollSlider sliderAA;
+    public HorizontallScrollSlider sliderDynamicResolution;
 
     [Header("[ AUDIO ]")]
     public Slider sliderMasterVolume;
@@ -207,6 +208,7 @@ public class PauseManager : MonoBehaviour {
 
         sliderBloom.firstIndex = GameSettings.GS_BLOOM;
         sliderAA.firstIndex = GameSettings.GS_AA;
+        sliderDynamicResolution.firstIndex = GameSettings.GS_DYNAMICRESOLUTION;
 
         // Importante que este valor se cambie el ultimo porque luego llama
         // aL metodo UpdateDrawDistanceValue() que actualiza las opciones
@@ -255,6 +257,7 @@ public class PauseManager : MonoBehaviour {
 
             GameSettings.GS_DRAWDISTANCE = Mathf.RoundToInt(sliderDrawDistance.value);
             GameSettings.GS_BLOOM = sliderBloom.index;
+            GameSettings.GS_DYNAMICRESOLUTION = sliderDynamicResolution.index;
             GameSettings.GS_AA = sliderAA.index;
 
             Screen.SetResolution(Mathf.RoundToInt(GameSettings.GS_RESOLUTION.x), Mathf.RoundToInt(GameSettings.GS_RESOLUTION.y), GameSettings.GS_FULLSCREEN);

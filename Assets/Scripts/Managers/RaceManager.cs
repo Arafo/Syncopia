@@ -43,6 +43,7 @@ public class RaceManager : MonoBehaviour {
     private List<AntiAliasingManager> ppAA = new List<AntiAliasingManager>();
     private List<AmbientOcclusion> ppAO = new List<AmbientOcclusion>();
     private List<TonemappingColorGrading> ppTonemapping = new List<TonemappingColorGrading>();
+    private List<DynamicResolution> ppDynamicResolution = new List<DynamicResolution>();
 
     // Use this for initialization
     void Start () {
@@ -183,6 +184,14 @@ public class RaceManager : MonoBehaviour {
             ppAO[i].enabled = GameSettings.GS_AO;
         for (i = 0; i < ppTonemapping.Count; ++i)
             ppTonemapping[i].enabled = GameSettings.GS_TONEMAPPING;
+        for (i = 0; i < ppDynamicResolution.Count; ++i) {
+            ppDynamicResolution[i].enabled = GameSettings.GS_DYNAMICRESOLUTION == 1;
+            if (ppDynamicResolution[i].superSampling != null)
+                ppDynamicResolution[i].superSampling.enabled = GameSettings.GS_DYNAMICRESOLUTION == 1 || 
+                    GameSettings.GS_AA == (int)Enumerations.E_AA.SSAAx2 ||
+                    GameSettings.GS_AA == (int)Enumerations.E_AA.SSAAx4 ||
+                    GameSettings.GS_AA == (int)Enumerations.E_AA.SSAAx8 ;
+        }
 
         for (i = 0; i < RaceSettings.ships.Count; ++i)
             if (RaceSettings.ships[i].cam != null)
@@ -339,6 +348,10 @@ public class RaceManager : MonoBehaviour {
                 //tm.tonemapper = Shader.Find("Hidden/Tonemapper");
                 //tm.type = Tonemapping.TonemapperType.AdaptiveReinhardAutoWhite;
                 ppTonemapping.Add(tm);
+
+                // Dynamic Resolution
+                DynamicResolution dr = RaceSettings.ships[i].cam.gameObject.AddComponent<DynamicResolution>();
+                ppDynamicResolution.Add(dr);
 
                 //CameraMotionBlur cmb = RaceSettings.ships[i].cam.gameObject.AddComponent<CameraMotionBlur>();
                 //cmb.
