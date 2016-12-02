@@ -25110,7 +25110,7 @@ Prefab:
     - target: {fileID: 114000014133673780, guid: 8d94abdccedd9cf469ef42959b04b1fe,
         type: 2}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UpdateGraphicsSettings
+      value: UpdateDrawDistanceValue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d94abdccedd9cf469ef42959b04b1fe, type: 2}
