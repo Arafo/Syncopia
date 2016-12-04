@@ -48420,8 +48420,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackData: {fileID: 82904441}
-  racerCount: 8
-  lapCount: 1
+  racerCount: 1
+  lapCount: 4
   countdownStartDelay: 1
   countdownStageDelay: 1
   countdownTimer: 0
@@ -50657,7 +50657,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1400435497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5747, y: 0.032, z: 0.0018}
+  m_LocalPosition: {x: -0.5849, y: 0.032, z: 0.0018}
   m_LocalScale: {x: 0.01, y: 0.06, z: 0.1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []

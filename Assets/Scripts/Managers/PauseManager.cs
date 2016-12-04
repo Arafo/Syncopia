@@ -91,28 +91,52 @@ public class PauseManager : MonoBehaviour {
         // Blur de fondo
         RaceSettings.ships[0].cam.GetComponent<Blur>().enabled = true;
 
+        if (RaceSettings.gamemode == Enumerations.E_GAMEMODE.ARCADE) {
+            for (int i = 0; i < RaceSettings.ships.Count; i++) {
+                ShipReferer ship = RaceSettings.ships[i];
+                if (ship.finalPosition == position) {
+                    if (!ship.isAI) {
+                        positions.text += "\n<color=yellow>" + ship.finalPosition + "</color>";
+                        ships.text += "\n<color=yellow>PLACEHOLDER" + ship.finalPosition + "</color>";
+                        drivers.text += "\n<color=yellow>PLACEHOLDER" + ship.finalPosition + "</color>";
+                        bestTimes.text += "\n<color=yellow>" + ToTime(ship.bestLap) + "</color>";
+                        totalTimes.text += "\n<color=yellow>" + ToTime(ship.totalTime) + "</color>";
+                    }
+                    else {
+                        positions.text += "\n" + ship.finalPosition;
+                        ships.text += "\nPLACEHOLDER" + ship.finalPosition;
+                        drivers.text += "\nPLACEHOLDER" + ship.finalPosition;
+                        bestTimes.text += "\n" + ToTime(ship.bestLap);
+                        totalTimes.text += "\n" + ToTime(ship.totalTime);
+                    }
+                    position++;
 
-        for (int i = 0; i < RaceSettings.ships.Count; i++) {
-            ShipReferer ship = RaceSettings.ships[i];
-            if (ship.finalPosition == position) {
-                if (!ship.isAI) {
-                    positions.text += "\n<color=yellow>" + ship.finalPosition + "</color>";
-                    ships.text += "\n<color=yellow>PLACEHOLDER" + ship.finalPosition + "</color>";
-                    drivers.text += "\n<color=yellow>PLACEHOLDER" + ship.finalPosition + "</color>";
-                    bestTimes.text += "\n<color=yellow>" + ToTime(ship.bestLap) + "</color>";
-                    totalTimes.text += "\n<color=yellow>" + ToTime(ship.totalTime) + "</color>";
+                    if (position <= RaceSettings.ships.Count)
+                        i = -1;
+                }
+            }
+        }
+        else if (RaceSettings.gamemode == Enumerations.E_GAMEMODE.TIMETRIAL) {
+            positions.text = "LAP";
+            drivers.text = "SECTOR 1";
+            ships.text = "SECTOR 2";
+            bestTimes.text = "TIME";
+            totalTimes.text = "";
+
+            ShipReferer ship = RaceSettings.ships[0];
+            for (int i = 0; i < ship.laps.Length; i++) {
+                if (ship.laps[i] == ship.bestLap) {
+                    positions.text += "\n<color=yellow>" + (i + 1) + "</color>";
+                    drivers.text += "\n<color=yellow>" + ToTime(ship.sector1[i]) + "</color>";
+                    ships.text += "\n<color=yellow>" + ToTime(ship.sector2[i]) + "</color>";
+                    bestTimes.text += "\n<color=yellow>" + ToTime(ship.laps[i]) + "</color>";
                 }
                 else {
-                    positions.text += "\n" + ship.finalPosition;
-                    ships.text += "\nPLACEHOLDER" + ship.finalPosition;
-                    drivers.text += "\nPLACEHOLDER" + ship.finalPosition;
-                    bestTimes.text += "\n" + ToTime(ship.bestLap);
-                    totalTimes.text += "\n" + ToTime(ship.totalTime);
+                    positions.text += "\n" + (i + 1);
+                    drivers.text += "\n" + ToTime(ship.sector1[i]);
+                    ships.text += "\n" + ToTime(ship.sector2[i]);
+                    bestTimes.text += "\n" + ToTime(ship.laps[i]);
                 }
-                position++;
-
-                if (position <= RaceSettings.ships.Count)
-                    i = -1;
             }
         }
     }

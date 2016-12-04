@@ -91,7 +91,8 @@ public class RaceManager : MonoBehaviour {
             }
         }
         UpdateImageEffects();
-        CalculatePosition();
+        if (RaceSettings.gamemode == Enumerations.E_GAMEMODE.ARCADE || RaceSettings.gamemode == Enumerations.E_GAMEMODE.SEASSON)
+            CalculatePosition();
     }
 
     void FixedUpdate() {
@@ -224,8 +225,8 @@ public class RaceManager : MonoBehaviour {
             bool isAI = (i != 0);
 
             // TEST
-            if (i > 2)
-                return;
+            /*if (i > 2)
+                return;*/
 
             GameObject newShip = new GameObject("PLAYER SHIP" + i);
             ShipLoader loader = newShip.AddComponent<ShipLoader>();
@@ -244,8 +245,8 @@ public class RaceManager : MonoBehaviour {
             }
 
             // TEST
-            if (i == 1) ship = Enumerations.E_SHIPS.TESTSHIP;
-            if (i == 2) ship = Enumerations.E_SHIPS.FLYER;
+            /*if (i == 1) ship = Enumerations.E_SHIPS.TESTSHIP;
+            if (i == 2) ship = Enumerations.E_SHIPS.FLYER;*/
 
             int type = (isAI) ? 1 : 0;
             loader.SpawnShip(ship, type);

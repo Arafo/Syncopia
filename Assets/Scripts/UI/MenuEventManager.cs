@@ -75,7 +75,20 @@ public class MenuEventManager : MonoBehaviour {
     /// </summary>
     /// <param name="difficulty"></param>
     public void SetPlayers(int players) {
-        RaceSettings.racers = players;
+        if (RaceSettings.gamemode != Enumerations.E_GAMEMODE.TIMETRIAL)
+            RaceSettings.racers = players;
+    }
+
+    /// <summary>
+    /// Establece el modo de juego
+    /// </summary>
+    /// <param name="mode"></param>
+    public void SetGameMode(int mode) {
+        RaceSettings.gamemode = (Enumerations.E_GAMEMODE)mode;
+        if (RaceSettings.gamemode == Enumerations.E_GAMEMODE.ARCADE)
+            RaceSettings.racers = 8;
+        else
+            RaceSettings.racers = 1;
     }
 
     /// <summary>

@@ -12,7 +12,8 @@ GameObject:
   - 114: {fileID: 11447594}
   - 114: {fileID: 11488430}
   - 114: {fileID: 11436114}
-  m_Layer: 5
+  - 222: {fileID: 222000012898982752}
+  m_Layer: 14
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,8 +30,8 @@ GameObject:
   - 224: {fileID: 22421988}
   - 222: {fileID: 22250728}
   - 114: {fileID: 11425736}
-  m_Layer: 5
-  m_Name: CurrentSpeed
+  m_Layer: 14
+  m_Name: CurrentSector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +47,7 @@ GameObject:
   - 224: {fileID: 22428962}
   - 222: {fileID: 22252726}
   - 114: {fileID: 11424538}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: Laps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +64,7 @@ GameObject:
   - 224: {fileID: 22481916}
   - 222: {fileID: 22261064}
   - 114: {fileID: 11426988}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: PositionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +81,7 @@ GameObject:
   - 224: {fileID: 22438196}
   - 222: {fileID: 22205628}
   - 114: {fileID: 11452386}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: CurrentTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +98,7 @@ GameObject:
   - 224: {fileID: 22401816}
   - 222: {fileID: 22252386}
   - 114: {fileID: 11404158}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: LapText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +115,7 @@ GameObject:
   - 224: {fileID: 22483108}
   - 222: {fileID: 22248612}
   - 114: {fileID: 11447940}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: BestTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +132,7 @@ GameObject:
   - 224: {fileID: 22409392}
   - 222: {fileID: 22267200}
   - 114: {fileID: 11449372}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: CountDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +150,7 @@ GameObject:
   - 222: {fileID: 22231346}
   - 114: {fileID: 11488342}
   - 114: {fileID: 11481264}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: PowerBoostMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +167,7 @@ GameObject:
   - 224: {fileID: 22426926}
   - 222: {fileID: 22255410}
   - 114: {fileID: 11475376}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: PowerBoost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +272,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100 km/h
+  m_Text: 
 --- !u!114 &11426988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,8 +322,9 @@ MonoBehaviour:
   uiBestTime: {fileID: 152032}
   uiCurrentTime: {fileID: 136644}
   uiTotalTime: {fileID: 0}
+  uiCurrentSector: {fileID: 116086}
   uiCurrentLap: {fileID: 1000013516526384}
-  uiCurrentSpeed: {fileID: 116086}
+  uiCurrentSpeed: {fileID: 1000013165292826}
   uiCurrentPosition: {fileID: 1000011382526640}
   uiSpeedMeter: {fileID: 1000014280712894}
   uiPowerBoost: {fileID: 185110}
@@ -349,7 +351,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
+  m_DynamicPixelsPerUnit: 6
 --- !u!114 &11447940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -530,7 +532,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!222 &22205628
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -593,7 +595,7 @@ Canvas:
   m_GameObject: {fileID: 107812}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -634,7 +636,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 22494258}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
@@ -665,17 +667,17 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116086}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 22494258}
-  m_RootOrder: 0
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -60, y: 54}
-  m_SizeDelta: {x: 103.8, y: 26.5}
+  m_RootOrder: 6
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 120}
+  m_SizeDelta: {x: 103.79999, y: 26.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22426926
 RectTransform:
@@ -707,7 +709,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 22494258}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -69, y: 0}
@@ -778,12 +780,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 22421988}
+  - {fileID: 224000013012884174}
   - {fileID: 224000013333860032}
   - {fileID: 224000012306496144}
   - {fileID: 22411096}
   - {fileID: 22483108}
   - {fileID: 22438196}
+  - {fileID: 22421988}
   - {fileID: 22428962}
   - {fileID: 224000011261925378}
   - {fileID: 22409392}
@@ -815,7 +818,7 @@ GameObject:
   - 224: {fileID: 224000011261925378}
   - 222: {fileID: 222000013083805164}
   - 114: {fileID: 114000010465546388}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: CurrentPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,8 +836,25 @@ GameObject:
   - 222: {fileID: 222000013811984012}
   - 114: {fileID: 114000013652113886}
   - 114: {fileID: 114000012789364528}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: SpeedMeterMask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000013165292826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 224000013012884174}
+  - 222: {fileID: 222000014262117244}
+  - 114: {fileID: 114000010039268646}
+  m_Layer: 14
+  m_Name: CurrentSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -850,7 +870,7 @@ GameObject:
   - 224: {fileID: 224000013333860032}
   - 222: {fileID: 222000014222902052}
   - 114: {fileID: 114000011934367690}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: CurrentLap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -867,13 +887,46 @@ GameObject:
   - 224: {fileID: 224000012212713314}
   - 222: {fileID: 222000013395014210}
   - 114: {fileID: 114000010210634760}
-  m_Layer: 5
+  m_Layer: 14
   m_Name: SpeedMeter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114000010039268646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013165292826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1eb3dcdf2b3d62447b645dd06216a178, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 100 km/h
 --- !u!114 &114000010210634760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1006,6 +1059,12 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!222 &222000012898982752
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107812}
 --- !u!222 &222000013083805164
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1030,6 +1089,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013516526384}
+--- !u!222 &222000014262117244
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013165292826}
 --- !u!224 &224000011261925378
 RectTransform:
   m_ObjectHideFlags: 1
@@ -1043,7 +1108,7 @@ RectTransform:
   m_Children:
   - {fileID: 22481916}
   m_Father: {fileID: 22494258}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -10, y: -67}
@@ -1085,6 +1150,24 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -120, y: 37}
   m_SizeDelta: {x: 200, y: 18}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224000013012884174
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013165292826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 22494258}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -60, y: 54}
+  m_SizeDelta: {x: 103.8, y: 26.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224000013333860032
 RectTransform:

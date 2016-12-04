@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +24,12 @@ public class RaceUI : ShipCore
     // Tiempo total
     public GameObject uiTotalTime;
     private Text uiTotalTimeText;
+
+    // Sector actuañ
+    public GameObject uiCurrentSector;
+    private Text uiCurrentSectorText;
+    private bool displayCurrentSector;
+    private float diff = 0f;
 
     // Vuelta actual
     public GameObject uiCurrentLap;
@@ -55,9 +63,13 @@ public class RaceUI : ShipCore
     private float uiSize = 1f;
     private float uiOpacity = 1f;
 
+    public delegate void OnVariableChangeDelegate(bool newVal);
+    public event OnVariableChangeDelegate OnVariableChange;
+
     void Start() {
         uiBestTimeText = uiBestTime.GetComponent<Text>();
         uiCurrentTimeText = uiCurrentTime.GetComponent<Text>();
+        uiCurrentSectorText = uiCurrentSector.GetComponent<Text>();
         //uiTotalTimeText = uiTotalTime.GetComponent<Text>();
         uiCurrentLapText = uiCurrentLap.GetComponent<Text>();
         uiCurrentSpeedText = uiCurrentSpeed.GetComponent<Text>();
@@ -66,6 +78,8 @@ public class RaceUI : ShipCore
         uiPowerBoostRect = uiPowerBoost.GetComponent<RectTransform>();
         powerBoostRectMax = uiPowerBoostRect.sizeDelta.x;
         uiCurrentSpeedText = uiCurrentSpeed.GetComponent<Text>();
+        OnVariableChange += VariableChangeHandler;
+        uiCurrentSectorText.enabled = false;
     }
 
     void Update() {
@@ -141,6 +155,22 @@ public class RaceUI : ShipCore
 
             uiCurrentPositionText.text = ship.currentPosition + "/" + (!ServerSettings.isNetworked ? RaceSettings.ships.Count : ServerSettings.players.Count);
 
+            // Sector
+            if (ship.currentLap > 1 && ship.currentLap <= RaceSettings.laps) {
+                if (ship.secondSector) {
+                    diff = ship.sector1[ship.currentLap - 1] - ship.sector1[ship.bestLapIndex];
+                }
+                else {
+                    diff = ship.laps[ship.currentLap - 2] - ship.bestLap;
+                }
+
+                if (ship.secondSector != displayCurrentSector && OnVariableChange != null) {
+                    displayCurrentSector = ship.secondSector;
+                    OnVariableChange(displayCurrentSector);
+                }
+                
+            }
+
             // Tiempos de las ultimas 5 vueltas
             int min = 1;
             int max = 5;
@@ -157,5 +187,28 @@ public class RaceUI : ShipCore
             uiLapsText.text = laps;
 
         }
+    }
+
+
+
+    private void VariableChangeHandler(bool newVal) {
+        StartCoroutine(ShowSectorTime(diff, 2));
+    }
+
+    IEnumerator ShowSectorTime(float time, float delay) {
+
+        //
+        string text = "";
+        if (diff > 0)
+            text = "<color=red>+" + diff.ToString("0.000")+ "</color>";
+        else if (diff < 0)
+            text = "<color=green>"+ diff.ToString("0.000") + "</color>";
+        else
+            text = diff.ToString("0.000");
+
+        uiCurrentSectorText.text = text;
+        uiCurrentSectorText.enabled = true;
+        yield return new WaitForSeconds(delay);
+        uiCurrentSectorText.enabled = false;
     }
 }

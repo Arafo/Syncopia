@@ -18,6 +18,12 @@ public class Enumerations {
         HARD
     }
 
+    public enum E_GAMEMODE {
+        ARCADE,
+        TIMETRIAL,
+        SEASSON
+    }
+
     public enum E_AA {
         OFF,
         [Description("FXAA")]

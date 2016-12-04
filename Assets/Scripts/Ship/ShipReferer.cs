@@ -48,9 +48,14 @@ public class ShipReferer : NetworkBehaviour {
     // Tiempos
     //public int place;
     public float[] laps;
+    public float[] sector1;
+    public float[] sector2;
     public bool[] perfects;
     [SyncVar]
     public float bestLap;
+    public int bestLapIndex;
+    public float bestSector1;
+    public float bestSector2;
     public int currentLap;
 
     public bool secondSector;
@@ -67,6 +72,8 @@ public class ShipReferer : NetworkBehaviour {
 
     void Start() {
         laps = new float[RaceSettings.laps];
+        sector1 = new float[RaceSettings.laps];
+        sector2 = new float[RaceSettings.laps];
         perfects = new bool[RaceSettings.laps];
 
         if (!isNetworked) {
@@ -186,6 +193,8 @@ public class ShipReferer : NetworkBehaviour {
         }
 
         if (other.tag == "Checkpoint2") {
+            if (currentLap > 0 && currentLap <= RaceSettings.laps)
+                sector1[currentLap - 1] = currentTime;
             secondSector = true;
             midSection = currentSection;
         }
@@ -194,14 +203,18 @@ public class ShipReferer : NetworkBehaviour {
 
     private void UpdateLap() {
         if (currentLap > 0 && currentLap <= RaceSettings.laps) {
+            // Sector
+            sector2[currentLap - 1] = currentTime - sector1[currentLap - 1];
+
             // Tiempo de vuelta
             laps[currentLap - 1] = currentTime;
 
             // Vuelta perfecta
             perfects[currentLap - 1] = perfectLap;
 
-            // Mejor tiempo
+            // Mejor tiempo de vuelta
             if ((currentTime < bestLap || !hasBestTime) && !loadedBestTime) {
+                bestLapIndex = currentLap - 1;
                 bestLap = currentTime;
                 hasBestTime = true;
             }
