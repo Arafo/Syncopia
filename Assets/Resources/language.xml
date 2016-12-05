@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languages>
+	<English>
+		<!-- Menu -->
+     	<string name="main_menu_title">Main Menu</string>
+     	<string name="main_menu_quickrace">QUICK RACE</string>
+     	<string name="main_menu_arcade">ARCADE</string>
+     	<string name="main_menu_seasson">SEASSON</string>
+     	<string name="main_menu_timetrial">TIME TRIAL</string>
+     	<string name="main_menu_multiplayer">MULTIPLAYER</string>
+     	<string name="main_menu_options">OPTIONS</string>
+     	<string name="main_menu_exit">EXIT</string>
+	</English>
+
+	<Spanish>
+		<!-- Menu -->
+		<string name="main_menu_title">Menú Principal</string>
+		<string name="main_menu_quickrace">CARRERA RAPIDA</string>
+		<string name="main_menu_quickrace">CARRERA RAPIDA</string>
+	</Spanish>
+</languages>

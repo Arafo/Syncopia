@@ -30,6 +30,7 @@ public class GameOptions : MonoBehaviour {
             ini.WriteValue("Gameplay", "Countdown Mode", GameSettings.G_COUNTDOWNTYPE);
             ini.WriteValue("Gameplay", "Intro Voices", GameSettings.G_TRACKINTROVOICES);
             ini.WriteValue("Gameplay", "Mirror", GameSettings.G_MIRROR);
+            ini.WriteValue("Gameplay", "Language", (int)GameSettings.G_LANGUAGE);
             ini.WriteValue("Gameplay", "Custom HUD Color R", GameSettings.G_CUSTOMHUDCOLOR.r);
             ini.WriteValue("Gameplay", "Custom HUD Color B", GameSettings.G_CUSTOMHUDCOLOR.b);
             ini.WriteValue("Gameplay", "Custom HUD Color G", GameSettings.G_CUSTOMHUDCOLOR.g);
@@ -93,6 +94,7 @@ public class GameOptions : MonoBehaviour {
             GameSettings.G_COUNTDOWNTYPE = ini.ReadValue("Gameplay", "Countdown Mode", GameSettings.G_COUNTDOWNTYPE);
             GameSettings.G_TRACKINTROVOICES = ini.ReadValue("Gameplay", "Intro Voices", GameSettings.G_TRACKINTROVOICES);
             GameSettings.G_MIRROR = ini.ReadValue("Gameplay", "Mirror", GameSettings.G_MIRROR);
+            GameSettings.G_LANGUAGE = (Enumerations.E_LANGUAGE)ini.ReadValue("Gameplay", "Language", (int)GameSettings.G_LANGUAGE);
 
             GameSettings.G_CUSTOMHUDCOLOR.r = (float)ini.ReadValue("Gameplay", "Custom HUD Color R", GameSettings.G_CUSTOMHUDCOLOR.r);
             GameSettings.G_CUSTOMHUDCOLOR.g = (float)ini.ReadValue("Gameplay", "Custom HUD Color G", GameSettings.G_CUSTOMHUDCOLOR.g);

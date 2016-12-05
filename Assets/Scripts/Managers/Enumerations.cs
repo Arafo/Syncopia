@@ -24,6 +24,13 @@ public class Enumerations {
         SEASSON
     }
 
+    public enum E_LANGUAGE {
+        [Description("English")]
+        ENGLISH,
+        [Description("Spanish")]
+        SPANISH
+    }
+
     public enum E_AA {
         OFF,
         [Description("FXAA")]

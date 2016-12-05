@@ -49,6 +49,7 @@ public class GameSettings : MonoBehaviour {
     public static int G_COUNTDOWNTYPE = 0; 
     public static bool G_TRACKINTROVOICES = true;
     public static bool G_MIRROR = false;
+    public static Enumerations.E_LANGUAGE G_LANGUAGE = Enumerations.E_LANGUAGE.ENGLISH;
 
     // Trucos (disables progressing)
     public static bool C_SUPERTHRUST = false; // Boost x4
