@@ -10,12 +10,22 @@
      	<string name="main_menu_multiplayer">MULTIPLAYER</string>
      	<string name="main_menu_options">OPTIONS</string>
      	<string name="main_menu_exit">EXIT</string>
+
+     	<string name="options_menu_language">LANGUAGE</string>
 	</English>
 
 	<Spanish>
 		<!-- Menu -->
 		<string name="main_menu_title">Menú Principal</string>
 		<string name="main_menu_quickrace">CARRERA RAPIDA</string>
-		<string name="main_menu_quickrace">CARRERA RAPIDA</string>
+		<string name="main_menu_arcade">ARCADE</string>
+     	<string name="main_menu_seasson">TEMPORADA</string>
+     	<string name="main_menu_timetrial">CONTRARRELOJ</string>
+     	<string name="main_menu_multiplayer">MULTIJUGADOR</string>
+     	<string name="main_menu_options">OPCIONES</string>
+     	<string name="main_menu_exit">SALIR</string>
+
+     	<string name="options_menu_language">IDIOMA</string>
+
 	</Spanish>
 </languages>

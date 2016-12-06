@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 
@@ -6,18 +7,7 @@ using UnityEngine;
 
 public class LanguageManager {
 
-    //public static LanguageManager _instance;
-    //private static string language = "Spanish";
-    //private static string file = "Resources/language.xml";
-
     private Dictionary<string, string> Strings;
-
-    /*public void OnEnable() {
-        if (_instance == null) {
-            _instance = this;// 
-            new LanguageManager(Path.Combine(Application.dataPath, file), language);
-        }
-    }*/
 
     /// <summary>
     /// Constructor
@@ -38,12 +28,15 @@ public class LanguageManager {
         xml.Load(path);
 
         Strings = new Dictionary<string, string>();
-        var element = xml.DocumentElement[language];
+        XmlNode element = xml.DocumentElement[language];
         if (element != null) {
-            var elemEnum = element.GetEnumerator();
+            IEnumerator elemEnum = element.GetEnumerator();
             while (elemEnum.MoveNext()) {
-                var xmlItem = (XmlElement)elemEnum.Current;
-                Strings.Add(xmlItem.GetAttribute("name"), xmlItem.InnerText);
+                // Se ignorar los comentarios
+                if (elemEnum.Current.GetType() != typeof(XmlComment)) {
+                    XmlElement xmlItem = (XmlElement)elemEnum.Current;
+                    Strings.Add(xmlItem.GetAttribute("name"), xmlItem.InnerText);
+                }
             }
         }
         else {

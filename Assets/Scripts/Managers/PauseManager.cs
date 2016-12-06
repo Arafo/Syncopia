@@ -49,6 +49,7 @@ public class PauseManager : MonoBehaviour {
     public Dropdown dropWeaponAnnouncement;
     public Button tglIntroVoices;
     public Button tglMirror;
+    public HorizontallScrollSlider sliderLanguage;
 
     [Header("[ COLOR HUD ]")]
     public GameObject HUDColorWindow;
@@ -258,6 +259,8 @@ public class PauseManager : MonoBehaviour {
         //tglIntroVoices.SetState(GameSettings.G_TRACKINTROVOICES);
         //tglMirror.SetState(GameSettings.G_MIRROR);
 
+        sliderLanguage.firstIndex = (int)GameSettings.G_LANGUAGE;
+
         sliderHUDR.value = GameSettings.G_CUSTOMHUDCOLOR.r;
         sliderHUDG.value = GameSettings.G_CUSTOMHUDCOLOR.g;
         sliderHUDB.value = GameSettings.G_CUSTOMHUDCOLOR.b;
@@ -306,18 +309,22 @@ public class PauseManager : MonoBehaviour {
         GameOptions.LoadGameSettings();
 
         // dropdowns
-        GameSettings.G_DEFAULTCAMERA = dropDefaultCamera.value;
-        GameSettings.G_COUNTDOWNTYPE = dropCountdownType.value;
+        //GameSettings.G_DEFAULTCAMERA = dropDefaultCamera.value;
+        //GameSettings.G_COUNTDOWNTYPE = dropCountdownType.value;
 
         // toggles
         //GameSettings.G_TRACKINTROVOICES = tglIntroVoices.toggled;
         //GameSettings.G_MIRROR = tglMirror.;
 
+        // Idioma
+        GameSettings.G_LANGUAGE = (Enumerations.E_LANGUAGE)sliderLanguage.index;
+        LanguageSingleton.InstanceLanguage(true);
+
         // sliders
-        GameSettings.G_CUSTOMHUDCOLOR.r = sliderHUDR.value;
-        GameSettings.G_CUSTOMHUDCOLOR.g = sliderHUDG.value;
-        GameSettings.G_CUSTOMHUDCOLOR.b = sliderHUDB.value;
-        GameSettings.G_CUSTOMHUDCOLOR.a = sliderHUDA.value;
+        //GameSettings.G_CUSTOMHUDCOLOR.r = sliderHUDR.value;
+        //GameSettings.G_CUSTOMHUDCOLOR.g = sliderHUDG.value;
+        //GameSettings.G_CUSTOMHUDCOLOR.b = sliderHUDB.value;
+        //GameSettings.G_CUSTOMHUDCOLOR.a = sliderHUDA.value;
 
         GameOptions.SaveGameSettings();
     }
