@@ -3,6 +3,7 @@
 	<English>
 		<!-- Menu -->
      	<string name="main_menu_title">Main Menu</string>
+     	<string name="main_menu_subtitle">Welcome to Syncopia</string>
      	<string name="main_menu_quickrace">QUICK RACE</string>
      	<string name="main_menu_arcade">ARCADE</string>
      	<string name="main_menu_seasson">SEASSON</string>
@@ -10,13 +11,90 @@
      	<string name="main_menu_multiplayer">MULTIPLAYER</string>
      	<string name="main_menu_options">OPTIONS</string>
      	<string name="main_menu_exit">EXIT</string>
-
-     	<string name="options_menu_language">LANGUAGE</string>
+     	<!-- Menu Tracks -->
+     	<string name="track_menu_title">Arcade</string>
+     	<string name="track_menu_subtitle">Select a track</string>
+      	<string name="track_menu_back">BACK</string>
+      	<!-- Menu Ships -->
+     	<string name="ship_menu_title">Arcade</string>
+     	<string name="ship_menu_subtitle">Select a Ship</string>
+      	<string name="ship_menu_back">BACK</string>
+      	<!-- Race Options -->
+     	<string name="race_options_title">Arcade</string>
+     	<string name="race_options_subtitle">Race Options</string>
+     	<string name="race_options_difficulty">DIFFICULTY</string>
+     	<string name="race_options_difficulty_easy">EASY</string>
+     	<string name="race_options_difficulty_normal">NORMAL</string>
+     	<string name="race_options_difficulty_hard">HARD</string>     	
+     	<string name="race_options_laps">LAPS</string>
+     	<string name="race_options_players">PLAYERS</string>
+     	<string name="race_options_ready">READY</string>
+      	<string name="race_options_back">BACK</string>
+       	<!-- Menu Options -->
+     	<string name="options_menu_title">Options</string>
+     	<string name="options_menu_gameplay">GAMEPLAY</string>
+     	<string name="options_menu_audio">AUDIO</string>
+     	<string name="options_menu_graphics">GRAPHICS</string>
+      	<string name="options_menu_back">BACK</string>   	
+       	<!-- Gameplay Options -->
+     	<string name="gameplay_menu_title">Gameplay</string>
+     	<string name="gameplay_menu_language">LANGUAGE</string>
+     	<string name="gameplay_menu_language_en">ENGLISH</string>
+     	<string name="gameplay_menu_language_es">SPANISH</string>
+      	<string name="gameplay_menu_back">BACK</string>
+      	<!-- Graphics Options -->
+      	<string name="graphics_menu_title">Graphics</string>
+      	<string name="graphics_menu_resolution">RESOLUTION</string>
+      	<string name="graphics_menu_aa">ANTI-ALIAS</string>
+      	<string name="graphics_menu_fps">FRAMERATE</string>
+      	<string name="graphics_menu_bloom">BLOOM</string>
+      	<string name="graphics_menu_drawdistance">DRAW DISTANCE</string>
+      	<string name="graphics_menu_dresolution">D. RESOLUTION</string>
+      	<string name="graphics_menu_back">BACK</string>
+      	<!-- Sound Options -->
+      	<string name="sound_menu_title">Audio</string>
+      	<string name="sound_menu_master">MASTER VOLUME</string>
+      	<string name="sound_menu_sfx">SFX VOLUME</string>
+      	<string name="sound_menu_music">MUSIC VOLUME</string>
+      	<string name="sound_menu_voice">VOICE VOLUME</string>
+      	<string name="sound_menu_back">BACK</string>
+      	<!-- Online Menu-->
+       	<string name="online_menu_title">Multiplayer</string>
+      	<string name="online_menu_create">CREATE</string>
+      	<string name="online_menu_list">LIST SERVERS</string>
+      	<string name="online_menu_back">BACK</string>   	
+      	<!-- Online Lobby Menu-->
+      	<string name="lobby_menu_title">Lobby</string>
+      	<string name="lobby_menu_ship">SELECT SHIP</string>
+      	<string name="lobby_menu_track">SELECT TRACK</string>
+      	<string name="lobby_menu_color">CHANGE COLOR</string>
+      	<string name="lobby_menu_ready">READY</string>
+      	<string name="lobby_menu_notready">NOT READY</string>
+      	<string name="lobby_menu_connecting">CONNECTING...</string>      	
+      	<string name="lobby_menu_waiting">Waiting for players</string>
+      	<string name="lobby_menu_back">BACK</string>
+      	<!-- Online Server Menu-->
+      	<string name="server_menu_title">Server List</string>
+      	<string name="server_menu_join">JOIN</string>
+      	<string name="server_menu_back">BACK</string>
+      	<string name="server_menu_noservers">NO SERVERS FOUND</string>
+      	<!-- Loading -->
+      	<string name="loading_title">LOADING</string>
+      	<!-- Pause -->
+      	<string name="pause_title">Pause</string>
+      	<string name="pause_continue">CONTINUE</string>
+      	<string name="pause_restart">RESTART</string>
+      	<string name="pause_options">OPTIONS</string>
+      	<string name="pause_exit">EXIT</string>
+      	<!-- HUD -->
+      	<string name="hud_laps">Laps</string>
+      	<string name="hud_position">Position</string>
 	</English>
 
 	<Spanish>
 		<!-- Menu -->
 		<string name="main_menu_title">Menú Principal</string>
+		<string name="main_menu_subtitle">Bienvenido a Syncopia</string>
 		<string name="main_menu_quickrace">CARRERA RAPIDA</string>
 		<string name="main_menu_arcade">ARCADE</string>
      	<string name="main_menu_seasson">TEMPORADA</string>
@@ -24,8 +102,83 @@
      	<string name="main_menu_multiplayer">MULTIJUGADOR</string>
      	<string name="main_menu_options">OPCIONES</string>
      	<string name="main_menu_exit">SALIR</string>
-
-     	<string name="options_menu_language">IDIOMA</string>
-
+     	<!-- Menu Tracks -->
+     	<string name="track_menu_title">Arcade</string>
+     	<string name="track_menu_subtitle">Elige un circuito</string>
+      	<string name="track_menu_back">VOLVER</string>
+     	<!-- Menu Ships -->
+     	<string name="ship_menu_title">Arcade</string>
+     	<string name="ship_menu_subtitle">Elige una nave</string>
+      	<string name="ship_menu_back">VOLVER</string>
+      	<!-- Race Options -->
+     	<string name="race_options_title">Arcade</string>
+     	<string name="race_options_subtitle">Opciones de carrera</string>
+     	<string name="race_options_difficulty">DIFICULTAD</string>
+     	<string name="race_options_difficulty_easy">BAJA</string>
+     	<string name="race_options_difficulty_normal">NORMAL</string>
+     	<string name="race_options_difficulty_hard">ALTA</string>     	
+     	<string name="race_options_laps">VUELTAS</string>
+     	<string name="race_options_players">JUGADORES</string>
+     	<string name="race_options_ready">LISTO</string>
+      	<string name="race_options_back">VOLVER</string>
+      	<!-- Menu Options -->
+     	<string name="options_menu_title">Opciones</string>
+     	<string name="options_menu_gameplay">JUEGO</string>
+     	<string name="options_menu_audio">SONIDO</string>
+     	<string name="options_menu_graphics">GRAFICOS</string>
+      	<string name="options_menu_back">VOLVER</string>  
+      	<!-- Gameplay Options -->
+     	<string name="gameplay_menu_title">Juego</string>
+     	<string name="gameplay_menu_language">IDIOMA</string>
+     	<string name="gameplay_menu_language_en">INGLES</string>
+     	<string name="gameplay_menu_language_es">ESPAÑOL</string>
+      	<string name="gameplay_menu_back">VOLVER</string>
+      	<!-- Graphics Options -->
+      	<string name="graphics_menu_title">Gráficos</string>
+      	<string name="graphics_menu_resolution">RESOLUCION</string>
+      	<string name="graphics_menu_aa">ANTI-ALIAS</string>
+      	<string name="graphics_menu_fps">FRAMERATE</string>
+      	<string name="graphics_menu_bloom">BLOOM</string>
+      	<string name="graphics_menu_drawdistance">DISTANCIA DIBUJADO</string>
+      	<string name="graphics_menu_dresolution">RESOLUCION D.</string>
+      	<string name="graphics_menu_back">VOLVER</string>
+      	<!-- Sound Options -->
+      	<string name="sound_menu_title">Sonido</string>
+      	<string name="sound_menu_master">VOLUMEN MASTER</string>
+      	<string name="sound_menu_sfx">VOLUMEN SFX</string>
+      	<string name="sound_menu_music">VOLUMEN MUSICA</string>
+      	<string name="sound_menu_voice">VOLUMEN VOZ</string>
+      	<string name="sound_menu_back">VOLVER</string>
+      	<!-- Online Menu-->
+       	<string name="online_menu_title">Multijugador</string>
+      	<string name="online_menu_create">CREAR PARTIDA</string>
+      	<string name="online_menu_list">LISTAR SERVIDORES</string>
+      	<string name="online_menu_back">VOLVER</string>
+      	<!-- Online Lobby Menu-->
+      	<string name="lobby_menu_title">Lobby</string>
+      	<string name="lobby_menu_ship">ELEGIR NAVE</string>
+      	<string name="lobby_menu_track">ELEGIR CIRCUITO</string>
+      	<string name="lobby_menu_color">CAMBIAR COLOR</string>
+      	<string name="lobby_menu_ready">LISTO</string>
+      	<string name="lobby_menu_notready">NO LISTO</string>
+      	<string name="lobby_menu_connecting">CONECTANDO...</string>      	
+      	<string name="lobby_menu_waiting">Esperando jugadores</string>
+      	<string name="lobby_menu_back">VOLVER</string>
+      	<!-- Online Server Menu-->
+      	<string name="server_menu_title">Servidores</string>
+      	<string name="server_menu_join">UNIRSE</string>
+      	<string name="server_menu_back">VOLVER</string>
+      	<string name="server_menu_noservers">NO SE HAN ENCONTRADO SERVIDORES</string>
+      	<!-- Loading -->
+      	<string name="loading_title">CARGANDO</string>
+      	<!-- Pause -->
+      	<string name="pause_title">Pausa</string>
+      	<string name="pause_continue">CONTINUAR</string>
+      	<string name="pause_restart">REINICIAR</string>
+      	<string name="pause_options">OPCIONES</string>
+      	<string name="pause_exit">SALIR</string>
+      	<!-- HUD -->
+      	<string name="hud_laps">Vueltas</string>
+      	<string name="hud_position">Posición</string>
 	</Spanish>
 </languages>

@@ -253,18 +253,18 @@ public class PauseManager : MonoBehaviour {
     public void InitGameplayMenu() {
         GameOptions.LoadGameSettings();
 
-        dropDefaultCamera.value = GameSettings.G_DEFAULTCAMERA;
-        dropCountdownType.value = GameSettings.G_COUNTDOWNTYPE;
+        //dropDefaultCamera.value = GameSettings.G_DEFAULTCAMERA;
+        //dropCountdownType.value = GameSettings.G_COUNTDOWNTYPE;
 
         //tglIntroVoices.SetState(GameSettings.G_TRACKINTROVOICES);
         //tglMirror.SetState(GameSettings.G_MIRROR);
 
         sliderLanguage.firstIndex = (int)GameSettings.G_LANGUAGE;
 
-        sliderHUDR.value = GameSettings.G_CUSTOMHUDCOLOR.r;
-        sliderHUDG.value = GameSettings.G_CUSTOMHUDCOLOR.g;
-        sliderHUDB.value = GameSettings.G_CUSTOMHUDCOLOR.b;
-        sliderHUDA.value = GameSettings.G_CUSTOMHUDCOLOR.a;
+        //sliderHUDR.value = GameSettings.G_CUSTOMHUDCOLOR.r;
+        //sliderHUDG.value = GameSettings.G_CUSTOMHUDCOLOR.g;
+        //sliderHUDB.value = GameSettings.G_CUSTOMHUDCOLOR.b;
+        //sliderHUDA.value = GameSettings.G_CUSTOMHUDCOLOR.a;
     }
 
     public void UpdateGraphicsSettings() {
@@ -317,7 +317,10 @@ public class PauseManager : MonoBehaviour {
         //GameSettings.G_MIRROR = tglMirror.;
 
         // Idioma
-        GameSettings.G_LANGUAGE = (Enumerations.E_LANGUAGE)sliderLanguage.index;
+        // Se suma 1 para tener en cuenta que este metodo se ejecuta antes que la actualizacion
+        // del HorizontallScrollSlider. Esto se hace para que primero se cambie el idioma y luego
+        // se actualize el texto
+        GameSettings.G_LANGUAGE = (Enumerations.E_LANGUAGE)((sliderLanguage.index + 1) % Enum.GetNames(typeof(Enumerations.E_LANGUAGE)).Length);
         LanguageSingleton.InstanceLanguage(true);
 
         // sliders

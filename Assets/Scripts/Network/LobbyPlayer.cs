@@ -157,7 +157,7 @@ public class LobbyPlayer : NetworkLobbyPlayer {
 
         ChangeReadyButtonColor(JoinColor);
 
-        readyDisplayButton.transform.GetChild(0).GetComponent<Text>().text = "NOT READY";
+        readyDisplayButton.transform.GetChild(0).GetComponent<Text>().text = LanguageSingleton._instance.getString("lobby_menu_notready");
         readyButton.interactable = true;
 
         //have to use child count of player prefab already setup as "this.slot" is not set yet
@@ -206,9 +206,9 @@ public class LobbyPlayer : NetworkLobbyPlayer {
             ChangeReadyButtonColor(TransparentColor);
 
             Text textComponent = readyDisplayButton.transform.GetChild(0).GetComponent<Text>();
-            textComponent.text = "READY";
+            textComponent.text = LanguageSingleton._instance.getString("lobby_menu_ready");
             Text textComponent1 = readyButton.transform.GetChild(0).GetComponent<Text>();
-            textComponent1.text = "NOT READY";
+            textComponent1.text = LanguageSingleton._instance.getString("lobby_menu_notready");
             textComponent.color = ReadyColor;
             //readyButton.interactable = false;
             colorButton.interactable = false;
@@ -221,9 +221,9 @@ public class LobbyPlayer : NetworkLobbyPlayer {
             ChangeReadyButtonColor(isLocalPlayer ? JoinColor : NotReadyColor);
 
             Text textComponent = readyDisplayButton.transform.GetChild(0).GetComponent<Text>();
-            textComponent.text = isLocalPlayer ? "JOIN" : "...";
+            textComponent.text = isLocalPlayer ? LanguageSingleton._instance.getString("lobby_menu_notready") : "...";
             Text textComponent1 = readyButton.transform.GetChild(0).GetComponent<Text>();
-            textComponent1.text = "READY";
+            textComponent1.text = LanguageSingleton._instance.getString("lobby_menu_ready");
             textComponent.color = Color.white;
             readyButton.interactable = isLocalPlayer;
             colorButton.interactable = isLocalPlayer;

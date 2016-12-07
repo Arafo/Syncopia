@@ -182,7 +182,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 148306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Script: {fileID: 11500000, guid: dab4f7c4f0578e9468adcab4211d4622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -203,10 +203,11 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Laps
+  key: hud_laps
 --- !u!114 &11424538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -281,7 +282,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 134102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Script: {fileID: 11500000, guid: dab4f7c4f0578e9468adcab4211d4622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -302,10 +303,11 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Position
+  key: hud_position
 --- !u!114 &11436114
 MonoBehaviour:
   m_ObjectHideFlags: 1

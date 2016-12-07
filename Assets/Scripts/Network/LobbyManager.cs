@@ -149,7 +149,7 @@ public class LobbyManager : NetworkLobbyManager {
 
     public void DisplayIsConnecting() {
         var _this = this;
-        infoPanel.Display("CONNECTING...", "Cancel", () => { _this.backDelegate(); });
+        infoPanel.Display(LanguageSingleton._instance.getString("lobby_menu_connecting"), "Cancel", () => { _this.backDelegate(); });
     }
 
     public void SetServerInfo(string status, string host) {
