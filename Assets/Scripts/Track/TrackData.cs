@@ -109,6 +109,12 @@ public class TrackData : MonoBehaviour {
                 //spawnCameraLocations.Add(cameraPos);
             }
         }
+
+        if (RaceSettings.gamemode == Enumerations.E_GAMEMODE.TIMETRIAL) {
+            spawnPositions.Reverse();
+            spawnRotations.Reverse();
+            spawnCameraLocations.Reverse();
+        }
     }
 
     private void FindTrackDimensions() {

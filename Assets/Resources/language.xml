@@ -89,6 +89,8 @@
       	<!-- HUD -->
       	<string name="hud_laps">Laps</string>
       	<string name="hud_position">Position</string>
+      	<string name="hud_best">Best</string>
+      	<string name="hud_current">Current</string>
 	</English>
 
 	<Spanish>
@@ -180,5 +182,7 @@
       	<!-- HUD -->
       	<string name="hud_laps">Vueltas</string>
       	<string name="hud_position">Posición</string>
+      	<string name="hud_best">Mejor</string>
+      	<string name="hud_current">Actual</string>
 	</Spanish>
 </languages>
