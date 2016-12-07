@@ -11,6 +11,7 @@ public class HorizontallScrollSlider : MonoBehaviour {
     [Range(1, 99)]
     public int rangeContent;
     public bool isRange;
+    public bool isText;
 
     public Text actualText;
     public int firstIndex;
@@ -24,8 +25,12 @@ public class HorizontallScrollSlider : MonoBehaviour {
                     listContent.Add(i.ToString());
                 }
             }
-            if (firstIndex < listContent.Count)
-                actualText.text = listContent[firstIndex];
+            if (firstIndex < listContent.Count) {
+                if (isText)
+                    actualText.text = LanguageSingleton._instance.getString(listContent[firstIndex]);
+                else
+                    actualText.text = listContent[firstIndex];
+            }
             index = firstIndex;
         }
     }
@@ -40,7 +45,7 @@ public class HorizontallScrollSlider : MonoBehaviour {
         if (index >= listContent.Count)
             index = 0;
 
-        actualText.text = listContent[index];
+        actualText.text = isText ? LanguageSingleton._instance.getString(listContent[index]) : listContent[index];
     }
 
     public void setLastText() {
@@ -48,6 +53,6 @@ public class HorizontallScrollSlider : MonoBehaviour {
         if (index < 0)
             index = listContent.Count - 1;
 
-        actualText.text = listContent[index];
+        actualText.text = isText ? LanguageSingleton._instance.getString(listContent[index]) : listContent[index];
     }
 }
