@@ -826,7 +826,7 @@ MonoBehaviour:
   airbrakeGain: 800
   airbrakeFalloff: 500
   airbrakeTurnMultiplier: 9
-  gravity_Low: 0
+  gravity_Low: 80
   gravity_High: 0
   gravity: 18
   grip_Low: 0
@@ -840,7 +840,7 @@ MonoBehaviour:
   slipFalloff: 500
   slipMagnitude: 1000
   slipVelocityMult: 1
-  hoverHeight: 3
+  hoverHeight: 2.5
   size: {x: 5, y: 1.5, z: 7.5}
   mesh: {fileID: 1000012396072658}
   windTrailLeft: {fileID: 1000012876769038}

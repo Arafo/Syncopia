@@ -21746,7 +21746,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400020, guid: 9ba8480782343144a9d67326ca35ec82, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 546792312}
-  m_LocalRotation: {x: -0.6436304, y: -0.29281402, z: -0.29281425, w: 0.6436302}
+  m_LocalRotation: {x: -0.6436303, y: -0.292814, z: -0.29281422, w: 0.64363015}
   m_LocalPosition: {x: -1044.7, y: 4, z: 1938.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37987,8 +37987,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackData: {fileID: 82904441}
-  racerCount: 1
-  lapCount: 4
+  racerCount: 6
+  lapCount: 1
+  mode: 0
   countdownStartDelay: 1
   countdownStageDelay: 1
   countdownTimer: 0
@@ -55638,7 +55639,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400032, guid: 9ba8480782343144a9d67326ca35ec82, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1744241902}
-  m_LocalRotation: {x: 0.15675893, y: -0.6895119, z: -0.68951184, w: -0.15675901}
+  m_LocalRotation: {x: 0.15675895, y: -0.68951195, z: -0.6895119, w: -0.15675902}
   m_LocalPosition: {x: -726.1, y: 0, z: 1405.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

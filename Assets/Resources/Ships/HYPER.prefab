@@ -1102,16 +1102,16 @@ MonoBehaviour:
   cameraTurnDamp: 2
   engineAmount: 1000
   engineAcceleration: 120
-  engineGain: 1100
+  engineGain: 120
   engineFalloff: 600
-  turnAmount: 1.8
-  turnGain: 800
+  turnAmount: 2
+  turnGain: 1000
   turnFalloff: 600
   airbrakeAmount: 8
   airbrakeGain: 400
   airbrakeFalloff: 500
   airbrakeTurnMultiplier: 9
-  gravity_Low: 0
+  gravity_Low: 80
   gravity_High: 0
   gravity: 18
   grip_Low: 0
@@ -1125,8 +1125,8 @@ MonoBehaviour:
   slipFalloff: 500
   slipMagnitude: 1000
   slipVelocityMult: 1
-  hoverHeight: 3
-  size: {x: 5, y: 1.5, z: 7.5}
+  hoverHeight: 4
+  size: {x: 5, y: 2, z: 7.5}
   mesh: {fileID: 1000011628557848}
   windTrailLeft: {fileID: 1000013383808700}
   windTrailRight: {fileID: 1000010272880188}

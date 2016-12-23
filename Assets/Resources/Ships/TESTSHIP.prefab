@@ -823,7 +823,7 @@ MonoBehaviour:
   airbrakeGain: 800
   airbrakeFalloff: 500
   airbrakeTurnMultiplier: 9
-  gravity_Low: 0
+  gravity_Low: 80
   gravity_High: 0
   gravity: 18
   grip_Low: 0
