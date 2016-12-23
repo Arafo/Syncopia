@@ -13,6 +13,14 @@ public class ShipLoader : MonoBehaviour {
         else
             ShipObject = player;
 
+        // Crear rigidbody
+        Rigidbody body = gameObject.AddComponent<Rigidbody>();
+        body.useGravity = false;
+        body.constraints = RigidbodyConstraints.FreezeRotationY;
+        body.drag = 1f;
+        body.angularDrag = 35f;
+        body.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+
         // Cargar la configuracion de la nave
         ShipConfig config = ShipObject.GetComponent<ShipConfig>();
 
@@ -52,20 +60,12 @@ public class ShipLoader : MonoBehaviour {
         axis.transform.localPosition = Vector3.zero;
         axis.transform.localRotation = Quaternion.identity;
         axis.transform.parent = transform;
-
+    
         // 
         ShipObject.transform.parent = axis.transform;
         ShipObject.transform.localPosition = Vector3.zero;
         ShipObject.transform.localRotation = Quaternion.identity;
 
-
-        // Crear rigidbody
-        Rigidbody body = gameObject.AddComponent<Rigidbody>();
-        body.useGravity = false;
-        body.constraints = RigidbodyConstraints.FreezeRotation;
-        body.drag = 0f;
-        body.angularDrag = 20f;
-        body.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
         // Interpolación del movimiento solo en el multiplayer
         ShipObject.GetComponent<NetworkPlayerController>().enabled = type == 2;
@@ -88,14 +88,14 @@ public class ShipLoader : MonoBehaviour {
         collider.tag = "Ship";
         collider.layer = LayerMask.NameToLayer("Ship");
         collider.transform.parent = transform;
-        collider.transform.localPosition = new Vector3(0, config.size.y, 0); //Vector3.zero;
+        collider.transform.localPosition = new Vector3(0, 0f, 0); //Vector3.zero;
         collider.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-        /*collider.AddComponent<BoxCollider>();
+        collider.AddComponent<BoxCollider>();
         collider.GetComponent<BoxCollider>().size = config.size;
         //collider.GetComponent<BoxCollider>().isTrigger = true; // CUIDADO CON ESTO
         collider.GetComponent<BoxCollider>().material = physicMaterial;
-        collider.GetComponent<BoxCollider>().transform.localScale = Vector3.one;
-        collider.GetComponent<BoxCollider>().gameObject.SetActive(false);*/
+        //collider.GetComponent<BoxCollider>().transform.localScale = Vector3.one;
+        //collider.GetComponent<BoxCollider>().gameObject.SetActive(false);
         mc.material = physicMaterial;
 
         // Esfera para representar la nave en el minimap
@@ -221,7 +221,7 @@ public class ShipLoader : MonoBehaviour {
         camera.backgroundColor = Color.black;
         newCamera.AddComponent<GUILayer>();
         newCamera.AddComponent<FlareLayer>();
-        newCamera.AddComponent<AudioListener>();
+        //newCamera.AddComponent<AudioListener>();
         //newCamera.AddComponent<DynamicResolution>();
 
         UnityStandardAssets.ImageEffects.Blur pauseBlur = newCamera.AddComponent<UnityStandardAssets.ImageEffects.Blur> ();

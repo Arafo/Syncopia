@@ -15,6 +15,7 @@ public class RaceManager : MonoBehaviour {
     public int racerCount = 1;
     [Range(1, 10)]
     public int lapCount = 1;
+    public Enumerations.E_GAMEMODE mode;
 
     [Header("[ CUENTA ATRAS ]")]
     public float countdownStartDelay;
@@ -212,6 +213,7 @@ public class RaceManager : MonoBehaviour {
         if (!RaceSettings.overrideRaceSettings) {
             RaceSettings.racers = racerCount;
             RaceSettings.laps = lapCount;
+            //RaceSettings.gamemode = mode;
         }
     }
 
@@ -248,6 +250,7 @@ public class RaceManager : MonoBehaviour {
             /*if (i == 1) ship = Enumerations.E_SHIPS.TESTSHIP;
             if (i == 2) ship = Enumerations.E_SHIPS.FLYER;*/
 
+            newShip.name = ship.ToString();
             int type = (isAI) ? 1 : 0;
             loader.SpawnShip(ship, type);
         }

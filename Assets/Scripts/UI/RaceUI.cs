@@ -136,7 +136,7 @@ public class RaceUI : ShipCore
             string miliseconds = ((timer * 1000) % 1000).ToString("000");
 
             string total = string.Concat(new string[] { minutes, ":", seconds, ":", miliseconds });
-            uiCurrentTimeText.text = LanguageSingleton._instance.getString("hud_current") + "\t\t" + total;
+            uiCurrentTimeText.text = LanguageSingleton._instance != null ? LanguageSingleton._instance.getString("hud_current") + "\t\t" + total : "Current\t\t" + total;
 
             // Mejor tiempo de vuelta
             timer = ship.bestLap;
@@ -151,7 +151,7 @@ public class RaceUI : ShipCore
                 miliseconds = "000";
             }
             total = string.Concat(new string[] { minutes, ":", seconds, ":", miliseconds });
-            uiBestTimeText.text = LanguageSingleton._instance.getString("hud_best") + "\t\t" + total;
+            uiBestTimeText.text = LanguageSingleton._instance != null ? LanguageSingleton._instance.getString("hud_best") + "\t\t" + total : "Best\t\t" + total ;
 
             uiCurrentPositionText.text = ship.currentPosition + "/" + (!ServerSettings.isNetworked ? RaceSettings.ships.Count : ServerSettings.players.Count);
 

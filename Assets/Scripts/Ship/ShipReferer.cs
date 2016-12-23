@@ -43,7 +43,7 @@ public class ShipReferer : NetworkBehaviour {
     public TrackSegment midSection;
 
     public int currentPosition;
-    public int finalPosition;
+    public int finalPosition = int.MaxValue;
 
     // Tiempos
     //public int place;

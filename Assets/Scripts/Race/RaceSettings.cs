@@ -13,7 +13,7 @@ public class RaceSettings {
     public static int racers = 5;
     public static int laps = 1;
     public static Enumerations.E_DIFFICULTY difficulty = Enumerations.E_DIFFICULTY.MEDIUM;
-    public static Enumerations.E_GAMEMODE gamemode = Enumerations.E_GAMEMODE.TIMETRIAL;
+    public static Enumerations.E_GAMEMODE gamemode = Enumerations.E_GAMEMODE.ARCADE;
     public static bool overrideRaceSettings = false;
     public static Enumerations.E_SHIPS playerShip = Enumerations.E_SHIPS.HYPER;
     public static string trackToLoad;
