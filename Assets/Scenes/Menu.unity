@@ -22070,12 +22070,23 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 616760438}
-          m_MethodName: set_enabled
-          m_Mode: 6
+        - m_Target: {fileID: 236742110}
+          m_MethodName: GotoNextPanel
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -22136,27 +22147,38 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 871294975}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1724141910}
-        m_MethodName: SetMount
-        m_Mode: 2
+      - m_Target: {fileID: 236742110}
+        m_MethodName: GotoNextPanel
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 166617438}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 572748598}
-        m_MethodName: StartAnimation
+      - m_Target: {fileID: 1866405437}
+        m_MethodName: SetTrackToLoad
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Volcano
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 49957425}
+        m_MethodName: SetNextPanel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1429427634}
+          m_ObjectArgument: {fileID: 814853287}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
