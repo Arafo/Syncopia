@@ -852,6 +852,8 @@ MonoBehaviour:
   SFX_BOOST: {fileID: 8300000, guid: 1d271eda18edb1e4d9f87d5f000cc0af, type: 3}
   SFX_IGNITION: {fileID: 8300000, guid: a8d801b135eac7442a203a44e002e8eb, type: 3}
   SFX_ENGINE_RELEASE: {fileID: 8300000, guid: 6c300a73d00205b4099691da57d7a608, type: 3}
+  SFX_WALLHIT: {fileID: 8300000, guid: 01bab1d7efd316d47ac17e04b3b7d806, type: 3}
+  SFX_SHIPHIT: {fileID: 8300000, guid: 1c05d52cd1a8b9242957edd432e6f702, type: 3}
 --- !u!123 &12326862
 LensFlare:
   m_ObjectHideFlags: 1

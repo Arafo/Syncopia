@@ -45,7 +45,7 @@ public class ClipManager : MonoBehaviour {
         source.spatialBlend = 0;
         source.gameObject.name = clip.name;
 
-        Debug.Log((GameObject.Find(clip.ToString()) == null) + " " + clip.ToString() );
+        //Debug.Log((GameObject.Find(clip.ToString()) == null) + " " + clip.ToString() );
         source.Play();
 
         // Registrar la fuente de sonido
