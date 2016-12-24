@@ -70,5 +70,7 @@ public class ShipConfig : MonoBehaviour
     public AudioClip SFX_BOOST;
     public AudioClip SFX_IGNITION;
     public AudioClip SFX_ENGINE_RELEASE;
+    public AudioClip SFX_WALLHIT;
+    public AudioClip SFX_SHIPHIT;
 
 }
