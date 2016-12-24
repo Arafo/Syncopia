@@ -67,6 +67,7 @@ public class RaceUI : ShipCore
     public event OnVariableChangeDelegate OnVariableChange;
 
     void Start() {
+        uiLapsText = uiLaps.GetComponent<Text>();
         uiBestTimeText = uiBestTime.GetComponent<Text>();
         uiCurrentTimeText = uiCurrentTime.GetComponent<Text>();
         uiCurrentSectorText = uiCurrentSector.GetComponent<Text>();
@@ -78,19 +79,20 @@ public class RaceUI : ShipCore
         uiPowerBoostRect = uiPowerBoost.GetComponent<RectTransform>();
         powerBoostRectMax = uiPowerBoostRect.sizeDelta.x;
         uiCurrentSpeedText = uiCurrentSpeed.GetComponent<Text>();
+        uiCountDownText = uiCountDown.GetComponent<Text>();
         OnVariableChange += VariableChangeHandler;
         uiCurrentSectorText.enabled = false;
     }
 
     void Update() {
         // TODO: Iniciar en Start, no ejecutar esto cada frame
-        uiCurrentSpeedText= uiCurrentSpeed.GetComponent<Text>();
+        /*uiCurrentSpeedText= uiCurrentSpeed.GetComponent<Text>();
         uiCurrentLapText = uiCurrentLap.GetComponent<Text>();
         uiSpeedMeterRect = uiSpeedMeter.GetComponent<RectTransform>();
         uiBestTimeText = uiBestTime.GetComponent<Text>();
         uiCurrentTimeText = uiCurrentTime.GetComponent<Text>();
         uiLapsText = uiLaps.GetComponent<Text>();
-        uiCountDownText = uiCountDown.GetComponent<Text>();
+        uiCountDownText = uiCountDown.GetComponent<Text>();*/
 
         if (ship == null)
             return;
