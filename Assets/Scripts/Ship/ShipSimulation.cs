@@ -138,6 +138,16 @@ public class ShipSimulation : ShipCore {
     }
 
     private void ShipGravity() {
+        // Si la nave esta en el suelo se aplica una fuerza de gravedad baja
+        // Si esta en el aire se aplica mas fuerza para evitar que despegue
+        if (isGrounded) {
+            shipGravity = -transform.up * ship.config.gravity_Low * 0.6f;
+        }
+        else {
+            shipGravity = Vector3.down * ship.config.gravity_Low;
+        }
+        ship.body.AddForce(shipGravity, ForceMode.Acceleration);
+
         // Puntos de flotacion calculados con el tamaño de la nave
         List<Vector3> hoverPoints = new List<Vector3> {
             transform.TransformPoint(-ship.config.size.x * 0.5f, 0f, ship.config.size.z * 0.5f),
@@ -145,16 +155,6 @@ public class ShipSimulation : ShipCore {
             transform.TransformPoint(ship.config.size.x * 0.5f, 0f, -ship.config.size.z * 0.5f),
             transform.TransformPoint(-ship.config.size.x * 0.5f, 0f, -ship.config.size.z * 0.5f)
         };
-
-        // Si la nave esta en el suelo se aplica una fuerza de gravedad baja
-        // Si esta en el aire se aplica mas fuerza para evitar que despegue
-        if (isGrounded) {
-            shipGravity = -transform.up * ship.config.gravity * 0.6f;
-        }
-        else {
-            shipGravity = Vector3.down * ship.config.gravity;
-        }
-        ship.body.AddForce(shipGravity, ForceMode.Acceleration);
 
         // Si la nave esta en el suelo se interpola la caida del dumper hasta 0
         // Si esta en el aire se deja un valor mas alto
@@ -199,7 +199,7 @@ public class ShipSimulation : ShipCore {
         }
         
         // Compensacion de la rotacion en el centro de masas de la nave
-        if (Physics.Raycast(transform.position, -transform.up, out hit, ship.config.hoverHeight, layerMask)) {
+        if (!ship.isAI && Physics.Raycast(transform.position, -transform.up, out hit, ship.config.hoverHeight, layerMask)) {
             // DEBUG
             if (hit.point != Vector3.zero)
                 Debug.DrawLine(transform.position, hit.point, Color.red);
@@ -280,16 +280,16 @@ public class ShipSimulation : ShipCore {
 
         switch (RaceSettings.difficulty) {
             case Enumerations.E_DIFFICULTY.EASY :
-                amount *= 0.5f;
-                acceleration *= 0.5f;
+                //amount *= 0.5f;
+                //acceleration *= 0.5f;
                 break;
             case Enumerations.E_DIFFICULTY.MEDIUM :
-                amount *= 0.6f;
-                acceleration *= 0.6f;
+                //amount *= 0.75f;
+                //acceleration *= 0.75f;
                 break;
             case Enumerations.E_DIFFICULTY.HARD :
-                amount *= 1f;
-                acceleration *= 1f;
+                //amount *= 1f;
+                //acceleration *= 1f;
                 break;
         };
 
@@ -638,17 +638,18 @@ public class ShipSimulation : ShipCore {
             float impactAllowance = (hitDot < -0.1f) ? 1.5f : 4.0f;
             if (Mathf.Abs(impact) > impactAllowance || hitDot < -0.2f) {
                 isColliding = true;
-                
+                ship.PlayClip(ship.config.SFX_WALLHIT, AudioSettings.VOLUME_SFX, 1.0f);
+
                 Vector3 lv = transform.InverseTransformDirection(ship.body.velocity);
                 lv.x *= -0.1f;
                 lv.y = 0.0f;
                 lv.z *= 0.05f;
                 Vector3 wv = transform.TransformDirection(lv);
-                ship.body.velocity = wv;
+                //ship.body.velocity = wv;
 
                 // Reducir la potencia y aceleracion del motor
                 engineAcceleration *= 0.9f;
-                engineThrust *= 0.3f;
+                //engineThrust *= 0.3f;
 
                 // Alejar la nave de la pared
                 Vector3 dir = other.contacts[0].normal;
@@ -667,13 +668,14 @@ public class ShipSimulation : ShipCore {
         }
 
         if (other.gameObject.tag == "Ship") {
-            Debug.Log(ship.name + " colisiona " + other.gameObject.name);
+            //Debug.Log(ship.name + " colisiona " + other.gameObject.name);
 
             Vector3 lv = transform.InverseTransformDirection(ship.body.velocity);
             lv.y = 0;
             Vector3 wv = transform.TransformDirection(lv);
             if (!isGrounded)
                 ship.body.velocity = wv;
+            ship.PlayClip(ship.config.SFX_SHIPHIT, AudioSettings.VOLUME_SFX, 1.0f);
             engineThrust *= 0.8f;
 
             // Alejar de la otra nave
