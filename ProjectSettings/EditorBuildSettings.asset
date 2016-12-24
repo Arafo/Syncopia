@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Tracks/Blood Dragon.unity
   - enabled: 1
     path: Assets/Scenes/Online.unity
+  - enabled: 1
+    path: Assets/Scenes/Tracks/Volcano.unity
