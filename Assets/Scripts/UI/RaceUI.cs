@@ -163,7 +163,11 @@ public class RaceUI : ShipCore
                     diff = ship.sector1[ship.currentLap - 1] - ship.sector1[ship.bestLapIndex];
                 }
                 else {
-                    diff = ship.laps[ship.currentLap - 2] - ship.bestLap;
+                    // La nave ha superado su record vuelta
+                    if ((ship.currentLap - 2) == ship.bestLapIndex)
+                        diff = ship.laps[ship.currentLap - 2] - ship.laps[ship.tmpLapIndex];
+                    else
+                        diff = ship.laps[ship.currentLap - 2] - ship.bestLap;
                 }
 
                 if (ship.secondSector != displayCurrentSector && OnVariableChange != null) {
@@ -174,9 +178,9 @@ public class RaceUI : ShipCore
             }
 
             // Tiempos de las ultimas 5 vueltas
-            int min = 1;
-            int max = 5;
-            String laps = "";
+            //int min = 1;
+            //int max = 5;
+            //String laps = "";
             /*for (int i = min; i <= max; i++) {
                 if (ship.laps.Length >= max) {
                     laps = "";
@@ -186,7 +190,7 @@ public class RaceUI : ShipCore
                 if (ship.laps.Length >= i)
                     laps += "Lap " + i + ": " + ship.laps[i - 1].ToString() + "\n";
             }*/
-            uiLapsText.text = laps;
+            //uiLapsText.text = laps;
 
         }
     }

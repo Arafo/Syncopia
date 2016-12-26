@@ -54,6 +54,7 @@ public class ShipReferer : NetworkBehaviour {
     [SyncVar]
     public float bestLap;
     public int bestLapIndex;
+    public int tmpLapIndex;
     public float bestSector1;
     public float bestSector2;
     public int currentLap;
@@ -125,7 +126,7 @@ public class ShipReferer : NetworkBehaviour {
         }
 
         // Boost de inicio
-        if (input.m_AccelerationButton && !startBoost) {
+        if (input != null && input.m_AccelerationButton && !startBoost) {
             boostTimer = 0.8f;
             boostAccel = 1000f;
             startBoost = true;
@@ -214,6 +215,7 @@ public class ShipReferer : NetworkBehaviour {
 
             // Mejor tiempo de vuelta
             if ((currentTime < bestLap || !hasBestTime) && !loadedBestTime) {
+                tmpLapIndex = bestLapIndex;
                 bestLapIndex = currentLap - 1;
                 bestLap = currentTime;
                 hasBestTime = true;
@@ -238,6 +240,8 @@ public class ShipReferer : NetworkBehaviour {
 
                 if (!isAI)
                     RaceSettings.raceManager.results.Results();
+                else
+                    RaceSettings.raceManager.results.AIFinished(this);
 
             }
 

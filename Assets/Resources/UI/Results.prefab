@@ -372,7 +372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &144280
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +949,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: RESTART
@@ -1544,7 +1544,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.39215687}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1560,7 +1560,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 11489670}
+  m_TargetGraphic: {fileID: 11498690}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1594,12 +1594,15 @@ MonoBehaviour:
   ships: {fileID: 11403028}
   bestTimes: {fileID: 11485976}
   totalTimes: {fileID: 11483962}
+  restart: {fileID: 11487036}
+  exit: {fileID: 11468636}
   sliderResolution: {fileID: 0}
   sliderDrawDistance: {fileID: 0}
   txtDrawDistance: {fileID: 0}
   sliderFramerate: {fileID: 0}
   sliderBloom: {fileID: 0}
   sliderAA: {fileID: 0}
+  sliderDynamicResolution: {fileID: 0}
   sliderMasterVolume: {fileID: 0}
   txtMasterVolume: {fileID: 0}
   sliderSFXVolume: {fileID: 0}
@@ -1617,6 +1620,7 @@ MonoBehaviour:
   dropWeaponAnnouncement: {fileID: 0}
   tglIntroVoices: {fileID: 0}
   tglMirror: {fileID: 0}
+  sliderLanguage: {fileID: 0}
   HUDColorWindow: {fileID: 0}
   HUDColorVisual: {fileID: 0}
   sliderHUDR: {fileID: 0}
@@ -1948,7 +1952,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 11423710}
+  m_TargetGraphic: {fileID: 11458148}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2388,7 +2392,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 11464104}
+  m_TargetGraphic: {fileID: 11408268}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2562,7 +2566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

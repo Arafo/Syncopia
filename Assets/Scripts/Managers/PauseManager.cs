@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using UnityStandardAssets.ImageEffects;
+using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour {
 
@@ -17,6 +18,8 @@ public class PauseManager : MonoBehaviour {
     public Text ships;
     public Text bestTimes;
     public Text totalTimes;
+    public Button restart;
+    public Button exit;
 
     [Header("[ GRAFICOS ]")]
     //public Dropdown dropResolution;
@@ -67,6 +70,8 @@ public class PauseManager : MonoBehaviour {
 
     private Resolution[] resolutions = new Resolution[0];
 
+    private int position = 1;
+
     // Use this for initialization
     void Start () {
 	
@@ -89,6 +94,9 @@ public class PauseManager : MonoBehaviour {
 
         ResetResults();
 
+        if (EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(restart.gameObject);
+
         // Blur de fondo
         RaceSettings.ships[0].cam.GetComponent<Blur>().enabled = true;
 
@@ -98,20 +106,23 @@ public class PauseManager : MonoBehaviour {
                 ShipReferer ship = shipList[i];
                 //if (ship.finalPosition == position) {
                     if (!ship.isAI) {
-                        positions.text += "\n<color=yellow>" + (i + 1) + "</color>";
+                        positions.text += "\n<color=yellow>" + position + "</color>";
+                        position++;
                         ships.text += "\n<color=yellow>" + ship.name + "</color>";
                         drivers.text += "\n<color=yellow>" + ship.name + "</color>";
                         bestTimes.text += "\n<color=yellow>" + ToTime(ship.bestLap) + "</color>";
                         totalTimes.text += "\n<color=yellow>" + ToTime(ship.totalTime) + "</color>";
                     }
                     else {
-                        positions.text += "\n" + (i + 1);
-                        ships.text += "\n" + ship.name;
-                        drivers.text += "\n" + ship.name;
-                        bestTimes.text += "\n" + ToTime(ship.bestLap);
-                        totalTimes.text += "\n" + ToTime(ship.totalTime);
+                        if (ship.finalPosition != int.MaxValue) {
+                            positions.text += "\n" + position;
+                            position++;
+                            ships.text += "\n" + ship.name;
+                            drivers.text += "\n" + ship.name;
+                            bestTimes.text += "\n" + ToTime(ship.bestLap);
+                            totalTimes.text += "\n" + ToTime(ship.totalTime);
+                        }
                     }
-                    //position++;
 
                     //if (position <= RaceSettings.ships.Count)
                         //i = -1;
@@ -143,6 +154,17 @@ public class PauseManager : MonoBehaviour {
         }
     }
 
+    public void AIFinished(ShipReferer ship) {
+        if (RaceSettings.ships[0].finished && ship.isAI) {
+            positions.text += "\n" + position;
+            position++;
+            ships.text += "\n" + ship.name;
+            drivers.text += "\n" + ship.name;
+            bestTimes.text += "\n" + ToTime(ship.bestLap);
+            totalTimes.text += "\n" + ToTime(ship.totalTime);
+        }
+    }
+
     public void Continue() {
         RaceSettings.raceManager.Pause();
     }
@@ -156,11 +178,12 @@ public class PauseManager : MonoBehaviour {
     /// Reinicia el menu de pausa poniendo el primer panel en pantalla
     /// </summary>
     public void ResetMenu() {       
-        transform.GetChild(0).gameObject.SetActive(true);
-        transform.GetChild(1).gameObject.SetActive(false);
-        transform.GetChild(2).gameObject.SetActive(false);
-        transform.GetChild(3).gameObject.SetActive(false);
-        animation.StartAnimationNoSound(transform.GetChild(0).gameObject);
+        transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(0).transform.GetChild(2).gameObject.SetActive(false);
+        transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
+        transform.GetChild(0).transform.GetChild(4).gameObject.SetActive(false);
+        animation.StartAnimationNoSound(transform.GetChild(0).transform.GetChild(0).gameObject);
     }
 
     public void Quit() {
