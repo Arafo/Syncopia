@@ -819,19 +819,19 @@ MonoBehaviour:
   engineAcceleration: 92
   engineGain: 750
   engineFalloff: 750
-  turnAmount: 1.2
-  turnGain: 400
-  turnFalloff: 800
+  turnAmount: 1.8
+  turnGain: 800
+  turnFalloff: 400
   airbrakeAmount: 8
   airbrakeGain: 800
   airbrakeFalloff: 500
   airbrakeTurnMultiplier: 9
-  gravity_Low: 80
+  gravity_Low: 100
   gravity_High: 0
   gravity: 18
   grip_Low: 0
   grip_High: 0
-  grip: 3
+  grip: 5
   slideAmount: 0
   slideGain: 0
   slideFalloff: 0
@@ -840,12 +840,13 @@ MonoBehaviour:
   slipFalloff: 500
   slipMagnitude: 1000
   slipVelocityMult: 1
-  hoverHeight: 2.5
-  size: {x: 5, y: 1.5, z: 7.5}
+  hoverHeight: 3.5
+  size: {x: 5, y: 2, z: 7.5}
   mesh: {fileID: 1000012396072658}
   windTrailLeft: {fileID: 1000012876769038}
   windTrailRight: {fileID: 1000011918305050}
-  engineTrail: {fileID: 1000013080747836}
+  engineTrail:
+  - {fileID: 0}
   engineLight: {fileID: 1000013080747836}
   boosterLeft: {fileID: 1000010967606144}
   boosterRight: {fileID: 1000013783542584}

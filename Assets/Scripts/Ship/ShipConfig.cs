@@ -57,7 +57,7 @@ public class ShipConfig : MonoBehaviour
     public GameObject mesh;
     public GameObject windTrailLeft; // Estela de aire del ala izquierda
     public GameObject windTrailRight; // Estela de aire del ala derecha
-    public GameObject engineTrail;
+    public GameObject[] engineTrail;
     public GameObject engineLight;
     //public GameObject engineFlare; // Estela de la combustion del motor
     public GameObject boosterLeft;

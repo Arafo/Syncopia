@@ -18,7 +18,7 @@ public class ShipTrailEffects : ShipCore {
     private float trailMaxEndSize;
     private float trailBrightness;
     public Light lightObject;
-    public TrailRenderer trailObject;
+    public TrailRenderer[] trailObject;
 
     private float boosterRemainTimer;
     private float boosterFalloff;
@@ -39,17 +39,20 @@ public class ShipTrailEffects : ShipCore {
     public override void OnStart () {
         // Cargamos todos los efectos
         lightObject = ship.config.engineLight.GetComponent<Light>();
-        trailObject = ship.config.engineTrail.GetComponent<TrailRenderer>();
+        if (trailObject != null) {
+            for (int i = 0; i < trailObject.Length; i++) {
+                trailObject[i] = ship.config.engineTrail[i].GetComponent<TrailRenderer>();
+            }
+            trailMaxStartSize = trailObject[0].startWidth;
+            trailMaxEndSize = trailObject[0].endWidth;
+        }
         boosterColor = ship.config.boosterLeft.GetComponent<Renderer>().material.GetColor("_TintColor");
         boosterLeft = ship.config.boosterLeft.GetComponent<Renderer>();
         boosterRight = ship.config.boosterRight.GetComponent<Renderer>();
         windLeft = ship.config.windTrailLeft.GetComponent<TrailRenderer>();
         windRight = ship.config.windTrailRight.GetComponent<TrailRenderer>();
         spray = ship.config.engineSpray.GetComponent<Spray>();
-
-        trailMaxStartSize = trailObject.startWidth;
-        trailMaxEndSize = trailObject.endWidth;
-}
+    }
 	
 	// Update is called once per frame
 	public override void OnUpdate () {
@@ -96,12 +99,15 @@ public class ShipTrailEffects : ShipCore {
         lightObject.intensity = visualLightItensity;
 
         // Asignamos los valores calculados a la cola
-        trailObject.startWidth = trailStartSize;
-        trailObject.endWidth = trailEndSize;
-        trailObject.material.SetColor("_TintColor", new Color(0.8f, 0.8f, 0.8f, trailOpacity));
-        Vector2 textureOffset = trailObject.material.GetTextureOffset("_MainTex");
-        textureOffset.x += Time.deltaTime * 10f;
-        trailObject.material.SetTextureOffset("_MainTex", textureOffset);
+        Vector2 textureOffset = Vector2.zero;
+        for (int i = 0; i < trailObject.Length; i++) {
+            trailObject[i].startWidth = trailStartSize;
+            trailObject[i].endWidth = trailEndSize;
+            trailObject[i].material.SetColor("_TintColor", new Color(0.8f, 0.8f, 0.8f, trailOpacity));
+            textureOffset = trailObject[i].material.GetTextureOffset("_MainTex");
+            textureOffset.x += Time.deltaTime * 10f;
+            trailObject[i].material.SetTextureOffset("_MainTex", textureOffset);
+        }
 
         // Spray
         spray.throttle = sprayThrottle;

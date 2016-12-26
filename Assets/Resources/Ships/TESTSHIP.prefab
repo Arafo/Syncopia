@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 514f09a38a5075d439ae57271ff2b7ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraClosePos: {x: 12, y: 4, z: -12}
+  cameraClosePos: {x: 12, y: 3, z: -8}
   cameraFarPos: {x: 10, y: 4, z: 0}
   cameraSpeed: 0
   cameraFoV: 60
@@ -816,14 +816,14 @@ MonoBehaviour:
   engineAcceleration: 90
   engineGain: 750
   engineFalloff: 800
-  turnAmount: 1.55
-  turnGain: 500
-  turnFalloff: 750
+  turnAmount: 1.9
+  turnGain: 750
+  turnFalloff: 500
   airbrakeAmount: 8
   airbrakeGain: 800
   airbrakeFalloff: 500
   airbrakeTurnMultiplier: 9
-  gravity_Low: 80
+  gravity_Low: 100
   gravity_High: 0
   gravity: 18
   grip_Low: 0
@@ -842,7 +842,8 @@ MonoBehaviour:
   mesh: {fileID: 197786}
   windTrailLeft: {fileID: 199338}
   windTrailRight: {fileID: 170154}
-  engineTrail: {fileID: 170484}
+  engineTrail:
+  - {fileID: 170484}
   engineLight: {fileID: 170484}
   boosterLeft: {fileID: 191018}
   boosterRight: {fileID: 145526}
