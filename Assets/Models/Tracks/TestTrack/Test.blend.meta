@@ -47,6 +47,7 @@ ModelImporter:
     100078: Plane
     100080: TRACK_CURVE
     100082: Tunnel
+    100084: TRACK_WALL_001
     400000: CrossProfile
     400002: //RootNode
     400004: TRACK_FLOOR
@@ -89,6 +90,7 @@ ModelImporter:
     400078: Plane
     400080: TRACK_CURVE
     400082: Tunnel
+    400084: TRACK_WALL_001
     2300000: TRACK_FLOOR
     2300002: TRACK_WALL
     2300004: Cube
@@ -129,6 +131,7 @@ ModelImporter:
     2300074: Plane
     2300076: TRACK_CURVE
     2300078: Tunnel
+    2300080: TRACK_WALL_001
     3300000: TRACK_FLOOR
     3300002: TRACK_WALL
     3300004: Cube
@@ -169,6 +172,7 @@ ModelImporter:
     3300074: Plane
     3300076: TRACK_CURVE
     3300078: Tunnel
+    3300080: TRACK_WALL_001
     4300000: TRACK_WALL
     4300002: TRACK_FLOOR
     4300004: Cube_027
@@ -209,6 +213,7 @@ ModelImporter:
     4300074: Cube_028
     4300076: TRACK_CURVE
     4300078: Tunnel
+    4300080: TRACK_WALL_001
     6400000: TRACK_FLOOR
     6400002: TRACK_WALL
     6400004: Cube
@@ -249,6 +254,7 @@ ModelImporter:
     6400074: Plane
     6400076: TRACK_CURVE
     6400078: Tunnel
+    6400080: TRACK_WALL_001
     7400000: Default Take
     9500000: //RootNode
   materials:
