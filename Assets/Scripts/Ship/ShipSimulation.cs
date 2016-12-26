@@ -278,20 +278,22 @@ public class ShipSimulation : ShipCore {
         float amount = ship.config.engineAmount;
         float acceleration = ship.config.engineAcceleration;
 
-        switch (RaceSettings.difficulty) {
-            case Enumerations.E_DIFFICULTY.EASY :
-                //amount *= 0.5f;
-                //acceleration *= 0.5f;
-                break;
-            case Enumerations.E_DIFFICULTY.MEDIUM :
-                //amount *= 0.75f;
-                //acceleration *= 0.75f;
-                break;
-            case Enumerations.E_DIFFICULTY.HARD :
-                //amount *= 1f;
-                //acceleration *= 1f;
-                break;
-        };
+        if (!ship.isAI) {
+            switch (RaceSettings.difficulty) {
+                case Enumerations.E_DIFFICULTY.EASY:
+                    amount *= 0.5f;
+                    acceleration *= 0.5f;
+                    break;
+                case Enumerations.E_DIFFICULTY.MEDIUM:
+                    amount *= 0.75f;
+                    acceleration *= 0.75f;
+                    break;
+                case Enumerations.E_DIFFICULTY.HARD:
+                    amount *= 1f;
+                    acceleration *= 1f;
+                    break;
+            };
+        }
 
         // Si se esta acelerando se calcula la fuerza del motor, sino se decrementa
         if (ship.input.m_AccelerationButton) {

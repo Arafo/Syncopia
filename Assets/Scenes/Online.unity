@@ -5399,7 +5399,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LISTAR SERVIDORES
+  m_Text: LIST SERVERS
   key: online_menu_list
 --- !u!222 &799094078
 CanvasRenderer:
@@ -6443,7 +6443,7 @@ MonoBehaviour:
   m_ShowLobbyGUI: 0
   m_MaxPlayers: 4
   m_MaxPlayersPerConnection: 1
-  m_MinPlayers: 2
+  m_MinPlayers: 1
   m_LobbyPlayerPrefab: {fileID: 11432294, guid: 3c79f8519d06c9b43b7df43f40e0b994,
     type: 2}
   m_GamePlayerPrefab: {fileID: 1000013323658358, guid: 5c85a088cdbb0fa428f0dca0469362fb,
@@ -7067,7 +7067,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CREAR PARTIDA
+  m_Text: CREATE
   key: online_menu_create
 --- !u!222 &1047538786
 CanvasRenderer:
@@ -11819,7 +11819,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Multijugador
+  m_Text: Multiplayer
   key: online_menu_title
 --- !u!222 &1739768195
 CanvasRenderer:
@@ -14144,7 +14144,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VOLVER
+  m_Text: BACK
   key: online_menu_back
 --- !u!222 &2100451466
 CanvasRenderer:

@@ -260,7 +260,8 @@ public class RaceManager : MonoBehaviour {
     public void Pause() {
         GameSettings.PauseToggle();
         ui.gameObject.SetActive(!GameSettings.isPaused);
-        pause.gameObject.SetActive(GameSettings.isPaused);
+        pause.gameObject.transform.GetChild(0).gameObject.SetActive(GameSettings.isPaused);
+
         RaceSettings.ships[0].cam.GetComponent<Blur>().enabled = GameSettings.isPaused;
         //if (GameSettings.isPaused)
         //pause.InitParcialResults();

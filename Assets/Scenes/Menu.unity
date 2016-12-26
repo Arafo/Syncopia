@@ -1643,7 +1643,7 @@ MonoBehaviour:
   animManager: {fileID: 572748598}
   toPanel: {fileID: 49957424}
   usePrevious: 1
-  lastSelected: {fileID: 1582735943}
+  lastSelected: {fileID: 1776410604}
   useNext: 0
   nextPanel: {fileID: 0}
   fromPanel: {fileID: 0}
@@ -9133,7 +9133,7 @@ MonoBehaviour:
   animManager: {fileID: 572748598}
   toPanel: {fileID: 236742109}
   usePrevious: 1
-  lastSelected: {fileID: 458375545}
+  lastSelected: {fileID: 772224944}
   useNext: 0
   nextPanel: {fileID: 0}
   fromPanel: {fileID: 0}
@@ -12784,6 +12784,8 @@ MonoBehaviour:
   ships: {fileID: 497230796}
   bestTimes: {fileID: 432715127}
   totalTimes: {fileID: 761484646}
+  restart: {fileID: 0}
+  exit: {fileID: 0}
   sliderResolution: {fileID: 0}
   sliderDrawDistance: {fileID: 1601493770}
   txtDrawDistance: {fileID: 13204678}
@@ -15119,7 +15121,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Elige una nave
+  m_Text: Select a Ship
   key: ship_menu_subtitle
 --- !u!222 &434226824
 CanvasRenderer:
@@ -16175,7 +16177,7 @@ GameObject:
   - 114: {fileID: 458375545}
   - 114: {fileID: 458375547}
   m_Layer: 5
-  m_Name: ButtonTrack1
+  m_Name: ButtonTrack5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16196,7 +16198,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 3
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 554490114}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -16271,10 +16273,10 @@ RectTransform:
   - {fileID: 1679774155}
   - {fileID: 1506114170}
   m_Father: {fileID: 1704530477}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -120}
   m_SizeDelta: {x: 170, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &458375547
@@ -22066,34 +22068,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 236742110}
-          m_MethodName: GotoNextPanel
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 10
     callback:
       m_PersistentCalls:
@@ -27232,7 +27206,7 @@ GameObject:
   - 114: {fileID: 772224944}
   - 114: {fileID: 772224943}
   m_Layer: 5
-  m_Name: ButtonTrack5
+  m_Name: ButtonTrack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27252,10 +27226,10 @@ RectTransform:
   m_Children:
   - {fileID: 2123381632}
   m_Father: {fileID: 1704530477}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -120}
+  m_AnchoredPosition: {x: 5, y: 0}
   m_SizeDelta: {x: 180, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &772224943
@@ -27486,7 +27460,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VOLVER
+  m_Text: BACK
   key: track_menu_back
 --- !u!222 &772742931
 CanvasRenderer:
@@ -32606,6 +32580,8 @@ MonoBehaviour:
   ships: {fileID: 0}
   bestTimes: {fileID: 0}
   totalTimes: {fileID: 0}
+  restart: {fileID: 0}
+  exit: {fileID: 0}
   sliderResolution: {fileID: 0}
   sliderDrawDistance: {fileID: 0}
   txtDrawDistance: {fileID: 0}
@@ -36896,6 +36872,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1866405437}
+        m_MethodName: SetTrackToLoad
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Blood Dragon
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1112587110
@@ -38555,7 +38542,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VOLVER
+  m_Text: BACK
   key: ship_menu_back
 --- !u!222 &1207780313
 CanvasRenderer:
@@ -43352,6 +43339,8 @@ MonoBehaviour:
   ships: {fileID: 0}
   bestTimes: {fileID: 0}
   totalTimes: {fileID: 0}
+  restart: {fileID: 0}
+  exit: {fileID: 0}
   sliderResolution: {fileID: 864638533}
   sliderDrawDistance: {fileID: 1257528851}
   txtDrawDistance: {fileID: 458484978}
@@ -44019,9 +44008,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1582735944}
-  - {fileID: 484751541}
   - {fileID: 1776410602}
+  - {fileID: 484751541}
+  - {fileID: 1582735944}
   - {fileID: 2137514168}
   - {fileID: 66908201}
   - {fileID: 1982545909}
@@ -49925,7 +49914,7 @@ GameObject:
   - 114: {fileID: 1582735943}
   - 114: {fileID: 1582735945}
   m_Layer: 5
-  m_Name: ButtonShip1
+  m_Name: ButtonShip3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50012,10 +50001,10 @@ RectTransform:
   - {fileID: 1154260201}
   - {fileID: 917941699}
   m_Father: {fileID: 1364143766}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 170, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1582735945
@@ -52849,11 +52838,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 458375546}
+  - {fileID: 772224942}
   - {fileID: 554490112}
   - {fileID: 616760435}
   - {fileID: 1289381595}
-  - {fileID: 772224942}
+  - {fileID: 458375546}
   - {fileID: 674318071}
   - {fileID: 1533113557}
   m_Father: {fileID: 236742115}
@@ -54980,7 +54969,7 @@ GameObject:
   - 114: {fileID: 1776410604}
   - 114: {fileID: 1776410603}
   m_Layer: 5
-  m_Name: ButtonShip3
+  m_Name: ButtonShip1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55000,10 +54989,10 @@ RectTransform:
   m_Children:
   - {fileID: 234357711}
   m_Father: {fileID: 1364143766}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 170, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1776410603
@@ -60682,7 +60671,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Elige un circuito
+  m_Text: Select a track
   key: track_menu_subtitle
 --- !u!222 &1947358898
 CanvasRenderer:

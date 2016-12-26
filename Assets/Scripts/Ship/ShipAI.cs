@@ -3,6 +3,9 @@ using System.Collections;
 
 public class ShipAI : ShipCore {
 
+    private AIChecks checks;
+    private AIData[] data;
+
     // Configuracion de la IA
     private float xStableRatio = 1.0f;
     private float aiRacingLineRand;
@@ -17,6 +20,7 @@ public class ShipAI : ShipCore {
     private float prevRot;
     private float aiResistance;
     private float steerSpeedup;
+    private float steerSlowdown;
 
     // Configuracion de los adelantamientos
     private ShipReferer overtakeTarget;
@@ -24,20 +28,28 @@ public class ShipAI : ShipCore {
     public float overTakeTimer;
     private float overtakeSide;
 
+    private Vector3 offset;
+    private Vector3 sectionPos;
+    private Vector3 flatPos;
+
     private bool closeToShip;
 
     public override void OnStart() {
         xStableRatio = Random.Range(0.6f, 0.8f);
-        aiRacingLineRand = Random.Range(0.8f, 1.5f);
+        aiRacingLineRand = Random.Range(-0.5f, 0.5f);
         aiSteerSpeedRand = Random.Range(6, 10);
-        steerSpeedup = Random.Range(0.5f, 1.2f);
+        steerSpeedup = Random.Range(0.2f, 0.5f);
 
         if (ship.isAI) {
             ship.config.engineAmount = Mathf.Lerp(ship.config.engineAmount, RaceSettings.ships[0].config.engineAmount, 0.9f);
         }
+
+        checks = new AIChecks(ship);
+        data = new AIData[0];
     }
 
     public override void OnUpdate() {
+        data = checks.GetAwarenessData(data);
         AIUpdate();
     }
 
@@ -54,209 +66,187 @@ public class ShipAI : ShipCore {
         // Cantidad de segmentos a comprobar
         int lookAheadAmount = 4;
 
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 100.0f, 1 << LayerMask.NameToLayer("Track"))) {
-            TrackTile t = Helpers.TileFromTriangleIndex(hit.triangleIndex, RaceSettings.trackData.trackData.mappedTiles);
-            TrackSegment newSection = Helpers.TileGetSection(t);
+        offset = transform.InverseTransformPoint(ship.currentSection.position);
 
-            if (newSection.index > ship.currentSection.index - 15 && newSection.index < ship.currentSection.index + 15)
-                ship.currentSection = newSection;
-
-        }
-
-        Vector3 offset = transform.InverseTransformPoint(ship.currentSection.position);
-
-        Vector3 sectionPos = AILookAhead(lookAheadAmount);
+        sectionPos = AILookAhead(lookAheadAmount);
         sectionPos += (Helpers.SectionGetRotation(ship.currentSection) * Vector3.right) * aiRacingLineRand;
         sectionPos.y = 0;
 
-        Vector3 flatPos = transform.position;
+        flatPos = transform.position;
         flatPos.y = 0;
 
         if (RaceSettings.countdownFinished) {
             // Autopilot
             if (!ship.isAI && ship.autopilot) {
                 steerSpeedup = 0.8f;
-                //ship.sim.enginePower = 0.85f;
+                ship.sim.engineThrust *= 0.85f;
             }
             else if (ship.isAI) {
-                switch (ship.place) {
+                switch (ship.currentPosition) {
                     case 1:
                         switch (RaceSettings.difficulty) {
                             case Enumerations.E_DIFFICULTY.EASY:
-                                ship.sim.engineSpeed *= 0.75f;
+                                ship.sim.engineThrust *= 0.7f;
                                 break;
                             case Enumerations.E_DIFFICULTY.MEDIUM:
-                                ship.sim.engineSpeed *= 0.75f;
+                                ship.sim.engineThrust *= 0.8f;
                                 break;
                             case Enumerations.E_DIFFICULTY.HARD:
-                                ship.sim.engineSpeed *= 0.85f;
+                                ship.sim.engineThrust *= 0.95f;
                                 break;
                         }
                         break;
                     case 2:
                         switch (RaceSettings.difficulty) {
                             case Enumerations.E_DIFFICULTY.EASY:
-                                ship.sim.engineSpeed *= 0.75f;
+                                ship.sim.engineThrust *= 0.75f;
                                 break;
                             case Enumerations.E_DIFFICULTY.MEDIUM:
-                                ship.sim.engineSpeed *= 0.75f;
+                                ship.sim.engineThrust *= 0.9f;
                                 break;
                             case Enumerations.E_DIFFICULTY.HARD:
-                                ship.sim.engineSpeed *= 0.85f;
+                                ship.sim.engineThrust *= 1.05f;
                                 break;
                         }
                         break;
                     case 3:
                         switch (RaceSettings.difficulty) {
                             case Enumerations.E_DIFFICULTY.EASY:
-                                ship.sim.engineSpeed *= 0.85f;
+                                ship.sim.engineThrust *= 0.8f;
                                 break;
                             case Enumerations.E_DIFFICULTY.MEDIUM:
-                                ship.sim.engineSpeed *= 0.9f;
+                                ship.sim.engineThrust *= 0.9f;
                                 break;
                             case Enumerations.E_DIFFICULTY.HARD:
-                                ship.sim.engineSpeed *= 0.95f;
+                                ship.sim.engineThrust *= 1.05f;
                                 break;
                         }
                         break;
                     case 4:
                         switch (RaceSettings.difficulty) {
                             case Enumerations.E_DIFFICULTY.EASY:
-                                ship.sim.engineSpeed *= 0.85f;
+                                ship.sim.engineThrust *= 0.85f;
                                 break;
                             case Enumerations.E_DIFFICULTY.MEDIUM:
-                                ship.sim.engineSpeed *= 0.9f;
+                                ship.sim.engineThrust *= 0.95f;
                                 break;
                             case Enumerations.E_DIFFICULTY.HARD:
-                                ship.sim.engineSpeed *= 0.95f;
+                                ship.sim.engineThrust *= 1.05f;
                                 break;
                         }
                         break;
                     case 5:
                         switch (RaceSettings.difficulty) {
                             case Enumerations.E_DIFFICULTY.EASY:
-                                ship.sim.engineSpeed *= 0.85f;
+                                ship.sim.engineThrust *= 0.95f;
                                 break;
                             case Enumerations.E_DIFFICULTY.MEDIUM:
-                                ship.sim.engineSpeed *= 0.9f;
+                                ship.sim.engineThrust *= 1.0f;
                                 break;
                             case Enumerations.E_DIFFICULTY.HARD:
-                                ship.sim.engineSpeed *= 0.95f;
+                                ship.sim.engineThrust *= 1.05f;
                                 break;
                         }
                         break;
                     case 6:
                         switch (RaceSettings.difficulty) {
                             case Enumerations.E_DIFFICULTY.EASY:
-                                ship.sim.engineSpeed *= 0.85f;
+                                ship.sim.engineThrust *= 0.95f;
                                 break;
                             case Enumerations.E_DIFFICULTY.MEDIUM:
-                                ship.sim.engineSpeed *= 0.9f;
+                                ship.sim.engineThrust *= 1.0f;
                                 break;
                             case Enumerations.E_DIFFICULTY.HARD:
-                                ship.sim.engineSpeed *= 0.95f;
+                                ship.sim.engineThrust *= 1.05f;
                                 break;
                         }
                         break;
                     case 7:
                         switch (RaceSettings.difficulty) {
                             case Enumerations.E_DIFFICULTY.EASY:
-                                ship.sim.engineSpeed *= 0.9f;
+                                ship.sim.engineThrust *= 1f;
                                 break;
                             case Enumerations.E_DIFFICULTY.MEDIUM:
-                                ship.sim.engineSpeed *= 1.0f;
+                                ship.sim.engineThrust *= 1.05f;
                                 break;
                             case Enumerations.E_DIFFICULTY.HARD:
-                                ship.sim.engineSpeed *= 1.1f;
+                                ship.sim.engineThrust *= 1.1f;
                                 break;
                         }
                         break;
                     case 8:
                         switch (RaceSettings.difficulty) {
                             case Enumerations.E_DIFFICULTY.EASY:
-                                ship.sim.engineSpeed *= 0.9f;
+                                ship.sim.engineThrust *= 1f;
                                 break;
                             case Enumerations.E_DIFFICULTY.MEDIUM:
-                                ship.sim.engineSpeed *= 1.0f;
+                                ship.sim.engineThrust *= 1.05f;
                                 break;
                             case Enumerations.E_DIFFICULTY.HARD:
-                                ship.sim.engineSpeed *= 1.1f;
+                                ship.sim.engineThrust *= 1.1f;
                                 break;
                         }
                         break;
                 }
-            } 
-
-            if (overTakeTimer > 0) {
-                ship.sim.engineSpeed = overtakeTarget.sim.engineSpeed * 1.3f;
-                overTakeOffset = overtakeTarget.transform.TransformPoint(Mathf.Sin(-offset.x) * 0.8f, 0.0f, 0.5f);
-
-                if (Vector3.Distance(transform.position, overtakeTarget.transform.position) > 4) {
-                    overTakeTimer = -1;
-                }
-
-                if (overtakeTarget.transform.InverseTransformPoint(transform.position).z > 0f) {
-                    overTakeTimer = -1;
-                }
             }
 
-            // Frenar si se esta detras de otra nave
-            if (closeToShip)
-                ship.sim.engineSpeed *= 1.5f;
-
-            // Empujar al centro del circuito
-            if (Mathf.Abs(offset.x) > ship.currentSection.width * 0.1f && RaceSettings.countdownFinished) {
-                Vector3 pushDir = Helpers.SectionGetRotation(ship.currentSection) * Vector3.right;
-                pushDir.y = 0;
-                ship.body.AddForce((offset.x * (400 + (steerSpeedup * 85))) * pushDir, ForceMode.Acceleration);
-
-                Vector3 ignoreZ = transform.InverseTransformDirection(pushDir);
-                ignoreZ.x = 0.0f;
-                ignoreZ.y = 0.0f;
-                ship.body.AddForce(transform.forward * Mathf.Abs(ignoreZ.z * steerSpeedup));
+            float num = (!ship.autopilot) ? 0.9f : 0.4f;
+            if (Mathf.Abs(offset.x) > ship.currentSection.width * num && RaceSettings.countdownFinished) {
+                //ship.body.AddForce(offset.x * (20f + steerSpeedup * 5f) * transform.right, ForceMode.Acceleration);
             }
 
-            closeToShip = false;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 5, 1 << LayerMask.NameToLayer("Ship"))) {
-                Debug.Log("Ship " + ship.place + " overtake 2");
-                if (hit.distance < 0.5f)
-                    closeToShip = true;
-            }
-
-            // Comprobacion de adelantamiento
-            RaycastHit outSphere;
-            if (Physics.Raycast(transform.position, transform.forward, out outSphere, 5.0f, 1 << LayerMask.NameToLayer("Ship"))) {
-                Debug.Log("Ship " + ship.place + " overtake 2");
-                if (overTakeTimer < 0) {
-                    overtakeTarget = outSphere.transform.gameObject.GetComponent<ShipReferer>();
-
-                    overtakeSide = -Mathf.Sign(offset.x);
-                    if (overtakeSide == 0) overtakeSide = 1;
-
-                    overTakeOffset = overtakeTarget.transform.TransformPoint(overtakeSide * 4, 0.0f, 0.5f);
+            for (int j = 0; j < data.Length; j++) {
+                if (data[j].shipInFront && overTakeTimer < 0f) {
+                    //Debug.Log(ship.name + "Nave delante " + data[j].ship.name + " " + data[j].localOffset.z);
+                    overtakeTarget = data[j].ship;
+                    overtakeSide = -Mathf.Sign(data[j].localOffset.x);
+                    if (overtakeSide == 0f) {
+                        overtakeSide = 1f;
+                    }
                     overTakeTimer = 3.5f;
                 }
 
-                float o = overtakeTarget.transform.InverseTransformPoint(transform.position).x * 1000;
-                offset += (Helpers.SectionGetRotation(ship.currentSection) * Vector3.right) * -o;
+                if (data[j].shipLeft) {
+                    //Debug.Log(ship.name + "Nave izquierda " + data[j].ship.name + " " + data[j].localOffset.z);
+                    ship.body.AddForce(transform.right * 50f);
+                }
+
+                if (data[j].shipRight) {
+                    //Debug.Log(ship.name + "Nave derecha " + data[j].ship.name + " " + data[j].localOffset.z);
+                    ship.body.AddForce(-transform.right * 50f);
+                }
             }
 
-            // Adelantar
-            if (closeToShip || overTakeTimer > 0) {
-                Debug.Log("Ship " + ship.place + " overtake 2");
-                ship.body.AddForce(overtakeTarget.transform.right * (overtakeSide * Mathf.Abs(overtakeTarget.transform.InverseTransformPoint(transform.position).x)));
+            if (overTakeTimer > 0f && overtakeTarget) {
+                //Debug.Log(ship.name + " adelanta a " + overtakeTarget.name);
+                overTakeOffset = sectionPos + Helpers.SectionGetRotation(ship.currentSection) * Vector3.right * (overtakeSide * 10.3f);
+                overTakeOffset.y = 0f;
+                //Debug.Log(Vector3.Distance(transform.position, overtakeTarget.transform.position));
+                if (Vector3.Distance(transform.position, overtakeTarget.transform.position) > 12f) {
+                    //Debug.Log("NO OVERTAKE " + ship.name + " TO " + overtakeTarget.name);
+                    overTakeTimer = -1f;
+                }
+                if (overtakeTarget.transform.InverseTransformPoint(transform.position).z > 6f) {
+                    //Debug.Log("NO OVERTAKE " + ship.name + " TO " + overtakeTarget.name);
+                    overTakeTimer = -1f;
+                }
+            }
+
+            if (overTakeTimer > 0f) {
+                Vector3 force = overtakeTarget.transform.right * (overtakeSide * Mathf.Abs(overtakeTarget.transform.InverseTransformPoint(transform.position).x));
+                //Debug.Log(ship.name + " PAALANTE " + force);
+                ship.body.AddForce(overtakeTarget.transform.right * (overtakeSide * Mathf.Abs(overtakeTarget.transform.InverseTransformPoint(transform.position).x)) * 40f);
             }
 
             overTakeTimer -= Time.deltaTime;
-            Vector3 basePos = (overTakeTimer > 0) ? overTakeOffset : sectionPos;
+            Vector3 basePos = ((overTakeTimer <= 0f) ? sectionPos : overTakeOffset);
             Vector3 lookPos = basePos - flatPos;
-            aiSteer = Quaternion.Lerp(aiSteer, Quaternion.LookRotation(lookPos), Time.deltaTime * 10);
+            aiSteer = Quaternion.Lerp(aiSteer, Quaternion.LookRotation(lookPos), Time.deltaTime * 40f);
             Quaternion lookRot = aiSteer;
 
             // Rotar nave
             Vector3 tempRot = transform.eulerAngles;
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * 4f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * 4f);
             transform.rotation = Quaternion.Euler(tempRot.x, transform.eulerAngles.y, tempRot.z);
 
             Debug.DrawLine(transform.position, new Vector3(basePos.x, transform.position.y, basePos.z), Color.blue);
@@ -264,24 +254,34 @@ public class ShipAI : ShipCore {
             rotDelta = Mathf.DeltaAngle(transform.eulerAngles.y, prevRot);
             prevRot = transform.eulerAngles.y;
 
-            aiSteerTilt = Mathf.Lerp(aiSteerTilt, rotDelta * 35, Time.deltaTime * 2);
-            aiSteerTilt = Mathf.Clamp(aiSteerTilt, -55.0f, 55.0f);
+            aiSteerTilt = Mathf.Lerp(aiSteerTilt, rotDelta * 45f, Time.deltaTime * 24f);
+            aiSteerTilt = Mathf.Clamp(aiSteerTilt, -55f, 55f);
             ship.sim.bankVelocity = aiSteerTilt;
 
             // Drag
-            aiResistance = Mathf.Lerp(aiResistance, Mathf.Clamp(Mathf.Abs(rotDelta * 0.001f), 0.0f, 1.0f), Time.deltaTime * 5);
+            aiResistance = Mathf.Lerp(aiResistance, Mathf.Clamp(Mathf.Abs(rotDelta * 0.001f), 0f, 1f), Time.deltaTime * 5f);
         }
         else {
-            ship.sim.engineSpeed *= 0.65f;
+            ship.sim.engineThrust *= 0.65f;
         }
 
-        Vector3 lv = transform.InverseTransformDirection(ship.body.velocity);
+
+        steerSlowdown = 0.05f;
+        Vector3 direction = transform.InverseTransformDirection(ship.body.velocity);
+        if (!ship.autopilot) {
+            direction.z *= 1f - Mathf.Clamp(Mathf.Abs(rotDelta), 0f, 0.1f) * steerSlowdown;
+        }
+        direction.x *= 0.9f;
+        Vector3 velocity = transform.TransformDirection(direction);
+        ship.body.velocity = velocity;
+
+        /*Vector3 lv = transform.InverseTransformDirection(ship.body.velocity);
         lv.x *= 1 - 0.9f;
         Vector3 wv = transform.TransformDirection(lv);
-        ship.body.velocity = wv;
+        ship.body.velocity = wv;*/
 
         if (!ship.autopilot && RaceSettings.countdownFinished) {
-            ship.sim.engineSpeed *= 0.80f;
+            //ship.sim.engineThrust *= 0.80f;
         }
     }
 

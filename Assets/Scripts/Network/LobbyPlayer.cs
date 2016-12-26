@@ -367,6 +367,9 @@ public class LobbyPlayer : NetworkLobbyPlayer {
                 track = "Blood Dragon";
                 break;
             case "Blood Dragon":
+                track = "Volcano";
+                break;
+            case "Volcano":
                 track = "Test";
                 break;
         }

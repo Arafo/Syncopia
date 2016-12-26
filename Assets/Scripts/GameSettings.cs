@@ -6,7 +6,7 @@ public class GameSettings : MonoBehaviour {
 
     // Configuracion grafica
     public static Vector2 GS_RESOLUTION;
-    public static int GS_FRAMECAP = 200;
+    public static int GS_FRAMECAP = 60;
     public static int GS_DRAWDISTANCE = 60;
     public static bool GS_FULLSCREEN = true;
     public static int GS_BLOOM = 1;

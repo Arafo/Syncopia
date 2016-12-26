@@ -229,7 +229,7 @@ public class ShipLoader : MonoBehaviour {
         pauseBlur.enabled = false;
 
         camera.nearClipPlane = 0.05f;
-        camera.farClipPlane = 2000.0f;
+        camera.farClipPlane = 5000.0f;
         camera.cullingMask &= ~(1 << LayerMask.NameToLayer("Minimap")) & ~(1 << LayerMask.NameToLayer("HUD"));
         //camera.targetTexture = Instantiate(Resources.Load("DynamicResolution") as RenderTexture) as RenderTexture;
         //GameObject.Find("Canvas/RawImage").GetComponent<RawImage>().texture = camera.targetTexture;

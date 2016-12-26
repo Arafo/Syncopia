@@ -21,7 +21,7 @@ public class LoadingScreenManager : MonoBehaviour {
 
         // Si no hay ningun circuito se carga el circuito de Test
         if (RaceSettings.trackToLoad == null || RaceSettings.trackToLoad == "")
-            RaceSettings.trackToLoad = "Test";
+            RaceSettings.trackToLoad = "Blood Dragon";
 
         LoadLevel();
     }
