@@ -25,7 +25,8 @@ public class LanguageManager {
     /// <param name="language"> idioma a usar </param>
     public void setLanguage(string path, string language) {
         var xml = new XmlDocument();
-        xml.Load(path);
+        TextAsset file = Resources.Load(path) as TextAsset;
+        xml.LoadXml(file.text);
 
         Strings = new Dictionary<string, string>();
         XmlNode element = xml.DocumentElement[language];
