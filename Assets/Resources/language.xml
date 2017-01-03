@@ -35,6 +35,7 @@
      	<string name="options_menu_gameplay">GAMEPLAY</string>
      	<string name="options_menu_audio">AUDIO</string>
      	<string name="options_menu_graphics">GRAPHICS</string>
+     	<string name="options_menu_controls">CONTROLS</string>
       	<string name="options_menu_back">BACK</string>   	
        	<!-- Gameplay Options -->
      	<string name="gameplay_menu_title">Gameplay</string>
@@ -58,6 +59,9 @@
       	<string name="sound_menu_music">MUSIC VOLUME</string>
       	<string name="sound_menu_voice">VOICE VOLUME</string>
       	<string name="sound_menu_back">BACK</string>
+      	<!-- Controls Options -->
+      	<string name="controls_menu_title">Controls</string>
+
       	<!-- Online Menu-->
        	<string name="online_menu_title">Multiplayer</string>
       	<string name="online_menu_create">CREATE</string>
@@ -128,6 +132,7 @@
      	<string name="options_menu_gameplay">JUEGO</string>
      	<string name="options_menu_audio">SONIDO</string>
      	<string name="options_menu_graphics">GRAFICOS</string>
+     	<string name="options_menu_controls">CONTROLES</string>
       	<string name="options_menu_back">VOLVER</string>  
       	<!-- Gameplay Options -->
      	<string name="gameplay_menu_title">Juego</string>
@@ -151,6 +156,8 @@
       	<string name="sound_menu_music">VOLUMEN MUSICA</string>
       	<string name="sound_menu_voice">VOLUMEN VOZ</string>
       	<string name="sound_menu_back">VOLVER</string>
+      	<!-- Controls Options -->
+      	<string name="controls_menu_title">Controles</string>
       	<!-- Online Menu-->
        	<string name="online_menu_title">Multijugador</string>
       	<string name="online_menu_create">CREAR PARTIDA</string>

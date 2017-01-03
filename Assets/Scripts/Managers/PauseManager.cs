@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using UnityStandardAssets.ImageEffects;
 using UnityEngine.EventSystems;
+using Rewired.UI.ControlMapper;
 
 public class PauseManager : MonoBehaviour {
 
@@ -71,6 +72,8 @@ public class PauseManager : MonoBehaviour {
     private Resolution[] resolutions = new Resolution[0];
 
     private int position = 1;
+
+    public ControlMapper cm;
 
     // Use this for initialization
     void Start () {
@@ -407,6 +410,19 @@ public class PauseManager : MonoBehaviour {
         txtVoiceVolume.text = System.Math.Round(sliderVoiceVolume.value, 2).ToString();
 
         UpdateAudioSettings();
+    }
+
+    public void ControlMapperLanguage() {
+        switch(GameSettings.G_LANGUAGE) {
+            case Enumerations.E_LANGUAGE.ENGLISH:
+                cm.language = Resources.Load("UI/DefaultEnglish") as LanguageData;
+                break;
+            case Enumerations.E_LANGUAGE.SPANISH:
+                cm.language = Resources.Load("UI/DefaultSpanish") as LanguageData;
+                break;
+            //default:
+
+        }
     }
 
     private string ToTime(float time) {
