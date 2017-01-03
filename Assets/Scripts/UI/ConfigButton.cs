@@ -24,18 +24,20 @@ public class ConfigButton : MonoBehaviour {
     /// 
     /// </summary>
     void FixedUpdate() {
-        float horizontalInput = ReInput.players.GetPlayer(0).GetAxis("DPADHorizontal");
+        float horizontalInput = ReInput.players.GetPlayer(0).GetAxis("MenuHorizontal");
         if (currentSelectorSelected!= null && horizontalInput != 0f && currentAnimationTimer <= Time.time) {
             currentAnimationTimer = Time.time + delayAnimationTimer;
             if (horizontalInput > 0) {
                 ChangeButtonNormalColor(leftArrowButton, new Color(1f, 1f, 1f, 0.588f));
                 ChangeButtonNormalColor(rightArrowButton, Color.white);
-                currentSelectorSelected.setNextText();
+                //currentSelectorSelected.rigthButton.onClick.Invoke();
+                //currentSelectorSelected.setNextText();
             }
             else {
                 ChangeButtonNormalColor(rightArrowButton, new Color(1f, 1f, 1f, 0.588f));
                 ChangeButtonNormalColor(leftArrowButton, Color.white);
-                currentSelectorSelected.setLastText();
+                //currentSelectorSelected.leftButton.onClick.Invoke();
+                //currentSelectorSelected.setLastText();
             }
         }
     }

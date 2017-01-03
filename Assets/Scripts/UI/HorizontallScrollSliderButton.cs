@@ -22,12 +22,16 @@ public class HorizontallScrollSliderButton : Button {
         if (m_Highlighted) {
             m_InputSteep += (Time.timeScale != 0 ? Time.deltaTime : Time.unscaledDeltaTime);
             if (m_HorizontalInput > 0 && m_InputSteep > m_MaxInputSteep) {
-                button.setNextText();
+                //button.setNextText();
+                Debug.Log("DER");
                 m_InputSteep = 0f;
+                button.rigthButton.onClick.Invoke();
             }
             else if (m_HorizontalInput < 0 && m_InputSteep > m_MaxInputSteep) {
-                button.setLastText();
+                //button.setLastText();
+                Debug.Log("IZQ");
                 m_InputSteep = 0f;
+                button.leftButton.onClick.Invoke();
             }
         }
     }
