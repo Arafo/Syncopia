@@ -342,16 +342,27 @@ public class RaceManager : MonoBehaviour {
 
                 // tonemapping
                 TonemappingColorGrading tm = RaceSettings.ships[i].cam.gameObject.AddComponent<TonemappingColorGrading>();
-                TonemappingColorGrading.ColorGradingSettings settings = new TonemappingColorGrading.ColorGradingSettings();
-                settings.basics.temperatureShift = 0.3f;
-                settings.basics.saturation = 1f;
-                settings.basics.value = 1f;
-                settings.basics.gain = 1.5f;
-
-                tm.colorGrading = settings;
-
-                //tm.tonemapper = Shader.Find("Hidden/Tonemapper");
-                //tm.type = Tonemapping.TonemapperType.AdaptiveReinhardAutoWhite;
+                TonemappingColorGrading.ColorGradingSettings gs = new TonemappingColorGrading.ColorGradingSettings {
+                        enabled = true,
+                        useDithering = false,
+                        showDebug = false,
+                        precision = TonemappingColorGrading.ColorGradingPrecision.Normal,
+                        colorWheels = TonemappingColorGrading.ColorWheelsSettings.defaultSettings,
+                        basics = new TonemappingColorGrading.BasicsSettings {
+                            temperatureShift = 0.3f,
+                            tint = 0f,
+                            contrast = 1f,
+                            hue = 0f,
+                            saturation = 1f,
+                            value = 1f,
+                            vibrance = 0f,
+                            gain = 1.5f,
+                            gamma = 1f
+                        },  
+                        channelMixer = TonemappingColorGrading.ChannelMixerSettings.defaultSettings,
+                        curves = TonemappingColorGrading.CurvesSettings.defaultSettings
+                };
+                tm.colorGrading = gs;
                 ppTonemapping.Add(tm);
 
                 // Dynamic Resolution
