@@ -238,6 +238,10 @@ public class ShipLoader : MonoBehaviour {
             newCamera.SetActive(false);
         }
         else {
+            if (GameObject.Find("Directional light").GetComponent<VolumetricLight>() != null) {
+                VolumetricLightRenderer vlr = newCamera.AddComponent<VolumetricLightRenderer>();
+                vlr.DefaultSpotCookie = Resources.Load("spot") as Texture2D;
+            }
             RaceSettings.currentCamera = camera;
             ShipCamera sc = newCamera.AddComponent<ShipCamera>();
             sc.ship = referer;
