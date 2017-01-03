@@ -12613,16 +12613,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114000011633530230, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012758634386, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4000013821547846, guid: 8d94abdccedd9cf469ef42959b04b1fe, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -12660,76 +12650,11 @@ Prefab:
       propertyPath: startPanelCover
       value: 
       objectReference: {fileID: 4349360}
-    - target: {fileID: 114000011633530230, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+    - target: {fileID: 114000010448861648, guid: 8d94abdccedd9cf469ef42959b04b1fe,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: _rewiredInputManager
       value: 
-      objectReference: {fileID: 952056114}
-    - target: {fileID: 114000011633530230, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UpdateGameplaySettings
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011633530230, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1122619939}
-    - target: {fileID: 114000011633530230, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: setLastText
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011633530230, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011633530230, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011633530230, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012758634386, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 952056114}
-    - target: {fileID: 114000012758634386, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UpdateGameplaySettings
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012758634386, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1122619939}
-    - target: {fileID: 114000012758634386, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: setNextText
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012758634386, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012758634386, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012758634386, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 711449210}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d94abdccedd9cf469ef42959b04b1fe, type: 2}
   m_IsPrefabParent: 0
@@ -21746,7 +21671,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400020, guid: 9ba8480782343144a9d67326ca35ec82, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 546792312}
-  m_LocalRotation: {x: -0.6436303, y: -0.292814, z: -0.29281422, w: 0.64363015}
+  m_LocalRotation: {x: -0.6436304, y: -0.29281402, z: -0.29281425, w: 0.6436302}
   m_LocalPosition: {x: -1044.7, y: 4, z: 1938.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25211,6 +25136,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 805f37c7b4fde044584b505b95574250, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &711449210 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+    type: 2}
+  m_PrefabInternal: {fileID: 711449209}
+  m_Script: {fileID: 11500000, guid: 581b3e3c96df0ef42aef16b63b27b87f, type: 3}
 --- !u!1 &721603332
 GameObject:
   m_ObjectHideFlags: 0
@@ -34510,12 +34441,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1118367568}
   m_Mesh: {fileID: 4300030, guid: 9ba8480782343144a9d67326ca35ec82, type: 3}
---- !u!114 &1122619939 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000010342258994, guid: 8d94abdccedd9cf469ef42959b04b1fe,
-    type: 2}
-  m_PrefabInternal: {fileID: 215939554}
-  m_Script: {fileID: 11500000, guid: 6bc3a492efbeae5408e6bbfe3a3a41f3, type: 3}
 --- !u!1 &1125258506
 GameObject:
   m_ObjectHideFlags: 0
@@ -55671,7 +55596,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400032, guid: 9ba8480782343144a9d67326ca35ec82, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1744241902}
-  m_LocalRotation: {x: 0.15675895, y: -0.68951195, z: -0.6895119, w: -0.15675902}
+  m_LocalRotation: {x: 0.15675893, y: -0.6895119, z: -0.68951184, w: -0.15675901}
   m_LocalPosition: {x: -726.1, y: 0, z: 1405.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

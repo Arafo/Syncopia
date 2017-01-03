@@ -2252,6 +2252,12 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 842198254}
+--- !u!114 &860505009 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013968661584, guid: 805f37c7b4fde044584b505b95574250,
+    type: 2}
+  m_PrefabInternal: {fileID: 1046632409}
+  m_Script: {fileID: 11500000, guid: 581b3e3c96df0ef42aef16b63b27b87f, type: 3}
 --- !u!1 &885187208
 GameObject:
   m_ObjectHideFlags: 0
@@ -28142,6 +28148,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010448861648, guid: 8d94abdccedd9cf469ef42959b04b1fe,
+        type: 2}
+      propertyPath: _rewiredInputManager
+      value: 
+      objectReference: {fileID: 860505009}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d94abdccedd9cf469ef42959b04b1fe, type: 2}
   m_IsPrefabParent: 0
