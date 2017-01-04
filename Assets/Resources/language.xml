@@ -30,6 +30,7 @@
      	<string name="race_options_players">PLAYERS</string>
      	<string name="race_options_ready">READY</string>
       	<string name="race_options_back">BACK</string>
+      	<string name="timetrial_options_title">Time Trial</string>
        	<!-- Menu Options -->
      	<string name="options_menu_title">Options</string>
      	<string name="options_menu_gameplay">GAMEPLAY</string>
@@ -127,6 +128,7 @@
      	<string name="race_options_players">JUGADORES</string>
      	<string name="race_options_ready">LISTO</string>
       	<string name="race_options_back">VOLVER</string>
+      	<string name="timetrial_options_title">Contrarreloj</string>
       	<!-- Menu Options -->
      	<string name="options_menu_title">Opciones</string>
      	<string name="options_menu_gameplay">JUEGO</string>

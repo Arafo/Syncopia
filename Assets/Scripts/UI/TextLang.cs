@@ -17,7 +17,12 @@ public class TextLang : Text {
 
     public void Refresh() {
         language = GameSettings.G_LANGUAGE;
-        if (LanguageSingleton._instance != null)
+        if (LanguageSingleton._instance != null && key != null)
             text = LanguageSingleton._instance.getString(key);
+    }
+
+    public void SetKey(string value) {
+        key = value;
+        Refresh();
     }
 }
