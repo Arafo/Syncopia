@@ -20,7 +20,11 @@ public class SceneIndexManager : MonoBehaviour {
             case "Blood Dragon" :
                 return 3;
             case "Volcano" :
-                return 5; 
+                return 5;
+            case "Menu" :
+                return 0;
+            case "Online" :
+                return 4;
             default :
                 return 0;                    
         }

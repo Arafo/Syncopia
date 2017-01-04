@@ -76,6 +76,12 @@ public class LobbyManager : NetworkLobbyManager {
         StartCoroutine(DestroyCoroutine());
     }
 
+    void OnLevelWasLoaded(int level) {
+        if (SceneIndexManager.SceneIndexFromName("Menu") == level) {
+            DestroyObject(gameObject);
+        }
+    }
+
     public IEnumerator DestroyCoroutine() {
         // Esperamos medio segundo para destruir asi da tiempo
         // a acabar la transción entre pantallas
