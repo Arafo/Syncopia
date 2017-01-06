@@ -177,7 +177,7 @@ MonoBehaviour:
     - _id: 9
       _name: MenuHorizontal
       _type: 1
-      _descriptiveName: Action0
+      _descriptiveName: HORIZONTAL
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
@@ -186,7 +186,7 @@ MonoBehaviour:
     - _id: 10
       _name: MenuVertical
       _type: 1
-      _descriptiveName: Action1
+      _descriptiveName: VERTICAL
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
     - _id: 11
       _name: Submit
       _type: 1
-      _descriptiveName: Action2
+      _descriptiveName: SUBMIT
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
     - _id: 12
       _name: Cancel
       _type: 1
-      _descriptiveName: Action0
+      _descriptiveName: CANCEL
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
@@ -222,7 +222,7 @@ MonoBehaviour:
       _id: 1
       _userAssignable: 1
     - _name: Menu
-      _descriptiveName: Category0
+      _descriptiveName: Menu Controls
       _tag: 
       _id: 2
       _userAssignable: 1
@@ -240,8 +240,8 @@ MonoBehaviour:
       _joystickAxisSensitivity: 1
       _digitalAxisSnap: 1
       _digitalAxisInstantReverse: 0
-      _digitalAxisGravity: 3
-      _digitalAxisSensitivity: 3
+      _digitalAxisGravity: 5
+      _digitalAxisSensitivity: 5
       _mouseXYAxisMode: 0
       _mouseOtherAxisMode: 0
       _mouseXYAxisSensitivity: 1
@@ -726,7 +726,7 @@ MonoBehaviour:
     playerIdCounter: 2
     actionIdCounter: 13
     actionCategoryIdCounter: 3
-    inputBehaviorIdCounter: 1
+    inputBehaviorIdCounter: 2
     mapCategoryIdCounter: 1
     joystickLayoutIdCounter: 2
     keyboardLayoutIdCounter: 1
