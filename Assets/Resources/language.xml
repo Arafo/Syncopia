@@ -46,12 +46,13 @@
       	<string name="gameplay_menu_back">BACK</string>
       	<!-- Graphics Options -->
       	<string name="graphics_menu_title">Graphics</string>
+      	<string name="graphics_menu_fullscreen">FULLSCREEN</string>
       	<string name="graphics_menu_resolution">RESOLUTION</string>
       	<string name="graphics_menu_aa">ANTI-ALIAS</string>
       	<string name="graphics_menu_fps">FRAMERATE</string>
       	<string name="graphics_menu_bloom">BLOOM</string>
       	<string name="graphics_menu_drawdistance">DRAW DISTANCE</string>
-      	<string name="graphics_menu_dresolution">D. RESOLUTION</string>
+      	<string name="graphics_menu_dresolution">DYNAMIC RESOLUTION</string>
       	<string name="graphics_menu_back">BACK</string>
       	<!-- Sound Options -->
       	<string name="sound_menu_title">Audio</string>
@@ -144,12 +145,13 @@
       	<string name="gameplay_menu_back">VOLVER</string>
       	<!-- Graphics Options -->
       	<string name="graphics_menu_title">Gráficos</string>
+      	<string name="graphics_menu_fullscreen">PANTALLA COMPLETA</string>
       	<string name="graphics_menu_resolution">RESOLUCION</string>
       	<string name="graphics_menu_aa">ANTI-ALIAS</string>
       	<string name="graphics_menu_fps">FRAMERATE</string>
       	<string name="graphics_menu_bloom">BLOOM</string>
       	<string name="graphics_menu_drawdistance">DISTANCIA DIBUJADO</string>
-      	<string name="graphics_menu_dresolution">RESOLUCION D.</string>
+      	<string name="graphics_menu_dresolution">RESOLUCION DINÁMICA</string>
       	<string name="graphics_menu_back">VOLVER</string>
       	<!-- Sound Options -->
       	<string name="sound_menu_title">Sonido</string>

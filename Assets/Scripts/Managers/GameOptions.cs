@@ -7,8 +7,8 @@ public class GameOptions : MonoBehaviour {
     public static void SaveGameSettings() {
         INIParser ini = new INIParser();
         ini.Open(GameSettings.GetDirectory() + "settings.ini"); {
-            ini.WriteValue("Display", "Screen Width", Screen.width);
-            ini.WriteValue("Display", "Screen Height", Screen.height);
+            ini.WriteValue("Display", "Screen Width", GameSettings.GS_RESOLUTION.x);
+            ini.WriteValue("Display", "Screen Height", GameSettings.GS_RESOLUTION.y);
             ini.WriteValue("Display", "Fullscreen", GameSettings.GS_FULLSCREEN);
             ini.WriteValue("Display", "Framecap", GameSettings.GS_FRAMECAP);
 

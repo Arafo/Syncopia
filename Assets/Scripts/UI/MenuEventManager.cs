@@ -9,6 +9,8 @@ public class MenuEventManager : MonoBehaviour {
     // Use this for initialization
     void Start() {
         GameOptions.LoadGameSettings();
+        GameSettings.SetScreen();
+
         // Carga del idioma
         LanguageSingleton.InstanceLanguage();
     }
