@@ -24,6 +24,7 @@ public class PauseManager : MonoBehaviour {
 
     [Header("[ GRAFICOS ]")]
     //public Dropdown dropResolution;
+    public HorizontallScrollSlider sliderFullScreen;
     public HorizontallScrollSlider sliderResolution;
     public Slider sliderDrawDistance;
     public Text txtDrawDistance;
@@ -249,6 +250,25 @@ public class PauseManager : MonoBehaviour {
         GetResolutions();
         SetResolutionDropDown();
 
+        int score = GameSettings.AutoQualitySettings();
+        if (score <= 24000) {
+            if (sliderAA.hideContent == null)
+                sliderAA.hideContent = new List<string>();
+            sliderAA.hideContent.Add(Enumerations.E_AA.MSAAx8.ToDescription());
+            sliderAA.hideContent.Add(Enumerations.E_AA.MSAAx8TAA.ToDescription());
+            sliderAA.hideContent.Add(Enumerations.E_AA.TAAx32.ToDescription());
+            sliderAA.hideContent.Add(Enumerations.E_AA.SSAAx8.ToDescription());
+        }
+
+        if (score <= 12000) {
+            if (sliderAA.hideContent == null)
+                sliderAA.hideContent = new List<string>();
+            sliderAA.hideContent.Add(Enumerations.E_AA.MSAAx4.ToDescription());
+            sliderAA.hideContent.Add(Enumerations.E_AA.MSAAx4TAA.ToDescription());
+            sliderAA.hideContent.Add(Enumerations.E_AA.TAASharpening.ToDescription());
+            sliderAA.hideContent.Add(Enumerations.E_AA.SSAAx4.ToDescription());
+        }
+
         if (GameSettings.GS_FRAMECAP == -1)
             sliderFramerate.firstIndex = 0;
         else if (GameSettings.GS_FRAMECAP == 30)
@@ -258,9 +278,26 @@ public class PauseManager : MonoBehaviour {
         else
             sliderFramerate.firstIndex = 0;
 
+        sliderFullScreen.firstIndex = GameSettings.GS_FULLSCREEN == true ? 1 : 0;
+        sliderFullScreen.index = GameSettings.GS_FULLSCREEN == true ? 1 : 0;
+
         sliderBloom.firstIndex = GameSettings.GS_BLOOM;
-        sliderAA.firstIndex = GameSettings.GS_AA;
+        sliderBloom.index = GameSettings.GS_BLOOM;
         sliderDynamicResolution.firstIndex = GameSettings.GS_DYNAMICRESOLUTION;
+        sliderAA.firstIndex = GameSettings.GS_AA;
+        // Con resolucion dinamica no se permite MSAA
+        if (GameSettings.GS_DYNAMICRESOLUTION == 1) {
+            if (sliderAA.hideContent == null)
+                sliderAA.hideContent = new List<string>();
+            if (!sliderAA.hideContent.Contains(Enumerations.E_AA.SSAAx2.ToDescription())) sliderAA.hideContent.Add(Enumerations.E_AA.SSAAx2.ToDescription());
+            if (!sliderAA.hideContent.Contains(Enumerations.E_AA.SSAAx4.ToDescription())) sliderAA.hideContent.Add(Enumerations.E_AA.SSAAx4.ToDescription());
+            if (!sliderAA.hideContent.Contains(Enumerations.E_AA.SSAAx8.ToDescription())) sliderAA.hideContent.Add(Enumerations.E_AA.SSAAx8.ToDescription());
+
+            if (GameSettings.GS_AA == (int)Enumerations.E_AA.SSAAx2 ||
+                GameSettings.GS_AA == (int)Enumerations.E_AA.SSAAx4 ||
+                GameSettings.GS_AA == (int)Enumerations.E_AA.SSAAx8)
+                sliderAA.firstIndex = (int)Enumerations.E_AA.OFF;
+        }
 
         // Importante que este valor se cambie el ultimo porque luego llama
         // aL metodo UpdateDrawDistanceValue() que actualiza las opciones
@@ -298,6 +335,7 @@ public class PauseManager : MonoBehaviour {
         if (resolutions.Length > 0) {
             GameOptions.LoadGameSettings();
 
+            //SetResolutionIndex();
             GameSettings.GS_RESOLUTION.x = Mathf.RoundToInt(resolutions[sliderResolution.index].width);
             GameSettings.GS_RESOLUTION.y = Mathf.RoundToInt(resolutions[sliderResolution.index].height);
 
@@ -309,10 +347,49 @@ public class PauseManager : MonoBehaviour {
                 GameSettings.GS_FRAMECAP = Mathf.RoundToInt(60);
             GameSettings.CapFPS(GameSettings.GS_FRAMECAP);
 
+            GameSettings.GS_FULLSCREEN = sliderFullScreen.index == 0 ? false : true;
             GameSettings.GS_DRAWDISTANCE = Mathf.RoundToInt(sliderDrawDistance.value);
             GameSettings.GS_BLOOM = sliderBloom.index;
-            GameSettings.GS_DYNAMICRESOLUTION = sliderDynamicResolution.index;
             GameSettings.GS_AA = sliderAA.index;
+            GameSettings.GS_DYNAMICRESOLUTION = sliderDynamicResolution.index;
+
+            // Con resolucion dinamica no se permite MSAA
+            if (GameSettings.GS_DYNAMICRESOLUTION == 1) {
+                if (sliderAA.hideContent == null)
+                    sliderAA.hideContent = new List<string>();
+                if (!sliderAA.hideContent.Contains(Enumerations.E_AA.SSAAx2.ToDescription())) sliderAA.hideContent.Add(Enumerations.E_AA.SSAAx2.ToDescription());
+                if (!sliderAA.hideContent.Contains(Enumerations.E_AA.SSAAx4.ToDescription())) sliderAA.hideContent.Add(Enumerations.E_AA.SSAAx4.ToDescription());
+                if (!sliderAA.hideContent.Contains(Enumerations.E_AA.SSAAx8.ToDescription())) sliderAA.hideContent.Add(Enumerations.E_AA.SSAAx8.ToDescription());
+
+                if (GameSettings.GS_AA == (int)Enumerations.E_AA.SSAAx2 ||
+                    GameSettings.GS_AA == (int)Enumerations.E_AA.SSAAx4 ||
+                    GameSettings.GS_AA == (int)Enumerations.E_AA.SSAAx8)
+                    // Se desactiva el AA
+                    while (sliderAA.index != 0)
+                        sliderAA.setNextText();
+            }
+            else {
+                sliderAA.hideContent.Clear();
+                int score = GameSettings.AutoQualitySettings();
+                if (score <= 24000) {
+                    if (sliderAA.hideContent == null)
+                        sliderAA.hideContent = new List<string>();
+                    sliderAA.hideContent.Add(Enumerations.E_AA.MSAAx8.ToDescription());
+                    sliderAA.hideContent.Add(Enumerations.E_AA.MSAAx8TAA.ToDescription());
+                    sliderAA.hideContent.Add(Enumerations.E_AA.TAAx32.ToDescription());
+                    sliderAA.hideContent.Add(Enumerations.E_AA.SSAAx8.ToDescription());
+                }
+
+                if (score <= 12000) {
+                    if (sliderAA.hideContent == null)
+                        sliderAA.hideContent = new List<string>();
+                    sliderAA.hideContent.Add(Enumerations.E_AA.MSAAx4.ToDescription());
+                    sliderAA.hideContent.Add(Enumerations.E_AA.MSAAx4TAA.ToDescription());
+                    sliderAA.hideContent.Add(Enumerations.E_AA.TAASharpening.ToDescription());
+                    sliderAA.hideContent.Add(Enumerations.E_AA.SSAAx4.ToDescription());
+                }
+            }
+
 
             Screen.SetResolution(Mathf.RoundToInt(GameSettings.GS_RESOLUTION.x), Mathf.RoundToInt(GameSettings.GS_RESOLUTION.y), GameSettings.GS_FULLSCREEN);
 
@@ -381,6 +458,17 @@ public class PauseManager : MonoBehaviour {
         }
 
         sliderResolution.firstIndex = val;
+        sliderResolution.index = val;
+    }
+
+    public void SetResolutionIndex() {
+        int val = 0;
+        for (int i = 0; i < resolutions.Length; ++i) {
+            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+                val = i;
+        }
+
+        sliderResolution.index = val;
     }
 
     public void UpdateFramerate() {

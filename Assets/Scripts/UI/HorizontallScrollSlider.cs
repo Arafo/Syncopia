@@ -7,6 +7,7 @@ public class HorizontallScrollSlider : MonoBehaviour {
     public Button leftButton;
     public Button rigthButton;
     public List<string> listContent;
+    public List<string> hideContent;
 
     [Range(1, 99)]
     public int rangeContent;
@@ -42,16 +43,26 @@ public class HorizontallScrollSlider : MonoBehaviour {
 
     public void setNextText() {
         index++;
+
         if (index >= listContent.Count)
             index = 0;
+
+        if (hideContent != null && hideContent.Contains(listContent[index])) {
+            setNextText();
+        }
 
         actualText.text = isText ? LanguageSingleton._instance.getString(listContent[index]) : listContent[index];
     }
 
     public void setLastText() {
         index--;
+
         if (index < 0)
             index = listContent.Count - 1;
+
+        if (hideContent != null && hideContent.Contains(listContent[index])) {
+            setLastText();
+        }
 
         actualText.text = isText ? LanguageSingleton._instance.getString(listContent[index]) : listContent[index];
     }

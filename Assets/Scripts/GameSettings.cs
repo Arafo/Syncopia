@@ -5,11 +5,11 @@ using System;
 public class GameSettings : MonoBehaviour {
 
     // Configuracion grafica
-    public static Vector2 GS_RESOLUTION;
+    public static Vector2 GS_RESOLUTION = new Vector2(Screen.currentResolution.width, Screen.currentResolution.height);
     public static int GS_FRAMECAP = 60;
     public static int GS_DRAWDISTANCE = 60;
-    public static bool GS_FULLSCREEN = true;
-    public static int GS_BLOOM = 0;
+    public static bool GS_FULLSCREEN = false;
+    public static int GS_BLOOM = 1;
     public static int GS_DYNAMICRESOLUTION = 0;
     public static int GS_AA = 0;
     public static bool GS_AO = false;
@@ -97,5 +97,54 @@ public class GameSettings : MonoBehaviour {
 
     public static void CapFPS(int cap) {
         Application.targetFrameRate = cap;
+    }
+
+    public static void SetScreen() {
+        Screen.SetResolution(Mathf.RoundToInt(GS_RESOLUTION.x), Mathf.RoundToInt(GS_RESOLUTION.y), GS_FULLSCREEN, GS_FRAMECAP);
+    }
+
+    public static int AutoQualitySettings() {
+        int shaderLevel = SystemInfo.graphicsShaderLevel;
+        //int fillrate = SystemInfo.graphicsPixelFillrate;
+        int vram = SystemInfo.graphicsMemorySize;
+        int cpus = SystemInfo.processorCount;
+
+        int score = 0;
+
+        // Shaders
+        if (shaderLevel < 10)
+            score = 1000;
+        else if (shaderLevel < 20)
+            score = 1300;
+        else if (shaderLevel < 30)
+            score = 2000;
+        else
+            score = 3000;
+
+        // CPU
+        if (cpus >= 8)
+            score *= 3;
+        else if (cpus <= 4)
+            score *= 2;
+        else if (cpus <= 2)
+            score *= 1;
+
+        // VRAM
+        if (vram >= 2000)
+            score *= 4;
+        if (vram <= 1024)
+            score *= 2;
+        if (vram <= 512)
+            score *= 1;
+        else if (vram <= 128)
+            score /= 2;
+
+        Debug.Log(score);
+        Console.print(score);
+        // Min Score -> 500
+        // Max Score -> 36000
+        // Nivel 1 -> 12000, Nivel 2 -> 24000, Nivel 3 -> 32000
+        return score;
+
     }
 }

@@ -39,29 +39,29 @@ public class Enumerations {
         FXAA2,
         [Description("SMAA (Ultra)")]
         SMAA,
-        [Description("MSAA x2")]
+        [Description("MSAAx2")]
         MSAAx2,
-        [Description("MSAA x4")]
+        [Description("MSAAx4")]
         MSAAx4,
-        [Description("MSAA x8")]
+        [Description("MSAAx8")]
         MSAAx8,
-        [Description("TAA (8 samples)")]
+        [Description("TAAx8")]
         TAAx8,
-        [Description("TAA (32 samples)")]
+        [Description("TAAx32")]
         TAAx32,
-        [Description("TAA (Sharpening)")]
+        [Description("TAAS")]
         TAASharpening,
-        [Description("MSAA x2 + TAA")]
+        [Description("MSAAx2 + TAA")]
         MSAAx2TAA,
-        [Description("MSAA x4 + TAA")]
+        [Description("MSAAx4 + TAA")]
         MSAAx4TAA,
-        [Description("MSAA x8 + TAA")]
+        [Description("MSAAx8 + TAA")]
         MSAAx8TAA,
-        [Description("SSAA x2")]
+        [Description("SSAAx2")]
         SSAAx2,
-        [Description("SSAA x4")]
+        [Description("SSAAx4")]
         SSAAx4,
-        [Description("SSAA x8")]
+        [Description("SSAAx8")]
         SSAAx8
     }
 
