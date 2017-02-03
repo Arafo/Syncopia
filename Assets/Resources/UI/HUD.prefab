@@ -206,7 +206,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Vueltas
+  m_Text: Laps
   key: hud_laps
 --- !u!114 &11424538
 MonoBehaviour:
@@ -306,7 +306,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Posici\xF3n"
+  m_Text: Position
   key: hud_position
 --- !u!114 &11436114
 MonoBehaviour:

@@ -9528,7 +9528,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -90}
+  m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 170, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &230663283
@@ -9669,9 +9669,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 0
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1774280222}
+        m_MethodName: set_interactable
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9679,7 +9679,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &230663284
@@ -12405,6 +12405,7 @@ MonoBehaviour:
   listContent:
   - OFF
   - ON
+  hideContent: []
   rangeContent: 1
   isRange: 0
   isText: 0
@@ -14571,6 +14572,7 @@ MonoBehaviour:
   - race_options_difficulty_easy
   - race_options_difficulty_normal
   - race_options_difficulty_hard
+  hideContent: []
   rangeContent: 0
   isRange: 0
   isText: 1
@@ -14662,6 +14664,7 @@ MonoBehaviour:
   - SSAAx2
   - SSAAx4
   - SSAAx8
+  hideContent: []
   rangeContent: 99
   isRange: 0
   isText: 0
@@ -18187,7 +18190,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -120}
+  m_AnchoredPosition: {x: 0, y: -60}
   m_SizeDelta: {x: 170, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &458375547
@@ -20344,6 +20347,7 @@ MonoBehaviour:
   listContent:
   - gameplay_menu_language_en
   - gameplay_menu_language_es
+  hideContent: []
   rangeContent: 0
   isRange: 0
   isText: 1
@@ -21786,7 +21790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &531727531
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22280,7 +22284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &554490112
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22536,6 +22540,7 @@ MonoBehaviour:
   - 8
   - 9
   - 10
+  hideContent: []
   rangeContent: 1
   isRange: 0
   isText: 0
@@ -24726,7 +24731,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -60}
+  m_AnchoredPosition: {x: 0, y: -30}
   m_SizeDelta: {x: 170, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &616760436
@@ -28729,6 +28734,7 @@ MonoBehaviour:
   listContent:
   - OFF
   - ON
+  hideContent: []
   rangeContent: 1
   isRange: 0
   isText: 0
@@ -29538,6 +29544,7 @@ MonoBehaviour:
   - OFF
   - 30
   - 60
+  hideContent: []
   rangeContent: 1
   isRange: 0
   isText: 0
@@ -33637,6 +33644,7 @@ MonoBehaviour:
   leftButton: {fileID: 1763159941}
   rigthButton: {fileID: 1406682661}
   listContent: []
+  hideContent: []
   rangeContent: 8
   isRange: 1
   isText: 0
@@ -34310,6 +34318,7 @@ MonoBehaviour:
   leftButton: {fileID: 1013415030}
   rigthButton: {fileID: 1222500992}
   listContent: []
+  hideContent: []
   rangeContent: 0
   isRange: 0
   isText: 0
@@ -37029,6 +37038,7 @@ MonoBehaviour:
   listContent:
   - OFF
   - ON
+  hideContent: []
   rangeContent: 1
   isRange: 0
   isText: 0
@@ -41632,6 +41642,7 @@ MonoBehaviour:
   leftButton: {fileID: 848439488}
   rigthButton: {fileID: 431912695}
   listContent: []
+  hideContent: []
   rangeContent: 99
   isRange: 1
   isText: 0
@@ -41984,7 +41995,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1866405437}
-        m_MethodName: StartRace
+        m_MethodName: StartQuickRace
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -42028,8 +42039,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1866405437}
-        m_MethodName: SetTrackToLoad
-        m_Mode: 5
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -42037,7 +42048,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: Blood Dragon
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1112587110
@@ -42947,6 +42958,7 @@ MonoBehaviour:
   - SSAAx2
   - SSAAx4
   - SSAAx8
+  hideContent: []
   rangeContent: 99
   isRange: 0
   isText: 0
@@ -42985,7 +42997,8 @@ MonoBehaviour:
   leftButton: {fileID: 1808853823}
   rigthButton: {fileID: 145669357}
   listContent: []
-  rangeContent: 8
+  hideContent: []
+  rangeContent: 6
   isRange: 1
   isText: 0
   actualText: {fileID: 1286853130}
@@ -47140,7 +47153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1285107941
 RectTransform:
   m_ObjectHideFlags: 0
@@ -47434,7 +47447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1289381595
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49779,7 +49792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 1774280222}
     m_SelectOnDown: {fileID: 202042009}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -53578,7 +53591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1488378031
 RectTransform:
   m_ObjectHideFlags: 0
@@ -54434,7 +54447,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150}
+  m_AnchoredPosition: {x: 0, y: -120}
   m_SizeDelta: {x: 170, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1516439083
@@ -56704,6 +56717,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 387939608}
         m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1774280222}
+        m_MethodName: set_interactable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -61717,7 +61741,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -120}
+  m_AnchoredPosition: {x: 0, y: -90}
   m_SizeDelta: {x: 170, y: 37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1741176588
@@ -65747,6 +65771,7 @@ MonoBehaviour:
   listContent:
   - OFF
   - ON
+  hideContent: []
   rangeContent: 1
   isRange: 0
   isText: 0
@@ -66863,6 +66888,7 @@ MonoBehaviour:
   listContent:
   - OFF
   - ON
+  hideContent: []
   rangeContent: 1
   isRange: 0
   isText: 0
@@ -70738,6 +70764,7 @@ MonoBehaviour:
   - OFF
   - 30
   - 60
+  hideContent: []
   rangeContent: 1
   isRange: 0
   isText: 0
@@ -71820,6 +71847,7 @@ MonoBehaviour:
   leftButton: {fileID: 1379070351}
   rigthButton: {fileID: 513820422}
   listContent: []
+  hideContent: []
   rangeContent: 6
   isRange: 1
   isText: 0

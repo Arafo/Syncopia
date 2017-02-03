@@ -1271,6 +1271,10 @@ Prefab:
       propertyPath: m_ReflectionProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100142, guid: 603fe87654cfdd7439ba9673b69f5e1d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 603fe87654cfdd7439ba9673b69f5e1d, type: 3}
   m_IsPrefabParent: 0
@@ -8563,8 +8567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackData: {fileID: 82904441}
-  racerCount: 5
-  lapCount: 1
+  racerCount: 4
+  lapCount: 3
   mode: 0
   countdownStartDelay: 1
   countdownStageDelay: 1
@@ -17816,7 +17820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 622
   position: {x: -12.649933, y: 2.72464, z: 151.09451}
-  type: 0
+  type: 3
   indices: 940e0000950e0000960e0000990e0000
   segment: {fileID: 1778760592}
 --- !u!114 &1778760930
@@ -17832,7 +17836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 621
   position: {x: 20.689209, y: 1.0323486, z: 172.34488}
-  type: 0
+  type: 3
   indices: 8e0e00008f0e0000900e0000930e0000
   segment: {fileID: 1778760593}
 --- !u!114 &1778760931
