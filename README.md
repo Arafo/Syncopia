@@ -20,7 +20,7 @@ Juego de carreras de naves en 3D realizado en Unity. Trabajo Fin de Grado en Ing
 **Nota**: La lista de requisitos es ampliable durante el desarrollo.
 
 **Releases**
-* 03/02/2017 - [Version 1.0](https://github.com/Arafo/Syncopia/releases/tag/untagged-61737180d6a738e6f14e)
+* 03/02/2017 - [Version 1.0](https://github.com/Arafo/Syncopia/releases/tag/1.0)
 * 07/01/2017 - [Alpha 7310](https://github.com/Arafo/Syncopia/releases/tag/alpha-7310)
 * 27/06/2016 - [Alpha 2808](https://github.com/Arafo/Syncopia/releases/tag/alpha-2808)
 * 28/02/2016 - [Alpha 983](https://github.com/Arafo/Syncopia/releases/tag/alpha-983)
