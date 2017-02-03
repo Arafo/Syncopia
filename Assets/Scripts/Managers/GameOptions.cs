@@ -1,9 +1,16 @@
 ﻿using UnityEngine;
 using System.IO;
 
-
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona la lectura y escritura de los ajustes de las 
+/// opciones en el fichero de configuración
+/// </summary>
 public class GameOptions : MonoBehaviour {
 
+    /// <summary>
+    /// Guarda los ajustes de las opciones
+    /// </summary>
     public static void SaveGameSettings() {
         INIParser ini = new INIParser();
         ini.Open(GameSettings.GetDirectory() + "settings.ini"); {
@@ -62,6 +69,9 @@ public class GameOptions : MonoBehaviour {
         ini.Close();
     }
 
+    /// <summary>
+    /// Carga los ajustes de las opciones
+    /// </summary>
     public static void LoadGameSettings() {
         if (!File.Exists(GameSettings.GetDirectory() + "settings.ini"))
             SaveGameSettings();

@@ -2,6 +2,10 @@
 using System.Collections;
 using Kvant;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona el efecto de la estela de las naves
+/// </summary>
 public class ShipTrailEffects : ShipCore {
 
     private bool isColliding;

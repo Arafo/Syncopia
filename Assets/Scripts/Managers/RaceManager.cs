@@ -4,7 +4,15 @@ using System.Collections.Generic;
 using UnityEngine.Networking;
 using Rewired;
 using UnityStandardAssets.ImageEffects;
+using UnityEngine.SceneManagement;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona todas las acciones que ocurren durante una partida.
+/// Desde el inicio donde se carga todo lo necesario para empezar
+/// una carrera, hasta la ejecución donde se deben actualizar 
+/// las posiciones de las naves.
+/// </summary>
 public class RaceManager : MonoBehaviour {
 
     [Header("[ TRACK DATA ]")]
@@ -96,6 +104,9 @@ public class RaceManager : MonoBehaviour {
             CalculatePosition();
     }
 
+    /// <summary>
+    /// Gestiona el contador de tiempo al inicio de la carrera
+    /// </summary>
     void FixedUpdate() {
         if (!RaceSettings.countdownFinished) {
             if (RaceSettings.countdownReady) {
@@ -168,14 +179,25 @@ public class RaceManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Actualiza el texto del contador de tiempo
+    /// </summary>
+    /// <param name="text"></param>
     public void UpdateCounter(string text) {
         ui.uiCountDownText.text = text;
     }
 
+    /// <summary>
+    /// Actualiza el contador de resultados
+    /// </summary>
+    /// <param name="text"></param>
     public void UpdateCounterResults(string text) {
         results.countdown.text = text;
     }
 
+    /// <summary>
+    /// Actualiza los efectos gráficos en tiempo de ejecución
+    /// </summary>
     private void UpdateImageEffects() {
         int i = 0;
         for (i = 0; i < ppBlooms.Count; ++i)
@@ -185,7 +207,10 @@ public class RaceManager : MonoBehaviour {
         for (i = 0; i < ppAO.Count; ++i)
             ppAO[i].enabled = GameSettings.GS_AO;
         for (i = 0; i < ppTonemapping.Count; ++i)
-            ppTonemapping[i].enabled = GameSettings.GS_TONEMAPPING;
+            if (SceneIndexManager.SceneIndexFromName("Blood Dragon") == SceneManager.GetActiveScene().buildIndex)
+                ppTonemapping[i].enabled = false;
+            else
+                ppTonemapping[i].enabled = GameSettings.GS_TONEMAPPING;
         for (i = 0; i < ppDynamicResolution.Count; ++i) {
             ppDynamicResolution[i].enabled = GameSettings.GS_DYNAMICRESOLUTION == 1;
             if (ppDynamicResolution[i].superSampling != null)
@@ -200,6 +225,9 @@ public class RaceManager : MonoBehaviour {
                 RaceSettings.ships[i].cam.hdr = GameSettings.GS_TONEMAPPING;
     }
 
+    /// <summary>
+    /// Establece las opciones de una carrera
+    /// </summary>
     private void SetRaceSettings() {
         RaceSettings.raceManager = this;
 
@@ -217,6 +245,9 @@ public class RaceManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Carga las naves de una carrera
+    /// </summary>
     private void SetRaceShips() {
 
         if (ServerSettings.isNetworked)
@@ -257,6 +288,9 @@ public class RaceManager : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Pausa el juego
+    /// </summary>
     public void Pause() {
         GameSettings.PauseToggle();
         ui.gameObject.SetActive(!GameSettings.isPaused);
@@ -273,6 +307,9 @@ public class RaceManager : MonoBehaviour {
         Cursor.visible = GameSettings.isPaused;
     }
 
+    /// <summary>
+    /// Indexa los segmentos de un circuito
+    /// </summary>
     private void IndexSections() {
         TrackSegment[] sections = trackData.trackData.sections.ToArray();
         TrackSegment startSection = sections[trackData.trackData.sectionStart];
@@ -298,6 +335,9 @@ public class RaceManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Establece los managers de una carrera
+    /// </summary>
     private void SetManagers() {
 
         // create music manager
@@ -308,6 +348,9 @@ public class RaceManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Añade los efectos gráficos 
+    /// </summary>
     private void AddImageEffects() {
         for (int i = 0; i < RaceSettings.ships.Count; ++i) {
             if (RaceSettings.ships[i].cam != null) {
@@ -318,7 +361,7 @@ public class RaceManager : MonoBehaviour {
 
                 UnityStandardAssets.ImageEffects.Bloom bloom = RaceSettings.ships[i].cam.gameObject.AddComponent<UnityStandardAssets.ImageEffects.Bloom>();
                 bloom.tweakMode = UnityStandardAssets.ImageEffects.Bloom.TweakMode.Complex;
-                bloom.bloomIntensity = 1f;// 0.1f;
+                bloom.bloomIntensity = 0.1f;
                 bloom.bloomThreshold = 4;
                 bloom.bloomThresholdColor = new Color(0, 255, 202, 255);
                 bloom.bloomBlurIterations = 1;
@@ -327,7 +370,6 @@ public class RaceManager : MonoBehaviour {
                 bloom.screenBlendShader = Shader.Find("Hidden/BlendForBloom");
                 bloom.blurAndFlaresShader = Shader.Find("Hidden/BlurAndFlares");
                 bloom.brightPassFilterShader = Shader.Find("Hidden/BrightPassFilter2");
-                //bloom.blurAndFlaresShader
                 ppBlooms.Add(bloom);
 
                 // fxaa
@@ -375,6 +417,9 @@ public class RaceManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Calcula la posición de una nave en el circuito
+    /// </summary>
     private void CalculatePosition() {
 
         int position;

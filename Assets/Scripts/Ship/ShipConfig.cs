@@ -1,6 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Estrucutra que contiene todos los parámetros que define la física de una nave
+/// </summary>
 public class ShipConfig : MonoBehaviour
 {
     [Header("CAMARA")]

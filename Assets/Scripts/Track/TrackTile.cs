@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Clase que representa un tile de una pista
+/// </summary>
 public class TrackTile : MonoBehaviour {
 
     // El indice de esta tile

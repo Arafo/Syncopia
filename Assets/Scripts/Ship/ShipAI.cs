@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona el comportamiento de la inteligencia artificial que utilizan las naves
+/// </summary>
 public class ShipAI : ShipCore {
 
     private AIChecks checks;
@@ -53,6 +57,9 @@ public class ShipAI : ShipCore {
         AIUpdate();
     }
 
+    /// <summary>
+    /// Inteligencia artificial
+    /// </summary>
     void AIUpdate() {
 
         if (RaceSettings.shipsRestrained) {
@@ -275,16 +282,16 @@ public class ShipAI : ShipCore {
         Vector3 velocity = transform.TransformDirection(direction);
         ship.body.velocity = velocity;
 
-        /*Vector3 lv = transform.InverseTransformDirection(ship.body.velocity);
-        lv.x *= 1 - 0.9f;
-        Vector3 wv = transform.TransformDirection(lv);
-        ship.body.velocity = wv;*/
-
-        if (!ship.autopilot && RaceSettings.countdownFinished) {
+        //if (!ship.autopilot && RaceSettings.countdownFinished) {
             //ship.sim.engineThrust *= 0.80f;
-        }
+        //}
     }
 
+    /// <summary>
+    /// Obtiene la posicion del segmento que esta a amount
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <returns></returns>
     private Vector3 AILookAhead(int amount) {
         TrackSegment start = ship.currentSection;
         TrackSegment next = start;

@@ -2,6 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Implementa la técnica del supersampling (SSAA)
+/// </summary>
 public class SuperSampling : MonoBehaviour {
 
     public Camera camara;
@@ -27,7 +31,9 @@ public class SuperSampling : MonoBehaviour {
 
     public static SuperSampling instance;
 
-
+    /// <summary>
+    /// Habilita el supersampling
+    /// </summary>
     public void OnEnable() {
         camara = GetComponent<Camera>();
         if (camara == null) {
@@ -50,10 +56,17 @@ public class SuperSampling : MonoBehaviour {
         Start();
     }
 
+    /// <summary>
+    /// Deshabilita el supersampling
+    /// </summary>
     public void OnDisable() {
         Stop();
     }
 
+    /// <summary>
+    /// Calcula la resolución objetivo, define la textura y la cámara
+    /// auxiliar para pintar la imagen a dicha resolución
+    /// </summary>
     public void Start() {
         screenWidth = Screen.width;
         screenHeight = Screen.height;
@@ -95,6 +108,9 @@ public class SuperSampling : MonoBehaviour {
         active = true;
     }
 
+    /// <summary>
+    /// Para el supersampling
+    /// </summary>
     public void Stop() {
         if (camara != null && camara.targetTexture != null) {
             camara.targetTexture = null;
@@ -115,12 +131,19 @@ public class SuperSampling : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Reinicia el supersampling
+    /// </summary>
     public void Restart() {
         Stop();
         Start();
         restart = false;
     }
 
+    /// <summary>
+    /// En cada frame se comprueba si es necesario cambiar la
+    /// resolución
+    /// </summary>
     public void Update() {
         if (screenWidth != Screen.width || screenHeight != Screen.height) {
             restart = true;
@@ -131,6 +154,10 @@ public class SuperSampling : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Establece la resolución objetivo y la textura de la cámara antes
+    /// de hacer el culling
+    /// </summary>
     public void OnPreCull() {
         if (active && (screenWidth != Screen.width || screenHeight != Screen.height)) {
             targetWidth = Screen.width;
@@ -145,6 +172,10 @@ public class SuperSampling : MonoBehaviour {
         StartCoroutine(ResetCamera());
     }
 
+    /// <summary>
+    /// Coroutine para reiniciar la cámara el siguiente frame
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ResetCamera() {
         yield return new WaitForEndOfFrame();
         if (active) {

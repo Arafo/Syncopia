@@ -2,6 +2,10 @@
 using System.Collections;
 using Rewired;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona la entrada del dispositivo controlador
+/// </summary>
 public class ShipInput : ShipCore {
 
     public int m_PlayerNumber = 1;

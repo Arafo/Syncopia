@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona los datos generados de una pista y además ofrece una representación visual de estos datos
+/// </summary>
 [ExecuteInEditMode]
 public class TrackData : MonoBehaviour {
 

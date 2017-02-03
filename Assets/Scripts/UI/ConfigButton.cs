@@ -4,6 +4,10 @@ using UnityEngine.UI;
 using Rewired;
 using System;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona las animaciones y los colores de los botones
+/// </summary>
 public class ConfigButton : MonoBehaviour {
 
     [Header("[ REFERENCIAS ]")]
@@ -21,7 +25,7 @@ public class ConfigButton : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Contrala las animaciones de los botones
     /// </summary>
     void FixedUpdate() {
         float horizontalInput = ReInput.players.GetPlayer(0).GetAxis("MenuHorizontal");
@@ -43,7 +47,7 @@ public class ConfigButton : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Controla el selector y el color de los botones
     /// </summary>
     /// <param name="selector"></param>
     public void SetCurrentSelector(GameObject selector) {
@@ -65,7 +69,7 @@ public class ConfigButton : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Cambia el color de botón
     /// </summary>
     /// <param name="button"></param>
     /// <param name="color"></param>

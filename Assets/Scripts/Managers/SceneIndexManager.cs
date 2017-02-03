@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Proporciona una estructura para obtener el índice 
+/// de las escenas por su nombre
+/// </summary>
 public class SceneIndexManager : MonoBehaviour {
 
 	// Use this for initialization
@@ -13,6 +18,11 @@ public class SceneIndexManager : MonoBehaviour {
 	
 	}
 
+    /// <summary>
+    /// Devuelve el indice de la scena scene
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <returns></returns>
     public static int SceneIndexFromName(string scene) {
         switch(scene) {
             case "Test" :

@@ -2,6 +2,10 @@
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Implementa la interpolación utilizada en una partida multijugador
+/// </summary>
 public class NetworkPlayerController : NetworkBehaviour {
 
     [SyncVar]

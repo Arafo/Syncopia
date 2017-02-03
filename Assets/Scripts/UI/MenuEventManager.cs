@@ -1,7 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
+using System.Linq;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona las distintas opciones que se pueden elegir en los menús
+/// </summary>
 public class MenuEventManager : MonoBehaviour {
 
     public MenuAnimationManager menuAnimation;
@@ -20,19 +26,51 @@ public class MenuEventManager : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Carga la escena del menú principal
+    /// </summary>
     public void LoadMenu() {
         menuAnimation.SetLeaveScene("Menu");
     }
 
+    /// <summary>
+    /// Carga la escena del menú multijugador
+    /// </summary>
     public void LoadOnline() {
         menuAnimation.SetLeaveScene("Online");
     }
 
+    /// <summary>
+    /// Carga la escena de la pantalla de carga
+    /// </summary>
     public void StartRace() {
         ServerSettings.isNetworked = false;
         menuAnimation.SetLeaveScene("LoadingScreen");
     }
 
+    /// <summary>
+    /// Inicia una carrera rápida con valores aleatorios
+    /// </summary>
+    public void StartQuickRace() {
+        RaceSettings.playerShip = (Enumerations.E_SHIPS)UnityEngine.Random.Range(0, (float)Enum.GetValues(typeof(Enumerations.E_SHIPS)).Cast<Enumerations.E_SHIPS>().Max());
+        int track = UnityEngine.Random.Range(0, 3);
+        switch (track) {
+            case 0:
+                RaceSettings.trackToLoad = "Test";
+                break;
+            case 1:
+                RaceSettings.trackToLoad = "Blood Dragon";
+                break;
+            case 2:
+                RaceSettings.trackToLoad = "Volcano";
+                break;
+        }
+        StartRace();
+    }
+
+    /// <summary>
+    /// Inicia una carrera multijugador
+    /// </summary>
     public void StartRaceMP() {
         ServerSettings.isNetworked = true;
     }

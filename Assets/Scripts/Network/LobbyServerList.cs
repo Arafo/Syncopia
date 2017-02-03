@@ -3,7 +3,10 @@ using System.Collections;
 using UnityEngine.Networking.Match;
 using System.Collections.Generic;
 
-
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona la lista de partidas multijugador disponibles que han creado los jugadores
+/// </summary>
 public class LobbyServerList : MonoBehaviour {
     public LobbyManager lobbyManager;
 

@@ -5,9 +5,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-
-//Player entry in the lobby. Handle selecting color/setting name & getting ready for the game
-//Any LobbyHook can then grab it and pass those value to the game player prefab (see the Pong Example in the Samples Scenes)
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona todas las opciones que puede cambiar un jugador en una partida multijugador
+/// </summary>
 public class LobbyPlayer : NetworkLobbyPlayer {
 
     static Color[] Colors = new Color[] { Color.magenta, Color.red, Color.cyan, Color.blue, Color.green, Color.yellow };

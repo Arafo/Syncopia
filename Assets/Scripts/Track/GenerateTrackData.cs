@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Algoritmo que se encarga de leer el modelo de una pista y generar los datos correspondientes
+/// </summary>
 public class GenerateTrackData {
 
-    //public List<TrackTile> tiles = new List<TrackTile>();
-    //public List<TrackTile> tilesMapped = new List<TrackTile>();
-    //public List<TrackSegment> sections = new List<TrackSegment>();
     public List<GameObject> checkpoints = new List<GameObject>();
     public List<Vector3> racingLine = new List<Vector3>();
 

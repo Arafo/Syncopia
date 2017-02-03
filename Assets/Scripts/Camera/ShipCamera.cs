@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona el movimiento de la cámara de una nave
+/// </summary>
 public class ShipCamera : ShipCore {
 
+    // Propiedades de la cámara
     private int cameraMode;
     private Vector3 cameraOffset;
     private Vector3 shipHoverCameraAnimOffset;
@@ -35,16 +40,20 @@ public class ShipCamera : ShipCore {
         }
     }
 
-    public void UpdateCameraMode()
-    {
+    /// <summary>
+    /// Cambia la posición de la cámara
+    /// </summary>
+    public void UpdateCameraMode() {
         cameraMode++;
         if (cameraMode > 1) {
             cameraMode = 0;
         }
     }
 
-    private void UpdateCamera()
-    {
+    /// <summary>
+    /// Actualiza la posición de la cámara de una nave
+    /// </summary>
+    private void UpdateCamera() {
         // Modo 0
         if (cameraMode == 0) {
             ship.axis.SetActive(true);

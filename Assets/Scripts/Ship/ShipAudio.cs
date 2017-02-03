@@ -2,6 +2,10 @@
 using System.Collections;
 using UnityEngine.Audio;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona el efecto de sonido que produce el motor de una nave
+/// </summary>
 public class ShipAudio : ShipCore {
 
     // Audio

@@ -4,6 +4,11 @@ using System.Xml.Serialization;
 using System.IO;
 using System;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona el número de compilación cada vez que se ejecuta
+/// el proyecto en el editor de Unity
+/// </summary>
 public class BuildNumber : MonoBehaviour {
 
     [Serializable()]
@@ -27,6 +32,11 @@ public class BuildNumber : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Almacena el número de build en el fichero path
+    /// </summary>
+    /// <param name="path"></param>
+    /// <param name="build"></param>
     public void Save(string path, Build build)
     {
         XmlSerializer serializer = new XmlSerializer(typeof(Build));
@@ -36,6 +46,11 @@ public class BuildNumber : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Carga el número de build definido por el fichero path
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
     public static Build Load(string path)
     {
         XmlSerializer serializer = new XmlSerializer(typeof(Build));

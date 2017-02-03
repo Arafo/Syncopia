@@ -2,6 +2,10 @@
 using UnityEngine.UI;
 using Rewired;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona las referencias que se utilizan en el gestor de animaciones de los menús
+/// </summary>
 public class BackListener : MonoBehaviour {
 
     [Header("[ REFERENCIAS ]")]

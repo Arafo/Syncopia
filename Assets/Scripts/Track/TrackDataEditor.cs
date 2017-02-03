@@ -5,7 +5,10 @@ using System.Collections;
 using UnityEditor;
 using System;
 
-
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Editor visual de los datos generados sobre una pista
+/// </summary>
 [CustomEditor(typeof(TrackDataEditorMono))]
 public class TrackDataEditor : Editor {
     private static TrackDataEditorMono tClass;

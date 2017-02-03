@@ -3,6 +3,10 @@ using System.Collections;
 using UnityEngine.Networking;
 using System;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Clase principal de una nave. Controla el inicio y ejecución de todos los componentes de la nave
+/// </summary>
 public class ShipReferer : NetworkBehaviour {
 
     // IA

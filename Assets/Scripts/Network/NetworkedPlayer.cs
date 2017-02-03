@@ -2,7 +2,10 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Se ocupa de configurar las naves en la partida multijugador tanto para el servidor como para el cliente
+/// </summary>
 [Serializable]
 public class NetworkedPlayer {
 

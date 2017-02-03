@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// </summary>
 public class LobbyInfoPanel : MonoBehaviour {
     public Text infoText;
     public Text buttonText;

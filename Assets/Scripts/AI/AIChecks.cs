@@ -83,7 +83,6 @@ public class AIChecks {
             awarenessData[(int)j].shipLeft = (awarenessData[(int)j].localOffset.x > 0f && awarenessData[(int)j].localOffset.x < 1.5f && Mathf.Abs(awarenessData[(int)j].localOffset.z) < 6f);
             j += 1;
         }
-
         return awarenessData;
     }
 }

@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Almacena todas las referencias que forman parte de una carrera
+/// </summary>
 public class RaceSettings {
 
     // Referencias

@@ -2,7 +2,10 @@
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
-//Purpose of that class is syncing data between server - client
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Almacena la información de un cliente en una partida multijugador
+/// </summary>
 public class NetworkShipSetup : NetworkBehaviour {
     [Header("UI")]
     public Text m_NameText;

@@ -2,6 +2,10 @@
 using System.Collections;
 using System;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Clase que representa un segmento de una pista
+/// </summary>
 public class TrackSegment : MonoBehaviour {
 
     // El indice de esta seccion

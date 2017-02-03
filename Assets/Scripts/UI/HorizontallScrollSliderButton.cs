@@ -2,10 +2,13 @@
 using System.Collections;
 using UnityEngine.UI;
 using System;
-//using TeamUtility.IO;
 using Rewired;
 using UnityEngine.EventSystems;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona el funcionamiento de la opción seleccionada en un botón horizontal
+/// </summary>
 public class HorizontallScrollSliderButton : Button {
 
     public MenuEventManager menuManager;
@@ -47,21 +50,21 @@ public class HorizontallScrollSliderButton : Button {
     }
 
     /// <summary>
-    /// 
+    /// Establece la dificultad
     /// </summary>
     public void SetDifficulty() {
         menuManager.SetDifficulty(button.index);
     }
 
     /// <summary>
-    /// 
+    /// Establece el número de vueltas
     /// </summary>
     public void SetLaps() {
         menuManager.SetLaps(Convert.ToInt32(button.listContent[button.index]));
     }
 
     /// <summary>
-    /// 
+    /// Establece el número de jugadores
     /// </summary>
     public void SetPlayers() {
         // Se suma una unidad al numero de jugadores porque el propio jugador tambien cuenta

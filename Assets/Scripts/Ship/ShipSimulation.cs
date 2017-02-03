@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona la simulación de la física de las naves
+/// </summary>
 public class ShipSimulation : ShipCore {
 
     // VARIABLES 
@@ -105,6 +109,9 @@ public class ShipSimulation : ShipCore {
         }
     }
 
+    /// <summary>
+    /// Respawn
+    /// </summary>
     private void ShipRespawn() {
         respawnTimer += Time.deltaTime;
 
@@ -137,6 +144,9 @@ public class ShipSimulation : ShipCore {
         }*/
     }
 
+    /// <summary>
+    /// Antigravedad
+    /// </summary>
     private void ShipGravity() {
         // Si la nave esta en el suelo se aplica una fuerza de gravedad baja
         // Si esta en el aire se aplica mas fuerza para evitar que despegue
@@ -274,6 +284,9 @@ public class ShipSimulation : ShipCore {
         }*/
     }
 
+    /// <summary>
+    /// Aceleración
+    /// </summary>
     private void ShipAcceleration() {
         float amount = ship.config.engineAmount;
         float acceleration = ship.config.engineAcceleration;
@@ -314,6 +327,9 @@ public class ShipSimulation : ShipCore {
         engineSpeed = Mathf.Abs(transform.InverseTransformDirection(ship.body.velocity).z);
     }
 
+    /// <summary>
+    /// Drag
+    /// </summary>
     private void ShipDrag() {
         // Si se esta frenando se calcula la resistencia
         if (ship.input.m_LeftAirBrakeAxis != 0f || ship.input.m_RightAirBrakeAixs != 0f) {
@@ -388,6 +404,9 @@ public class ShipSimulation : ShipCore {
         ship.body.AddForce(force, ForceMode.Acceleration);
     }
 
+    /// <summary>
+    /// Movimiento
+    /// </summary>
     private void ShipHandling() {
         float brakeAmount = ship.input.m_LeftAirBrakeAxis + ship.input.m_RightAirBrakeAixs;
         // Si esta girando hacia una lado y la entrada es hacia el otro, se activa o desactiva el antibanding
@@ -462,6 +481,9 @@ public class ShipSimulation : ShipCore {
         ship.axis.transform.localRotation = Quaternion.Euler(0f, 0f, bankAmount + bankAirbrake + BRActual);
     }
 
+    /// <summary>
+    /// Animaciones
+    /// </summary>
     private void ShipAnimations() {
         // Calculo de los offsets de la flotacion
         if (Mathf.Abs(transform.InverseTransformDirection(ship.body.velocity).z) < 100f && isGrounded) {
@@ -481,6 +503,9 @@ public class ShipSimulation : ShipCore {
         ship.axis.transform.localPosition = hoverAnimOffset;
     }
 
+    /// <summary>
+    /// Barrel Rolls
+    /// </summary>
     private void ShipBarrelRolls() {
         // Decremento en el temporizador de los barrel rolls
         if (BRBoostTimer > 0f) {
@@ -619,6 +644,10 @@ public class ShipSimulation : ShipCore {
         }
     }
 
+    /// <summary>
+    /// Colisiones
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionEnter(Collision other) {
         // Comprobacion de colision con la pared
         if (other.gameObject.layer == LayerMask.NameToLayer("Wall")) {
@@ -692,6 +721,10 @@ public class ShipSimulation : ShipCore {
         }
     }
 
+    /// <summary>
+    /// Colisiones
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionStay(Collision other) {
         // Comprobacion de colision con la pared
         if (other.gameObject.layer == LayerMask.NameToLayer("Wall")) {
@@ -726,6 +759,10 @@ public class ShipSimulation : ShipCore {
         }
     }
 
+    /// <summary>
+    /// Colisiones
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionExit(Collision other) {
         wallSurfing = false;
         isColliding = false;

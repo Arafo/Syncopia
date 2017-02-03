@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Se encarga de gestionar la posición de la nave en la pista
+/// </summary>
 public class ShipPosition : ShipCore {
 
     // Datos del circuito

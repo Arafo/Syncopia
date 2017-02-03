@@ -3,27 +3,44 @@ using System.Collections;
 using System.ComponentModel;
 using System;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Almacena todas las enumeraciones utilizadas
+/// </summary>
 public class Enumerations {
 
     #region Enumerators
+
+    /// <summary>
+    /// Naves
+    /// </summary>
     public enum E_SHIPS {
         TESTSHIP,
         FLYER,
         HYPER
     }
 
+    /// <summary>
+    /// Modos de dificultad
+    /// </summary>
     public enum E_DIFFICULTY {
         EASY,
         MEDIUM,
         HARD
     }
 
+    /// <summary>
+    /// Modos de juego
+    /// </summary>
     public enum E_GAMEMODE {
         ARCADE,
         TIMETRIAL,
         SEASSON
     }
 
+    /// <summary>
+    /// Idiomas
+    /// </summary>
     public enum E_LANGUAGE {
         [Description("English")]
         ENGLISH,
@@ -31,6 +48,9 @@ public class Enumerations {
         SPANISH
     }
 
+    /// <summary>
+    /// Antialiasing
+    /// </summary>
     public enum E_AA {
         OFF,
         [Description("FXAA")]
@@ -68,6 +88,9 @@ public class Enumerations {
     #endregion
 }
 
+/// <summary>
+/// Convierte un valor de una enumeración a texto
+/// </summary>
 public static class EnumsHelperExtension {
     public static string ToDescription(this Enum value) {
         DescriptionAttribute[] da = (DescriptionAttribute[])(value.GetType().GetField(value.ToString())).GetCustomAttributes(typeof(DescriptionAttribute), false);

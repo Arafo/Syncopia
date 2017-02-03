@@ -5,6 +5,10 @@ using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
 using UnityEngine.Networking.Types;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona la información que muestra cada partida multijugador en la lista de partidas
+/// </summary>
 public class LobbyServerEntry : MonoBehaviour {
     public Text serverInfoText;
     public Text slotInfo;

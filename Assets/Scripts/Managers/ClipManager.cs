@@ -2,6 +2,11 @@
 using System.Collections;
 using System;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Crea todas las fuentes de sonido que se utilizan
+/// durante las partidas.
+/// </summary>
 public class ClipManager : MonoBehaviour {
 
 	// Use this for initialization
@@ -14,11 +19,21 @@ public class ClipManager : MonoBehaviour {
 	
 	}
 
+    /// <summary>
+    /// Crea una nueva fuente de audio
+    /// </summary>
+    /// <returns></returns>
     private static AudioSource CreateSource() {
         GameObject newSound = new GameObject();
         return newSound.AddComponent<AudioSource>();
     }
 
+    /// <summary>
+    /// Crea un nuevo clip con un volumen dado
+    /// </summary>
+    /// <param name="clip"></param>
+    /// <param name="volume"></param>
+    /// <returns></returns>
     public static AudioSource CreateClip(AudioClip clip, float volume) {
         AudioSource source = CreateSource();
         source.clip = clip;
@@ -34,6 +49,13 @@ public class ClipManager : MonoBehaviour {
         return source;
     }
 
+    /// <summary>
+    /// Crea un nuevo clip con un volumen y tono dados
+    /// </summary>
+    /// <param name="clip"></param>
+    /// <param name="volume"></param>
+    /// <param name="pitch"></param>
+    /// <returns></returns>
     public static AudioSource CreateClip(AudioClip clip, float volume, float pitch) {
         if (GameObject.Find(clip.name) != null)
             return null;
@@ -54,6 +76,17 @@ public class ClipManager : MonoBehaviour {
         return source;
     }
 
+    /// <summary>
+    /// Crea un nuevo clip con un volumen, tono, ditancia minima y 
+    /// distancia máxima dados
+    /// </summary>
+    /// <param name="clip"></param>
+    /// <param name="parent"></param>
+    /// <param name="volume"></param>
+    /// <param name="pitch"></param>
+    /// <param name="minDistance"></param>
+    /// <param name="maxDistance"></param>
+    /// <returns></returns>
     public static AudioSource CreateClip(AudioClip clip, Transform parent, float volume, float pitch, float minDistance, float maxDistance) {
         AudioSource source = CreateSource();
         source.clip = clip;

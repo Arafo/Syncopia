@@ -3,16 +3,20 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Implementa la técnica de la resolución dinámica
+/// </summary>
 [RequireComponent(typeof(Camera))]
 public class DynamicResolution : MonoBehaviour {
 
     public SuperSampling superSampling;
 
     public bool m_DynamicResolutionEnabled = true;
-    public bool debug = true;
+    public bool debug = false;
 
     public float minTargetScale = 0.7f;
-    public float maxTargetScale = 2f;
+    public float maxTargetScale = 1f;
     public int percentStep = 5;
 
     private List<float> m_DynamicResolutionScaleArray = new List<float>();
@@ -24,7 +28,9 @@ public class DynamicResolution : MonoBehaviour {
     private int m_DynamicResolutiongBufferPos = 0;
     private int m_LastQualityFrameCount = -1;
 
-
+    /// <summary>
+    /// Habilita la resolución dinámica
+    /// </summary>
     void OnEnable() {
         superSampling = GetComponent<SuperSampling>();
         StartDynamicResolution();
@@ -38,10 +44,17 @@ public class DynamicResolution : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Se actualiza la resolución dinámica antes de que la
+    /// cámara haga culling de la escena
+    /// </summary>
     void OnPreCull() {
        UpdateDynamicResolution();
     }
 
+    /// <summary>
+    /// Inicia la estructura que contiene los nivels de resolución
+    /// </summary>
     private void StartDynamicResolution() {
 
         m_DynamicResolutionScaleArray.Clear();
@@ -55,6 +68,9 @@ public class DynamicResolution : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Actualiza la resolución en cada frame según convenga
+    /// </summary>
     private void UpdateDynamicResolution() {
         if (!m_DynamicResolutionEnabled) {
             return;

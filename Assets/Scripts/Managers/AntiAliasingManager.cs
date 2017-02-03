@@ -3,6 +3,11 @@ using System.Collections;
 using UnityStandardAssets.CinematicEffects;
 using UnityStandardAssets.ImageEffects;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona todas las técnicas de antialiasing utilizadas de 
+/// forma que no interfieran unas con otras
+/// </summary>
 public class AntiAliasingManager : MonoBehaviour {
 
     public int selected;
@@ -34,6 +39,10 @@ public class AntiAliasingManager : MonoBehaviour {
 	
 	}
 
+    /// <summary>
+    /// Deshabilita todos los tipos de AA
+    /// </summary>
+    /// <returns></returns>
     private bool TurnOffAll() {
         QualitySettings.antiAliasing = 0;
         if (standardAA == null || cinematicAA == null || temporalAA == null || samplingAA == null)
@@ -48,6 +57,11 @@ public class AntiAliasingManager : MonoBehaviour {
         return true;
     }
 
+    /// <summary>
+    /// Selecciona el tipo de AA definido por type
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="camera"></param>
     public void SelectAA(int type, Camera camera) {
         selected = type;
         AA = ((Enumerations.E_AA)type).ToDescription();

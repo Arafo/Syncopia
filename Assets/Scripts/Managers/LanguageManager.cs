@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
-
 using UnityEngine;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona el cambio de idioma en tiempo de ejecución 
+/// y almacena las cadenas del lenguaje elegido
+/// </summary>
 public class LanguageManager {
 
     private Dictionary<string, string> Strings;

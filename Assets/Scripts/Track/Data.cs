@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Estructura para almacenar toda la información que compone una pista
+/// </summary>
 [Serializable]
 public class Data : MonoBehaviour {
 

@@ -3,6 +3,10 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona la lista de jugadores que forman parte de una partida multijugador
+/// </summary>
 public class LobbyPlayerList : MonoBehaviour {
 
     public static LobbyPlayerList _instance = null;

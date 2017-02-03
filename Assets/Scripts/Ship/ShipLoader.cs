@@ -3,8 +3,11 @@ using System.Collections;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona la carga de todos los componentes que definen a una nave
+/// </summary>
 public class ShipLoader : MonoBehaviour {
-
 
     public void SpawnShip(Enumerations.E_SHIPS Ship, int type, GameObject player = null) {
         GameObject ShipObject = null;

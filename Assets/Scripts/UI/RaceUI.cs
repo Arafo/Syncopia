@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RaceUI : ShipCore
-{
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona la información que aparece en pantalla durante una carrera (HUD)
+/// </summary>
+public class RaceUI : ShipCore {
     //public GameObject ship;
     //public ShipController ship.control;
     //public ShipSimulation ship.sim;
@@ -153,7 +156,7 @@ public class RaceUI : ShipCore
                 miliseconds = "000";
             }
             total = string.Concat(new string[] { minutes, ":", seconds, ":", miliseconds });
-            uiBestTimeText.text = LanguageSingleton._instance != null ? LanguageSingleton._instance.getString("hud_best") + "\t\t" + total : "Best\t\t" + total ;
+            uiBestTimeText.text = LanguageSingleton._instance != null ? LanguageSingleton._instance.getString("hud_best") + "\t\t" + total : "Best\t\t\t" + total ;
 
             uiCurrentPositionText.text = ship.currentPosition + "/" + (!ServerSettings.isNetworked ? RaceSettings.ships.Count : ServerSettings.players.Count);
 

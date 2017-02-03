@@ -2,6 +2,10 @@
 using System.Collections;
 using UnityEngine.Networking;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona el paso de datos entre el menú multijugador y la partida
+/// </summary>
 public class NetworkLobbyHook : LobbyHook {
 
     public override void OnLobbyServerSceneLoadedForPlayer(NetworkManager manager, GameObject lobbyPlayer, GameObject gamePlayer) {

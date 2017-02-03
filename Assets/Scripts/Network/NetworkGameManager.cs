@@ -3,6 +3,11 @@ using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona todas las acciones que se realizan durante una partida multijugador y 
+/// requieren estar sincronizadas entre todos los integrantes de la partida
+/// </summary>
 public class NetworkGameManager : NetworkBehaviour {
 
     static public NetworkGameManager s_Instance;
@@ -77,46 +82,6 @@ public class NetworkGameManager : NetworkBehaviour {
         yield return StartCoroutine(RoundEnding());
 
         yield return StartCoroutine(NextRound());
-
-        // This code is not run until 'RoundEnding' has finished.  At which point, check if there is a winner of the game.
-        /*if (m_GameWinner != null) {// If there is a game winner, wait for certain amount or all player confirmed to start a game again
-            m_GameIsFinished = true;
-            float leftWaitTime = 15.0f;
-            bool allAreReady = false;
-            int flooredWaitTime = 15;
-
-            while (leftWaitTime > 0.0f && !allAreReady) {
-                yield return null;
-
-                allAreReady = true;
-                foreach (var tmp in m_Tanks) {
-                    allAreReady &= tmp.IsReady();
-                }
-
-                leftWaitTime -= Time.deltaTime;
-
-                int newFlooredWaitTime = Mathf.FloorToInt(leftWaitTime);
-
-                if (newFlooredWaitTime != flooredWaitTime) {
-                    flooredWaitTime = newFlooredWaitTime;
-                    string message = EndMessage(flooredWaitTime);
-                    RpcUpdateMessage(message);
-                }
-            }
-
-            LobbyManager.s_Singleton.ServerReturnToLobby();
-        }
-        else {
-            // If there isn't a winner yet, restart this coroutine so the loop continues.
-            // Note that this coroutine doesn't yield.  This means that the current version of the GameLoop will end.
-            StartCoroutine(GameLoop());
-        }*/
-
-        // countdown if server
-        //if (ServerSettings.playerFinished) {
-        //ServerSettings.raceCountdown -= Time.deltaTime;
-        //RpcFinishCountdown(ServerSettings.raceCountdown);
-        //}
     }
 
     private IEnumerator Setup() {

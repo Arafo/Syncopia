@@ -9,6 +9,12 @@ using UnityStandardAssets.ImageEffects;
 using UnityEngine.EventSystems;
 using Rewired.UI.ControlMapper;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona la pantalla de resultados que aparece 
+/// al terminar una partida y el cambio de todas las 
+/// opciones que se pueden realizar en el menú de pausa
+/// </summary>
 public class PauseManager : MonoBehaviour {
 
     public Text countdown;
@@ -76,6 +82,8 @@ public class PauseManager : MonoBehaviour {
 
     public ControlMapper cm;
 
+    private int score;
+
     // Use this for initialization
     void Start () {
 	
@@ -92,6 +100,9 @@ public class PauseManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Muestra los resultados
+    /// </summary>
     public void Results() {
         
         //int position = 1;
@@ -158,6 +169,11 @@ public class PauseManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Cuando una nave de la IA acaba la carrera se muestran
+    /// sus datos
+    /// </summary>
+    /// <param name="ship"></param>
     public void AIFinished(ShipReferer ship) {
         if (RaceSettings.ships[0].finished && ship.isAI) {
             positions.text += "\n" + position;
@@ -169,10 +185,16 @@ public class PauseManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Continuar la partida pausada
+    /// </summary>
     public void Continue() {
         RaceSettings.raceManager.Pause();
     }
 
+    /// <summary>
+    /// Reiniciar la partida
+    /// </summary>
     public void Restart() {
         GameSettings.PauseToggle(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -190,6 +212,9 @@ public class PauseManager : MonoBehaviour {
         animation.StartAnimationNoSound(transform.GetChild(0).transform.GetChild(0).gameObject);
     }
 
+    /// <summary>
+    /// Salir de una partida
+    /// </summary>
     public void Quit() {
         Time.timeScale = 1.0f;
         GameSettings.isPaused = false;
@@ -236,6 +261,9 @@ public class PauseManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Reinicia el texto de la pantalla de resultados
+    /// </summary>
     public void ResetResults() {
         positions.text = "POS.";
         ships.text = "DRIVER";
@@ -244,13 +272,16 @@ public class PauseManager : MonoBehaviour {
         totalTimes.text = "TOTAL";
     }
 
+    /// <summary>
+    /// Inicia el menú de opcines gráficas
+    /// </summary>
     public void InitGraphicsMenu() {
         GameOptions.LoadGameSettings();
 
         GetResolutions();
         SetResolutionDropDown();
 
-        int score = GameSettings.AutoQualitySettings();
+        score = GameSettings.AutoQualitySettings();
         if (score <= 24000) {
             if (sliderAA.hideContent == null)
                 sliderAA.hideContent = new List<string>();
@@ -304,6 +335,9 @@ public class PauseManager : MonoBehaviour {
         sliderDrawDistance.value = GameSettings.GS_DRAWDISTANCE;
     }
 
+    /// <summary>
+    /// Inicia el menú de opcines de volumen
+    /// </summary>
     public void InitAudioMenu() {
         GameOptions.LoadGameSettings();
 
@@ -314,6 +348,9 @@ public class PauseManager : MonoBehaviour {
         //tglCustomMusic.isOn = AudioSettings.customMusicEnabled;
     }
 
+    /// <summary>
+    /// Inicia el menú de opcines de gameplay
+    /// </summary>
     public void InitGameplayMenu() {
         GameOptions.LoadGameSettings();
 
@@ -331,6 +368,9 @@ public class PauseManager : MonoBehaviour {
         //sliderHUDA.value = GameSettings.G_CUSTOMHUDCOLOR.a;
     }
 
+    /// <summary>
+    /// Actualiza el menú de opcines gráficas
+    /// </summary>
     public void UpdateGraphicsSettings() {
         if (resolutions.Length > 0) {
             GameOptions.LoadGameSettings();
@@ -370,7 +410,6 @@ public class PauseManager : MonoBehaviour {
             }
             else {
                 sliderAA.hideContent.Clear();
-                int score = GameSettings.AutoQualitySettings();
                 if (score <= 24000) {
                     if (sliderAA.hideContent == null)
                         sliderAA.hideContent = new List<string>();
@@ -397,6 +436,9 @@ public class PauseManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Actualiza el menú de opcines de volumen
+    /// </summary>
     public void UpdateAudioSettings() {
         GameOptions.LoadGameSettings();
 
@@ -409,6 +451,9 @@ public class PauseManager : MonoBehaviour {
         GameOptions.SaveGameSettings();
     }
 
+    /// <summary>
+    /// Actualiza el menú de opcines de gameplay
+    /// </summary>
     public void UpdateGameplaySettings() {
         GameOptions.LoadGameSettings();
 
@@ -436,6 +481,9 @@ public class PauseManager : MonoBehaviour {
         GameOptions.SaveGameSettings();
     }
 
+    /// <summary>
+    /// Obtiene las resoluciones disponibles de la pantlla 
+    /// </summary>
     public void GetResolutions() {
         resolutions = Screen.resolutions;
         List<string> od = new List<string>();
@@ -447,6 +495,9 @@ public class PauseManager : MonoBehaviour {
         sliderResolution.listContent = od;
     }
 
+    /// <summary>
+    /// Inicia el valor de la resolución actual
+    /// </summary>
     public void SetResolutionDropDown() {
         int val = 0;
         for (int i = 0; i < resolutions.Length; ++i) {
@@ -461,6 +512,9 @@ public class PauseManager : MonoBehaviour {
         sliderResolution.index = val;
     }
 
+    /// <summary>
+    /// Inicia el indice de la resolución actual
+    /// </summary>
     public void SetResolutionIndex() {
         int val = 0;
         for (int i = 0; i < resolutions.Length; ++i) {
@@ -471,6 +525,9 @@ public class PauseManager : MonoBehaviour {
         sliderResolution.index = val;
     }
 
+    /// <summary>
+    /// Actualiza el limitador de framerate
+    /// </summary>
     public void UpdateFramerate() {
         if (sliderFramerate.listContent[sliderFramerate.index] == "OFF")
             GameSettings.GS_FRAMECAP = Mathf.RoundToInt(-1);
@@ -484,6 +541,9 @@ public class PauseManager : MonoBehaviour {
         UpdateGraphicsSettings();
     }
 
+    /// <summary>
+    /// Actualiza el limitador de distancia de dibujado
+    /// </summary>
     public void UpdateDrawDistanceValue() {
         GameSettings.GS_DRAWDISTANCE = Mathf.RoundToInt(sliderDrawDistance.value);
         txtDrawDistance.text = GameSettings.GS_DRAWDISTANCE.ToString();
@@ -491,6 +551,9 @@ public class PauseManager : MonoBehaviour {
         UpdateGraphicsSettings();
     }
 
+    /// <summary>
+    /// Actualiza el texto de todas las opciones de volumen
+    /// </summary>
     public void UpdateVolumes() {
         txtMasterVolume.text = System.Math.Round(sliderMasterVolume.value, 2).ToString();
         txtSFXVolume.text = System.Math.Round(sliderSFXVolume.value, 2).ToString();
@@ -500,6 +563,9 @@ public class PauseManager : MonoBehaviour {
         UpdateAudioSettings();
     }
 
+    /// <summary>
+    /// Controla el lenguaje a cargar
+    /// </summary>
     public void ControlMapperLanguage() {
         switch(GameSettings.G_LANGUAGE) {
             case Enumerations.E_LANGUAGE.ENGLISH:
@@ -513,6 +579,11 @@ public class PauseManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Transforma un float a texto en formato 00:00.000
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
     private string ToTime(float time) {
         string newString = (Mathf.Floor(time / 60)).ToString("00") + ":" +
                     (Mathf.Floor(time) % 60).ToString("00") + "." +

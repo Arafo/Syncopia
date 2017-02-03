@@ -3,7 +3,10 @@ using System.Collections;
 using UnityEngine.Networking.Match;
 using System.Collections.Generic;
 
-//Main menu, mainly only a bunch of callback called by the UI (setup throught the Inspector)
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona la creación y la unión a partidas multijugador
+/// </summary>
 public class LobbyMenu : MonoBehaviour {
 
     public LobbyManager lobbyManager;
@@ -31,7 +34,6 @@ public class LobbyMenu : MonoBehaviour {
 
     /// <summary>
     /// Evento del click al pulsar sobre el botón JOIN
-    /// 
     /// </summary>
     public void OnClickJoin() {
         lobbyManager.ChangeTo(lobbyPanel);
@@ -44,7 +46,7 @@ public class LobbyMenu : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Crea una partida multijugador
     /// </summary>
     public void OnClickCreateMatchmakingGame() {
         CheckUIReferences();
@@ -98,7 +100,7 @@ public class LobbyMenu : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Obtiene la lista de servidores
     /// </summary>
     public void OnClickOpenServerList() {
         CheckUIReferences();

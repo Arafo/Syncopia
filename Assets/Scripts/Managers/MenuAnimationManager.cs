@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Linq;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona las animaciones de transición entre 
+/// los distintos menús
+/// </summary>
 public class MenuAnimationManager : MonoBehaviour {
 
     public bool DontDestroy;
@@ -41,7 +46,7 @@ public class MenuAnimationManager : MonoBehaviour {
     public bool ingame;
 
     /// <summary>
-    /// 
+    /// Inicia la transición en los menús
     /// </summary>
     void Start() {
         if (DontDestroy)
@@ -56,7 +61,7 @@ public class MenuAnimationManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Actualiza el estado de la transición entre menús
     /// </summary>
     void Update() {
         if (isRevealing) {
@@ -136,7 +141,7 @@ public class MenuAnimationManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Inicia la animación al objeto panel
     /// </summary>
     /// <param name="panel"></param>
     public void StartAnimation(GameObject panel) {
@@ -177,7 +182,7 @@ public class MenuAnimationManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Inicia la animación al objeto panel
     /// </summary>
     /// <param name="panel"></param>
     public void StartAnimationNoSound(GameObject panel) {
@@ -213,7 +218,7 @@ public class MenuAnimationManager : MonoBehaviour {
 
 
     /// <summary>
-    /// 
+    /// Inicia la animación al objeto panel
     /// </summary>
     /// <param name="panel"></param>
     public void StartAnimationLoadingScreen(GameObject panel) {
@@ -256,7 +261,7 @@ public class MenuAnimationManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Inicia la animación al objeto panel
     /// </summary>
     /// <param name="panel"></param>
     public void StartAnimationBackPedal(GameObject panel) {
@@ -298,7 +303,7 @@ public class MenuAnimationManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Inicia la animación al objeto panel
     /// </summary>
     public void StartAnimationPevious() {
         // Asignar el siguiente panel

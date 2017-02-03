@@ -3,7 +3,11 @@ using System.Collections;
 using System.IO;
 using System;
 
-
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona la carga, reproducción y pausa de la 
+/// música que suena durante las carreras
+/// </summary>
 public class MusicManager : MonoBehaviour {
 
     public AudioSource source;
@@ -33,6 +37,10 @@ public class MusicManager : MonoBehaviour {
         source.volume = AudioSettings.VOLUME_MUSIC;
     }
 
+    /// <summary>
+    /// Coroutine para cargar una canción
+    /// </summary>
+    /// <returns></returns>
     IEnumerator LoadSongCoroutine() {
         if (AudioSettings.customMusicEnabled) {
             string[] files = Directory.GetFiles(Environment.CurrentDirectory + "\\UserData\\Music\\", "*.mp3");

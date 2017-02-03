@@ -7,6 +7,12 @@ using UnityEngine.Networking.Match;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona todas las conexiones que realizan entre 
+/// el cliente y el servidor cuando se organiza una 
+/// partida multijugador
+/// </summary>
 public class LobbyManager : NetworkLobbyManager {
 
     static short MsgKicked = MsgType.Highest + 1;

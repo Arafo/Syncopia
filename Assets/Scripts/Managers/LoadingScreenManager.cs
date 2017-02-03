@@ -3,6 +3,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona la carga de la partida y la pantalla 
+/// que se muestra mientras se carga
+/// </summary>
 public class LoadingScreenManager : MonoBehaviour {
 
     private AsyncOperation level;
@@ -26,12 +31,19 @@ public class LoadingScreenManager : MonoBehaviour {
         LoadLevel();
     }
 
+    /// <summary>
+    /// Carga el nivel seleccionado de forma asincrona
+    /// </summary>
     private void LoadLevel() {
         level = SceneManager.LoadSceneAsync(SceneIndexManager.SceneIndexFromName(RaceSettings.trackToLoad));
         level.allowSceneActivation = false;
         StartCoroutine(LevelCoroutine());
     }
 
+    /// <summary>
+    /// Coroutine para gestionar el proceso de carga
+    /// </summary>
+    /// <returns></returns>
     IEnumerator LevelCoroutine() {
 
         while (!level.isDone) {
@@ -46,7 +58,7 @@ public class LoadingScreenManager : MonoBehaviour {
         }
 
         loadingBarMask.fillAmount = 1.0f;
-        yield return new WaitForSeconds(1); // Para probar que funciona, quitarlo para niveles más complejos
+        yield return new WaitForSeconds(1);
         level.allowSceneActivation = true;
     }
 }

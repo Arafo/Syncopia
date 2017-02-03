@@ -2,6 +2,9 @@
 using System.IO;
 using System;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// </summary>
 public class GameSettings : MonoBehaviour {
 
     // Configuracion grafica

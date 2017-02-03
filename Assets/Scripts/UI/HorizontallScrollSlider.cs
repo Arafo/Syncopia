@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+/// <author>Rafael Marcen Altarriba</author>
+/// <summary>
+/// Gestiona el comportamiento de las flechas de un botón horizontal
+/// </summary>
 public class HorizontallScrollSlider : MonoBehaviour {
 
     public Button leftButton;
@@ -41,6 +45,9 @@ public class HorizontallScrollSlider : MonoBehaviour {
 	
 	}
 
+    /// <summary>
+    /// Flecha siguiente
+    /// </summary>
     public void setNextText() {
         index++;
 
@@ -54,6 +61,9 @@ public class HorizontallScrollSlider : MonoBehaviour {
         actualText.text = isText ? LanguageSingleton._instance.getString(listContent[index]) : listContent[index];
     }
 
+    /// <summary>
+    /// Flecha anterior
+    /// </summary>
     public void setLastText() {
         index--;
 
