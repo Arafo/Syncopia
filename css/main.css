@@ -136,12 +136,12 @@ h2 {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   display: inline-block;
-  background: #FA5C5C;
+  background: #5C7FFA;
   color: white;
   text-decoration: none;
   padding: 0 10px;
   font-size: 14px;
-  text-shadow: 0 1px 0 #d64343;
+  text-shadow: 0 1px 0 #4359d6;
   cursor: pointer;
   border-radius: 3px;
   border: none;
@@ -152,9 +152,9 @@ h2 {
   font-weight: bold;
   height: 35px; }
   .button:hover {
-    background: #fa6666; }
+    background: #22599e; }
   .button:active {
-    background-color: #e44949;
+    background-color: #22429e;
     position: relative;
     top: 1px; }
   .button.fat {
@@ -206,7 +206,7 @@ h2 {
   .button.outline {
     background: transparent;
     border: 1px solid rgba(250, 92, 92, 0.4);
-    color: #FA5C5C;
+    color: #5C7FFA;
     text-shadow: none; }
     .button.outline:hover {
       border: 1px solid rgba(250, 92, 92, 0.6); }
@@ -296,7 +296,7 @@ a.learn_more, .learn_more a {
   .warning_box h2, .warning_box h3, .warning_box h4 {
     color: #3a3a27; }
   .warning_box a {
-    color: #FA5C5C; }
+    color: #5C7FFA; }
     .warning_box a:hover {
       color: #fb7575; }
   .warning_box :last-child {
@@ -311,7 +311,7 @@ a.learn_more, .learn_more a {
     right: 0;
     bottom: 0;
     left: 0;
-    background: #FA5C5C;
+    background: #5C7FFA;
     -webkit-animation: loader-left 0.8s cubic-bezier(0.55, 0.45, 0.55, 0.45) infinite, loader-right 0.8s cubic-bezier(0.45, 0.55, 0.45, 0.55) infinite;
     -moz-animation: loader-left 0.8s cubic-bezier(0.55, 0.45, 0.55, 0.45) infinite, loader-right 0.8s cubic-bezier(0.45, 0.55, 0.45, 0.55) infinite;
     -ms-animation: loader-left 0.8s cubic-bezier(0.55, 0.45, 0.55, 0.45) infinite, loader-right 0.8s cubic-bezier(0.45, 0.55, 0.45, 0.55) infinite;
@@ -1334,15 +1334,15 @@ a.learn_more, .learn_more a {
     margin-top: -9px;
     margin-left: -9px;
     border: 0;
-    background: #FA5C5C;
+    background: #5C7FFA;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: inset 0 0 1px rgba(255, 255, 255, 0.21), 0 0 0 1px rgba(255, 255, 255, 0.5);
     top: 50%;
     left: 50%; }
     .form .slider_input .slider_nub:hover {
-      background: #fa6666; }
+      background: #22599e; }
     .form .slider_input .slider_nub:active {
-      background-color: #e44949; }
+      background-color: #22429e; }
 
 button {
   font-family: Lato, sans-serif; }
@@ -1432,7 +1432,7 @@ button {
   .redactor-box .redactor-toolbar li a {
     color: #666; }
     .redactor-box .redactor-toolbar li a:hover {
-      background: #FA5C5C; }
+      background: #5C7FFA; }
     .redactor-box .redactor-toolbar li a:active, .redactor-box .redactor-toolbar li a.redactor-act {
       background: #ddd;
       color: #666; }
@@ -1639,12 +1639,12 @@ body .ui-widget, body .ui-widget button {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   display: inline-block;
-  background: #FA5C5C;
+  background: #5C7FFA;
   color: white;
   text-decoration: none;
   padding: 0 10px;
   font-size: 14px;
-  text-shadow: 0 1px 0 #d64343;
+  text-shadow: 0 1px 0 #4364d6;
   cursor: pointer;
   border-radius: 3px;
   border: none;
@@ -1659,9 +1659,9 @@ body .ui-widget, body .ui-widget button {
   margin-bottom: 10px;
   padding: 0 9px; }
   .form.buy_form_widget .checkout_btn:hover {
-    background: #fa6666; }
+    background: #22599e; }
   .form.buy_form_widget .checkout_btn:active {
-    background-color: #e44949;
+    background-color: #22429e;
     position: relative;
     top: 1px; }
   .form.buy_form_widget .checkout_btn:last-child {
@@ -1918,7 +1918,7 @@ body .ui-widget, body .ui-widget button {
   .star_value .star_holes {
     color: #999; }
   .star_value .star_fill {
-    color: #FA5C5C;
+    color: #5C7FFA;
     position: absolute;
     top: 0;
     left: 0;
@@ -2235,11 +2235,11 @@ body .ui-widget, body .ui-widget button {
         background: white;
         color: #333;
         color: white;
-        background: #FA5C5C;
-        border-color: #FA5C5C; }
+        background: #5C7FFA;
+        border-color: #5C7FFA; }
       .popup_details .popup_trailer .watch_trailer_btn:active {
-        background: #e44949;
-        border-color: #e44949; }
+        background: #22429e;
+        border-color: #22429e; }
 
 .game_trailer_lightbox_widget {
   box-shadow: 0 0 0 2px #222, 0 0 0 4px black;
@@ -2282,11 +2282,11 @@ body .ui-widget, body .ui-widget button {
           background: white;
           color: #333;
           color: white;
-          background: #FA5C5C;
-          border-color: #FA5C5C; }
+          background: #5C7FFA;
+          border-color: #5C7FFA; }
         .game_trailer_lightbox_widget h2 .trailer_actions .add_to_collection_btn:active {
-          background: #e44949;
-          border-color: #e44949; }
+          background: #22429e;
+          border-color: #22429e; }
         .game_trailer_lightbox_widget h2 .trailer_actions .add_to_collection_btn .icon {
           margin-right: 5px; }
         .game_trailer_lightbox_widget h2 .trailer_actions .add_to_collection_btn:hover {
@@ -2356,7 +2356,7 @@ body .ui-widget, body .ui-widget button {
   overflow: hidden; }
   .goal_progress_widget .progress_bar .progress_inner {
     height: 100%;
-    background: #FA5C5C;
+    background: #5C7FFA;
     border-radius: 0 8px 8px 0px; }
 
 .goal_progress_widget .stat_bar {
@@ -2808,11 +2808,11 @@ body .ui-widget, body .ui-widget button {
         background: white;
         color: #333;
         color: white;
-        background: #FA5C5C;
-        border-color: #FA5C5C; }
+        background: #5C7FFA;
+        border-color: #5C7FFA; }
       .after_download_lightbox_widget .browse_footer .outline_button:active {
-        background: #e44949;
-        border-color: #e44949; }
+        background: #22429e;
+        border-color: #22429e; }
   .after_download_lightbox_widget .social_buttons_widget {
     margin: 20px 40px; }
     .after_download_lightbox_widget .social_buttons_widget .social_button {
@@ -3538,12 +3538,12 @@ body {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   display: inline-block;
-  background: #FA5C5C;
+  background: #5C7FFA;
   color: white;
   text-decoration: none;
   padding: 0 10px;
   font-size: 14px;
-  text-shadow: 0 1px 0 #d64343;
+  text-shadow: 0 1px 0 #4364d6;
   cursor: pointer;
   border-radius: 3px;
   border: none;
@@ -3555,9 +3555,9 @@ body {
   height: 35px;
   min-width: 75px; }
   .view_game_page .button:hover {
-    background: #fa6666; }
+    background: #22599e; }
   .view_game_page .button:active {
-    background-color: #e44949;
+    background-color: #22429e;
     position: relative;
     top: 1px; }
 
@@ -4008,8 +4008,8 @@ body {
           vertical-align: 1px; }
         .community_post_list_widget .community_post .post_footer .vote_btn:hover, .community_post_list_widget .community_post .post_footer .vote_btn.voted {
           color: white;
-          background: #FA5C5C;
-          border-color: #FA5C5C; }
+          background: #5C7FFA;
+          border-color: #5C7FFA; }
         .community_post_list_widget .community_post .post_footer .vote_btn .icon-like {
           font-size: 12px;
           vertical-align: 1px; }
@@ -4236,19 +4236,19 @@ body {
       background: white;
       color: #333;
       color: white;
-      background: #FA5C5C;
-      border-color: #FA5C5C; }
+      background: #5C7FFA;
+      border-color: #5C7FFA; }
     .follow_button_widget.outline:active {
-      background: #e44949;
-      border-color: #e44949; }
+      background: #22429e;
+      border-color: #22429e; }
   .follow_button_widget.button.small .icon {
     display: none; }
   .follow_button_widget.is_following {
     transition: box-shadow 0.2s ease; }
     .follow_button_widget.is_following.button {
       background: white;
-      border-color: #fa6666;
-      color: #fa6666;
+      border-color: #22599e;
+      color: #22599e;
       text-shadow: none; }
     .follow_button_widget.is_following:hover {
       position: relative;
@@ -4324,7 +4324,7 @@ body {
   .user_panel_widget .notifications_bubble {
     width: 22px;
     height: 22px;
-    color: #FA5C5C !important;
+    color: #5C7FFA !important;
     background: white;
     display: inline-block;
     vertical-align: top;
@@ -4450,7 +4450,7 @@ body {
         background-color: #FFF0F0;
         color: #DD4A4A; }
       .user_panel_widget .drop_menu_wrap .link_row:active {
-        background: #E44949;
+        background: #22429e;
         color: white; }
   .user_panel_widget .panel_button {
     box-sizing: border-box;
@@ -4471,7 +4471,7 @@ body {
     margin-left: 10px; }
     .user_panel_widget .panel_button:hover {
       background: rgba(255, 255, 255, 0.8);
-      color: #FA5C5C; }
+      color: #5C7FFA; }
     .user_panel_widget .panel_button:active {
       background: rgba(255, 255, 255, 0.4); }
 .header_widget {
@@ -4532,7 +4532,7 @@ body {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     font-size: 16px;
-    background: #FA5C5C;
+    background: #5C7FFA;
     padding: 0 40px 0 32px;
     color: white;
     height: 50px;
@@ -4728,7 +4728,7 @@ body {
       font-size: 10px;
       text-transform: uppercase;
       background: white;
-      color: #FA5C5C;
+      color: #5C7FFA;
       border-radius: 3px;
       padding: 0px 4px 0px 4px;
       font-weight: bold;
